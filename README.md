@@ -68,11 +68,42 @@ pour la qualité visuelle du site.**
 
 ## Déploiement — Cloudflare Pages
 
+Projet : **passerelle-trotteurs-site**
+Préproduction : <https://passerelle-trotteurs-site.pages.dev>
+
+Déploiement manuel depuis la machine :
+
+```bash
+npm run deploy
+```
+
+Pour brancher le déploiement automatique sur les commits, connecter le dépôt
+GitHub depuis le tableau de bord Cloudflare (Workers & Pages → le projet →
+Settings → Builds → Connect to Git). Cette étape passe obligatoirement par
+l'interface : elle installe l'application GitHub de Cloudflare et ne peut pas
+être faite en ligne de commande.
+
 | Réglage | Valeur |
 | --- | --- |
 | Build command | `npm run build` |
 | Output directory | `dist` |
-| Node version | 20 ou plus |
+| Node version | 22 (voir `.node-version`) |
+
+### En-têtes HTTP
+
+`public/_headers` applique une Content-Security-Policy stricte
+(`script-src 'self'` / `style-src 'self'`, aucune exception `unsafe-inline`).
+Elle n'est tenable que parce que le site ne contient ni style ni script en
+ligne : `astro.config.mjs` force `inlineStylesheets: "never"` et le script du
+menu mobile vit dans `public/js/nav.js`. **Toute feuille de style ou tout
+script inséré en ligne sera bloqué par le navigateur.**
+
+### Propriété du compte
+
+Le projet est hébergé sur le compte Cloudflare personnel « Apiruck Account ».
+Pour que l'association possède réellement son site, ce projet devra être
+recréé sur un compte Cloudflare détenu par Passerelle — même problème que
+celui décrit dans l'audit de propriété de la plateforme.
 
 Le domaine `www.passerelle-trotteurs.fr` est actuellement servi par AWS
 CloudFront et sa zone DNS est gérée chez OVH. Le basculement du domaine

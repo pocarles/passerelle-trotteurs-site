@@ -262,12 +262,4 @@ import { nav, links } from "../data/site";
   }
 </style>
 
-<script>
-  const burger = document.querySelector<HTMLButtonElement>(".burger");
-  const panel = document.getElementById("m-nav");
-  burger?.addEventListener("click", () => {
-    const open = burger.getAttribute("aria-expanded") === "true";
-    burger.setAttribute("aria-expanded", String(!open));
-    if (panel) panel.hidden = open;
-  });
-</script>
+<script is:inline defer src="/js/nav.js"></script>
