@@ -1,0 +1,212 @@
+---
+import Base from "../../layouts/Base.astro";
+import Prose from "../../components/Prose.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { ambassadeurs } from "../../data/mecenes";
+
+const a = ambassadeurs[0];
+
+const photos = [
+  { src: "/media/ambassadeurs/darling-2.jpg", alt: "Darling des Mares et Jade" },
+  { src: "/media/ambassadeurs/darling-3.jpg", alt: "Darling des Mares au travail" },
+  { src: "/media/ambassadeurs/darling-4.jpg", alt: "Jade et Darling en extérieur" },
+  { src: "/media/ambassadeurs/darling-5.jpg", alt: "Darling des Mares" },
+];
+---
+
+<Base
+  title="Jade & Darling des Mares — Ambassadrices Passerelle"
+  description="L’histoire de Jade et de Darling des Mares, trotteuse réformée : sept ans d’apprentissage mutuel, du premier coup de cœur à l’endurance en licol."
+>
+  <article class="story">
+    <div class="wrap">
+      <a class="tlink back" href="/mecenes">
+        <Icon name="arrow" class="back__ico" />
+        Nos mécènes & ambassadeurs
+      </a>
+
+      <header class="story__head">
+        <p class="eyebrow">{a.role}</p>
+        <h1>Jade & <span class="accent">Darling des Mares</span></h1>
+        <hr class="rule" />
+        <p class="lead">
+          Darling et Jade, c’est l’évolution conjointe de deux êtres qui se sont
+          appris l’un l’autre. Une preuve que la persévérance et la patience
+          font des merveilles.
+        </p>
+        <a class="tlink" href={a.instagram} target="_blank" rel="noreferrer">
+          Suivre leurs aventures
+          <Icon name="arrowUpRight" />
+        </a>
+      </header>
+
+      <figure class="story__hero">
+        <img src="/media/ambassadeurs/darling-1.jpg" alt="Jade et Darling des Mares" loading="eager" />
+      </figure>
+
+      <div class="story__body">
+        <Prose>
+          <h2>Le mot de l’ambassadrice</h2>
+          <blockquote>
+            <p>
+              Notre histoire débute en décembre 2018. Je n’avais que 15 ans et je
+              montais à cheval depuis seulement deux ans, je venais de valider mon
+              galop 4.
+            </p>
+          </blockquote>
+          <p>
+            Mes parents n’avaient pas beaucoup d’argent, j’ai donc dû attendre de
+            pouvoir travailler un peu et avoir quelques sous pour m’inscrire en
+            club. Depuis toujours, bien avant même d’avoir pu commencer
+            l’équitation, je rêvais d’être propriétaire. Je regardais donc par
+            curiosité les annonces, même si ce rêve semblait loin. Mais un jour,
+            je suis tombée sur l’annonce qui allait changer ma vie. J’ai
+            réfléchi, beaucoup, mais n’ayant rien à perdre, j’ai décidé d’aller
+            voir. Cette jolie jument bai s’appelait Darling. Elle paraissait au
+            premier abord assez timide, et s’est révélée avec le temps très
+            expressive. Ayant eu un coup de cœur dès l’annonce, je suis retournée
+            la voir une seconde fois. Darling m’a ensuite rejointe chez moi.
+          </p>
+
+          <h2>Les débuts</h2>
+          <p>
+            À ce moment, je lui ai découvert un autre aspect, très sensible et
+            assez peureuse. Elle n’avait que 5 ans, et nous sommes passées par
+            des phases plus complexes que d’autres. Elle comme moi n’avions que
+            peu d’expérience. Les débuts furent donc bien compliqués. Je me suis
+            alors remise en question, j’ai compris que je pensais équitation
+            avant de penser cheval. J’ai donc appris à être plus juste avec elle
+            et à essayer de la comprendre, elle qui apprenait comme moi. Cela a
+            pris beaucoup de temps, mais notre relation a changé totalement.
+          </p>
+
+          <h2>Aujourd’hui</h2>
+          <p>
+            Aujourd’hui, Darling est une jument formidable. Elle a pris de
+            l’assurance et sait s’exprimer. Attachante, elle sait faire le clown
+            et nous mettre de bonne humeur. Elle est tout simplement parfaite.
+            Personne n’a pu imaginer qu’elle deviendrait une telle jument, mais
+            moi j’y ai cru dès le jour où je l’ai rencontrée. Beaucoup racontent
+            que nous nous ressemblons, que nous avons nos humeurs et notre petit
+            caractère, et ils ont raison. Elle est devenue ma moitié, ma
+            meilleure amie. On aura pas mal baroudé : elle m’aura suivie des
+            Alpes aux Bouches-du-Rhône, jusqu’à aujourd’hui en Île-de-France.
+            Elle en aura fait, des kilomètres. Malgré tout, elle a toujours su
+            s’adapter et il m’aurait été impossible de m’en séparer.
+          </p>
+          <p>
+            Darling se trouve être vraiment surprenante. Elle est polyvalente, du
+            dressage à l’obstacle, du cross à l’endurance, et sait briller au
+            travail à pied. Depuis peu, elle se retrouve même maîtresse d’école
+            et apprend l’art de l’équitation à mon conjoint, qui lui aussi s’est
+            pris d’affection pour elle et pour ce sport. Nous avons quelques
+            belles réussites, notamment la cordelette en carrière et en
+            extérieur, galoper sur la plage en sidepull, et bien entendu notre
+            première place en Club 2 endurance, avec un cardiaque à 33 — toujours
+            en sidepull.
+          </p>
+
+          <h2>Nos projets</h2>
+          <p>
+            J’espère que nous irons le plus loin possible ensemble, qu’on s’amuse
+            à la maison et en concours. J’aimerais un jour la sortir en CCE et,
+            plus tard, passer mon BPJEPS. Et parce qu’un bonheur n’arrive jamais
+            seul, j’aimerais la faire pouliner et évidemment développer une
+            relation encore plus belle avec elle. Pour cela, et pour des
+            centaines d’autres raisons que je n’ai pas pu citer ici, je la
+            remercie, et je ne nous espère que de belles années à ses côtés.
+          </p>
+        </Prose>
+
+        <aside class="gallery">
+          {
+            photos.map((p) => (
+              <figure>
+                <img src={p.src} alt={p.alt} loading="lazy" />
+              </figure>
+            ))
+          }
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <CtaBand
+    text="Vous aussi, votre trotteur a une histoire à raconter&nbsp;?"
+    accent="Écrivez-nous."
+    label="Nous contacter"
+    href="/contact"
+    icon="quote"
+    note="Nous mettons en avant les binômes qui font connaître la reconversion."
+  />
+</Base>
+
+<style>
+  .story {
+    padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+  }
+  .back {
+    margin-bottom: 2.5rem;
+  }
+  .back__ico {
+    transform: rotate(180deg);
+  }
+  .story__head {
+    max-width: 46ch;
+  }
+  .story__head h1 {
+    font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  }
+  .story__head .lead {
+    margin: 0 0 1.8rem;
+  }
+
+  .story__hero {
+    margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 21 / 9;
+  }
+  .story__hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story__body {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .gallery {
+    display: grid;
+    gap: 1rem;
+    position: sticky;
+    top: 6rem;
+  }
+  .gallery figure {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+  .gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .story__body {
+      grid-template-columns: 1fr;
+    }
+    .gallery {
+      position: static;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

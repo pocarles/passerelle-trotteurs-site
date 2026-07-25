@@ -12,7 +12,7 @@ legacyUrl: "https://www.passerelle-trotteurs.fr/fr/actualites/fete-du-cheval-sur
 
 <p>À cette occasion, découverte des races de chevaux emblématiques, métiers autour du cheval, balade et pansage des poneys, sans oublier le festival de food-trucks et de magnifiques courses de trot. </p>
 
-<p>Passerelle était aussi présente pour faire découvrir les actions que nous menons aux côtés de la filière des courses de Trot pour que les athlètes d&#39;hier et d&#39;aujourd&#39;hui trouvent la meilleure seconde vie possible. C&#39;est dailleurs le cas de Darling des Mares une trotteuse reconvertie appartenant à Jade notre ambassadrice reconversion.</p>
+<p>Passerelle était aussi présente pour faire découvrir les actions que nous menons aux côtés de la filière des courses de Trot pour que les athlètes d&#39;hier et d&#39;aujourd&#39;hui trouvent la meilleure seconde vie possible. C&#39;est dailleurs le cas de <a href="/mecenes/jade-darling">Darling des Mares</a> une trotteuse reconvertie appartenant à Jade notre ambassadrice reconversion.</p>
 
 <p>Cette journée était aussi l&#39;occasion pour l&#39;association de vendre des goodies au profit de ses actions pour les chevaux les plus vulnérables. </p>
 

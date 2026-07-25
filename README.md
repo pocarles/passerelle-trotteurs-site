@@ -114,7 +114,7 @@ de la plateforme.
 
 - [ ] Publier de vraies fiches chevaux (le système est prêt, les données
       manquent — voir « Ajouter un cheval »)
-- [ ] Rubrique « Mécènes & ambassadeurs »
+- [ ] Confirmer les URL manquantes des partenaires (voir « Mécènes »)
 - [ ] Version anglaise
 - [ ] Photographies haute définition
 
@@ -169,6 +169,21 @@ mettre en place des redirections le jour de la bascule.
 
 ### Non repris de l'ancien site
 
-- la rubrique « Nos mécènes & ambassadeurs », dont la page Jade & Darling des
-  Mares (le lien vers cette page a été retiré d'un article) ;
 - la boutique, qui reste un lien externe.
+
+## Mécènes & ambassadeurs
+
+`src/data/mecenes.ts` liste les partenaires par famille, avec leur logo dans
+`public/media/mecenes/`. Sur l'ancien site ils n'apparaissaient que sous forme
+de logos, sans nom ni lien : les noms ont été relevés sur les logos eux-mêmes.
+
+Le champ `url` n'est renseigné que pour les sites vérifiés — un partenaire sans
+URL s'affiche sans lien. **Ne pas ajouter d'URL sans l'avoir ouverte.** Les
+adresses des hippodromes de Reims et de La Capelle, du Conseil des Chevaux
+Hauts-de-France, de Karisma Consulting, d'Equi-libre, des sociétés de courses
+de Strasbourg et de Saint-Galmier restent à confirmer auprès de l'association.
+
+La page Arqana Trot de l'ancien site n'a pas été reprise telle quelle : son
+contenu se limitait à une présentation et au calendrier des ventes 2025,
+devenu obsolète. Arqana Trot figure parmi les partenaires, avec un lien vers
+son site.

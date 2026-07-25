@@ -1,0 +1,231 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { meceneGroupes, ambassadeurs } from "../../data/mecenes";
+import { links } from "../../data/site";
+
+const total = meceneGroupes.reduce((n, g) => n + g.membres.length, 0);
+---
+
+<Base
+  title="Nos mécènes & ambassadeurs — Association Passerelle"
+  description="Institutions de la filière, hippodromes, entreprises et ambassadeurs : celles et ceux qui soutiennent la reconversion des Trotteurs Français aux côtés de Passerelle."
+>
+  <PageHeader
+    eyebrow="Ils nous soutiennent"
+    title="La reconversion ne tient pas"
+    accent="à une seule paire de bras."
+    lead={`${total} institutions, hippodromes, entreprises et médias accompagnent Passerelle. Un immense merci à eux.`}
+    image="/media/racecare.jpg"
+    imageAlt="Le public et les professionnels réunis lors d’une journée sur un hippodrome"
+  />
+
+  {
+    meceneGroupes.map((groupe) => (
+      <section class="section grp">
+        <div class="wrap">
+          <h2 class="grp__title">{groupe.titre}</h2>
+          <ul class="wall">
+            {groupe.membres.map((m) => (
+              <li>
+                {m.url ? (
+                  <a href={m.url} target="_blank" rel="noreferrer">
+                    <img src={m.logo} alt={m.nom} loading="lazy" />
+                    <span>
+                      {m.nom}
+                      <Icon name="arrowUpRight" class="wall__ico" />
+                    </span>
+                  </a>
+                ) : (
+                  <div>
+                    <img src={m.logo} alt={m.nom} loading="lazy" />
+                    <span>{m.nom}</span>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section amb">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--light">Nos ambassadeurs</p>
+      <h2>
+        Des binômes qui racontent<br />
+        <span class="accent--light">ce que devient un trotteur.</span>
+      </h2>
+      <p class="amb__lead">
+        Nos ambassadeurs vivent la reconversion au quotidien et la font connaître
+        bien au-delà du monde des courses.
+      </p>
+
+      <ul class="amb__list">
+        {
+          ambassadeurs.map((a) => (
+            <li>
+              <a href={`/mecenes/${a.slug}`}>
+                <div class="amb__media">
+                  <img src={a.photo} alt={`${a.nom}`} loading="lazy" />
+                </div>
+                <div class="amb__copy">
+                  <p class="amb__role">{a.role}</p>
+                  <h3>{a.nom}</h3>
+                  <p>{a.resume}</p>
+                  <span class="tlink tlink--light">
+                    Lire leur histoire
+                    <Icon name="arrow" />
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Votre entreprise souhaite soutenir la reconversion&nbsp;?"
+    accent="Parlons-en."
+    label="Nous contacter"
+    href="/contact"
+    icon="users"
+    note="Le mécénat d’entreprise ouvre droit à une réduction d’impôt de 60 % du montant du don."
+  />
+</Base>
+
+<style>
+  .grp {
+    padding-block: clamp(2.5rem, 4vw, 3.5rem);
+  }
+  .grp + .grp {
+    padding-top: 0;
+  }
+  .grp__title {
+    margin-bottom: 2rem;
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moss);
+  }
+
+  /* Self-contained tiles: an incomplete last row simply has fewer of them,
+     with no empty cells left over. */
+  .wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: clamp(0.7rem, 1.4vw, 1rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .wall a,
+  .wall div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.8rem 1.2rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .wall a:hover {
+    background: var(--cream-warm);
+    border-color: var(--line-strong);
+  }
+  .wall img {
+    width: 100%;
+    max-width: 140px;
+    height: 62px;
+    object-fit: contain;
+  }
+  .wall span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+  .wall__ico {
+    width: 12px;
+    height: 12px;
+    flex: 0 0 auto;
+    color: var(--moss);
+  }
+
+  .amb {
+    background: var(--forest-deep);
+    color: #fff;
+  }
+  .amb h2 {
+    color: #fff;
+  }
+  .amb__lead {
+    margin: 1.4rem 0 3rem;
+    max-width: 52ch;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .amb__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .amb__list a {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+    padding: clamp(1.2rem, 2.5vw, 1.8rem);
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius-lg);
+    transition: background 0.2s ease;
+  }
+  .amb__list a:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .amb__media {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .amb__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .amb__role {
+    margin: 0 0 0.6rem;
+    color: var(--sage);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .amb__copy h3 {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  }
+  .amb__copy p {
+    margin: 0.9rem 0 1.5rem;
+    max-width: 46ch;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  @media (max-width: 760px) {
+    .amb__list a {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
