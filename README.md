@@ -77,11 +77,32 @@ Déploiement manuel depuis la machine :
 npm run deploy
 ```
 
-Pour brancher le déploiement automatique sur les commits, connecter le dépôt
-GitHub depuis le tableau de bord Cloudflare (Workers & Pages → le projet →
-Settings → Builds → Connect to Git). Cette étape passe obligatoirement par
-l'interface : elle installe l'application GitHub de Cloudflare et ne peut pas
-être faite en ligne de commande.
+### Déploiement automatique
+
+`.github/workflows/deploy.yml` déploie à chaque push sur `main`, et crée un
+déploiement de prévisualisation (URL dédiée) pour chaque pull request.
+
+Deux secrets sont nécessaires sur le dépôt GitHub :
+
+| Secret | Valeur |
+| --- | --- |
+| `CLOUDFLARE_ACCOUNT_ID` | déjà renseigné |
+| `CLOUDFLARE_API_TOKEN` | à créer — voir ci-dessous |
+
+Créer le jeton sur <https://dash.cloudflare.com/profile/api-tokens> avec le
+modèle **Edit Cloudflare Workers**, ou une permission
+`Account → Cloudflare Pages → Edit` limitée au compte concerné, puis :
+
+```bash
+gh secret set CLOUDFLARE_API_TOKEN --repo pocarles/passerelle-trotteurs-site
+```
+
+**Pourquoi pas l'intégration Git native de Cloudflare ?** Elle ne peut pas être
+ajoutée à un projet Pages existant : le tableau de bord ne la propose qu'à la
+création du projet. La brancher imposerait de supprimer le projet actuel et
+d'en recréer un depuis le dépôt GitHub, en libérant puis en reprenant le
+sous-domaine `passerelle-trotteurs-site.pages.dev`. Le workflow GitHub Actions
+donne le même résultat sans cette manipulation.
 
 | Réglage | Valeur |
 | --- | --- |

@@ -1,0 +1,46 @@
+name: Deploy
+
+# Cloudflare Pages cannot attach Git integration to an existing project — the
+# dashboard flow only offers it when creating one. This workflow gives the same
+# result without recreating the project: production deploys on push to main,
+# preview deploys on pull requests.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # A branch other than main produces a preview deployment with its own URL.
+          command: >-
+            pages deploy dist
+            --project-name passerelle-trotteurs-site
+            --branch ${{ github.head_ref || github.ref_name }}
