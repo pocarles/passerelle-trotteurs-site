@@ -112,10 +112,9 @@ de la plateforme.
 
 ## À faire
 
-- [ ] Pages intérieures : association, valeurs, équipe, réseau, confier,
-      adopter, protection, actualités, contact
-- [ ] Chevaux à l'adoption sur le site (aujourd'hui hébergés dans un groupe
-      Facebook)
+- [ ] Publier de vraies fiches chevaux (le système est prêt, les données
+      manquent — voir « Ajouter un cheval »)
+- [ ] Rubrique « Mécènes & ambassadeurs »
 - [ ] Version anglaise
 - [ ] Photographies haute définition
 
