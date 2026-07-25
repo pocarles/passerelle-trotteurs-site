@@ -35,7 +35,7 @@ export const links = {
 
 export const nav = [
   {
-    label: "L’association",
+    label: "Association",
     href: "/association",
     children: [
       { label: "Notre mission", href: "/association" },
@@ -44,8 +44,8 @@ export const nav = [
       { label: "#RaceAndCare", href: "/race-and-care" },
     ],
   },
-  { label: "Le réseau", href: "/reseau" },
-  { label: "La protection", href: "/protection" },
+  { label: "Réseau", href: "/reseau" },
+  { label: "Protection", href: "/protection" },
   {
     label: "Participer",
     href: "/participer",

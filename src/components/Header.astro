@@ -7,7 +7,6 @@ import { nav, links } from "../data/site";
   <div class="hdr__in">
     <a class="brand" href="/" aria-label="Passerelle — accueil">
       <img src="/media/logo.png" alt="" width="1472" height="869" />
-      <span class="brand__sub">Reconversion des Trotteurs Français</span>
     </a>
 
     <nav class="nav" aria-label="Navigation principale">
@@ -96,7 +95,7 @@ import { nav, links } from "../data/site";
   .hdr__in {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 3vw, 2.5rem);
+    gap: clamp(0.75rem, 1.6vw, 1.6rem);
     max-width: var(--maxw);
     margin-inline: auto;
     padding: 0.9rem var(--gutter);
@@ -114,19 +113,6 @@ import { nav, links } from "../data/site";
   :global(body.has-hero) .brand img {
     filter: brightness(0) invert(1);
   }
-  .brand__sub {
-    display: block;
-    margin-top: 0.2rem;
-    font-size: 0.56rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  :global(body.has-hero) .brand__sub {
-    color: rgba(255, 255, 255, 0.75);
-  }
-
   .nav ul {
     display: flex;
     align-items: center;
@@ -256,7 +242,9 @@ import { nav, links } from "../data/site";
     text-transform: uppercase;
   }
 
-  @media (max-width: 1040px) {
+  /* Six top-level items plus the logo and the donate pill need about 1020px
+     inside the 1200px header. Below that, switch to the burger. */
+  @media (max-width: 1200px) {
     .nav {
       display: none;
     }
