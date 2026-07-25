@@ -1,0 +1,114 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Prose from "../../components/Prose.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { links } from "../../data/site";
+---
+
+<Base
+  title="Parrainer un trotteur — Association Passerelle"
+  description="Un don mensuel finance la pension et les soins des Trotteurs Français accueillis provisoirement par Passerelle."
+>
+  <PageHeader
+    eyebrow="Nous soutenir"
+    title="Parrainer un trotteur,"
+    accent="mois après mois."
+    lead="Passerelle prend en charge entre 10 et 15 chevaux par semaine. Nous manquons de place, les structures sont saturées."
+    image="/media/pasture.jpg"
+    imageAlt="Des Trotteurs Français vivant ensemble au pré"
+  />
+
+  <section class="section">
+    <div class="wrap sponsor__grid">
+      <div>
+        <p class="eyebrow">Nous avons besoin de vous</p>
+        <h2>Financer les placements <span class="accent">provisoires.</span></h2>
+      </div>
+      <Prose>
+        <p>
+          Malgré les structures saturées, nous mettons tout en œuvre pour prendre
+          en charge chaque demande. Nous avons donc recours à des placements
+          provisoires, ce qui implique des frais.
+        </p>
+        <p>
+          Passerelle paie une pension ainsi que des frais annexes —
+          maréchalerie, dentisterie, vétérinaire — pour chaque placement
+          provisoire, environ <strong>200&nbsp;€ par mois</strong>.
+        </p>
+        <p>
+          Réalisez un don mensuel pour devenir parrain Passerelle&nbsp;! Chaque
+          don est déductible des impôts à hauteur de 66&nbsp;% pour les
+          particuliers et 60&nbsp;% pour les professionnels.
+        </p>
+        <p>Un reçu fiscal vous sera adressé directement sur la plateforme.</p>
+      </Prose>
+    </div>
+  </section>
+
+  <section class="section figure">
+    <div class="wrap figure__in">
+      <span class="badge"><Icon name="sprout" /></span>
+      <p class="figure__value">≈ 200&nbsp;€</p>
+      <p class="figure__label">Pension et frais annexes par mois et par placement provisoire</p>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Un soutien régulier pour"
+    accent="un avenir plus sûr."
+    label="Devenir parrain"
+    href={links.sponsor}
+    external
+    icon="sprout"
+  />
+</Base>
+
+<style>
+  .sponsor__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2.5rem, 7vw, 6rem);
+  }
+  .figure {
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    background: var(--forest);
+    color: #fff;
+  }
+  .figure__in {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: clamp(1.2rem, 4vw, 3rem);
+  }
+  .figure .badge {
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .figure__value {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    line-height: 1;
+  }
+  .figure__label {
+    max-width: 34ch;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  @media (max-width: 800px) {
+    .sponsor__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 620px) {
+    .figure__in {
+      grid-template-columns: auto 1fr;
+    }
+    .figure__label {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

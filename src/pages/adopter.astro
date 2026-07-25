@@ -1,0 +1,225 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Prose from "../components/Prose.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { links, protections } from "../data/site";
+
+const routes = [
+  {
+    icon: "horse",
+    title: "Chevaux à la vente",
+    body: "Des Trotteurs Français passés par une structure de reconversion accréditée, remis au travail et prêts pour une nouvelle discipline. Un contrat Passerelle entre la structure et l’acquéreur est obligatoire.",
+  },
+  {
+    icon: "heart",
+    title: "Chevaux à l’adoption",
+    body: "Des chevaux vieillissants ou atteints de pathologies, souvent non montables, destinés au travail à pied ou aux balades en main dans des familles bienveillantes. Des frais d’adoption s’appliquent, et l’adoptant accepte l’état de santé du cheval et les soins qu’il demande.",
+  },
+  {
+    icon: "hand",
+    title: "Adoption directe",
+    body: "Des chevaux n’ayant pas suivi de programme de reconversion. Ils sont proposés comme chevaux de compagnie, ou montables uniquement avec l’accompagnement d’un professionnel, sous contrat de placement provisoire d’un an.",
+  },
+];
+---
+
+<Base
+  title="Acheter ou adopter un trotteur — Passerelle"
+  description="Découvrez les Trotteurs Français proposés à la vente ou à l’adoption, tous placés sous contrat Passerelle qui les protège à vie de l’abattage et du retour aux courses."
+>
+  <PageHeader
+    eyebrow="Participer"
+    title="Offrir une seconde vie"
+    accent="à un Trotteur Français."
+    lead="Tous les chevaux placés par Passerelle le sont sous un contrat qui les suit et les protège pour le reste de leur vie."
+    image="/media/bond.jpg"
+    imageAlt="Une cavalière et un trotteur alezan, face à face dans un pré"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Trois formules</p>
+      <h2 class="sec-title">
+        Un cheval, un projet, <span class="accent">un cadre adapté.</span>
+      </h2>
+      <ul class="routes">
+        {
+          routes.map((r) => (
+            <li>
+              <span class="badge"><Icon name={r.icon} /></span>
+              <div>
+                <h3>{r.title}</h3>
+                <p>{r.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section protect">
+    <div class="wrap protect__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Le contrat Passerelle</p>
+        <h2>Ce que vous vous engagez <span class="accent--light">à respecter.</span></h2>
+        <p class="protect__lead">
+          L’association et ses structures conservent un droit d’information et
+          de préemption en cas de revente. Ces engagements valent pour toute la
+          vie du cheval, quel que soit le nombre de propriétaires successifs.
+        </p>
+        <a class="tlink tlink--light" href="/protection">
+          Tout savoir sur la protection
+          <Icon name="arrow" />
+        </a>
+      </div>
+      <ol class="protect__list">
+        {
+          protections.map((p, i) => (
+            <li>
+              <span class="protect__num">{String(i + 1).padStart(2, "0")}</span>
+              <span>{p}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <Prose>
+        <h2>Où voir les chevaux disponibles</h2>
+        <p>
+          Les annonces sont aujourd’hui publiées dans le groupe Facebook dédié
+          de l’association, mis à jour au fil des arrivées et des placements.
+        </p>
+        <p>
+          Vous ne trouvez pas le cheval qui vous correspond, ou vous avez une
+          question sur une annonce ? Écrivez-nous : nous connaissons les
+          chevaux de notre réseau et nous pouvons vous orienter.
+        </p>
+      </Prose>
+      <div class="actions">
+        <a class="btn btn--primary" href={links.adoptionGroup} target="_blank" rel="noreferrer">
+          Voir les annonces
+          <span class="btn__ico"><Icon name="arrowUpRight" /></span>
+        </a>
+        <a class="btn btn--ghost" href="/contact">
+          Nous poser une question
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Vous n’êtes pas en mesure d’accueillir un cheval ?"
+    accent="Parrainez-en un."
+    label="Devenir parrain"
+    href={links.sponsor}
+    external
+    note="Un don mensuel finance la pension et les soins d’un trotteur en placement provisoire — environ 200 € par mois."
+    icon="sprout"
+  />
+</Base>
+
+<style>
+  .sec-title {
+    max-width: 22ch;
+    margin-bottom: 3rem;
+  }
+  .routes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.8rem, 4vw, 3rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .routes li {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .routes h3 {
+    margin-bottom: 0.4rem;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .routes p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  .protect {
+    background: var(--forest-deep);
+    color: #fff;
+  }
+  .protect__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+  }
+  .protect h2 {
+    color: #fff;
+  }
+  .protect__lead {
+    margin: 1.6rem 0 2rem;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 42ch;
+  }
+  .protect__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--line-light);
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .protect__list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem 1.4rem;
+    background: var(--forest-deep);
+    font-size: 0.97rem;
+    line-height: 1.5;
+  }
+  .protect__num {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--sage);
+    flex: 0 0 auto;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.2rem;
+  }
+
+  @media (max-width: 960px) {
+    .routes,
+    .protect__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 720px) {
+    .protect__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

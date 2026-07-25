@@ -1,0 +1,99 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Prose from "../../components/Prose.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { links } from "../../data/site";
+
+const values = [
+  "Un engagement des structures de reconversion professionnelles affiliées.",
+  "Protection à vie contre l’abattage, l’expérimentation animale et interdiction de reprise des courses.",
+  "Le respect du cheval.",
+];
+---
+
+<Base
+  title="Nos valeurs — Association Passerelle"
+  description="Le bien-être, la bientraitance et la protection à vie sont au cœur des engagements de l’Association Passerelle."
+>
+  <PageHeader
+    eyebrow="L’association"
+    title="Le respect du cheval,"
+    accent="à chaque étape."
+    lead="Le bien-être et la bientraitance sont au cœur de nos préoccupations."
+    image="/media/pasture.jpg"
+    imageAlt="Des Trotteurs Français vivant ensemble au pré"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <Prose>
+        <ul class="opening">
+          {values.map((value) => <li><strong>{value}</strong></li>)}
+        </ul>
+
+        <h2>Nos engagements</h2>
+        <p>
+          Nos structures professionnelles de la reconversion sont sélectionnées
+          selon des critères spécifiques destinés à assurer le bien-être des
+          chevaux réformés.
+        </p>
+        <ul>
+          <li>Qualité des infrastructures, de l’alimentation et des soins.</li>
+          <li>Expérience de la reconversion.</li>
+          <li>Capacité à vérifier les compétences et la fiabilité des acheteurs.</li>
+        </ul>
+
+        <h2>Avantages du référencement Passerelle</h2>
+        <ul>
+          <li>
+            Gage de qualité auprès des propriétaires de chevaux de courses à
+            réformer ainsi que des futurs propriétaires.
+          </li>
+          <li>Visibilité sur nos outils de communication.</li>
+          <li>Participation à nos événements.</li>
+          <li>
+            Soutien individualisé sur le plan juridique, administratif et pour
+            la communication.
+          </li>
+        </ul>
+
+        <h2>Pour les professionnels des courses</h2>
+        <p>
+          La garantie contractuelle de la meilleure «&nbsp;seconde vie&nbsp;»
+          possible pour leur cheval, à l’issue de sa carrière.
+        </p>
+
+        <h2>Pour les cavaliers</h2>
+        <p>
+          L’opportunité d’acheter en toute tranquillité, sous contrat, un cheval
+          qui a bénéficié des meilleurs soins et d’un travail adapté à ses
+          capacités physiques et mentales.
+        </p>
+
+        <blockquote>
+          <p>Nous sommes tous responsables de leur avenir&nbsp;!</p>
+        </blockquote>
+      </Prose>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Vous partagez ces engagements ?"
+    accent="Rejoignez le mouvement."
+    label="Devenir membre"
+    href={links.join}
+    external
+    icon="sprout"
+  />
+</Base>
+
+<style>
+  .opening {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0 0 2.8rem;
+    padding-bottom: 2.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+</style>

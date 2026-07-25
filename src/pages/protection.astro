@@ -1,0 +1,146 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { protections } from "../data/site";
+---
+
+<Base
+  title="La protection Passerelle — Un contrat pour la vie"
+  description="Découvrez les six protections contractuelles qui accompagnent à vie chaque Trotteur Français reconverti par Passerelle."
+>
+  <PageHeader
+    eyebrow="Notre engagement"
+    title="Un contrat qui les protège"
+    accent="pour le reste de leur vie."
+    lead="La protection Passerelle s’applique à tous les chevaux reconvertis par l’association, quel que soit leur parcours après les courses."
+    image="/media/bond.jpg"
+    imageAlt="Une cavalière et un Trotteur Français alezan, face à face"
+  />
+
+  <section class="section protect">
+    <div class="wrap protect__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Six garanties</p>
+        <h2>La protection Passerelle <span class="accent--light">pour tous.</span></h2>
+      </div>
+      <ol class="protect__list">
+        {
+          protections.map((protection, index) => (
+            <li>
+              <span class="protect__num">{String(index + 1).padStart(2, "0")}</span>
+              <span>{protection}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section benefits">
+    <div class="wrap">
+      <p class="eyebrow">Une garantie partagée</p>
+      <h2 class="benefits__title">Protéger le cheval, <span class="accent">sécuriser chaque partie.</span></h2>
+      <div class="benefits__grid">
+        <article>
+          <span class="badge"><Icon name="horse" /></span>
+          <h3>Pour les professionnels des courses</h3>
+          <p>
+            La garantie contractuelle de la meilleure «&nbsp;seconde vie&nbsp;»
+            possible pour leur cheval, à l’issue de sa carrière.
+          </p>
+        </article>
+        <article>
+          <span class="badge"><Icon name="heart" /></span>
+          <h3>Pour les cavaliers</h3>
+          <p>
+            L’opportunité d’acheter en toute tranquillité, sous contrat, un
+            cheval qui a bénéficié des meilleurs soins et d’un travail adapté à
+            ses capacités physiques et mentales.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Un cheval Passerelle change de vie,"
+    accent="jamais de protection."
+    label="Adopter un trotteur"
+    href="/adopter"
+    icon="shield"
+  />
+</Base>
+
+<style>
+  .protect {
+    background: var(--forest-deep);
+    color: #fff;
+  }
+  .protect__grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: clamp(2.5rem, 7vw, 6rem);
+    align-items: start;
+  }
+  .protect h2 {
+    color: #fff;
+  }
+  .protect__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius);
+    background: var(--line-light);
+  }
+  .protect__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem 1.4rem;
+    background: var(--forest-deep);
+  }
+  .protect__num {
+    flex: 0 0 auto;
+    color: var(--sage);
+    font-family: var(--serif);
+  }
+  .benefits__title {
+    max-width: 22ch;
+    margin-bottom: 3rem;
+  }
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .benefits article {
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .benefits h3 {
+    margin: 1.3rem 0 0.7rem;
+  }
+  .benefits p {
+    max-width: 50ch;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 860px) {
+    .protect__grid,
+    .benefits__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 620px) {
+    .protect__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

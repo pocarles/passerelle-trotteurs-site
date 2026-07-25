@@ -1,0 +1,193 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Icon from "../components/Icon.astro";
+import { links, site } from "../data/site";
+
+const doors = [
+  {
+    icon: "hand",
+    title: "Confier un trotteur",
+    body: "Déposer une demande de prise en charge sur la plateforme dédiée.",
+    label: "Accéder à la prise en charge",
+    href: "/confier",
+    external: false,
+  },
+  {
+    icon: "heart",
+    title: "Adopter un trotteur",
+    body: "Découvrir les formules de vente, d’adoption et de placement direct.",
+    label: "Découvrir l’adoption",
+    href: "/adopter",
+    external: false,
+  },
+  {
+    icon: "sprout",
+    title: "Faire un don",
+    body: "Soutenir les soins, le transport et la reconversion des chevaux.",
+    label: "Faire un don",
+    href: links.donate,
+    external: true,
+  },
+  {
+    icon: "info",
+    title: "Presse et partenariats",
+    body: "Écrire directement à l’association pour présenter votre demande.",
+    label: "Écrire à Passerelle",
+    href: `mailto:${site.email}?subject=Presse%20ou%20partenariat`,
+    external: false,
+  },
+];
+---
+
+<Base
+  title="Contact — Association Passerelle"
+  description="Contactez l’Association Passerelle pour une prise en charge, une adoption, un don, une demande presse ou un partenariat."
+>
+  <PageHeader
+    eyebrow="Parlons-nous"
+    title="Trouver la bonne porte,"
+    accent="dès le premier message."
+    lead="Pour accélérer le traitement de votre demande, choisissez ci-dessous le parcours qui correspond à votre situation."
+  />
+
+  <section class="section routes">
+    <div class="wrap">
+      <p class="eyebrow">Votre demande</p>
+      <h2 class="routes__title">Comment pouvons-nous vous aider&nbsp;?</h2>
+      <div class="routes__grid">
+        {
+          doors.map((door) => (
+            <article>
+              <span class="badge"><Icon name={door.icon} /></span>
+              <h3>{door.title}</h3>
+              <p>{door.body}</p>
+              <a
+                class="tlink"
+                href={door.href}
+                target={door.external ? "_blank" : undefined}
+                rel={door.external ? "noreferrer" : undefined}
+              >
+                {door.label}
+                <Icon name={door.external ? "arrowUpRight" : "arrow"} />
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section details">
+    <div class="wrap details__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Coordonnées</p>
+        <h2>Association <span class="accent--light">Passerelle</span></h2>
+      </div>
+      <address>
+        <p>
+          {site.address.street}<br />
+          {site.address.postalCode} {site.address.city}<br />
+          {site.address.country}
+        </p>
+        <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </address>
+      <div class="social">
+        <p class="eyebrow eyebrow--light">Nous suivre</p>
+        <a href={links.facebook} target="_blank" rel="noreferrer">
+          Facebook <Icon name="arrowUpRight" />
+        </a>
+        <a href={links.instagram} target="_blank" rel="noreferrer">
+          Instagram <Icon name="arrowUpRight" />
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .routes__title {
+    margin-bottom: 3rem;
+  }
+  .routes__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--line);
+  }
+  .routes article {
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: var(--card);
+  }
+  .routes h3 {
+    margin: 1.3rem 0 0.55rem;
+  }
+  .routes article p {
+    min-height: 3.2em;
+    color: var(--ink-soft);
+  }
+  .details {
+    background: var(--forest-deep);
+    color: #fff;
+    /* tighter than .section: this band carries three short columns, and the
+       full section rhythm leaves a large empty area above the footer */
+    padding-block: clamp(3rem, 5.5vw, 4.5rem);
+  }
+  .details__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.7fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .details h2 {
+    color: #fff;
+  }
+  .details address {
+    display: grid;
+    gap: 0.7rem;
+    font-style: normal;
+  }
+  .details address p {
+    margin: 0 0 0.5rem;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .details address a,
+  .social a {
+    overflow-wrap: anywhere;
+    color: var(--sage);
+  }
+  .social {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .social .eyebrow {
+    margin-bottom: 0.4rem;
+  }
+  .social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .social :global(svg) {
+    width: 15px;
+    height: 15px;
+  }
+
+  @media (max-width: 780px) {
+    .details__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .routes__grid {
+      grid-template-columns: 1fr;
+    }
+    .routes article p {
+      min-height: 0;
+    }
+  }
+</style>

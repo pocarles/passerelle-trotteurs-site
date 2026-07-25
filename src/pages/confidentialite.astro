@@ -1,0 +1,142 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Prose from "../components/Prose.astro";
+import Icon from "../components/Icon.astro";
+import { legal, site } from "../data/site";
+---
+
+<Base
+  title="Politique de confidentialité — Association Passerelle"
+  description="Politique de confidentialité du site public de l’Association Passerelle : traitements, droits RGPD, cookies et contact."
+>
+  <section class="review-note" aria-label="Avertissement de publication">
+    <div class="wrap">
+      <div class="notice">
+        <span class="notice__ico"><Icon name="info" /></span>
+        <div>
+          <h2>Relecture requise avant publication</h2>
+          <p>
+            Cette politique de confidentialité doit être relue et validée par
+            l’association avant la mise en ligne du site.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PageHeader
+    eyebrow="Données personnelles"
+    title="Politique de"
+    accent="confidentialité."
+    lead="Cette page décrit les traitements liés au site public et les moyens d’exercer vos droits."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <Prose>
+        <h2>Responsable du traitement</h2>
+        <p>
+          Le responsable du traitement est <strong>{legal.publisher}</strong>,
+          située {site.address.street}, {site.address.postalCode} {site.address.city},
+          {site.address.country}.
+        </p>
+
+        <h2>Finalités</h2>
+        <p>
+          Les données que vous adressez volontairement à l’association par
+          courriel ou par téléphone sont utilisées pour répondre à votre demande
+          et assurer les échanges qui en découlent.
+        </p>
+        <p>
+          Ce site ne comporte pas de formulaire. Les démarches de don,
+          d’adhésion, de parrainage et de prise en charge sont effectuées sur des
+          services externes, accessibles par des liens dédiés.
+        </p>
+
+        <h2>Base légale</h2>
+        <p>
+          Le traitement des messages adressés à l’association repose sur son
+          intérêt légitime à répondre aux demandes reçues. Lorsque vous engagez
+          volontairement une démarche auprès d’un service externe, les
+          informations fournies sont traitées selon les conditions de ce
+          service.
+        </p>
+
+        <h2>Cookies et services tiers</h2>
+        <p>
+          Le site charge ses polices localement, ne charge aucun script tiers et
+          ne dépose aucun cookie tiers.
+        </p>
+
+        <h2>Vos droits</h2>
+        <p>
+          Vous pouvez demander l’accès à vos données, leur rectification ou leur
+          effacement, ainsi que la limitation du traitement ou vous y opposer.
+          Le droit à la portabilité s’applique lorsque les conditions légales
+          sont réunies.
+        </p>
+        <p>
+          Pour exercer vos droits, écrivez à
+          <a href={`mailto:${site.email}`}>{site.email}</a> ou à l’adresse du
+          siège social indiquée ci-dessus. Vous pouvez également introduire une
+          réclamation auprès de la CNIL.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Courriel&nbsp;: <a href={`mailto:${site.email}`}>{site.email}</a><br />
+          Téléphone&nbsp;: <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+        </p>
+      </Prose>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .review-note {
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .notice {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.3rem 1.5rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss-mid);
+    border-radius: var(--radius);
+    background: var(--cream-warm);
+  }
+  .notice__ico {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    color: var(--moss);
+  }
+  .notice__ico :global(svg) {
+    width: 28px;
+    height: 28px;
+  }
+  .notice h2 {
+    margin-bottom: 0.2rem;
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .notice p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.93rem;
+  }
+  :global(.prose a) {
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 560px) {
+    .notice {
+      align-items: flex-start;
+    }
+  }
+</style>

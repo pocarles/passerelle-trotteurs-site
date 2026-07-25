@@ -1,0 +1,101 @@
+---
+/**
+ * Reading column for editorial page bodies. Styles are global-within-slot
+ * because the content comes from <slot />, which scoped selectors can't reach.
+ */
+interface Props {
+  /** "wide" drops the reading-width cap for grids and cards. */
+  width?: "reading" | "wide";
+  class?: string;
+}
+const { width = "reading", class: cls } = Astro.props;
+---
+
+<div class:list={["prose", width === "wide" && "prose--wide", cls]}>
+  <slot />
+</div>
+
+<style is:global>
+  .prose {
+    max-width: 68ch;
+  }
+  .prose--wide {
+    max-width: none;
+  }
+  .prose > * + * {
+    margin-top: 1.15rem;
+  }
+  .prose h2 {
+    margin-top: 3.2rem;
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  }
+  .prose h3 {
+    margin-top: 2.4rem;
+    font-size: 1.24rem;
+  }
+  .prose h2 + *,
+  .prose h3 + * {
+    margin-top: 0.9rem;
+  }
+  .prose p {
+    color: var(--ink-soft);
+  }
+  .prose strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .prose a:not(.btn):not(.tlink) {
+    color: var(--moss);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose ul,
+  .prose ol {
+    padding-left: 0;
+    list-style: none;
+  }
+  .prose ul > li,
+  .prose ol > li {
+    position: relative;
+    padding-left: 1.7rem;
+    margin-top: 0.7rem;
+    color: var(--ink-soft);
+  }
+  .prose ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--moss-mid);
+  }
+  .prose ol {
+    counter-reset: p;
+  }
+  .prose ol > li {
+    counter-increment: p;
+  }
+  .prose ol > li::before {
+    content: counter(p, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: var(--moss);
+  }
+  .prose blockquote {
+    margin: 2.4rem 0;
+    padding: 0 0 0 1.6rem;
+    border-left: 2px solid var(--moss-mid);
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .prose blockquote p {
+    color: inherit;
+  }
+</style>

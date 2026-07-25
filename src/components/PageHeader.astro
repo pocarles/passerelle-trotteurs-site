@@ -1,0 +1,74 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  /** Rendered in italic moss after the title — the design's accent clause. */
+  accent?: string;
+  lead?: string;
+  image?: string;
+  imageAlt?: string;
+}
+const { eyebrow, title, accent, lead, image, imageAlt = "" } = Astro.props;
+---
+
+<header class:list={["ph", image && "ph--split"]}>
+  <div class="wrap ph__in">
+    <div class="ph__copy">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>
+        {title}
+        {accent && <><br /><span class="accent">{accent}</span></>}
+      </h1>
+      <hr class="rule" />
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+    {
+      image && (
+        <figure class="ph__fig">
+          <img src={image} alt={imageAlt} loading="eager" />
+        </figure>
+      )
+    }
+  </div>
+</header>
+
+<style>
+  .ph {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .ph__in {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .ph--split .ph__in {
+    grid-template-columns: 1fr 0.85fr;
+  }
+  .ph h1 {
+    font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  }
+  .ph .lead {
+    margin: 0;
+  }
+  .ph__fig {
+    margin: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 5 / 4;
+  }
+  .ph__fig img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .ph--split .ph__in {
+      grid-template-columns: 1fr;
+    }
+    .ph__fig {
+      aspect-ratio: 16 / 10;
+    }
+  }
+</style>

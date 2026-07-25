@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Prose from "../components/Prose.astro";
+import { legal, site } from "../data/site";
+---
+
+<Base
+  title="Mentions légales — Association Passerelle"
+  description="Mentions légales du site public de l’Association Passerelle : éditeur, siège, direction de publication, hébergement et juridiction."
+>
+  <PageHeader
+    eyebrow="Informations légales"
+    title="Mentions"
+    accent="légales."
+    lead="Informations relatives à l’édition et à l’hébergement du site de l’Association Passerelle."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <Prose>
+        <h2>Éditeur du site</h2>
+        <p>
+          <strong>{legal.publisher}</strong><br />
+          Association loi 1901<br />
+          SIREN&nbsp;: {legal.siren}<br />
+          Siège social&nbsp;: {site.address.street}, {site.address.postalCode} {site.address.city}, {site.address.country}
+        </p>
+        <p>
+          Téléphone&nbsp;: <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a><br />
+          Courriel&nbsp;: <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+
+        <h2>Directeur de la publication</h2>
+        <p>{legal.director}</p>
+
+        <h2>Hébergeur</h2>
+        <p>
+          <strong>{legal.host.name}</strong><br />
+          {legal.host.address}
+        </p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          Les textes, photographies, éléments graphiques, logos et contenus
+          présents sur ce site sont la propriété de l’Association Passerelle ou
+          sont utilisés avec l’autorisation de leurs titulaires. Toute
+          reproduction, représentation ou adaptation sans autorisation préalable
+          est interdite.
+        </p>
+
+        <h2>Juridiction compétente</h2>
+        <p>{legal.jurisdiction}</p>
+      </Prose>
+    </div>
+  </section>
+</Base>
+
+<style>
+  :global(.prose a) {
+    overflow-wrap: anywhere;
+  }
+</style>

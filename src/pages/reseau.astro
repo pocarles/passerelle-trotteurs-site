@@ -1,0 +1,170 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Prose from "../components/Prose.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { links, network } from "../data/site";
+---
+
+<Base
+  title="Le réseau accrédité — Association Passerelle"
+  description="Consultez l’annuaire des 22 structures accréditées Passerelle et découvrez les engagements requis pour rejoindre le réseau."
+>
+  <PageHeader
+    eyebrow="Notre réseau"
+    title="Des professionnels engagés"
+    accent="partout en France."
+    lead="Les structures professionnelles de la reconversion sont sélectionnées selon des critères destinés à assurer le bien-être des chevaux réformés."
+    image="/media/attelage.jpg"
+    imageAlt="Un Trotteur Français réformé mené en attelage de loisir"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="directory__head">
+        <div>
+          <p class="eyebrow">Annuaire</p>
+          <h2>{network.length} structures accréditées</h2>
+        </div>
+        <a class="tlink" href={links.accreditation} target="_blank" rel="noreferrer">
+          Cahier des charges
+          <Icon name="arrowUpRight" />
+        </a>
+      </div>
+      <ul class="directory">
+        {
+          network.map(([name, department]) => (
+            <li>
+              <span>{name}</span>
+              <span class="directory__place">{department}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section join">
+    <div class="wrap join__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Rejoindre le réseau</p>
+        <h2>Un cadre, un soutien, <span class="accent--light">un réseau.</span></h2>
+      </div>
+      <Prose>
+        <p>
+          Vous avez une expérience dans la reconversion de Trotteurs Français,
+          vous partagez nos valeurs et souhaitez rejoindre une association
+          reconnue&nbsp;?
+        </p>
+        <p>
+          Passerelle vous offre un cadre sécuritaire, un soutien, un réseau et
+          souhaite partager avec vous de belles histoires de reconversion.
+        </p>
+
+        <h3>Nos engagements</h3>
+        <ul>
+          <li>Qualité des infrastructures, de l’alimentation et des soins.</li>
+          <li>Expérience de la reconversion.</li>
+          <li>Capacité à vérifier les compétences et la fiabilité des acheteurs.</li>
+        </ul>
+
+        <h3>Avantages du référencement Passerelle</h3>
+        <ul>
+          <li>
+            Gage de qualité auprès des propriétaires de chevaux de courses à
+            réformer ainsi que des futurs propriétaires.
+          </li>
+          <li>Visibilité sur nos outils de communication.</li>
+          <li>Participation à nos événements.</li>
+          <li>
+            Soutien individualisé sur le plan juridique, administratif et pour
+            la communication.
+          </li>
+        </ul>
+      </Prose>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Consultez notre documentation"
+    accent="avant de déposer votre candidature."
+    label="Cahier des charges"
+    href={links.accreditation}
+    external
+    icon="map"
+  />
+</Base>
+
+<style>
+  .directory__head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .directory {
+    columns: 2;
+    column-gap: clamp(2rem, 5vw, 4.5rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .directory li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    break-inside: avoid;
+  }
+  .directory__place {
+    flex: 0 1 auto;
+    min-width: 0;
+    color: var(--ink-faint);
+    font-size: 0.78rem;
+    text-align: right;
+  }
+  .join {
+    background: var(--forest-deep);
+    color: #fff;
+  }
+  .join__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2.5rem, 7vw, 6rem);
+  }
+  .join :global(.prose p),
+  .join :global(.prose li) {
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .join :global(.prose h3),
+  .join h2 {
+    color: #fff;
+  }
+  .join :global(.prose li::before) {
+    background: var(--sage);
+  }
+
+  @media (max-width: 800px) {
+    .join__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .directory {
+      columns: 1;
+    }
+    .directory li {
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .directory__place {
+      text-align: left;
+    }
+  }
+</style>
