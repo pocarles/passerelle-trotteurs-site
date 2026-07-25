@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 import {
@@ -8,9 +9,12 @@ import {
   missionPillars,
   pathways,
   protections,
-  news,
   network,
 } from "../data/site";
+
+const latestNews = (await getCollection("actualites"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 
 const schema = {
   "@context": "https://schema.org",
@@ -273,12 +277,14 @@ const schema = {
       </div>
       <ul class="news__list">
         {
-          news.map((n) => (
+          latestNews.map((n) => (
             <li>
-              <a href={n.href}>
-                <time datetime={n.date}>{n.dateLabel}</time>
-                <h3>{n.title}</h3>
-                <Icon name="arrowUpRight" class="news__arrow" />
+              <a href={`/actualites/${n.id}`}>
+                <time datetime={n.data.date.toISOString().slice(0, 10)}>
+                  {n.data.dateLabel}
+                </time>
+                <h3>{n.data.title}</h3>
+                <Icon name="arrow" class="news__arrow" />
               </a>
             </li>
           ))

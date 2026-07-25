@@ -1,10 +1,19 @@
 ---
 import Base from "../layouts/Base.astro";
+import HorseCard from "../components/HorseCard.astro";
 import PageHeader from "../components/PageHeader.astro";
-import Prose from "../components/Prose.astro";
 import CtaBand from "../components/CtaBand.astro";
 import Icon from "../components/Icon.astro";
 import { links, protections } from "../data/site";
+import { getHorses, statutLabel } from "../data/chevaux";
+
+const horses = await getHorses();
+const counts = {
+  vente: horses.filter((h) => h.data.statut === "vente").length,
+  adoption: horses.filter((h) => h.data.statut === "adoption").length,
+  "adoption-directe": horses.filter((h) => h.data.statut === "adoption-directe")
+    .length,
+};
 
 const routes = [
   {
@@ -37,6 +46,67 @@ const routes = [
     image="/media/bond.jpg"
     imageAlt="Une cavalière et un trotteur alezan, face à face dans un pré"
   />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Nos trotteurs</p>
+      <h2 class="sec-title">
+        Les chevaux <span class="accent">actuellement proposés.</span>
+      </h2>
+
+      {horses.length > 0 ? (
+        <>
+          <div class="filters" role="group" aria-label="Filtrer par type de placement">
+            <button type="button" class="chip is-on" data-filter="tous">
+              Tous <span>{horses.length}</span>
+            </button>
+            {(["vente", "adoption", "adoption-directe"] as const).map((k) =>
+              counts[k] > 0 ? (
+                <button type="button" class="chip" data-filter={k}>
+                  {statutLabel[k]} <span>{counts[k]}</span>
+                </button>
+              ) : null,
+            )}
+          </div>
+
+          <div class="grid" id="horse-grid">
+            {horses.map((h) => (
+              <div class="grid__item" data-statut={h.data.statut}>
+                <HorseCard entry={h} />
+              </div>
+            ))}
+          </div>
+
+          <p class="grid__none" id="horse-none" hidden>
+            Aucun cheval dans cette catégorie pour le moment.
+          </p>
+        </>
+      ) : (
+        <div class="empty">
+          <span class="badge empty__badge"><Icon name="horse" /></span>
+          <div>
+            <h3>Aucun cheval n’est publié sur le site pour le moment.</h3>
+            <p>
+              Les annonces en cours sont diffusées dans le groupe Facebook de
+              l’association, mis à jour au fil des arrivées et des placements.
+              Écrivez-nous : nous connaissons les chevaux de notre réseau et
+              nous pouvons vous orienter vers celui qui vous correspond.
+            </p>
+            <div class="actions">
+              <a class="btn btn--primary" href={links.adoptionGroup} target="_blank" rel="noreferrer">
+                Voir les annonces
+                <span class="btn__ico"><Icon name="arrowUpRight" /></span>
+              </a>
+              <a class="btn btn--ghost" href="/contact">
+                Nous poser une question
+                <span class="btn__ico"><Icon name="arrow" /></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
 
   <section class="section">
     <div class="wrap">
@@ -88,33 +158,6 @@ const routes = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <Prose>
-        <h2>Où voir les chevaux disponibles</h2>
-        <p>
-          Les annonces sont aujourd’hui publiées dans le groupe Facebook dédié
-          de l’association, mis à jour au fil des arrivées et des placements.
-        </p>
-        <p>
-          Vous ne trouvez pas le cheval qui vous correspond, ou vous avez une
-          question sur une annonce ? Écrivez-nous : nous connaissons les
-          chevaux de notre réseau et nous pouvons vous orienter.
-        </p>
-      </Prose>
-      <div class="actions">
-        <a class="btn btn--primary" href={links.adoptionGroup} target="_blank" rel="noreferrer">
-          Voir les annonces
-          <span class="btn__ico"><Icon name="arrowUpRight" /></span>
-        </a>
-        <a class="btn btn--ghost" href="/contact">
-          Nous poser une question
-          <span class="btn__ico"><Icon name="arrow" /></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <CtaBand
     text="Vous n’êtes pas en mesure d’accueillir un cheval ?"
     accent="Parrainez-en un."
@@ -125,6 +168,8 @@ const routes = [
     icon="sprout"
   />
 </Base>
+
+<script is:inline defer src="/js/filters.js"></script>
 
 <style>
   .sec-title {
@@ -204,6 +249,84 @@ const routes = [
     flex: 0 0 auto;
   }
 
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .chip span {
+    color: var(--ink-faint);
+  }
+  .chip:hover {
+    border-color: var(--ink);
+  }
+  .chip.is-on {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: #fff;
+  }
+  .chip.is-on span {
+    color: var(--sage);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.2rem, 2.4vw, 2rem);
+  }
+  .grid__item[hidden] {
+    display: none;
+  }
+  .grid__none {
+    margin-top: 2rem;
+    color: var(--ink-soft);
+  }
+
+  .empty {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1.2rem, 3vw, 2rem);
+    padding: clamp(1.6rem, 3.5vw, 2.6rem);
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss-mid);
+    border-radius: var(--radius-lg);
+  }
+  .empty__badge {
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .empty h3 {
+    margin-bottom: 0.6rem;
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .empty p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--ink-soft);
+  }
+
   .actions {
     display: flex;
     flex-wrap: wrap;
@@ -216,10 +339,17 @@ const routes = [
     .protect__grid {
       grid-template-columns: 1fr;
     }
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
   @media (max-width: 720px) {
-    .protect__list {
+    .protect__list,
+    .grid {
       grid-template-columns: 1fr;
+    }
+    .empty {
+      flex-direction: column;
     }
   }
 </style>

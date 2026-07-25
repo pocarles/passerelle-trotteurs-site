@@ -118,3 +118,58 @@ de la plateforme.
       Facebook)
 - [ ] Version anglaise
 - [ ] Photographies haute définition
+
+## Ajouter un cheval
+
+Créer un fichier dans `src/content/chevaux/`, par exemple `ulysse.md` :
+
+```markdown
+---
+nom: "Ulysse du Vivier"
+statut: "vente"          # vente | adoption | adoption-directe
+annee: 2018
+sexe: "hongre"           # hongre | jument | entier
+robe: "Bai"
+taille: "1,62 m"
+montable: true
+structure: "Écuries de la Brèche"
+departement: "Oise"
+participation: "Prix sur demande"
+resume: "Une phrase de présentation, affichée sur la vignette."
+photos:
+  - src: "/media/chevaux/ulysse-1.jpg"
+    alt: "Ulysse au pré"
+updated: 2026-07-25
+---
+
+Le texte long de la fiche : caractère, travail depuis la réforme, profil de
+cavalier recherché, soins à prévoir.
+```
+
+Les photos vont dans `public/media/chevaux/`. La fiche apparaît
+automatiquement sur `/adopter` et sur `/adopter/ulysse`.
+
+- `placed: true` garde la fiche visible en la marquant « Placé ».
+- `draft: true` réserve la fiche au mode développement : elle ne part pas en
+  production. Les trois fiches `exemple-*.md` servent uniquement de modèle et
+  sont en `draft`.
+- Supprimer le fichier retire le cheval du site.
+
+Tant qu'aucun cheval n'est publié, `/adopter` affiche un encart renvoyant vers
+le groupe Facebook et vers le formulaire de contact.
+
+## Actualités
+
+Les 37 articles ont été rapatriés depuis l'ancien site Yapla dans
+`src/content/actualites/`, images comprises (`public/media/actualites/`). Le
+site ne dépend plus de `www.passerelle-trotteurs.fr` : aucun lien ne pointe
+vers l'ancien site.
+
+Le champ `legacyUrl` de chaque article conserve son ancienne adresse, pour
+mettre en place des redirections le jour de la bascule.
+
+### Non repris de l'ancien site
+
+- la rubrique « Nos mécènes & ambassadeurs », dont la page Jade & Darling des
+  Mares (le lien vers cette page a été retiré d'un article) ;
+- la boutique, qui reste un lien externe.
