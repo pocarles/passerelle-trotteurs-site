@@ -1,0 +1,356 @@
+/* ==========================================================================
+   Passerelle — design system
+   Warm editorial. Cream ground, deep forest bands, brand sage accents.
+   Brand colours sampled from the association's own logo (#bad688 / #373736).
+   ========================================================================== */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin-ext.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "InterVar";
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "InterVar";
+  src: url("/fonts/inter-latin-ext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  /* ground */
+  --cream: #f7f4ec;
+  --cream-warm: #fbf9f3;
+  --card: #ffffff;
+
+  /* ink */
+  --ink: #23231f;
+  --ink-soft: #56564e;
+  --ink-faint: #8a8a80;
+
+  /* greens */
+  --forest: #1f3d2b;
+  --forest-deep: #16301f;
+  --moss: #55702c; /* AA on cream — small text, eyebrows, links */
+  --moss-mid: #6e8b3d; /* large text / decorative only */
+  --sage: #bad688; /* brand green — on dark only */
+
+  --line: rgba(35, 35, 31, 0.13);
+  --line-strong: rgba(35, 35, 31, 0.22);
+  --line-light: rgba(255, 255, 255, 0.18);
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --maxw: 1200px;
+  --radius: 14px;
+  --radius-lg: 22px;
+
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans: "InterVar", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  font-feature-settings: "kern";
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--moss);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--sage);
+  color: var(--forest-deep);
+}
+
+/* ---------- layout primitives ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--forest);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---------- type ---------- */
+
+.eyebrow {
+  margin: 0 0 1.1rem;
+  color: var(--moss);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+.eyebrow--light {
+  color: var(--sage);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.9rem, 6.2vw, 5.1rem);
+  line-height: 1.03;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
+  line-height: 1.12;
+}
+
+h3 {
+  font-size: 1.32rem;
+  line-height: 1.25;
+}
+
+.accent {
+  color: var(--moss-mid);
+  font-style: italic;
+}
+.accent--light {
+  color: var(--sage);
+  font-style: italic;
+}
+
+.lead {
+  font-size: clamp(1.06rem, 1.5vw, 1.2rem);
+  line-height: 1.62;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+.rule {
+  width: 62px;
+  height: 2px;
+  background: var(--moss-mid);
+  border: 0;
+  margin: 1.6rem 0;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.72rem 0.72rem 0.72rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  border: 1.5px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn__ico {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex: 0 0 30px;
+  transition: inherit;
+}
+.btn__ico svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn--primary {
+  background: var(--moss);
+  color: #fff;
+}
+.btn--primary .btn__ico {
+  background: rgba(255, 255, 255, 0.2);
+}
+.btn--primary:hover {
+  background: #46601f;
+}
+
+.btn--ghost-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.btn--ghost-light .btn__ico {
+  background: rgba(255, 255, 255, 0.16);
+}
+.btn--ghost-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.btn--ghost .btn__ico {
+  background: rgba(35, 35, 31, 0.07);
+}
+.btn--ghost:hover {
+  border-color: var(--ink);
+}
+
+.btn--donate {
+  padding: 0.62rem 1.25rem;
+  gap: 0.5rem;
+  background: var(--forest);
+  color: #fff;
+}
+.btn--donate svg {
+  width: 14px;
+  height: 14px;
+}
+.btn--donate:hover {
+  background: var(--forest-deep);
+}
+
+/* text link with arrow */
+.tlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--moss);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.2s ease, gap 0.2s ease;
+}
+.tlink svg {
+  width: 13px;
+  height: 13px;
+}
+.tlink:hover {
+  border-color: currentColor;
+  gap: 0.75rem;
+}
+.tlink--light {
+  color: var(--sage);
+}
+
+/* ---------- circular icon badge ---------- */
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--sage);
+  flex: 0 0 54px;
+}
+.badge svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

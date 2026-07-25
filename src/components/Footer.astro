@@ -1,0 +1,145 @@
+---
+import { site, links } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="ftr">
+  <div class="ftr__in">
+    <div class="ftr__brand">
+      <img src="/media/logo.png" alt="Passerelle" width="1472" height="869" />
+      <p>
+        Faire de la reconversion un pilier de la filière du Trot. Association loi
+        1901 reconnue d’intérêt général.
+      </p>
+      <div class="ftr__social">
+        <a href={links.facebook} target="_blank" rel="noreferrer">Facebook</a>
+        <a href={links.instagram} target="_blank" rel="noreferrer">Instagram</a>
+      </div>
+    </div>
+
+    <div>
+      <h2>Participer</h2>
+      <a href="/confier">Confier un trotteur</a>
+      <a href="/adopter">Adopter un trotteur</a>
+      <a href={links.donate} target="_blank" rel="noreferrer">Faire un don</a>
+      <a href={links.join} target="_blank" rel="noreferrer">Devenir membre</a>
+      <a href={links.sponsor} target="_blank" rel="noreferrer">Parrainer un trotteur</a>
+    </div>
+
+    <div>
+      <h2>L’association</h2>
+      <a href="/association">Notre mission</a>
+      <a href="/association/valeurs">Nos valeurs</a>
+      <a href="/association/equipe">L’équipe</a>
+      <a href="/reseau">Le réseau accrédité</a>
+      <a href="/actualites">Actualités</a>
+    </div>
+
+    <div>
+      <h2>Contact</h2>
+      <p class="ftr__addr">
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.city}, {site.address.country}
+      </p>
+      <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+
+  <div class="ftr__base">
+    <span>© {year} {site.fullName}</span>
+    <nav aria-label="Liens légaux">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/confidentialite">Confidentialité</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .ftr {
+    background: var(--forest-deep);
+    color: rgba(255, 255, 255, 0.72);
+    padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
+  }
+  .ftr__in {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    max-width: var(--maxw);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .ftr__brand img {
+    width: 165px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+  }
+  .ftr__brand p {
+    margin: 1.2rem 0 1.4rem;
+    max-width: 34ch;
+    font-size: 0.95rem;
+  }
+  .ftr__social {
+    display: flex;
+    gap: 1.2rem;
+  }
+  .ftr__social a {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .ftr h2 {
+    margin-bottom: 1.1rem;
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .ftr__in a {
+    display: block;
+    padding: 0.32rem 0;
+    font-size: 0.95rem;
+  }
+  .ftr__in a:hover {
+    color: #fff;
+  }
+  .ftr__addr {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .ftr__base {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    justify-content: space-between;
+    max-width: var(--maxw);
+    margin: clamp(3rem, 6vw, 5rem) auto 0;
+    padding: 1.6rem var(--gutter) 0;
+    border-top: 1px solid var(--line-light);
+    font-size: 0.82rem;
+  }
+  .ftr__base nav {
+    display: flex;
+    gap: 1.6rem;
+  }
+  .ftr__base a:hover {
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .ftr__in {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .ftr__in {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

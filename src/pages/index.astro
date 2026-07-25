@@ -1,0 +1,787 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import {
+  site,
+  links,
+  stats,
+  missionPillars,
+  pathways,
+  protections,
+  news,
+  network,
+} from "../data/site";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: site.fullName,
+  alternateName: "Passerelle Trotteurs",
+  url: site.url,
+  logo: `${site.url}/media/logo.png`,
+  description:
+    "Association reconnue d’intérêt général dédiée à la reconversion et à la protection à vie des Trotteurs Français réformés des courses.",
+  foundingDate: "2020-12",
+  areaServed: "FR",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressCountry: "FR",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: site.phone,
+    email: site.email,
+    contactType: "customer support",
+    availableLanguage: "French",
+  },
+  sameAs: [links.facebook, links.instagram],
+};
+---
+
+<Base
+  title="Passerelle — La seconde vie des Trotteurs Français"
+  description="Passerelle recueille, reconvertit et protège à vie les Trotteurs Français sortant des courses. Confier un cheval, adopter, soutenir ou rejoindre le réseau accrédité."
+  hasHero
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <img class="hero__img" src="/media/hero-jump.jpg" alt="" width="953" height="953" fetchpriority="high" />
+    <div class="hero__scrim"></div>
+    <div class="hero__in wrap">
+      <p class="eyebrow eyebrow--light">
+        Association loi 1901 reconnue d’intérêt général
+      </p>
+      <h1>
+        Leur carrière s’arrête.<br />
+        <span class="accent--light">Leur histoire continue.</span>
+      </h1>
+      <hr class="rule rule--light" />
+      <p class="hero__lead">
+        Passerelle recueille les Trotteurs Français sortant des courses, les
+        accompagne vers une seconde vie et les protège, sous contrat, pour le
+        reste de leurs jours.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="/adopter">
+          Adopter un trotteur
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+        <a class="btn btn--ghost-light" href="/confier">
+          Nous confier un cheval
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MISSION ═══════════ -->
+  <section class="section mission">
+    <div class="wrap mission__grid">
+      <div>
+        <p class="eyebrow">Notre mission</p>
+        <h2>
+          Créer une vraie passerelle entre la piste<br />
+          et <span class="accent">la vie d’après.</span>
+        </h2>
+        <p class="lead mission__body">
+          Créée en décembre 2020, Passerelle est l’une des deux associations
+          officielles pour la reconversion des chevaux de courses de Trot en
+          France, soutenue par LeTROT depuis 2021. Elle réunit des
+          professionnels des courses, du sport et des passionnés du cheval.
+        </p>
+        <a class="tlink" href="/association">
+          En savoir plus sur l’association
+          <Icon name="arrow" />
+        </a>
+      </div>
+
+      <ul class="pillars">
+        {
+          missionPillars.map((p) => (
+            <li>
+              <span class="badge"><Icon name={p.icon} /></span>
+              <div>
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════ STATS ═══════════ -->
+  <section class="stats" aria-label="Passerelle en chiffres">
+    <div class="wrap stats__grid">
+      {
+        stats.map((s) => (
+          <div class="stat">
+            <Icon name={s.icon} class="stat__ico" />
+            <p class="stat__value">{s.value}</p>
+            <p class="stat__label">{s.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ═══════════ PATHWAYS ═══════════ -->
+  <section class="section pathways">
+    <div class="wrap">
+      <div class="pathways__head">
+        <p class="eyebrow">Trois façons d’agir</p>
+        <h2>
+          Une place pour chacun.<br />
+          <span class="accent">Une solution pour chaque cheval.</span>
+        </h2>
+      </div>
+
+      <div class="cards">
+        {
+          pathways.map((p) => (
+            <article class="card">
+              <div class="card__media">
+                <img src={p.image} alt={p.alt} loading="lazy" />
+                <span class="badge card__badge"><Icon name={p.icon} /></span>
+              </div>
+              <div class="card__body">
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+                <a class="tlink" href={p.href}>
+                  Découvrir
+                  <Icon name="arrow" />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ THE CONTRACT ═══════════ -->
+  <section class="section protect">
+    <div class="wrap protect__grid">
+      <div class="protect__intro">
+        <p class="eyebrow eyebrow--light">La protection Passerelle</p>
+        <h2>
+          Un contrat qui les suit<br />
+          <span class="accent--light">toute leur vie.</span>
+        </h2>
+        <p class="protect__lead">
+          Un cheval placé par Passerelle ne l’est jamais sans garantie. Chaque
+          adoption et chaque vente est encadrée par un contrat qui engage
+          l’acquéreur — et qui vaut pour le reste de la vie du cheval.
+        </p>
+        <a class="tlink tlink--light" href="/protection">
+          Lire le contrat
+          <Icon name="arrow" />
+        </a>
+      </div>
+
+      <ol class="protect__list">
+        {
+          protections.map((p, i) => (
+            <li>
+              <span class="protect__num">{String(i + 1).padStart(2, "0")}</span>
+              <span>{p}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════════ CAPACITY NOTICE ═══════════ -->
+  <section class="section notice-sec">
+    <div class="wrap">
+      <div class="notice">
+        <span class="notice__ico"><Icon name="info" /></span>
+        <div>
+          <h3>Nos capacités d’accueil sont actuellement limitées.</h3>
+          <p>
+            Nos structures sont saturées. Les chevaux peuvent être inscrits sur
+            liste d’attente, sans garantie de délai. Passerelle peut également
+            fournir un contrat protecteur pour encadrer un placement direct.
+          </p>
+        </div>
+        <a class="btn btn--ghost" href="/contact">
+          Nous contacter
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ NETWORK ═══════════ -->
+  <section class="section net">
+    <div class="wrap net__grid">
+      <div>
+        <p class="eyebrow">Le réseau accrédité</p>
+        <h2>
+          {network.length} structures<br />
+          <span class="accent">partout en France.</span>
+        </h2>
+        <p class="lead">
+          Nos structures professionnelles sont sélectionnées sur la qualité de
+          leurs infrastructures, de l’alimentation et des soins, leur expérience
+          de la reconversion et leur capacité à vérifier la fiabilité des
+          acheteurs.
+        </p>
+        <div class="net__cta">
+          <a class="btn btn--ghost" href="/reseau">
+            Consulter l’annuaire
+            <span class="btn__ico"><Icon name="arrow" /></span>
+          </a>
+          <a class="tlink" href={links.accreditation} target="_blank" rel="noreferrer">
+            Cahier des charges
+            <Icon name="arrowUpRight" />
+          </a>
+        </div>
+      </div>
+      <ul class="net__list">
+        {
+          network.map(([name, dept]) => (
+            <li>
+              <span>{name}</span>
+              <span class="net__dept">{dept}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════ NEWS ═══════════ -->
+  <section class="section news">
+    <div class="wrap">
+      <div class="news__head">
+        <div>
+          <p class="eyebrow">Actualités</p>
+          <h2>Sur le terrain</h2>
+        </div>
+        <a class="tlink" href="/actualites">
+          Toutes les actualités
+          <Icon name="arrow" />
+        </a>
+      </div>
+      <ul class="news__list">
+        {
+          news.map((n) => (
+            <li>
+              <a href={n.href}>
+                <time datetime={n.date}>{n.dateLabel}</time>
+                <h3>{n.title}</h3>
+                <Icon name="arrowUpRight" class="news__arrow" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════ CLOSING CTA ═══════════ -->
+  <section class="cta-sec">
+    <div class="wrap">
+      <div class="cta">
+        <span class="badge cta__badge"><Icon name="heart" /></span>
+        <p class="cta__text">
+          Professionnels ou passionnés, ils nous ont fait vibrer.{" "}
+          <span class="accent">Nous leur devons bien cela.</span>
+        </p>
+        <a class="btn btn--primary" href={links.donate} target="_blank" rel="noreferrer">
+          Faire un don
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+      </div>
+      <p class="cta__note">
+        66 % du montant de votre don est déductible de vos impôts — 60 % pour les
+        entreprises.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ───────── hero ───────── */
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: min(88vh, 780px);
+    padding-block: clamp(11rem, 20vh, 14rem) clamp(3.5rem, 8vh, 6rem);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero__img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 34%;
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(
+        to right,
+        rgba(12, 24, 16, 0.86) 0%,
+        rgba(12, 24, 16, 0.62) 42%,
+        rgba(12, 24, 16, 0.12) 78%
+      ),
+      linear-gradient(to bottom, rgba(12, 24, 16, 0.55) 0%, transparent 32%);
+  }
+  .hero__in {
+    color: #fff;
+    max-width: 1200px;
+  }
+  .hero h1 {
+    color: #fff;
+    max-width: 15ch;
+  }
+  .rule--light {
+    background: var(--sage);
+  }
+  .hero__lead {
+    max-width: 46ch;
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    line-height: 1.62;
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.2rem;
+  }
+
+  /* ───────── mission ───────── */
+  .mission__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+  }
+  .mission__body {
+    margin: 1.6rem 0 2rem;
+  }
+  .pillars {
+    display: grid;
+    gap: 2.2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pillars li {
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+  }
+  .pillars h3 {
+    margin-bottom: 0.4rem;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .pillars p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    max-width: 46ch;
+  }
+
+  /* ───────── stats ───────── */
+  .stats {
+    background: var(--forest);
+    color: #fff;
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stat {
+    text-align: center;
+    padding-inline: 1rem;
+  }
+  .stat + .stat {
+    border-left: 1px solid var(--line-light);
+  }
+  .stat__ico {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 1.1rem;
+    color: var(--sage);
+  }
+  .stat__value {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat__label {
+    margin: 0.7rem 0 0;
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  /* ───────── pathways ───────── */
+  .pathways__head {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.2rem, 2.4vw, 2rem);
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 50px -30px rgba(35, 35, 31, 0.5);
+  }
+  .card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+  }
+  /* Absolute so a portrait source can't stretch the card past its ratio. */
+  .card__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .card__badge {
+    position: absolute;
+    left: 1.4rem;
+    bottom: -27px;
+    border: 4px solid var(--card);
+    box-sizing: content-box;
+  }
+  .card__body {
+    padding: 2.6rem 1.6rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+  }
+  .card__body h3 {
+    font-family: var(--sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .card__body p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    flex: 1;
+  }
+
+  /* ───────── protection ───────── */
+  .protect {
+    background: var(--forest-deep);
+    color: #fff;
+  }
+  .protect__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+  }
+  .protect h2 {
+    color: #fff;
+  }
+  .protect__lead {
+    margin: 1.6rem 0 2rem;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 42ch;
+  }
+  .protect__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--line-light);
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .protect__list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem 1.4rem;
+    background: var(--forest-deep);
+    font-size: 0.97rem;
+    line-height: 1.5;
+  }
+  .protect__num {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--sage);
+    flex: 0 0 auto;
+  }
+
+  /* ───────── notice ───────── */
+  .notice-sec {
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+  .notice {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.2rem, 3vw, 2.4rem);
+    padding: clamp(1.6rem, 3vw, 2.2rem);
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss-mid);
+    border-radius: var(--radius);
+  }
+  .notice__ico {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    color: var(--moss);
+  }
+  .notice__ico :global(svg) {
+    width: 30px;
+    height: 30px;
+  }
+  .notice h3 {
+    font-family: var(--sans);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin-bottom: 0.35rem;
+  }
+  .notice p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 62ch;
+  }
+  .notice .btn {
+    flex: 0 0 auto;
+  }
+
+  /* ───────── network ───────── */
+  .net__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .net__cta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  /* CSS columns, not grid: rows must not share a height across the two
+     columns, or a long structure name leaves a gap beside its neighbour. */
+  .net__list {
+    columns: 2;
+    column-gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .net__list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.72rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+    break-inside: avoid;
+  }
+  .net__dept {
+    color: var(--ink-faint);
+    font-size: 0.78rem;
+    text-align: right;
+    /* shrinkable: "Alpes-de-Haute-Provence" must wrap rather than push the
+       row past the viewport */
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  /* ───────── news ───────── */
+  .news {
+    background: var(--cream-warm);
+    border-block: 1px solid var(--line);
+  }
+  .news__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .news__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .news__list a {
+    display: grid;
+    grid-template-columns: 170px 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-inline 0.2s ease;
+  }
+  .news__list a:hover {
+    padding-inline: 0.75rem;
+  }
+  .news__list time {
+    color: var(--moss);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .news__list h3 {
+    font-size: 1.28rem;
+  }
+  .news__arrow {
+    width: 17px;
+    height: 17px;
+    color: var(--ink-faint);
+  }
+
+  /* ───────── closing CTA ───────── */
+  .cta-sec {
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+  }
+  .cta {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+    padding: clamp(1.4rem, 2.5vw, 1.8rem) clamp(1.4rem, 2.5vw, 2rem);
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+  .cta__badge {
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .cta__text {
+    flex: 1;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .cta .btn {
+    flex: 0 0 auto;
+  }
+  .cta__note {
+    margin: 1.2rem auto 0;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 0.85rem;
+  }
+
+  /* ───────── responsive ───────── */
+  @media (max-width: 960px) {
+    .mission__grid,
+    .protect__grid,
+    .net__grid {
+      grid-template-columns: 1fr;
+    }
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+    .stats__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 0;
+    }
+    .stat:nth-child(3) {
+      border-left: 0;
+    }
+    .news__list a {
+      grid-template-columns: 1fr auto;
+    }
+    .news__list time {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      min-height: 0;
+      padding-block: 9rem 3.5rem;
+    }
+    .hero__scrim {
+      background: linear-gradient(
+        to bottom,
+        rgba(12, 24, 16, 0.7) 0%,
+        rgba(12, 24, 16, 0.5) 40%,
+        rgba(12, 24, 16, 0.82) 100%
+      );
+    }
+    .cards {
+      grid-template-columns: 1fr;
+    }
+    .protect__list {
+      grid-template-columns: 1fr;
+    }
+    .net__list {
+      columns: 1;
+    }
+    .net__list li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.15rem;
+    }
+    .net__dept {
+      text-align: left;
+    }
+    .notice,
+    .cta {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      border-radius: var(--radius-lg);
+    }
+    .cta {
+      gap: 1.2rem;
+    }
+  }
+</style>

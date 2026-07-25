@@ -1,0 +1,285 @@
+---
+import Icon from "./Icon.astro";
+import { nav, links } from "../data/site";
+---
+
+<header class="hdr">
+  <div class="hdr__in">
+    <a class="brand" href="/" aria-label="Passerelle — accueil">
+      <img src="/media/logo.png" alt="" width="1472" height="869" />
+      <span class="brand__sub">Reconversion des Trotteurs Français</span>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        {
+          nav.map((item) => (
+            <li class={item.children ? "has-sub" : ""}>
+              <a href={item.href}>
+                {item.label}
+                {item.children && <Icon name="arrow" class="caret" />}
+              </a>
+              {item.children && (
+                <ul class="sub">
+                  {item.children.map((c) => (
+                    <li>
+                      <a href={c.href}>{c.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="hdr__end">
+      <a class="btn btn--donate" href={links.donate} target="_blank" rel="noreferrer">
+        <Icon name="heart" />
+        Faire un don
+      </a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="m-nav">
+        <span class="sr">Ouvrir le menu</span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mnav" id="m-nav" aria-label="Navigation mobile" hidden>
+    <ul>
+      {
+        nav.flatMap((item) =>
+          item.children
+            ? [
+                <li class="mnav__grp">{item.label}</li>,
+                ...item.children.map((c) => (
+                  <li>
+                    <a href={c.href}>{c.label}</a>
+                  </li>
+                )),
+              ]
+            : [
+                <li>
+                  <a href={item.href}>{item.label}</a>
+                </li>,
+              ],
+        )
+      }
+      <li>
+        <a href={links.donate} target="_blank" rel="noreferrer">Faire un don ↗</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 244, 236, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  /* Over the hero, the header floats transparently on the photograph. */
+  :global(body.has-hero) .hdr {
+    position: absolute;
+    inset-inline: 0;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 0;
+    color: #fff;
+  }
+
+  .hdr__in {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    max-width: var(--maxw);
+    margin-inline: auto;
+    padding: 0.9rem var(--gutter);
+  }
+
+  .brand {
+    display: block;
+    flex: 0 0 auto;
+    margin-right: auto;
+  }
+  .brand img {
+    width: 150px;
+    height: auto;
+  }
+  :global(body.has-hero) .brand img {
+    filter: brightness(0) invert(1);
+  }
+  .brand__sub {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.56rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  :global(body.has-hero) .brand__sub {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .nav ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.9rem, 2vw, 1.9rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .nav > ul > li > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .caret {
+    width: 10px;
+    height: 10px;
+    transform: rotate(90deg);
+    opacity: 0.55;
+  }
+
+  .has-sub {
+    position: relative;
+  }
+  .sub {
+    position: absolute;
+    top: 100%;
+    left: -1rem;
+    display: block;
+    min-width: 230px;
+    padding: 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 40px -20px rgba(35, 35, 31, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  }
+  .has-sub:hover .sub,
+  .has-sub:focus-within .sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .sub a {
+    display: block;
+    padding: 0.55rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .sub a:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  .hdr__end {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+  }
+  :global(body.has-hero) .btn--donate {
+    background: var(--moss);
+  }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 0 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+  }
+  .burger span[aria-hidden] {
+    display: block;
+    height: 1.5px;
+    background: currentColor;
+  }
+  :global(body.has-hero) .burger {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .mnav {
+    border-top: 1px solid var(--line);
+    background: var(--cream-warm);
+  }
+  .mnav ul {
+    margin: 0;
+    padding: 0.5rem var(--gutter) 1.5rem;
+    list-style: none;
+  }
+  .mnav a {
+    display: block;
+    padding: 0.6rem 0;
+    font-size: 1rem;
+  }
+  .mnav__grp {
+    padding: 1rem 0 0.3rem;
+    color: var(--moss);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1040px) {
+    .nav {
+      display: none;
+    }
+    .burger {
+      display: flex;
+    }
+    :global(body.has-hero) .hdr {
+      position: absolute;
+    }
+  }
+  @media (max-width: 560px) {
+    .btn--donate {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const burger = document.querySelector<HTMLButtonElement>(".burger");
+  const panel = document.getElementById("m-nav");
+  burger?.addEventListener("click", () => {
+    const open = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!open));
+    if (panel) panel.hidden = open;
+  });
+</script>

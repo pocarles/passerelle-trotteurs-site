@@ -1,0 +1,49 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+}
+/* `rest` carries Astro's scope attribute through to the <svg>, so callers can
+   size the icon from their own scoped styles. Without it the SVG has no
+   intrinsic size and expands to fill its parent. */
+const { name, class: cls, ...rest } = Astro.props;
+
+/* Stroke-based line icons, 24×24, currentColor. */
+const paths: Record<string, string> = {
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  arrowUpRight: '<path d="M7 17 17 7M8 7h9v9"/>',
+  heart:
+    '<path d="M12 20s-7-4.6-7-9.4A4.1 4.1 0 0 1 12 7.6 4.1 4.1 0 0 1 19 10.6C19 15.4 12 20 12 20Z"/>',
+  hand: '<path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1V4.5a1.5 1.5 0 0 1 3 0V11m0-.5v-4a1.5 1.5 0 0 1 3 0V15a5 5 0 0 1-5 5h-1.2a5 5 0 0 1-4-2l-3-4a1.6 1.6 0 0 1 2.4-2.1L9 14"/>',
+  sprout:
+    '<path d="M12 21v-7m0 0c0-3.3-2.7-6-6-6H4v1.5A5.5 5.5 0 0 0 9.5 15H12Zm0 0c0-3.6 2.9-6.5 6.5-6.5H20v1a5.5 5.5 0 0 1-5.5 5.5H12Z"/>',
+  shield:
+    '<path d="M12 3 5 6v5.3c0 4.3 2.9 8.2 7 9.7 4.1-1.5 7-5.4 7-9.7V6l-7-3Z"/><path d="m9 12 2 2 4-4"/>',
+  map: '<path d="m9 4.5-5 2v13l5-2 6 2 5-2v-13l-5 2-6-2Zm0 0v13m6-11v13"/>',
+  calendar:
+    '<rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M8 3v4m8-4v4M3.5 10.5h17"/>',
+  /* horseshoe — reads unambiguously at 26px, unlike a horse silhouette */
+  horse:
+    '<path d="M7.5 20v-2.2a4.5 4.5 0 0 0-1.6-3.4A6.6 6.6 0 0 1 3.6 9.2 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 8.4 6.2 6.6 6.6 0 0 1-2.3 5.2 4.5 4.5 0 0 0-1.6 3.4V20"/><path d="M5.5 20h4m5 0h4"/>',
+  users:
+    '<circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.4a3.2 3.2 0 0 1 0 5.2m1.4 3.1A5.5 5.5 0 0 1 20.5 20"/>',
+  quote: '<path d="M9 15V9H5v6h4Zm10 0V9h-4v6h4Z"/>',
+  info: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5m0-8.2v.01"/>',
+};
+---
+
+<svg
+  class={cls}
+  {...rest}
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  set:html={paths[name] ?? ""}
+/>
