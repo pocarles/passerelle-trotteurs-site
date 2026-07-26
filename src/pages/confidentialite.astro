@@ -3,22 +3,26 @@ import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Prose from "../components/Prose.astro";
 import Icon from "../components/Icon.astro";
-import { legal, site } from "../data/site";
+import { legal, site, links } from "../data/site";
+
+const maj = "26 juillet 2026";
 ---
 
 <Base
   title="Politique de confidentialité — Association Passerelle"
-  description="Politique de confidentialité du site public de l’Association Passerelle : traitements, droits RGPD, cookies et contact."
+  description="Politique de confidentialité du site public de l’Association Passerelle : données traitées, hébergement, services externes, droits RGPD et contact."
 >
   <section class="review-note" aria-label="Avertissement de publication">
     <div class="wrap">
       <div class="notice">
         <span class="notice__ico"><Icon name="info" /></span>
         <div>
-          <h2>Relecture requise avant publication</h2>
+          <h2>Un point reste à arrêter par l’association</h2>
           <p>
-            Cette politique de confidentialité doit être relue et validée par
-            l’association avant la mise en ligne du site.
+            Les durées de conservation des messages reçus (section
+            « Conservation ») doivent être précisées par l’association avant la
+            mise en ligne. Le reste de cette page décrit le fonctionnement réel
+            du site et a été vérifié.
           </p>
         </div>
       </div>
@@ -29,58 +33,125 @@ import { legal, site } from "../data/site";
     eyebrow="Données personnelles"
     title="Politique de"
     accent="confidentialité."
-    lead="Cette page décrit les traitements liés au site public et les moyens d’exercer vos droits."
+    lead="Ce site ne collecte rien de lui-même : ni compte, ni formulaire, ni mesure d’audience, ni cookie. Cette page détaille ce qui est malgré tout traité, et par qui."
   />
 
   <section class="section">
     <div class="wrap">
       <Prose>
+        <p class="maj">Dernière mise à jour&nbsp;: {maj}</p>
+
         <h2>Responsable du traitement</h2>
         <p>
           Le responsable du traitement est <strong>{legal.publisher}</strong>,
-          située {site.address.street}, {site.address.postalCode} {site.address.city},
-          {site.address.country}.
+          association loi 1901 immatriculée sous le numéro SIREN {legal.siren},
+          dont le siège est situé {site.address.street},
+          {" "}{site.address.postalCode} {site.address.city}, {site.address.country}.
         </p>
 
-        <h2>Finalités</h2>
+        <h2>Ce que le site ne fait pas</h2>
         <p>
-          Les données que vous adressez volontairement à l’association par
-          courriel ou par téléphone sont utilisées pour répondre à votre demande
-          et assurer les échanges qui en découlent.
+          Consulter ce site ne suppose aucune inscription et ne déclenche aucune
+          collecte de votre part. Concrètement&nbsp;:
+        </p>
+        <ul>
+          <li>aucun formulaire n’est hébergé sur le site&nbsp;;</li>
+          <li>aucun cookie n’est déposé, ni par l’association ni par un tiers&nbsp;;</li>
+          <li>aucun outil de mesure d’audience ou de statistiques n’est installé&nbsp;;</li>
+          <li>
+            aucun script tiers n’est chargé, et les polices de caractères sont
+            servies depuis le site lui-même plutôt que depuis un service externe.
+          </li>
+        </ul>
+
+        <h2>Hébergement</h2>
+        <p>
+          Le site est hébergé par <strong>{legal.host.name}</strong>,
+          {" "}{legal.host.address}. Comme tout hébergeur, Cloudflare traite des
+          données techniques à chaque consultation d’une page — notamment
+          l’adresse IP, la date et l’heure de la requête, la page demandée et le
+          type de navigateur — afin d’acheminer le site, d’en assurer la sécurité
+          et de le protéger contre les attaques.
         </p>
         <p>
-          Ce site ne comporte pas de formulaire. Les démarches de don,
-          d’adhésion, de parrainage et de prise en charge sont effectuées sur des
-          services externes, accessibles par des liens dédiés.
+          Ce traitement relève de l’intérêt légitime de l’association à disposer
+          d’un site accessible et protégé. Cloudflare étant établie aux
+          États-Unis, ces données peuvent être traitées hors de l’Union
+          européenne, dans le cadre prévu par ses engagements contractuels. Les
+          conditions applicables sont décrites dans la
+          {" "}<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer"
+            >politique de confidentialité de Cloudflare</a
+          >.
         </p>
 
-        <h2>Base légale</h2>
+        <h2>Ce que vous nous adressez</h2>
         <p>
-          Le traitement des messages adressés à l’association repose sur son
-          intérêt légitime à répondre aux demandes reçues. Lorsque vous engagez
-          volontairement une démarche auprès d’un service externe, les
-          informations fournies sont traitées selon les conditions de ce
-          service.
+          Si vous écrivez à l’association ou si vous l’appelez, les informations
+          que vous transmettez — nom, coordonnées, contenu du message, éléments
+          relatifs à un cheval — servent uniquement à traiter votre demande et à
+          assurer les échanges qui en découlent. Elles ne sont ni vendues, ni
+          transmises à des tiers à des fins commerciales.
+        </p>
+        <p>
+          La base légale est l’intérêt légitime de l’association à répondre aux
+          demandes qu’elle reçoit, ou l’exécution de mesures précontractuelles
+          lorsque votre demande porte sur une prise en charge, une adoption ou
+          une vente.
         </p>
 
-        <h2>Cookies et services tiers</h2>
+        <h2>Services externes</h2>
         <p>
-          Le site charge ses polices localement, ne charge aucun script tiers et
-          ne dépose aucun cookie tiers.
+          Plusieurs démarches se déroulent sur des plateformes distinctes, qui
+          sont responsables des données que vous y saisissez et appliquent leur
+          propre politique de confidentialité&nbsp;:
+        </p>
+        <ul>
+          <li>
+            <a href={links.donate} target="_blank" rel="noreferrer">HelloAsso</a>
+            {" "}— dons, adhésions et parrainages&nbsp;;
+          </li>
+          <li>
+            <a href={links.intake} target="_blank" rel="noreferrer">la plateforme Passerelle</a>
+            {" "}— demandes de prise en charge d’un cheval&nbsp;;
+          </li>
+          <li>
+            <a href={links.shop} target="_blank" rel="noreferrer">la boutique</a>
+            {" "}— vente d’articles au profit de l’association&nbsp;;
+          </li>
+          <li>
+            <a href={links.facebook} target="_blank" rel="noreferrer">Facebook</a>
+            {" "}et
+            {" "}<a href={links.instagram} target="_blank" rel="noreferrer">Instagram</a>
+            {" "}— publications et annonces de chevaux.
+          </li>
+        </ul>
+        <p>
+          Ces services ne sont pas intégrés au site&nbsp;: rien n’est chargé
+          depuis eux tant que vous ne suivez pas volontairement un lien.
+        </p>
+
+        <h2>Conservation</h2>
+        <p>
+          Les messages reçus sont conservés le temps nécessaire au traitement de
+          la demande et au suivi qui en découle, puis supprimés. Les engagements
+          liés à un cheval placé sous contrat Passerelle sont conservés pendant
+          toute la durée du contrat — qui court sur la vie de l’animal — ainsi
+          que pendant les délais légaux applicables.
         </p>
 
         <h2>Vos droits</h2>
         <p>
-          Vous pouvez demander l’accès à vos données, leur rectification ou leur
-          effacement, ainsi que la limitation du traitement ou vous y opposer.
-          Le droit à la portabilité s’applique lorsque les conditions légales
-          sont réunies.
+          Vous disposez d’un droit d’accès, de rectification et d’effacement de
+          vos données, ainsi que d’un droit à la limitation du traitement et
+          d’opposition. Le droit à la portabilité s’applique lorsque les
+          conditions légales sont réunies.
         </p>
         <p>
-          Pour exercer vos droits, écrivez à
-          <a href={`mailto:${site.email}`}>{site.email}</a> ou à l’adresse du
-          siège social indiquée ci-dessus. Vous pouvez également introduire une
-          réclamation auprès de la CNIL.
+          Pour les exercer, écrivez à
+          {" "}<a href={`mailto:${site.email}`}>{site.email}</a> ou à l’adresse du
+          siège indiquée plus haut. Si la réponse ne vous satisfait pas, vous
+          pouvez introduire une réclamation auprès de la
+          {" "}<a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noreferrer">CNIL</a>.
         </p>
 
         <h2>Contact</h2>
@@ -119,7 +190,7 @@ import { legal, site } from "../data/site";
     height: 28px;
   }
   .notice h2 {
-    margin-bottom: 0.2rem;
+    margin: 0 0 0.3rem;
     font-family: var(--sans);
     font-size: 1rem;
     font-weight: 600;
@@ -127,16 +198,12 @@ import { legal, site } from "../data/site";
   }
   .notice p {
     margin: 0;
+    max-width: 70ch;
     color: var(--ink-soft);
     font-size: 0.93rem;
   }
-  :global(.prose a) {
-    overflow-wrap: anywhere;
-  }
-
-  @media (max-width: 560px) {
-    .notice {
-      align-items: flex-start;
-    }
+  .maj {
+    color: var(--ink-faint);
+    font-size: 0.85rem;
   }
 </style>

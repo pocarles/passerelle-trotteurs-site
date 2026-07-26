@@ -39,6 +39,7 @@ export const meceneGroupes: { titre: string; membres: Mecene[] }[] = [
       {
         nom: "Conseil des Chevaux Hauts-de-France",
         logo: "/media/mecenes/conseil-chevaux-hdf.png",
+        url: "https://chevaux-hauts-de-france.com",
       },
       {
         nom: "Région Hauts-de-France",
@@ -58,18 +59,22 @@ export const meceneGroupes: { titre: string; membres: Mecene[] }[] = [
       {
         nom: "Reims, Hippodrome de la Champagne",
         logo: "/media/mecenes/hippodrome-reims.png",
+        url: "https://www.hippodromedereims.com",
       },
       {
         nom: "Hippodrome de La Capelle",
         logo: "/media/mecenes/hippodrome-la-capelle.png",
+        url: "https://hippodromelacapelle.fr",
       },
       {
         nom: "Société Hippique de Saint-Galmier — Saint-Étienne",
         logo: "/media/mecenes/societe-hippique-saint-galmier.png",
+        url: "https://www.hippodrome-saint-galmier.fr",
       },
       {
         nom: "Société des Courses de Strasbourg",
         logo: "/media/mecenes/courses-strasbourg.png",
+        url: "https://www.hippodrome-strasbourg.fr",
       },
     ],
   },
@@ -94,6 +99,9 @@ export const meceneGroupes: { titre: string; membres: Mecene[] }[] = [
       {
         nom: "Karisma Consulting",
         logo: "/media/mecenes/karisma-consulting.png",
+        // Rapproché par nom + département (Chantilly, Oise), pas confirmé par
+        // l'association. À valider.
+        url: "https://karismaconsulting.com",
       },
       {
         nom: "Equi-libre — massage équin et canin",
