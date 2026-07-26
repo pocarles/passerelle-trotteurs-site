@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import { dateLabel } from "../../data/dates";
 import Base from "../../layouts/Base.astro";
 import Prose from "../../components/Prose.astro";
 import CtaBand from "../../components/CtaBand.astro";
@@ -53,7 +54,7 @@ const schema = {
         <h1>{entry.data.title}</h1>
         <p class="meta">
           <time datetime={entry.data.date.toISOString().slice(0, 10)}>
-            {entry.data.dateLabel}
+            {dateLabel(entry.data.date, entry.data.dateLabel)}
           </time>
           {entry.data.source && <span>· Source&nbsp;: {entry.data.source}</span>}
         </p>

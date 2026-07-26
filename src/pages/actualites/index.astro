@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { dateLabel } from "../../data/dates";
 import Base from "../../layouts/Base.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import CtaBand from "../../components/CtaBand.astro";
@@ -47,7 +48,7 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
               <h2>{featured.data.title}</h2>
               <p class="feat__meta">
                 <time datetime={featured.data.date.toISOString().slice(0, 10)}>
-                  {featured.data.dateLabel}
+                  {dateLabel(featured.data.date, featured.data.dateLabel)}
                 </time>
                 {featured.data.source && <span>· {featured.data.source}</span>}
               </p>
@@ -73,7 +74,7 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
                 <li>
                   <a href={`/actualites/${a.id}`}>
                     <time datetime={a.data.date.toISOString().slice(0, 10)}>
-                      {a.data.dateLabel}
+                      {dateLabel(a.data.date, a.data.dateLabel)}
                     </time>
                     <h3>{a.data.title}</h3>
                     <Icon name="arrow" class="list__arrow" />

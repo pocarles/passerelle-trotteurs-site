@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { dateLabel } from "../data/dates";
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 import {
@@ -281,7 +282,7 @@ const schema = {
             <li>
               <a href={`/actualites/${n.id}`}>
                 <time datetime={n.data.date.toISOString().slice(0, 10)}>
-                  {n.data.dateLabel}
+                  {dateLabel(n.data.date, n.data.dateLabel)}
                 </time>
                 <h3>{n.data.title}</h3>
                 <Icon name="arrow" class="news__arrow" />

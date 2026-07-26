@@ -10,7 +10,9 @@ const actualites = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
-    dateLabel: z.string(),
+    /** Optional: derived from `date` in French when absent, so a human adding
+        an article only has to write the date once. */
+    dateLabel: z.string().optional(),
     source: z.string().optional(),
     image: z.string().optional(),
     /** Where this article lived on the old site, kept for redirects. */

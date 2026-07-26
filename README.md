@@ -8,6 +8,8 @@ protection à vie des Trotteurs Français.
 
 Site statique **Astro**, déployé sur **Cloudflare Pages**.
 
+**Mise à jour du contenu par l'association :** [docs/GUIDE.md](docs/GUIDE.md).
+
 ## Démarrer
 
 ```bash
@@ -144,6 +146,10 @@ de la plateforme.
 - [ ] Photographies haute définition
 
 ## Ajouter un cheval
+
+> **Pour l'association :** [docs/GUIDE.md](docs/GUIDE.md) explique la manipulation
+> pas à pas depuis le navigateur, sans rien installer. La section ci-dessous est
+> la référence technique du schéma.
 
 Créer un fichier dans `src/content/chevaux/`, par exemple `ulysse.md` :
 
