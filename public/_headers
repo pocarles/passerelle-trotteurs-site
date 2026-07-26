@@ -1,4 +1,9 @@
 /*
+  # ⚠️ À RETIRER le jour de la bascule sur www.passerelle-trotteurs.fr.
+  # Empêche l'indexation de l'adresse *.pages.dev pendant la relecture : sans
+  # cela, une copie complète du site se retrouverait dans Google et ferait
+  # concurrence au domaine de l'association.
+  X-Robots-Tag: noindex, nofollow
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY

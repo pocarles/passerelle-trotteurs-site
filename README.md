@@ -138,6 +138,9 @@ de la plateforme.
 
 ## À faire
 
+- [ ] **Au moment de la bascule du domaine :** retirer l'en-tête
+      `X-Robots-Tag: noindex, nofollow` de `public/_headers`. Il empêche
+      l'indexation de l'adresse `*.pages.dev` pendant la phase de relecture.
 - [ ] Publier de vraies fiches chevaux (le système est prêt, les données
       manquent — voir « Ajouter un cheval »)
 - [ ] Confirmer deux liens partenaires (voir « Mécènes »)
