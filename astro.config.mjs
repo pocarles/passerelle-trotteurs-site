@@ -1,8 +1,10 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://www.passerelle-trotteurs.fr",
+  integrations: [sitemap()],
   // "never" keeps every stylesheet external so the CSP can use
   // style-src 'self' with no inline allowance. On a multi-page site the
   // shared sheet is also cached once instead of duplicated per page.

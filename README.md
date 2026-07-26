@@ -1,5 +1,7 @@
 # Passerelle — site public
 
+[![Deploy](https://github.com/pocarles/passerelle-trotteurs-site/actions/workflows/deploy.yml/badge.svg)](https://github.com/pocarles/passerelle-trotteurs-site/actions/workflows/deploy.yml)
+
 Refonte du site public de l'[Association Passerelle](https://www.passerelle-trotteurs.fr),
 association loi 1901 reconnue d'intérêt général, dédiée à la reconversion et à la
 protection à vie des Trotteurs Français.
@@ -87,11 +89,12 @@ Deux secrets sont nécessaires sur le dépôt GitHub :
 | Secret | Valeur |
 | --- | --- |
 | `CLOUDFLARE_ACCOUNT_ID` | déjà renseigné |
-| `CLOUDFLARE_API_TOKEN` | à créer — voir ci-dessous |
+| `CLOUDFLARE_API_TOKEN` | déjà renseigné |
 
-Créer le jeton sur <https://dash.cloudflare.com/profile/api-tokens> avec le
-modèle **Edit Cloudflare Workers**, ou une permission
-`Account → Cloudflare Pages → Edit` limitée au compte concerné, puis :
+Pour renouveler le jeton : le créer sur
+<https://dash.cloudflare.com/profile/api-tokens> en jeton personnalisé avec la
+seule permission `Account → Cloudflare Pages → Edit`, limitée au compte
+concerné, puis :
 
 ```bash
 gh secret set CLOUDFLARE_API_TOKEN --repo pocarles/passerelle-trotteurs-site
