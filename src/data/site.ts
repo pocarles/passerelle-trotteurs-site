@@ -108,12 +108,31 @@ export const missionPillars = [
 
 export const pathways = [
   {
-    title: "Confier un trotteur",
-    body: "Propriétaires, entraîneurs, éleveurs : nous trouvons une structure d’accueil, prenons en charge les démarches et organisons le transport.",
-    href: "/confier",
-    image: "/media/stable.jpg",
-    alt: "Une bénévole Passerelle avec un trotteur dans son box",
-    icon: "hand",
+    title: "Faire un don",
+    body: "Votre soutien finance la prise en charge, la reconversion et la protection à vie des Trotteurs Français.",
+    href: links.donate,
+    external: true,
+    image: "/media/racecare.jpg",
+    alt: "Un cheval présenté lors d’un événement Race & Care",
+    icon: "heart",
+  },
+  {
+    title: "Adhérer à l’association",
+    body: "Rejoignez Passerelle et participez concrètement à la reconversion des Trotteurs Français.",
+    href: links.join,
+    external: true,
+    image: "/media/cabourg.jpg",
+    alt: "Des membres de Passerelle réunis autour d’un trotteur",
+    icon: "users",
+  },
+  {
+    title: "Boutique en ligne",
+    body: "Découvrez la boutique en ligne et soutenez les actions de l’association grâce à vos achats.",
+    href: links.shop,
+    external: true,
+    image: "/media/expo.jpg",
+    alt: "Le stand Passerelle lors d’un événement",
+    icon: "shopping",
   },
   {
     title: "Adopter un trotteur",
@@ -121,15 +140,7 @@ export const pathways = [
     href: "/adopter",
     image: "/media/bond.jpg",
     alt: "Une cavalière et un trotteur alezan, face à face",
-    icon: "heart",
-  },
-  {
-    title: "Rejoindre le réseau",
-    body: "Vous avez l’expérience de la reconversion et partagez nos valeurs : devenez une structure accréditée Passerelle.",
-    href: "/reseau",
-    image: "/media/attelage.jpg",
-    alt: "Un trotteur réformé mené en attelage de loisir",
-    icon: "map",
+    icon: "horse",
   },
 ];
 

@@ -140,7 +140,7 @@ const schema = {
   <section class="section pathways">
     <div class="wrap">
       <div class="pathways__head">
-        <p class="eyebrow">Trois façons d’agir</p>
+        <p class="eyebrow">Quatre façons d’agir</p>
         <h2>
           Avec Passerelle,<br />
           <span class="accent">Offrez-leur la meilleure seconde vie possible</span>
@@ -158,7 +158,12 @@ const schema = {
               <div class="card__body">
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
-                <a class="tlink" href={p.href}>
+                <a
+                  class="tlink"
+                  href={p.href}
+                  target={p.external ? "_blank" : undefined}
+                  rel={p.external ? "noreferrer" : undefined}
+                >
                   Découvrir
                   <Icon name="arrow" />
                 </a>
@@ -456,7 +461,7 @@ const schema = {
   }
   .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(1.2rem, 2.4vw, 2rem);
   }
   .card {
