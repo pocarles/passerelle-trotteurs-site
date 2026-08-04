@@ -90,14 +90,14 @@ export const stats = [
 
 export const missionPillars = [
   {
-    icon: "hand",
-    title: "Recueillir",
+    icon: "house",
+    title: "Accueillir",
     body: "Nous prenons en charge les Trotteurs Français sortant de la filière course, sans discrimination d’âge ni d’état de santé.",
   },
   {
     icon: "sprout",
     title: "Reconvertir",
-    body: "Nos structures accréditées leur redonnent les codes de l’équitation classique et préparent une seconde carrière adaptée.",
+    body: "Nos structures accréditées adaptent la reconversion au profil du cheval et préparent une seconde carrière adaptée.",
   },
   {
     icon: "shield",
