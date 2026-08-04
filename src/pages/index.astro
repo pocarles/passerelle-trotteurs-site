@@ -86,6 +86,14 @@ const schema = {
 
   <!-- ═══════════ MISSION ═══════════ -->
   <section class="section mission">
+    <div class="mission__track" aria-hidden="true">
+      <span class="mission__track-rail mission__track-rail--outer"></span>
+      <span class="mission__track-rail mission__track-rail--middle"></span>
+      <span class="mission__track-rail mission__track-rail--inner"></span>
+      <span class="mission__track-runner mission__track-runner--one"></span>
+      <span class="mission__track-runner mission__track-runner--two"></span>
+      <span class="mission__track-runner mission__track-runner--three"></span>
+    </div>
     <div class="wrap mission__grid">
       <div>
         <p class="eyebrow">Notre mission</p>
@@ -379,7 +387,95 @@ const schema = {
   }
 
   /* ───────── mission ───────── */
+  .mission {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      radial-gradient(ellipse at 50% 52%, rgba(110, 139, 61, 0.055), transparent 61%),
+      var(--cream);
+  }
+  .mission__track {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.88;
+  }
+  .mission__track::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(87vw, 1080px);
+    height: clamp(260px, 38vw, 460px);
+    border-radius: 50%;
+    background: linear-gradient(90deg, transparent, rgba(110, 139, 61, 0.04), transparent);
+    transform: translate(-50%, -50%) rotate(-7deg);
+  }
+  .mission__track-rail {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(31, 61, 43, 0.14);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(-7deg);
+  }
+  .mission__track-rail--outer {
+    width: min(95vw, 1180px);
+    height: clamp(300px, 46vw, 560px);
+  }
+  .mission__track-rail--middle {
+    width: min(89vw, 1100px);
+    height: clamp(260px, 40vw, 480px);
+    border-color: rgba(85, 112, 44, 0.23);
+    border-style: dashed;
+    animation: track-dash 5s ease-in-out infinite alternate;
+  }
+  .mission__track-rail--inner {
+    width: min(82vw, 1010px);
+    height: clamp(220px, 34vw, 410px);
+    border-color: rgba(31, 61, 43, 0.11);
+  }
+  .mission__track-runner {
+    position: absolute;
+    z-index: 1;
+    width: 11px;
+    height: 11px;
+    margin: -5.5px 0 0 -5.5px;
+    border: 2px solid var(--cream);
+    border-radius: 50%;
+    background: var(--moss-mid);
+    box-shadow: 0 0 0 4px rgba(110, 139, 61, 0.12), 0 4px 12px rgba(31, 61, 43, 0.2);
+    offset-path: ellipse(43% 34% at 50% 50%);
+    offset-rotate: 0deg;
+    animation: track-run 18s linear infinite;
+    will-change: offset-distance;
+  }
+  .mission__track-runner--two {
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    background: var(--forest);
+    opacity: 0.74;
+    offset-path: ellipse(39% 30% at 50% 50%);
+    animation-duration: 24s;
+    animation-delay: -8s;
+  }
+  .mission__track-runner--three {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    background: var(--sage);
+    opacity: 0.9;
+    offset-path: ellipse(35% 26% at 50% 50%);
+    animation-duration: 29s;
+    animation-delay: -17s;
+  }
   .mission__grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2.5rem, 6vw, 5.5rem);
@@ -730,6 +826,30 @@ const schema = {
     font-size: 0.85rem;
   }
 
+  @keyframes track-run {
+    from {
+      offset-distance: 0%;
+    }
+    to {
+      offset-distance: 100%;
+    }
+  }
+  @keyframes track-dash {
+    from {
+      opacity: 0.55;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mission__track-rail--middle,
+    .mission__track-runner {
+      animation: none;
+    }
+  }
+
   /* ───────── responsive ───────── */
   @media (max-width: 960px) {
     .mission__grid,
@@ -767,6 +887,26 @@ const schema = {
         rgba(12, 24, 16, 0.5) 40%,
         rgba(12, 24, 16, 0.82) 100%
       );
+    }
+    .mission__track {
+      inset: 8% -28% 8%;
+      opacity: 0.68;
+    }
+    .mission__track-rail--outer {
+      width: 142vw;
+      height: 430px;
+    }
+    .mission__track-rail--middle {
+      width: 134vw;
+      height: 372px;
+    }
+    .mission__track-rail--inner {
+      width: 126vw;
+      height: 314px;
+    }
+    .mission__track::before {
+      width: 130vw;
+      height: 360px;
     }
     .cards {
       grid-template-columns: 1fr;
