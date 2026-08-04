@@ -38,8 +38,7 @@ export const nav = [
     label: "Association",
     href: "/association",
     children: [
-      { label: "Notre mission", href: "/association" },
-      { label: "Nos valeurs", href: "/association/valeurs" },
+      { label: "Missions & valeurs", href: "/association" },
       { label: "L’équipe", href: "/association/equipe" },
       { label: "#RaceAndCare", href: "/race-and-care" },
       { label: "Mécènes & ambassadeurs", href: "/mecenes" },

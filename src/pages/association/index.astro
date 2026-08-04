@@ -14,16 +14,22 @@ const objectifs = [
   "Promouvoir la polyvalence des trotteurs réformés vers d’autres disciplines équestres ou comme chevaux de compagnie.",
   "Trouver les fonds nécessaires au développement de l’association.",
 ];
+
+const values = [
+  "Un engagement des structures de reconversion professionnelles affiliées.",
+  "Protection à vie contre l’abattage, l’expérimentation animale et interdiction de reprise des courses.",
+  "Le respect du cheval.",
+];
 ---
 
 <Base
-  title="Notre mission — Association Passerelle"
-  description="Créée en décembre 2020, Passerelle est l’une des deux associations officielles pour la reconversion des chevaux de courses de Trot en France, soutenue par LeTROT depuis 2021."
+  title="Association — Association Passerelle"
+  description="Découvrez les missions, les engagements et les valeurs de l’Association Passerelle pour la reconversion et la protection à vie des Trotteurs Français."
 >
   <PageHeader
     eyebrow="L’association"
-    title="Créer une vraie passerelle entre la piste"
-    accent="et la vie d’après."
+    title="Créer une véritable passerelle entre la piste"
+    accent="et leur vie d’après."
     lead="Passerelle réunit des professionnels du monde des courses, du sport et des passionnés du cheval autour d’une conviction simple : la fin d’une carrière ne doit pas être la fin d’une vie."
     image="/media/racecare.jpg"
     imageAlt="Une cavalière et son trotteur lors d’une journée sur un hippodrome"
@@ -61,6 +67,54 @@ const objectifs = [
             vous, nous, leur devons bien cela.
           </p>
         </blockquote>
+
+        <h2 id="valeurs">Nos valeurs</h2>
+        <ul class="opening">
+          {values.map((value) => <li><strong>{value}</strong></li>)}
+        </ul>
+
+        <h2>Nos engagements</h2>
+        <p>
+          Nos structures professionnelles de la reconversion sont sélectionnées
+          selon des critères spécifiques destinés à assurer le bien-être des
+          chevaux réformés.
+        </p>
+        <ul>
+          <li>Qualité des infrastructures, de l’alimentation et des soins.</li>
+          <li>Expérience de la reconversion.</li>
+          <li>Capacité à vérifier les compétences et la fiabilité des acheteurs.</li>
+        </ul>
+
+        <h2>Avantages du référencement Passerelle</h2>
+        <ul>
+          <li>
+            Gage de qualité auprès des propriétaires de chevaux de courses à
+            réformer ainsi que des futurs propriétaires.
+          </li>
+          <li>Visibilité sur nos outils de communication.</li>
+          <li>Participation à nos événements.</li>
+          <li>
+            Soutien individualisé sur le plan juridique, administratif et pour
+            la communication.
+          </li>
+        </ul>
+
+        <h2>Pour les professionnels des courses</h2>
+        <p>
+          La garantie contractuelle de la meilleure «&nbsp;seconde vie&nbsp;»
+          possible pour leur cheval, à l’issue de sa carrière.
+        </p>
+
+        <h2>Pour les cavaliers</h2>
+        <p>
+          L’opportunité d’acheter en toute tranquillité, sous contrat, un cheval
+          qui a bénéficié des meilleurs soins et d’un travail adapté à ses
+          capacités physiques et mentales.
+        </p>
+
+        <blockquote>
+          <p>Nous sommes tous responsables de leur avenir&nbsp;!</p>
+        </blockquote>
       </Prose>
     </div>
   </section>
@@ -97,7 +151,7 @@ const objectifs = [
         }
       </ul>
       <div class="links">
-        <a class="tlink" href="/association/valeurs">
+        <a class="tlink" href="#valeurs">
           Nos valeurs
           <Icon name="arrow" />
         </a>
@@ -165,6 +219,13 @@ const objectifs = [
   .sec-title {
     max-width: 20ch;
     margin-bottom: 3rem;
+  }
+  .opening {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0 0 2.8rem;
+    padding-bottom: 2.4rem;
+    border-bottom: 1px solid var(--line);
   }
   .pillars {
     display: grid;
