@@ -145,9 +145,9 @@ export const pathways = [
 
 /** The six lifetime guarantees — the association's actual differentiator. */
 export const protections = [
-  "Ils ne peuvent pas être abattus.",
+  "Ils ne peuvent pas être abattus ou vendus à un marchand d’équidés.",
   "Ils sont exclus définitivement de la filière course.",
-  "Ils sont exclus des activités de chasse à courre.",
+  "Ils sont exclus des activités de location pour les saisons de chasse à courre.",
   "Ils sont interdits de reproduction en race Trotteur Français.",
   "Ils sont interdits à l’expérimentation animale.",
   "Les femelles ne peuvent pas devenir mères porteuses.",
