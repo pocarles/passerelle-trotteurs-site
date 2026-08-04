@@ -185,6 +185,21 @@ const schema = {
 
   <!-- ═══════════ THE CONTRACT ═══════════ -->
   <section class="section protect">
+    <div class="protect__horse-track" aria-hidden="true">
+      <div class="protect__horse">
+        <span class="protect__horse-tail"></span>
+        <span class="protect__horse-body"></span>
+        <span class="protect__horse-mane"></span>
+        <span class="protect__horse-neck"></span>
+        <span class="protect__horse-head">
+          <span class="protect__horse-eye"></span>
+        </span>
+        <span class="protect__horse-leg protect__horse-leg--rear-a"></span>
+        <span class="protect__horse-leg protect__horse-leg--rear-b"></span>
+        <span class="protect__horse-leg protect__horse-leg--front-a"></span>
+        <span class="protect__horse-leg protect__horse-leg--front-b"></span>
+      </div>
+    </div>
     <div class="wrap protect__grid">
       <div class="protect__intro">
         <p class="eyebrow eyebrow--light">La protection Passerelle</p>
@@ -613,14 +628,182 @@ const schema = {
 
   /* ───────── protection ───────── */
   .protect {
+    position: relative;
+    overflow: hidden;
     background: var(--forest-deep);
     color: #fff;
   }
   .protect__grid {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
     gap: clamp(2.5rem, 6vw, 5.5rem);
     align-items: start;
+    padding-bottom: clamp(3.5rem, 5vw, 4.75rem);
+  }
+  .protect__horse-track {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0.95rem;
+    left: 0;
+    height: 4rem;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .protect__horse-track::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0.45rem;
+    left: 0;
+    height: 1px;
+    background: rgba(186, 214, 136, 0.22);
+  }
+  .protect__horse {
+    position: absolute;
+    bottom: 0.7rem;
+    left: 0;
+    width: 92px;
+    height: 52px;
+    color: var(--sage);
+    filter: drop-shadow(0 3px 4px rgba(8, 22, 13, 0.2));
+    animation: protect-horse-run 18s linear infinite;
+    will-change: transform;
+  }
+  .protect__horse-body,
+  .protect__horse-neck,
+  .protect__horse-head,
+  .protect__horse-mane,
+  .protect__horse-tail,
+  .protect__horse-leg {
+    position: absolute;
+    display: block;
+    background: currentColor;
+  }
+  .protect__horse-body {
+    left: 18px;
+    top: 18px;
+    width: 52px;
+    height: 18px;
+    border-radius: 52% 45% 43% 46%;
+    transform: rotate(-3deg);
+    animation: protect-horse-bob 0.55s ease-in-out infinite;
+  }
+  .protect__horse-tail {
+    left: 7px;
+    top: 18px;
+    width: 21px;
+    height: 17px;
+    border-bottom: 4px solid currentColor;
+    border-left: 4px solid currentColor;
+    border-radius: 0 0 0 85%;
+    background: transparent;
+    transform: rotate(18deg);
+    transform-origin: right top;
+    animation: protect-horse-tail 0.55s ease-in-out infinite alternate;
+  }
+  .protect__horse-tail::after {
+    content: "";
+    position: absolute;
+    left: -6px;
+    bottom: -6px;
+    width: 13px;
+    height: 4px;
+    border-radius: 80%;
+    background: currentColor;
+    transform: rotate(-18deg);
+  }
+  .protect__horse-mane {
+    left: 53px;
+    top: 5px;
+    width: 15px;
+    height: 22px;
+    border-left: 4px solid currentColor;
+    border-radius: 50%;
+    background: transparent;
+    transform: rotate(20deg);
+  }
+  .protect__horse-neck {
+    left: 56px;
+    top: 6px;
+    width: 14px;
+    height: 30px;
+    border-radius: 70% 55% 20% 22%;
+    transform: rotate(-21deg);
+    transform-origin: bottom left;
+  }
+  .protect__horse-head {
+    left: 65px;
+    top: 2px;
+    width: 24px;
+    height: 14px;
+    border-radius: 55% 42% 42% 58%;
+    transform: rotate(-8deg);
+  }
+  .protect__horse-head::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: -5px;
+    width: 6px;
+    height: 8px;
+    border-radius: 80% 20% 0 0;
+    background: currentColor;
+    transform: rotate(-10deg);
+  }
+  .protect__horse-head::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 7px;
+    width: 8px;
+    height: 4px;
+    border-radius: 0 60% 60% 0;
+    background: currentColor;
+  }
+  .protect__horse-eye {
+    position: absolute;
+    left: 12px;
+    top: 3px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--forest-deep);
+  }
+  .protect__horse-leg {
+    top: 32px;
+    width: 5px;
+    height: 19px;
+    border-radius: 0 0 3px 3px;
+    transform-origin: top center;
+  }
+  .protect__horse-leg::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 8px;
+    height: 4px;
+    border-radius: 70%;
+    background: currentColor;
+  }
+  .protect__horse-leg--rear-a {
+    left: 27px;
+    animation: protect-horse-leg-a 0.55s ease-in-out infinite;
+  }
+  .protect__horse-leg--rear-b {
+    left: 38px;
+    animation: protect-horse-leg-b 0.55s ease-in-out infinite;
+  }
+  .protect__horse-leg--front-a {
+    left: 56px;
+    animation: protect-horse-leg-b 0.55s ease-in-out infinite;
+  }
+  .protect__horse-leg--front-b {
+    left: 65px;
+    animation: protect-horse-leg-a 0.55s ease-in-out infinite;
   }
   .protect h2 {
     color: #fff;
@@ -840,10 +1023,57 @@ const schema = {
       opacity: 1;
     }
   }
+  @keyframes protect-horse-run {
+    from {
+      transform: translateX(-120px);
+    }
+    to {
+      transform: translateX(calc(100vw + 120px));
+    }
+  }
+  @keyframes protect-horse-bob {
+    0%,
+    100% {
+      transform: rotate(-3deg) translateY(0);
+    }
+    50% {
+      transform: rotate(-3deg) translateY(-1px);
+    }
+  }
+  @keyframes protect-horse-tail {
+    from {
+      transform: rotate(12deg);
+    }
+    to {
+      transform: rotate(25deg);
+    }
+  }
+  @keyframes protect-horse-leg-a {
+    0%,
+    100% {
+      transform: rotate(22deg);
+    }
+    50% {
+      transform: rotate(-24deg);
+    }
+  }
+  @keyframes protect-horse-leg-b {
+    0%,
+    100% {
+      transform: rotate(-24deg);
+    }
+    50% {
+      transform: rotate(22deg);
+    }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .mission__track-rail--middle,
-    .mission__track-runner {
+    .mission__track-runner,
+    .protect__horse,
+    .protect__horse-body,
+    .protect__horse-tail,
+    .protect__horse-leg {
       animation: none;
     }
   }
