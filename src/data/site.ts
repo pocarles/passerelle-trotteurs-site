@@ -108,20 +108,20 @@ export const missionPillars = [
 export const pathways = [
   {
     title: "Faire un don",
-    body: "Votre soutien finance la prise en charge, la reconversion et la protection à vie des Trotteurs Français.",
+    body: "Votre soutien finance la prise en charge, le transport et les soins des chevaux les plus vulnérables.",
     href: links.donate,
     external: true,
-    image: "/media/racecare.jpg",
-    alt: "Un cheval présenté lors d’un événement Race & Care",
-    icon: "heart",
+    image: "/media/pathway-donation.jpg",
+    alt: "Gros plan sur l’œil d’un cheval",
+    icon: "hands",
   },
   {
     title: "Adhérer à l’association",
-    body: "Rejoignez Passerelle et participez concrètement à la reconversion des Trotteurs Français.",
+    body: "Rejoignez Passerelle et entrez au cœur de nos actions.",
     href: links.join,
     external: true,
-    image: "/media/cabourg.jpg",
-    alt: "Des membres de Passerelle réunis autour d’un trotteur",
+    image: "/media/pathway-membership.jpg",
+    alt: "Un groupe de personnes réunies lors d’un événement hippique",
     icon: "users",
   },
   {
@@ -135,10 +135,10 @@ export const pathways = [
   },
   {
     title: "Adopter un trotteur",
-    body: "Acheter ou adopter un Trotteur Français reconverti, sous un contrat qui le protège définitivement de l’abattage et du retour aux courses.",
+    body: "Acheter ou adopter un Trotteur Français reconverti auprès de nos structures professionnelles de la reconversion dans un cadre sécurisé.",
     href: "/adopter",
-    image: "/media/bond.jpg",
-    alt: "Une cavalière et un trotteur alezan, face à face",
+    alt: "Une personne à côté d’un cheval",
+    image: "/media/pathway-adoption.jpg",
     icon: "horse",
   },
 ];
