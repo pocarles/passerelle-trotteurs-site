@@ -36,9 +36,9 @@ const values = [
     background
   />
 
-  <section class="section">
+  <section class="section association-intro">
     <div class="wrap">
-      <Prose>
+      <Prose width="wide">
         <p>
           Créée en décembre 2020, Passerelle est une association officielle de
           la reconversion des chevaux de courses de Trot en France, soutenue par{" "}
@@ -131,6 +131,10 @@ const values = [
 </Base>
 
 <style>
+  .association-intro {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
   .stats {
     background: var(--forest);
     color: #fff;
