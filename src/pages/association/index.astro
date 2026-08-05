@@ -18,15 +18,21 @@ const objectifs = [
 const values = [
   {
     title: "Engagement",
-    body: "Un engagement des structures de reconversion professionnelles affiliées.",
+    body: "Passerelle et ses structures sont impliqués auprès de la filière et connaissent le monde des courses hippiques de trot.",
+    linkText: "",
+    linkHref: "",
   },
   {
     title: "Protection",
-    body: "Protection à vie contre l’abattage, l’expérimentation animale et interdiction de reprise des courses.",
+    body: "Protection et suivi à vie du cheval pris en charge par nos contrats.",
+    linkText: "",
+    linkHref: "",
   },
   {
     title: "Respect du Cheval",
-    body: "Le respect du cheval.",
+    body: "L’association et ses structures s’engagent à respecter la ",
+    linkText: "Charte du bien être équin",
+    linkHref: "https://respe.net/wp-content/uploads/2019/02/charte-pour-le-bien-etre-equin-signee-160304.pdf",
   },
 ];
 ---
@@ -81,7 +87,15 @@ const values = [
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3>{value.title}</h3>
-                <p>{value.body}</p>
+                <p>
+                  {value.body}
+                  {value.linkText && (
+                    <a href={value.linkHref} target="_blank" rel="noreferrer">
+                      {value.linkText}
+                    </a>
+                  )}
+                  {value.linkText && "."}
+                </p>
               </li>
             ))
           }
@@ -220,6 +234,14 @@ const values = [
     align-items: center;
     padding-inline: clamp(1rem, 2.4vw, 2.4rem);
     text-align: center;
+  }
+  :global(.prose ul.values-grid > li) {
+    margin-top: 0;
+    padding-left: clamp(1rem, 2.4vw, 2.4rem);
+  }
+  :global(.prose ul.values-grid > li::before) {
+    display: none;
+    content: none;
   }
   .values-grid li + li {
     border-left: 1px solid var(--line);
