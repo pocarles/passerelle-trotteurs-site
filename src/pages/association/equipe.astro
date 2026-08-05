@@ -1,8 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import CtaBand from "../../components/CtaBand.astro";
-import { links } from "../../data/site";
 
 const team = [
   {
@@ -72,14 +70,6 @@ const team = [
     </div>
   </section>
 
-  <CtaBand
-    text="Chaque adhésion aide l’équipe à poursuivre sa mission."
-    accent="Rejoignez-nous."
-    label="Adhérer"
-    href={links.join}
-    external
-    icon="users"
-  />
 </Base>
 
 <style>
