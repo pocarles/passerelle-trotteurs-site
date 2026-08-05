@@ -78,7 +78,7 @@ const values = [
           {objectifs.map((o) => <li>{o}</li>)}
         </ol>
 
-        <h2 id="valeurs">Nos valeurs</h2>
+        <h2 id="valeurs" class="values-heading">Nos valeurs</h2>
         <ul class="values-grid">
           {
             values.map((value, index) => (
@@ -219,13 +219,31 @@ const values = [
     max-width: 20ch;
     margin-bottom: 3rem;
   }
+  .values-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3.2rem 0 0;
+    color: var(--moss);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+  }
+  .values-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
   .values-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
     margin: 0 0 2.8rem;
-    padding: 2.4rem 0 2.8rem;
-    border-top: 1px solid var(--line);
+    padding: 1.8rem 0 2.8rem;
     border-bottom: 1px solid var(--line);
     list-style: none;
   }
