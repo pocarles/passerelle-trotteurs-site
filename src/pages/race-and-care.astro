@@ -52,18 +52,42 @@ import CtaBand from "../components/CtaBand.astro";
           l’hippodrome&nbsp;: prise de parole entre les courses, tenue d’un stand
           métier, échanges avec le public.
         </p>
-        <p>
-          C’est l’occasion idéale de faire connaître notre mission, faciliter la
-          reconversion des trotteurs réformés, accompagner propriétaires et
-          entraîneurs, et garantir à chaque cheval un avenir digne de ce nom.
-        </p>
-        <p>
-          Ces rencontres sont précieuses. Elles transforment des spectateurs
-          néophytes en futurs parrains, adoptants ou donateurs, et rappellent,
-          simplement et concrètement, que derrière chaque numéro de dossard se
-          trouve un animal que la filière ne perd jamais de vue.
-        </p>
       </Prose>
+    </div>
+  </section>
+
+  <section class="racecare-features" aria-label="La sensibilisation sur le terrain">
+    <div class="wrap">
+      <div class="racecare-feature__row">
+        <figure class="racecare-feature__item">
+          <img src="/media/race-and-care/expo-etalon-17.jpg" alt="Ballon #RaceAndCare sur un espace de sensibilisation" width="384" height="480" loading="lazy" />
+        </figure>
+        <div class="racecare-feature__copy">
+          <p class="eyebrow">Au plus près du public</p>
+          <h2>La sensibilisation <span class="accent">prend vie sur le terrain.</span></h2>
+          <p>
+            C’est l’occasion idéale de faire connaître notre mission, faciliter la
+            reconversion des trotteurs réformés, accompagner propriétaires et
+            entraîneurs, et garantir à chaque cheval un avenir digne de ce nom.
+          </p>
+        </div>
+      </div>
+
+      <div class="racecare-feature__row racecare-feature__row--reverse">
+        <div class="racecare-feature__copy">
+          <p class="eyebrow">Des rencontres qui mobilisent</p>
+          <h2>Un message qui <span class="accent">circule et rassemble.</span></h2>
+          <p>
+            Ces rencontres sont précieuses. Elles transforment des spectateurs
+            néophytes en futurs parrains, adoptants ou donateurs, et rappellent,
+            simplement et concrètement, que derrière chaque numéro de dossard se
+            trouve un animal que la filière ne perd jamais de vue.
+          </p>
+        </div>
+        <figure class="racecare-feature__item">
+          <img src="/media/race-and-care/expo-etalon-18.jpg" alt="Ruban #RaceAndCare sur un stand Passerelle" width="384" height="480" loading="lazy" />
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -88,12 +112,6 @@ import CtaBand from "../components/CtaBand.astro";
       <p class="eyebrow">Sur le terrain</p>
       <h2 id="racecare-gallery-title">Les journées <span class="accent">#RaceAndCare en images.</span></h2>
       <div class="racecare-gallery__grid">
-        <figure class="racecare-gallery__item">
-          <img src="/media/race-and-care/expo-etalon-17.jpg" alt="Cheval présenté lors d’une journée #RaceAndCare" width="384" height="480" loading="lazy" />
-        </figure>
-        <figure class="racecare-gallery__item">
-          <img src="/media/race-and-care/expo-etalon-18.jpg" alt="Animation autour d’un cheval lors d’une journée #RaceAndCare" width="384" height="480" loading="lazy" />
-        </figure>
         <figure class="racecare-gallery__item">
           <img src="/media/race-and-care/kawa-rare.jpg" alt="Kawa Rare lors d’une journée #RaceAndCare" width="800" height="533" loading="lazy" />
         </figure>
@@ -126,6 +144,44 @@ import CtaBand from "../components/CtaBand.astro";
 </Base>
 
 <style>
+  .racecare-features {
+    padding-block: 0 clamp(4.5rem, 9vw, 8rem);
+  }
+  .racecare-feature__row {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: clamp(2.5rem, 7vw, 6rem);
+    align-items: center;
+  }
+  .racecare-feature__row + .racecare-feature__row {
+    margin-top: clamp(4.5rem, 10vw, 9rem);
+  }
+  .racecare-feature__row--reverse {
+    grid-template-columns: 1fr 0.85fr;
+  }
+  .racecare-feature__copy {
+    max-width: 60ch;
+  }
+  .racecare-feature__copy h2 {
+    margin-bottom: 1.7rem;
+  }
+  .racecare-feature__copy p:not(.eyebrow) {
+    color: var(--ink-soft);
+  }
+  .racecare-feature__item {
+    aspect-ratio: 4 / 5;
+    width: min(100%, 28rem);
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--card);
+  }
+  .racecare-feature__item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
   .racecare-gallery {
     border-top: 1px solid var(--line);
   }
@@ -160,6 +216,13 @@ import CtaBand from "../components/CtaBand.astro";
     display: block;
   }
   @media (max-width: 620px) {
+    .racecare-feature__row,
+    .racecare-feature__row--reverse {
+      grid-template-columns: 1fr;
+    }
+    .racecare-feature__row--reverse .racecare-feature__item {
+      grid-row: 1;
+    }
     .racecare-gallery__grid {
       columns: 2 140px;
     }
