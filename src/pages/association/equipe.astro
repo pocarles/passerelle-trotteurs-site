@@ -29,6 +29,7 @@ const team = [
     name: "Méline Brigand",
     initials: "MB",
     role: "Assistante de direction — Délégation Sud",
+    image: "/media/team-meline.jpg?v=portraits-20260805",
     bio: [
       "Méline termine des études en management et gestion dans la filière équine. Déjà titulaire d’une licence de droit et d’un master en relations internationales, elle a fait le choix de se réorienter vers sa passion depuis toujours : les chevaux.",
       "Cavalière d’équitation classique et notamment de Dressage, elle a découvert les trotteurs sur son parcours équestre et en est tombée amoureuse. Elle seconde la présidente dans la gestion de l’association, sur les volets administratif, communication et événementiel.",
@@ -52,7 +53,7 @@ const team = [
     <div class="wrap team">
       {
         team.map((person) => (
-          <article class="person">
+          <article class:list={["person", person.name === "Floriane" && "person--floriane"]}>
             <div class:list={["person__media", !person.image && "person__media--fallback"]}>
               {person.image ? (
                 <img src={person.image} alt={`Portrait de ${person.name}`} loading="lazy" />
@@ -91,6 +92,9 @@ const team = [
     grid-template-columns: minmax(240px, 0.72fr) 1.28fr;
     gap: clamp(2rem, 6vw, 5rem);
     align-items: start;
+  }
+  .person--floriane {
+    grid-template-columns: minmax(220px, 0.66fr) 1.34fr;
   }
   .person:nth-child(even) .person__media {
     order: 2;
