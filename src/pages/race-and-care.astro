@@ -67,6 +67,55 @@ import CtaBand from "../components/CtaBand.astro";
     </div>
   </section>
 
+  <section class="section racecare-gallery" aria-labelledby="racecare-gallery-title">
+    <div class="wrap">
+      <div class="racecare-gallery__logos" aria-label="Identité de l’opération #RaceAndCare">
+        <img
+          src="/media/race-and-care/fnch-logo.png"
+          alt="Fédération Nationale des Courses Hippiques"
+          width="291"
+          height="200"
+          loading="lazy"
+        />
+        <img
+          src="/media/race-and-care/raceandcare-logo.png"
+          alt="#RaceAndCare"
+          width="200"
+          height="200"
+          loading="lazy"
+        />
+      </div>
+      <p class="eyebrow">Sur le terrain</p>
+      <h2 id="racecare-gallery-title">Les journées <span class="accent">#RaceAndCare en images.</span></h2>
+      <div class="racecare-gallery__grid">
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/expo-etalon-17.jpg" alt="Cheval présenté lors d’une journée #RaceAndCare" width="384" height="480" loading="lazy" />
+        </figure>
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/expo-etalon-18.jpg" alt="Animation autour d’un cheval lors d’une journée #RaceAndCare" width="384" height="480" loading="lazy" />
+        </figure>
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/kawa-rare.jpg" alt="Kawa Rare lors d’une journée #RaceAndCare" width="800" height="533" loading="lazy" />
+        </figure>
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/racecare-stand-1.jpeg" alt="Le stand Passerelle lors d’une journée #RaceAndCare" width="600" height="338" loading="lazy" />
+        </figure>
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/racecare-stand-2.jpeg" alt="Échanges avec le public sur le stand Passerelle" width="304" height="380" loading="lazy" />
+        </figure>
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/racecare-event-1.png" alt="Animation équestre lors d’une journée #RaceAndCare" width="381" height="600" loading="lazy" />
+        </figure>
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/racecare-event-2.jpg" alt="Animation et public lors d’une journée #RaceAndCare" width="400" height="600" loading="lazy" />
+        </figure>
+        <figure class="racecare-gallery__item">
+          <img src="/media/race-and-care/racecare-scoopdyga.jpg" alt="Cheval et public sur un hippodrome lors de #RaceAndCare" width="800" height="534" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <CtaBand
     text="Vous souhaitez accueillir Passerelle sur votre hippodrome ?"
     accent="Parlons-en."
@@ -75,3 +124,44 @@ import CtaBand from "../components/CtaBand.astro";
     icon="calendar"
   />
 </Base>
+
+<style>
+  .racecare-gallery {
+    border-top: 1px solid var(--line);
+  }
+  .racecare-gallery__logos {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .racecare-gallery__logos img {
+    width: auto;
+    height: clamp(4.5rem, 9vw, 7rem);
+    object-fit: contain;
+  }
+  .racecare-gallery h2 {
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+  .racecare-gallery__grid {
+    columns: 4 220px;
+    column-gap: 1rem;
+  }
+  .racecare-gallery__item {
+    margin: 0 0 1rem;
+    break-inside: avoid;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+  .racecare-gallery__item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @media (max-width: 620px) {
+    .racecare-gallery__grid {
+      columns: 2 140px;
+    }
+  }
+</style>
