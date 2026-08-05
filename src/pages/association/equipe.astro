@@ -29,7 +29,7 @@ const team = [
     name: "Méline Brigand",
     initials: "MB",
     role: "Assistante de direction — Délégation Sud",
-    image: "/media/team-meline.jpg?v=portraits-20260805-v2",
+    image: "/media/team-meline.jpg?v=portraits-20260805-v3",
     bio: [
       "Méline termine des études en management et gestion dans la filière équine. Déjà titulaire d’une licence de droit et d’un master en relations internationales, elle a fait le choix de se réorienter vers sa passion depuis toujours : les chevaux.",
       "Cavalière d’équitation classique et notamment de Dressage, elle a découvert les trotteurs sur son parcours équestre et en est tombée amoureuse. Elle seconde la présidente dans la gestion de l’association, sur les volets administratif, communication et événementiel.",
@@ -93,6 +93,9 @@ const team = [
     gap: clamp(2rem, 6vw, 5rem);
     align-items: start;
   }
+  .person:nth-child(even) {
+    grid-template-columns: 1.28fr minmax(240px, 0.72fr);
+  }
   .person:nth-child(even) .person__media {
     order: 2;
   }
@@ -133,7 +136,8 @@ const team = [
   }
 
   @media (max-width: 760px) {
-    .person {
+    .person,
+    .person:nth-child(even) {
       grid-template-columns: 1fr;
     }
     .person:nth-child(even) .person__media {
