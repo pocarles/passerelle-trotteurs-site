@@ -7,11 +7,15 @@ interface Props {
   lead?: string;
   image?: string;
   imageAlt?: string;
+  background?: boolean;
 }
-const { eyebrow, title, accent, lead, image, imageAlt = "" } = Astro.props;
+const { eyebrow, title, accent, lead, image, imageAlt = "", background = false } = Astro.props;
 ---
 
-<header class:list={["ph", image && "ph--split"]}>
+<header
+  class:list={["ph", image && !background && "ph--split", background && "ph--background"]}
+  style={background && image ? `--ph-bg: url("${image}")` : undefined}
+>
   <div class="wrap ph__in">
     <div class="ph__copy">
       <p class="eyebrow">{eyebrow}</p>
@@ -23,7 +27,7 @@ const { eyebrow, title, accent, lead, image, imageAlt = "" } = Astro.props;
       {lead && <p class="lead">{lead}</p>}
     </div>
     {
-      image && (
+      image && !background && (
         <figure class="ph__fig">
           <img src={image} alt={imageAlt} loading="eager" />
         </figure>
@@ -36,6 +40,39 @@ const { eyebrow, title, accent, lead, image, imageAlt = "" } = Astro.props;
   .ph {
     padding-block: clamp(3rem, 6vw, 5rem) clamp(2.5rem, 5vw, 4rem);
     border-bottom: 1px solid var(--line);
+  }
+  .ph--background {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background-image:
+      linear-gradient(90deg, rgba(11, 35, 22, 0.86), rgba(11, 35, 22, 0.48)),
+      var(--ph-bg);
+    background-position: center;
+    background-size: cover;
+  }
+  .ph--background .ph__in {
+    position: relative;
+    z-index: 1;
+    grid-template-columns: 1fr;
+  }
+  .ph--background .ph__copy {
+    max-width: 58ch;
+  }
+  .ph--background .eyebrow {
+    color: var(--sage);
+  }
+  .ph--background h1 {
+    color: #fff;
+  }
+  .ph--background .accent {
+    color: var(--sage);
+  }
+  .ph--background .rule {
+    background: var(--sage);
+  }
+  .ph--background .lead {
+    color: rgba(255, 255, 255, 0.86);
   }
   .ph__in {
     display: grid;
