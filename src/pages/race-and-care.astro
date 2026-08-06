@@ -2,6 +2,17 @@
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import CtaBand from "../components/CtaBand.astro";
+
+const hippodromePoints = [
+  [18, 18], [28, 13], [39, 9], [51, 11], [62, 16], [73, 22], [82, 31],
+  [14, 29], [25, 24], [36, 20], [47, 19], [58, 24], [68, 29], [78, 38],
+  [10, 42], [21, 36], [32, 32], [43, 31], [54, 35], [64, 39], [74, 46],
+  [87, 47], [17, 49], [28, 45], [39, 43], [50, 46], [60, 49], [70, 54],
+  [82, 57], [12, 59], [23, 55], [34, 53], [45, 56], [55, 59], [65, 63],
+  [75, 67], [86, 68], [20, 68], [30, 65], [40, 65], [50, 69], [60, 72],
+  [70, 77], [80, 78], [29, 78], [39, 76], [49, 80], [59, 83], [69, 87],
+  [38, 88], [49, 91], [59, 93],
+];
 ---
 
 <Base
@@ -22,7 +33,7 @@ import CtaBand from "../components/CtaBand.astro";
   <section class="section racecare-intro" aria-labelledby="racecare-intro-title">
     <div class="wrap">
       <div class="racecare-intro__head">
-        <div>
+        <div class="racecare-intro__heading">
           <p class="eyebrow">Un dispositif national</p>
           <h2 id="racecare-intro-title">Ouvrir les coulisses <span class="accent">de la filière.</span></h2>
         </div>
@@ -34,6 +45,18 @@ import CtaBand from "../components/CtaBand.astro";
           et rappelle que les chevaux méritent une attention constante, avant,
           pendant et après leur carrière.
         </p>
+        <div class="racecare-map" role="img" aria-label="Carte symbolique du réseau national des hippodromes français">
+          <span class="racecare-map__land" aria-hidden="true"></span>
+          {
+            hippodromePoints.map(([x, y]) => (
+              <span
+                class="racecare-map__point"
+                style={`--x: ${x}%; --y: ${y}%;`}
+                aria-hidden="true"
+              ></span>
+            ))
+          }
+        </div>
       </div>
       <div class="racecare-intro__body">
         <div class="racecare-intro__copy">
@@ -219,17 +242,29 @@ import CtaBand from "../components/CtaBand.astro";
     border-bottom: 1px solid var(--line);
   }
   .racecare-intro__head {
+    position: relative;
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: clamp(2.5rem, 8vw, 8rem);
-    align-items: end;
-    padding-bottom: clamp(3rem, 6vw, 5rem);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1.8rem;
+    padding-block: clamp(4rem, 9vw, 7rem);
+    overflow: hidden;
+    isolation: isolate;
   }
-  .racecare-intro__head h2 {
+  .racecare-intro__heading,
+  .racecare-intro__lead {
+    position: relative;
+    z-index: 1;
+  }
+  .racecare-intro__heading {
+    text-align: center;
+  }
+  .racecare-intro__heading h2 {
     max-width: 13ch;
+    margin-inline: auto;
   }
   .racecare-intro__lead {
-    max-width: 58ch;
+    max-width: 62ch;
     margin: 0;
     font-family: var(--sans);
     font-size: 1rem;
@@ -238,6 +273,42 @@ import CtaBand from "../components/CtaBand.astro";
     letter-spacing: normal;
     color: var(--ink-soft);
     text-align: left;
+  }
+  .racecare-map {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.72;
+  }
+  .racecare-map__land {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(72%, 36rem);
+    aspect-ratio: 0.82;
+    transform: translate(-50%, -50%);
+    background: rgba(186, 214, 136, 0.22);
+    border: 1px solid rgba(85, 112, 44, 0.25);
+    clip-path: polygon(
+      29% 2%, 43% 0%, 57% 6%, 70% 8%, 77% 18%, 88% 24%,
+      84% 35%, 96% 45%, 91% 57%, 96% 68%, 83% 75%, 76% 88%,
+      63% 91%, 53% 100%, 42% 92%, 30% 96%, 23% 86%, 12% 82%,
+      15% 69%, 4% 60%, 10% 48%, 2% 39%, 14% 31%, 18% 20%,
+      27% 17%
+    );
+  }
+  .racecare-map__point {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    width: 0.42rem;
+    height: 0.42rem;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--cream);
+    border-radius: 50%;
+    background: var(--moss);
+    box-shadow: 0 0 0 3px rgba(85, 112, 44, 0.14);
   }
   .racecare-intro__body {
     display: block;
