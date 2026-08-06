@@ -47,16 +47,13 @@ const hippodromePoints = [
         </p>
         <div class="racecare-map" role="img" aria-label="Carte symbolique du réseau national des hippodromes français">
           <span class="racecare-map__land" aria-hidden="true"></span>
-          <span class="racecare-map__points" aria-hidden="true">
+          <svg class="racecare-map__points" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
             {
               hippodromePoints.map(([x, y]) => (
-                <span
-                  class="racecare-map__point"
-                  style={`left: ${x}%; top: ${y}%;`}
-                ></span>
+                <circle class="racecare-map__point" cx={x} cy={y} r="0.85"></circle>
               ))
             }
-          </span>
+          </svg>
         </div>
       </div>
       <div class="racecare-intro__body">
@@ -304,16 +301,14 @@ const hippodromePoints = [
   }
   .racecare-map__points {
     z-index: 1;
+    overflow: visible;
   }
   .racecare-map__point {
-    position: absolute;
-    width: 0.5rem;
-    height: 0.5rem;
-    transform: translate(-50%, -50%);
-    border: 2px solid var(--cream);
-    border-radius: 50%;
-    background: var(--forest);
-    box-shadow: 0 0 0 3px rgba(85, 112, 44, 0.24);
+    fill: var(--forest);
+    stroke: var(--cream);
+    stroke-width: 0.45;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 1px rgba(85, 112, 44, 0.45));
   }
   .racecare-intro__body {
     display: block;
