@@ -300,15 +300,16 @@ const hippodromePoints = [
   }
   .racecare-map__point {
     position: absolute;
+    z-index: 1;
     top: var(--y);
     left: var(--x);
-    width: 0.42rem;
-    height: 0.42rem;
+    width: 0.5rem;
+    height: 0.5rem;
     transform: translate(-50%, -50%);
     border: 2px solid var(--cream);
     border-radius: 50%;
-    background: var(--moss);
-    box-shadow: 0 0 0 3px rgba(85, 112, 44, 0.14);
+    background: var(--forest);
+    box-shadow: 0 0 0 3px rgba(85, 112, 44, 0.24);
   }
   .racecare-intro__body {
     display: block;
