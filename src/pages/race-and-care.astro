@@ -48,18 +48,14 @@ import CtaBand from "../components/CtaBand.astro";
             De nombreuses animations, pensées pour tous les âges, complètent la
             journée et diffusent ce message auprès du plus grand nombre.
           </p>
-        </div>
-        <div class="racecare-intro__highlights" aria-label="Les temps forts d’une journée #RaceAndCare">
-          <article class="racecare-intro__highlight">
-            <span>01</span>
-            <h3>Voir l’envers du décor</h3>
-            <p>Des visites et des échanges pour comprendre le quotidien des chevaux de course.</p>
-          </article>
-          <article class="racecare-intro__highlight">
-            <span>02</span>
-            <h3>Faire grandir l’attention</h3>
-            <p>Un rendez-vous ouvert à tous pour faire connaître les acteurs qui prennent soin des chevaux.</p>
-          </article>
+          <p>
+            <strong>Voir l’envers du décor.</strong> Des visites et des échanges
+            pour comprendre le quotidien des chevaux de course.
+          </p>
+          <p>
+            <strong>Faire grandir l’attention.</strong> Un rendez-vous ouvert à
+            tous pour faire connaître les acteurs qui prennent soin des chevaux.
+          </p>
         </div>
       </div>
     </div>
@@ -235,14 +231,15 @@ import CtaBand from "../components/CtaBand.astro";
   .racecare-intro__lead {
     max-width: 58ch;
     margin: 0;
+    font-family: var(--sans);
     font-size: clamp(1.12rem, 1.65vw, 1.35rem);
     line-height: 1.55;
+    letter-spacing: normal;
     color: var(--ink-soft);
+    text-align: left;
   }
   .racecare-intro__body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2.5rem, 8vw, 8rem);
+    display: block;
     padding-top: clamp(2.5rem, 5vw, 4rem);
   }
   .racecare-intro__copy {
@@ -250,36 +247,10 @@ import CtaBand from "../components/CtaBand.astro";
   }
   .racecare-intro__copy p {
     color: var(--ink-soft);
+    text-align: left;
   }
   .racecare-intro__copy p + p {
     margin-top: 1.15rem;
-  }
-  .racecare-intro__highlights {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    align-self: start;
-  }
-  .racecare-intro__highlight {
-    min-height: 100%;
-    padding: 1.35rem 1.25rem 1.5rem;
-    border-top: 1px solid var(--line-strong);
-    background: rgba(255, 255, 255, 0.42);
-  }
-  .racecare-intro__highlight span {
-    display: block;
-    margin-bottom: 1.3rem;
-    font-family: var(--serif);
-    color: var(--moss);
-    font-size: 1.1rem;
-  }
-  .racecare-intro__highlight h3 {
-    margin-bottom: 0.65rem;
-  }
-  .racecare-intro__highlight p {
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 0.92rem;
   }
   .racecare-features {
     padding-block: 0 clamp(4.5rem, 9vw, 8rem);
@@ -400,15 +371,11 @@ import CtaBand from "../components/CtaBand.astro";
     margin-top: clamp(1.5rem, 5vw, 4rem);
   }
   @media (max-width: 620px) {
-    .racecare-intro__head,
-    .racecare-intro__body {
+    .racecare-intro__head {
       grid-template-columns: 1fr;
     }
     .racecare-intro__head {
       gap: 1.75rem;
-    }
-    .racecare-intro__highlights {
-      grid-template-columns: 1fr;
     }
     .racecare-feature__row,
     .racecare-feature__row--reverse {
