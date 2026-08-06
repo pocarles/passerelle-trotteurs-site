@@ -518,3 +518,58 @@ import CtaBand from "../components/CtaBand.astro";
     max-width: 54ch;
   }
   .racecare-story__copy h3 {
+    margin-bottom: 1.4rem;
+    font-size: clamp(1.8rem, 3.2vw, 2.65rem);
+  }
+  .racecare-story__copy p:not(.eyebrow) {
+    color: var(--ink-soft);
+  }
+  .racecare-story__image {
+    aspect-ratio: 4 / 3;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--card);
+  }
+  .racecare-story__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .racecare-story__images--pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+  .racecare-story__images--pair .racecare-story__image {
+    aspect-ratio: 4 / 5;
+  }
+  .racecare-story__images--pair .racecare-story__image:nth-child(2) {
+    margin-top: clamp(1.5rem, 5vw, 4rem);
+  }
+  @media (max-width: 620px) {
+    .racecare-intro__head {
+      grid-template-columns: 1fr;
+    }
+    .racecare-intro__head {
+      gap: 1.75rem;
+    }
+    .racecare-feature__row,
+    .racecare-feature__row--reverse {
+      grid-template-columns: 1fr;
+    }
+    .racecare-feature__row--reverse .racecare-feature__item {
+      grid-row: 1;
+    }
+    .racecare-stories__head,
+    .racecare-story,
+    .racecare-story--reverse {
+      grid-template-columns: 1fr;
+    }
+    .racecare-stories__identity {
+      align-items: flex-start;
+    }
+  }
+</style>
