@@ -55,8 +55,8 @@ const total = meceneGroupes.reduce((n, g) => n + g.membres.length, 0);
   <section class="section amb">
     <div class="wrap">
       <p class="eyebrow eyebrow--light">Nos ambassadeurs</p>
-      <h2>
-        Des binômes qui racontent<br />
+      <h2 class="amb__title">
+        Des binômes qui racontent
         <span class="accent--light">ce que devient un trotteur.</span>
       </h2>
       <p class="amb__lead">
@@ -170,7 +170,10 @@ const total = meceneGroupes.reduce((n, g) => n + g.membres.length, 0);
     background: var(--forest-deep);
     color: #fff;
   }
-  .amb h2 {
+  .amb__title {
+    width: 100%;
+    max-width: none;
+    text-wrap: pretty;
     color: #fff;
   }
   .amb__lead {
@@ -224,6 +227,10 @@ const total = meceneGroupes.reduce((n, g) => n + g.membres.length, 0);
   }
 
   @media (max-width: 760px) {
+    .amb__title .accent--light {
+      display: block;
+    }
+
     .amb__list a {
       grid-template-columns: 1fr;
     }
