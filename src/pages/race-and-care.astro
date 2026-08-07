@@ -230,13 +230,17 @@ import "../styles/race-and-care.css";
     padding-top: 0;
     border-bottom: 1px solid var(--line);
   }
+  .racecare-intro > .wrap {
+    max-width: none;
+    padding-inline: 0;
+  }
   .racecare-intro__head {
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 1.8rem;
-    padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
     overflow: hidden;
     isolation: isolate;
   }
@@ -244,6 +248,7 @@ import "../styles/race-and-care.css";
   .racecare-intro__lead {
     position: relative;
     z-index: 4;
+    width: min(100%, 62ch);
   }
   .racecare-intro__heading {
     text-align: center;
@@ -268,6 +273,9 @@ import "../styles/race-and-care.css";
   }
   .racecare-intro__body {
     display: block;
+    width: min(100%, var(--maxw));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
     padding-top: clamp(2.5rem, 5vw, 4rem);
   }
   .racecare-intro__copy {
@@ -399,6 +407,25 @@ import "../styles/race-and-care.css";
     margin-top: clamp(1.5rem, 5vw, 4rem);
   }
   @media (max-width: 620px) {
+    .racecare-intro__head {
+      padding-inline: 1rem;
+    }
+    .racecare-doors {
+      inset-inline: -0.5rem;
+    }
+    .racecare-doors__frame {
+      inset-inline: 4%;
+      border-width: 0.55rem;
+    }
+    .racecare-doors__horse {
+      width: min(62%, 15rem);
+    }
+    .racecare-doors__door--left::after {
+      right: 0.65rem;
+    }
+    .racecare-doors__door--right::after {
+      left: 0.65rem;
+    }
     .racecare-intro__head {
       grid-template-columns: 1fr;
     }
