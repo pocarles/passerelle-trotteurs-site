@@ -273,9 +273,10 @@ import "../styles/race-and-care.css";
   }
   .racecare-intro__body {
     display: block;
-    width: 100%;
+    width: calc(100% - (2 * var(--gutter)));
+    max-width: 68rem;
     margin-inline: auto;
-    padding-inline: clamp(1rem, 5vw, 5rem);
+    padding-inline: 0;
     padding-top: clamp(2.5rem, 5vw, 4rem);
   }
   .racecare-intro__copy {
@@ -292,30 +293,36 @@ import "../styles/race-and-care.css";
   .racecare-features {
     padding-block: 0 clamp(4.5rem, 9vw, 8rem);
   }
+  .racecare-features > .wrap {
+    max-width: 72rem;
+  }
   .racecare-feature__row {
     display: grid;
-    grid-template-columns: 0.85fr 1fr;
-    gap: clamp(2.5rem, 7vw, 6rem);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    max-width: 68rem;
+    margin-inline: auto;
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
   }
   .racecare-feature__row + .racecare-feature__row {
     margin-top: clamp(4.5rem, 10vw, 9rem);
   }
   .racecare-feature__row--reverse {
-    grid-template-columns: 1fr 0.85fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
   }
   .racecare-feature__copy {
-    max-width: 60ch;
+    max-width: 48ch;
   }
   .racecare-feature__copy h2 {
     margin-bottom: 1.7rem;
+    font-size: clamp(1.85rem, 3vw, 2.65rem);
   }
   .racecare-feature__copy p:not(.eyebrow) {
     color: var(--ink-soft);
   }
   .racecare-feature__item {
     aspect-ratio: 4 / 5;
-    width: min(100%, 28rem);
+    width: min(100%, 22rem);
     margin: 0;
     overflow: hidden;
     border-radius: var(--radius-lg);
@@ -326,6 +333,9 @@ import "../styles/race-and-care.css";
     height: 100%;
     display: block;
     object-fit: cover;
+  }
+  .racecare-feature__row--reverse .racecare-feature__item {
+    margin-left: auto;
   }
   .racecare-stories {
     border-top: 1px solid var(--line);
@@ -439,6 +449,7 @@ import "../styles/race-and-care.css";
     }
     .racecare-feature__row--reverse .racecare-feature__item {
       grid-row: 1;
+      margin-left: 0;
     }
     .racecare-stories__head,
     .racecare-story,
