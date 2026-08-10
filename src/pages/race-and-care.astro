@@ -173,8 +173,8 @@ import "../styles/race-and-care.css";
             l’attention portée à cet athlète tout au long de sa carrière.
           </p>
         </div>
-        <figure class="racecare-story__image">
-          <img src="/media/race-and-care/kawa-rare.jpg" alt="Kawa Rare lors d’une journée #RaceAndCare" width="800" height="533" loading="lazy" />
+        <figure class="racecare-story__image racecare-story__image--portrait">
+          <img src="/media/race-and-care/kawa-rare-2023.jpg" alt="Kawa Rare lors d’une journée #RaceAndCare" width="1066" height="1600" loading="lazy" />
         </figure>
       </article>
 
@@ -562,6 +562,9 @@ import "../styles/race-and-care.css";
     overflow: hidden;
     border-radius: var(--radius-lg);
     background: var(--card);
+  }
+  .racecare-story__image--portrait {
+    aspect-ratio: 2 / 3;
   }
   .racecare-story__image img {
     width: 100%;
