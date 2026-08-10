@@ -195,6 +195,36 @@ import "../styles/race-and-care.css";
             <img src="/media/race-and-care/racecare-scoopdyga.jpg" alt="Cheval et public sur un hippodrome lors de #RaceAndCare" width="800" height="534" loading="lazy" />
           </figure>
         </div>
+
+        <div class="racecare-story__gallery-block">
+          <h4 class="racecare-story__gallery-title">Race &amp; Care Enghien 2026</h4>
+          <div class="racecare-story__gallery racecare-story__gallery--enghien" aria-label="Photos de Race &amp; Care Enghien 2026">
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-32.jpg" alt="Démonstration équestre à Enghien lors de Race &amp; Care 2026" width="1365" height="2048" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-24.jpg" alt="Cavalière et cheval noir à Enghien lors de Race &amp; Care 2026" width="1365" height="2048" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-22.jpg" alt="Cavalière et public à Enghien lors de Race &amp; Care 2026" width="2048" height="1365" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-2.jpg" alt="Démonstration équestre devant le public à Enghien" width="1365" height="2048" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-26.jpg" alt="Cheval et public sur la piste d’Enghien lors de Race &amp; Care 2026" width="2048" height="1365" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-14.jpg" alt="Cavalier portant un drapeau à Enghien lors de Race &amp; Care 2026" width="1365" height="2048" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-20.jpg" alt="Cavalière et cheval sur la piste d’Enghien" width="1365" height="2048" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-11.jpg" alt="Cavalier et cheval devant le public à Enghien" width="2048" height="1365" loading="lazy" />
+            </figure>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -361,10 +391,25 @@ import "../styles/race-and-care.css";
     scroll-snap-type: x proximity;
   }
   .racecare-story__gallery .racecare-story__image {
-    flex: 1 1 0;
+    flex: 0 0 clamp(19rem, 30vw, 28rem);
     min-width: 0;
     aspect-ratio: 4 / 3;
     scroll-snap-align: start;
+  }
+  .racecare-story__gallery-block {
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+  }
+  .racecare-story__gallery-title {
+    margin: 0 0 1.25rem;
+    color: var(--moss);
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .racecare-story__gallery--enghien {
+    margin-top: 0;
   }
   .racecare-story__copy h3 {
     margin-bottom: 1.4rem;
@@ -415,7 +460,7 @@ import "../styles/race-and-care.css";
       grid-template-columns: 1fr;
     }
     .racecare-story__gallery .racecare-story__image {
-      flex: 0 0 min(78vw, 20rem);
+      flex: 0 0 min(86vw, 24rem);
     }
     .racecare-stories__identity {
       align-items: flex-start;
