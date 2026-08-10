@@ -58,7 +58,9 @@ import "../styles/race-and-care.css";
             </p>
           </div>
           <div
-            class="racecare-intro__gallery"
+            class="racecare-intro__gallery racecare-auto-gallery"
+            data-auto-gallery
+            tabindex="0"
             role="group"
             aria-label="Photos des acteurs de la filière lors de journées Race and Care"
           >
@@ -70,6 +72,12 @@ import "../styles/race-and-care.css";
             </figure>
             <figure class="racecare-story__image">
               <img src="/media/race-and-care/portraits/joria-mesloise-david-lefevre.jpg" alt="Joria Mesloise avec David Lefevre et les acteurs de la filière" width="4256" height="2832" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/portraits/cabourg-race-care.png" alt="Journée #RaceAndCare à Cabourg avec les acteurs de la filière" width="800" height="534" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image">
+              <img src="/media/race-and-care/portraits/la-capelle-race-care.png" alt="Journée #RaceAndCare à La Capelle avec Kawa Rare et les acteurs de la filière" width="800" height="533" loading="lazy" />
             </figure>
           </div>
         </div>
@@ -253,6 +261,58 @@ import "../styles/race-and-care.css";
   />
 </Base>
 
+<script>
+  const setupAutoGalleries = () => {
+    const galleries = document.querySelectorAll("[data-auto-gallery]");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    galleries.forEach((gallery) => {
+      let timer;
+      let resumeTimer;
+
+      const stop = () => {
+        window.clearInterval(timer);
+        window.clearTimeout(resumeTimer);
+      };
+
+      const start = () => {
+        stop();
+        if (!reducedMotion.matches) {
+          timer = window.setInterval(() => {
+            if (gallery.scrollWidth <= gallery.clientWidth + 1) return;
+            const firstImage = gallery.querySelector("figure");
+            if (!firstImage) return;
+            const gap = parseFloat(getComputedStyle(gallery).gap) || 0;
+            const step = firstImage.getBoundingClientRect().width + gap;
+            const end = gallery.scrollWidth - gallery.clientWidth;
+            const left = gallery.scrollLeft + step >= end - 2 ? 0 : gallery.scrollLeft + step;
+            gallery.scrollTo({ left, behavior: "smooth" });
+          }, 4500);
+        }
+      };
+
+      const pause = () => {
+        stop();
+        resumeTimer = window.setTimeout(start, 7000);
+      };
+
+      gallery.addEventListener("mouseenter", stop);
+      gallery.addEventListener("mouseleave", start);
+      gallery.addEventListener("focusin", stop);
+      gallery.addEventListener("focusout", start);
+      gallery.addEventListener("pointerdown", pause, { passive: true });
+      reducedMotion.addEventListener("change", start);
+      start();
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupAutoGalleries, { once: true });
+  } else {
+    setupAutoGalleries();
+  }
+</script>
+
 <style>
   .racecare-intro {
     padding-block: 0;
@@ -433,6 +493,29 @@ import "../styles/race-and-care.css";
     height: auto;
     object-fit: contain;
   }
+  .racecare-intro__gallery {
+    display: flex;
+    column-count: initial;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+  }
+  .racecare-intro__gallery .racecare-story__image {
+    display: flex;
+    flex: 0 0 auto;
+    width: clamp(18rem, 28vw, 25rem);
+    margin: 0;
+    scroll-snap-align: start;
+  }
+  .racecare-intro__gallery .racecare-story__image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
   .racecare-story__gallery--enghien {
     display: grid;
     grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -518,9 +601,14 @@ import "../styles/race-and-care.css";
     .racecare-intro__gallery .racecare-story__image {
       width: 100%;
     }
-    .racecare-story__gallery,
-    .racecare-intro__gallery {
+    .racecare-intro__gallery .racecare-story__image {
+      width: min(82vw, 24rem);
+    }
+    .racecare-story__gallery {
       column-count: 2;
+    }
+    .racecare-intro__gallery {
+      column-count: initial;
     }
     .racecare-story__gallery--enghien {
       display: grid;
