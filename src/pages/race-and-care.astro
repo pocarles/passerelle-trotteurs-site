@@ -484,8 +484,12 @@ import "../styles/race-and-care.css";
     display: block;
   }
   .racecare-story__copy--merged {
-    max-width: min(100%, 82ch);
-    margin-inline: auto;
+    max-width: 100%;
+    margin-inline: 0;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .racecare-story--merged > .racecare-story__gallery {
+    margin-top: 0;
   }
   .racecare-story__gallery,
   .racecare-intro__gallery {
