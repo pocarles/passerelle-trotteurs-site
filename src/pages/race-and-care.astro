@@ -34,15 +34,15 @@ import "../styles/race-and-care.css";
           et rappelle que les chevaux méritent une attention constante, avant,
           pendant et après leur carrière.
         </p>
-        <!-- Les portes s’ouvrent sur le cheval pour évoquer l’accès aux coulisses. -->
-        <div class="racecare-doors" role="img" aria-label="Un cheval derrière des portes qui s’ouvrent">
-          <span class="racecare-doors__light" aria-hidden="true"></span>
-          <span class="racecare-doors__horse" aria-hidden="true">
+        <!-- Les rideaux s’ouvrent sur le cheval pour évoquer l’accès aux coulisses. -->
+        <div class="racecare-curtains" role="img" aria-label="Un cheval derrière des rideaux qui s’ouvrent">
+          <span class="racecare-curtains__light" aria-hidden="true"></span>
+          <span class="racecare-curtains__horse" aria-hidden="true">
             <img src="/media/trotting-horse.png" alt="" width="512" height="512" />
           </span>
-          <span class="racecare-doors__frame" aria-hidden="true">
-            <span class="racecare-doors__door racecare-doors__door--left"></span>
-            <span class="racecare-doors__door racecare-doors__door--right"></span>
+          <span class="racecare-curtains__frame" aria-hidden="true">
+            <span class="racecare-curtains__curtain racecare-curtains__curtain--left"></span>
+            <span class="racecare-curtains__curtain racecare-curtains__curtain--right"></span>
           </span>
         </div>
       </div>
@@ -412,20 +412,19 @@ import "../styles/race-and-care.css";
     .racecare-intro__head {
       padding-inline: 1rem;
     }
-    .racecare-doors {
+    .racecare-curtains {
       inset-inline: -0.5rem;
     }
-    .racecare-doors__frame {
+    .racecare-curtains__frame {
       inset-inline: 4%;
-      border-width: 0.55rem;
     }
-    .racecare-doors__horse {
+    .racecare-curtains__horse {
       width: min(62%, 15rem);
     }
-    .racecare-doors__door--left::after {
+    .racecare-curtains__curtain--left::after {
       right: 0.65rem;
     }
-    .racecare-doors__door--right::after {
+    .racecare-curtains__curtain--right::after {
       left: 0.65rem;
     }
     .racecare-intro__head {

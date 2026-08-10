@@ -1,4 +1,4 @@
-.racecare-doors {
+.racecare-curtains {
   position: absolute;
   z-index: 0;
   inset: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 6vw, 5rem) 0;
@@ -7,18 +7,18 @@
   isolation: isolate;
 }
 
-.racecare-doors::before {
+.racecare-curtains::before {
   content: "";
   position: absolute;
-  inset: 10% 12% 0;
-  border: 1px solid rgba(69, 43, 28, 0.22);
+  inset: 10% 9% 0;
+  border: 1px solid rgba(85, 112, 44, 0.12);
   background:
-    linear-gradient(180deg, rgba(247, 244, 236, 0.22), rgba(247, 244, 236, 0)),
-    radial-gradient(circle at 50% 44%, rgba(217, 231, 180, 0.38), rgba(247, 244, 236, 0) 52%);
-  box-shadow: 0 1.2rem 2.5rem rgba(34, 48, 32, 0.1);
+    linear-gradient(180deg, rgba(247, 244, 236, 0.2), rgba(247, 244, 236, 0)),
+    radial-gradient(circle at 50% 44%, rgba(186, 214, 136, 0.28), rgba(247, 244, 236, 0) 52%);
+  box-shadow: 0 1.2rem 2.5rem rgba(34, 48, 32, 0.07);
 }
 
-.racecare-doors__light {
+.racecare-curtains__light {
   position: absolute;
   z-index: 1;
   top: 13%;
@@ -26,12 +26,17 @@
   width: min(46%, 24rem);
   height: 68%;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(255, 255, 250, 0.85) 0%, rgba(217, 231, 180, 0.25) 45%, rgba(217, 231, 180, 0) 75%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 250, 0.7) 0%,
+    rgba(186, 214, 136, 0.2) 45%,
+    rgba(186, 214, 136, 0) 75%
+  );
   filter: blur(12px);
-  animation: racecare-light 3.4s ease-out 0.15s forwards;
+  animation: racecare-curtain-light 3.4s ease-out 0.15s forwards;
 }
 
-.racecare-doors__horse {
+.racecare-curtains__horse {
   position: absolute;
   z-index: 2;
   left: 50%;
@@ -41,122 +46,134 @@
   transform: translateX(-50%);
 }
 
-.racecare-doors__horse img {
+.racecare-curtains__horse img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.48;
-  filter: drop-shadow(0 0.65rem 1.2rem rgba(44, 67, 35, 0.1));
+  opacity: 0.38;
+  filter: drop-shadow(0 0.65rem 1.2rem rgba(44, 67, 35, 0.08));
 }
 
-.racecare-doors__frame {
+.racecare-curtains__frame {
   position: absolute;
   z-index: 3;
-  inset: 10% 12% 0;
-  border: clamp(0.55rem, 1.4vw, 1rem) solid rgba(79, 48, 30, 0.78);
-  border-bottom: 0;
-  background: rgba(66, 40, 25, 0.12);
-  box-shadow: inset 0.35rem 0 0 rgba(245, 223, 190, 0.18), inset -0.35rem 0 0 rgba(31, 20, 13, 0.18);
+  inset: 8% 8% 0;
+  border-top: clamp(0.22rem, 0.6vw, 0.45rem) solid rgba(31, 61, 43, 0.28);
+  border-radius: 999px 999px 0 0;
+  box-shadow: 0 0.4rem 0 rgba(186, 214, 136, 0.16);
   perspective: 40rem;
 }
 
-.racecare-doors__door {
+.racecare-curtains__frame::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * clamp(0.22rem, 0.6vw, 0.45rem));
+  left: 50%;
+  width: 0.7rem;
+  height: 1.1rem;
+  transform: translateX(-50%);
+  border-radius: 0 0 0.35rem 0.35rem;
+  background: rgba(85, 112, 44, 0.44);
+}
+
+.racecare-curtains__curtain {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 50%;
+  width: 44%;
   overflow: hidden;
   background:
-    linear-gradient(135deg, transparent 44%, rgba(52, 30, 18, 0.3) 45% 48%, transparent 49%),
-    linear-gradient(45deg, transparent 44%, rgba(240, 207, 164, 0.18) 45% 48%, transparent 49%),
-    repeating-linear-gradient(0deg, rgba(52, 30, 18, 0.24) 0 2px, transparent 2px 3.2rem),
-    linear-gradient(90deg, #71442c 0%, #a36d45 52%, #77462d 100%);
-  border: 1px solid rgba(54, 31, 18, 0.62);
-  box-shadow: inset 0 0 1.5rem rgba(38, 21, 13, 0.22), 0 0.75rem 1.5rem rgba(34, 48, 32, 0.16);
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0 0.42rem,
+      rgba(22, 48, 31, 0.17) 0.42rem 1.05rem,
+      rgba(255, 255, 255, 0.06) 1.05rem 1.7rem
+    ),
+    linear-gradient(90deg, rgba(22, 48, 31, 0.8), rgba(85, 112, 44, 0.45) 56%, rgba(186, 214, 136, 0.24));
+  border-inline: 1px solid rgba(22, 48, 31, 0.18);
+  box-shadow: inset 0 0 1.5rem rgba(22, 48, 31, 0.22), 0 0.75rem 1.5rem rgba(34, 48, 32, 0.08);
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 
-.racecare-doors__door::before {
+.racecare-curtains__curtain::before {
   content: "";
   position: absolute;
-  inset: 0.85rem;
-  border: 0.22rem solid rgba(57, 32, 19, 0.58);
+  inset: 0;
   background:
-    linear-gradient(90deg, transparent 0 13%, rgba(45, 25, 15, 0.3) 13% 15%, transparent 15% 85%, rgba(45, 25, 15, 0.3) 85% 87%, transparent 87%),
-    linear-gradient(0deg, transparent 0 47%, rgba(245, 214, 175, 0.22) 47% 51%, rgba(45, 25, 15, 0.4) 51% 54%, transparent 54%),
-    repeating-linear-gradient(0deg, rgba(45, 25, 15, 0.2) 0 2px, transparent 2px 2.55rem);
-  box-shadow: inset 0 0 0 0.12rem rgba(240, 202, 157, 0.16), inset 0 0 1.2rem rgba(35, 19, 11, 0.18);
+    linear-gradient(135deg, transparent 0 70%, rgba(186, 214, 136, 0.16) 70% 73%, transparent 73%),
+    repeating-linear-gradient(90deg, transparent 0 2.2rem, rgba(22, 48, 31, 0.13) 2.2rem 2.35rem);
+  opacity: 0.9;
 }
 
-.racecare-doors__door::after {
+.racecare-curtains__curtain::after {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 48%;
   width: 0.62rem;
-  height: 1.7rem;
+  height: 3.2rem;
   transform: translateY(-50%);
-  border: 1px solid rgba(18, 15, 12, 0.8);
-  border-radius: 0.18rem;
-  background: linear-gradient(90deg, #171411, #6d5b48 48%, #171411);
-  box-shadow: 0 0 0 0.17rem rgba(22, 17, 12, 0.14), 0 0.25rem 0.35rem rgba(22, 17, 12, 0.24);
+  border: 1px solid rgba(22, 48, 31, 0.5);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(186, 214, 136, 0.72), rgba(85, 112, 44, 0.72));
+  box-shadow: 0 0 0 0.18rem rgba(186, 214, 136, 0.16), 0 0.2rem 0.5rem rgba(22, 48, 31, 0.18);
 }
 
-.racecare-doors__door--left {
+.racecare-curtains__curtain--left {
   left: 0;
   transform-origin: left center;
-  animation: racecare-door-left 3.4s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+  animation: racecare-curtain-left 3.4s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
 }
 
-.racecare-doors__door--left::after {
+.racecare-curtains__curtain--left::after {
   right: 1.25rem;
 }
 
-.racecare-doors__door--right {
+.racecare-curtains__curtain--right {
   right: 0;
   transform-origin: right center;
-  animation: racecare-door-right 3.4s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+  animation: racecare-curtain-right 3.4s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
 }
 
-.racecare-doors__door--right::after {
+.racecare-curtains__curtain--right::after {
   left: 1.25rem;
 }
 
-@keyframes racecare-door-left {
+@keyframes racecare-curtain-left {
   from { transform: translateX(0) rotateY(0deg); }
-  to { transform: translateX(-84%) rotateY(11deg); }
+  to { transform: translateX(-88%) rotateY(8deg) scaleX(0.94); }
 }
 
-@keyframes racecare-door-right {
+@keyframes racecare-curtain-right {
   from { transform: translateX(0) rotateY(0deg); }
-  to { transform: translateX(84%) rotateY(-11deg); }
+  to { transform: translateX(88%) rotateY(-8deg) scaleX(0.94); }
 }
 
-@keyframes racecare-light {
+@keyframes racecare-curtain-light {
   from {
-    opacity: 0.25;
+    opacity: 0.2;
     transform: translateX(-50%) scale(0.94);
   }
   to {
-    opacity: 0.72;
+    opacity: 0.62;
     transform: translateX(-50%) scale(1.08);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .racecare-doors__door,
-  .racecare-doors__light {
+  .racecare-curtains__curtain,
+  .racecare-curtains__light {
     animation: none;
   }
-  .racecare-doors__light {
-    opacity: 0.72;
+  .racecare-curtains__light {
+    opacity: 0.62;
     transform: translateX(-50%) scale(1.08);
   }
-  .racecare-doors__door--left {
-    transform: translateX(-84%) rotateY(11deg);
+  .racecare-curtains__curtain--left {
+    transform: translateX(-88%) rotateY(8deg) scaleX(0.94);
   }
-  .racecare-doors__door--right {
-    transform: translateX(84%) rotateY(-11deg);
+  .racecare-curtains__curtain--right {
+    transform: translateX(88%) rotateY(-8deg) scaleX(0.94);
   }
 }
