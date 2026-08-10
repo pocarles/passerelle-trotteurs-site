@@ -9,6 +9,7 @@ interface Props {
   imageAlt?: string;
   logo?: string;
   logoAlt?: string;
+  class?: string;
   background?: boolean;
 }
 const {
@@ -20,12 +21,13 @@ const {
   imageAlt = "",
   logo,
   logoAlt = "",
+  class: className,
   background = false,
 } = Astro.props;
 ---
 
 <header
-  class:list={["ph", image && !background && "ph--split", background && "ph--background"]}
+  class:list={["ph", image && !background && "ph--split", background && "ph--background", className]}
 >
   {background && image && <img class="ph__bg" src={image} alt="" aria-hidden="true" loading="eager" />}
   <div class="wrap ph__in">

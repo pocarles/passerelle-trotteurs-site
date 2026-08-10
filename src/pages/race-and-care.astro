@@ -11,6 +11,7 @@ import "../styles/race-and-care.css";
   description="Passerelle intervient lors des journées #RaceAndCare pour sensibiliser le public à la reconversion et au bien-être des chevaux de course."
 >
   <PageHeader
+    class="racecare-page-header"
     eyebrow="Nos actions"
     title="#RaceAndCare"
     accent="le bien-être des chevaux avant, pendant et après les courses."
@@ -34,15 +35,11 @@ import "../styles/race-and-care.css";
           et rappelle que les chevaux méritent une attention constante, avant,
           pendant et après leur carrière.
         </p>
-        <!-- Les rideaux s’ouvrent sur le cheval pour évoquer l’accès aux coulisses. -->
-        <div class="racecare-curtains" role="img" aria-label="Un cheval derrière des rideaux qui s’ouvrent">
-          <span class="racecare-curtains__light" aria-hidden="true"></span>
-          <span class="racecare-curtains__horse" aria-hidden="true">
+        <!-- Le cheval apparaît en transparence pour évoquer l’accès aux coulisses. -->
+        <div class="racecare-horseback" role="img" aria-label="Un cheval en arrière-plan derrière le texte">
+          <span class="racecare-horseback__light" aria-hidden="true"></span>
+          <span class="racecare-horseback__figure" aria-hidden="true">
             <img src="/media/trotting-horse.png" alt="" width="512" height="512" />
-          </span>
-          <span class="racecare-curtains__frame" aria-hidden="true">
-            <span class="racecare-curtains__curtain racecare-curtains__curtain--left"></span>
-            <span class="racecare-curtains__curtain racecare-curtains__curtain--right"></span>
           </span>
         </div>
       </div>
@@ -412,20 +409,11 @@ import "../styles/race-and-care.css";
     .racecare-intro__head {
       padding-inline: 1rem;
     }
-    .racecare-curtains {
+    .racecare-horseback {
       inset-inline: -0.5rem;
     }
-    .racecare-curtains__frame {
-      inset-inline: 4%;
-    }
-    .racecare-curtains__horse {
+    .racecare-horseback__figure {
       width: min(62%, 15rem);
-    }
-    .racecare-curtains__curtain--left::after {
-      right: 0.65rem;
-    }
-    .racecare-curtains__curtain--right::after {
-      left: 0.65rem;
     }
     .racecare-intro__head {
       grid-template-columns: 1fr;
