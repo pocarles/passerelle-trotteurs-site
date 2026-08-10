@@ -27,43 +27,43 @@ import "../styles/race-and-care.css";
           <p class="eyebrow">Un dispositif national</p>
           <h2 id="racecare-intro-title">Ouvrir les coulisses <span class="accent">de la filière.</span></h2>
         </div>
-        <p class="racecare-intro__lead">
-          Chaque année, les hippodromes français témoignent de leur engagement
-          en faveur de la bientraitance équine en organisant une journée
-          #RaceAndCare. Portée par la Fédération Nationale des Courses
-          Hippiques, l’opération place le bien-être animal au cœur de la filière
-          et rappelle que les chevaux méritent une attention constante, avant,
-          pendant et après leur carrière.
-        </p>
+        <div class="racecare-intro__body">
+          <div class="racecare-intro__copy">
+            <p>
+              Chaque année, les hippodromes français témoignent de leur engagement
+              en faveur de la bientraitance équine en organisant une journée
+              #RaceAndCare. Portée par la Fédération Nationale des Courses
+              Hippiques, l’opération place le bien-être animal au cœur de la filière
+              et rappelle que les chevaux méritent une attention constante, avant,
+              pendant et après leur carrière.
+            </p>
+            <p>
+              Le jour J, l’hippodrome se transforme en véritable espace de
+              découverte. Les coulisses s’ouvrent au public le temps de visites
+              guidées — douches, box vétérinaire, zone d’échauffement — tandis
+              que le speaker donne la parole aux professionnels qui veillent sur
+              les chevaux au quotidien&nbsp;: maréchaux, vétérinaires, lads.
+            </p>
+            <p>
+              De nombreuses animations, pensées pour tous les âges, complètent la
+              journée et diffusent ce message auprès du plus grand nombre.
+            </p>
+            <p>
+              <strong>Voir l’envers du décor.</strong> Des visites et des échanges
+              pour comprendre le quotidien des chevaux de course.
+            </p>
+            <p>
+              <strong>Faire grandir l’attention.</strong> Un rendez-vous ouvert à
+              tous pour faire connaître les acteurs qui prennent soin des chevaux.
+            </p>
+          </div>
+        </div>
         <!-- Le cheval apparaît en transparence pour évoquer l’accès aux coulisses. -->
         <div class="racecare-horseback" role="img" aria-label="Un cheval en arrière-plan derrière le texte">
           <span class="racecare-horseback__light" aria-hidden="true"></span>
           <span class="racecare-horseback__figure" aria-hidden="true">
             <img src="/media/trotting-horse.png" alt="" width="512" height="512" />
           </span>
-        </div>
-      </div>
-      <div class="racecare-intro__body">
-        <div class="racecare-intro__copy">
-          <p>
-            Le jour J, l’hippodrome se transforme en véritable espace de
-            découverte. Les coulisses s’ouvrent au public le temps de visites
-            guidées — douches, box vétérinaire, zone d’échauffement — tandis
-            que le speaker donne la parole aux professionnels qui veillent sur
-            les chevaux au quotidien&nbsp;: maréchaux, vétérinaires, lads.
-          </p>
-          <p>
-            De nombreuses animations, pensées pour tous les âges, complètent la
-            journée et diffusent ce message auprès du plus grand nombre.
-          </p>
-          <p>
-            <strong>Voir l’envers du décor.</strong> Des visites et des échanges
-            pour comprendre le quotidien des chevaux de course.
-          </p>
-          <p>
-            <strong>Faire grandir l’attention.</strong> Un rendez-vous ouvert à
-            tous pour faire connaître les acteurs qui prennent soin des chevaux.
-          </p>
         </div>
       </div>
     </div>
@@ -247,7 +247,7 @@ import "../styles/race-and-care.css";
     isolation: isolate;
   }
   .racecare-intro__heading,
-  .racecare-intro__lead {
+  .racecare-intro__body {
     position: relative;
     z-index: 4;
     width: 100%;
@@ -256,27 +256,11 @@ import "../styles/race-and-care.css";
     text-align: center;
   }
   .racecare-intro__heading h2 {
-    max-width: 13ch;
+    max-width: 22ch;
     margin-inline: auto;
-  }
-  .racecare-intro__lead {
-    margin: 0;
-    padding: 0.55rem 0.8rem;
-    font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: normal;
-    color: var(--ink-soft);
-    text-align: left;
   }
   .racecare-intro__body {
-    display: block;
-    width: calc(100% - (2 * var(--gutter)));
-    max-width: 60rem;
-    margin-inline: auto;
-    padding-inline: 0;
-    padding-top: clamp(2.5rem, 5vw, 4rem);
+    margin: 0;
   }
   .racecare-intro__copy {
     width: 100%;
@@ -284,7 +268,7 @@ import "../styles/race-and-care.css";
   }
   .racecare-intro__copy p {
     color: var(--ink-soft);
-    text-align: left;
+    text-align: justify;
   }
   .racecare-intro__copy p + p {
     margin-top: 1.15rem;
