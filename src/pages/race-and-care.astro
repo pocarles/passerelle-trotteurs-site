@@ -333,6 +333,8 @@ import "../styles/race-and-care.css";
     position: relative;
     z-index: 4;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
   .racecare-intro__heading {
     text-align: center;
@@ -346,6 +348,7 @@ import "../styles/race-and-care.css";
   }
   .racecare-intro__copy {
     width: 100%;
+    min-width: 0;
     max-width: none;
   }
   .racecare-intro__copy p {
@@ -456,6 +459,9 @@ import "../styles/race-and-care.css";
   .racecare-intro__gallery {
     display: flex;
     align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     gap: 1rem;
     margin-top: clamp(2.5rem, 5vw, 4rem);
     padding-bottom: 0.75rem;
