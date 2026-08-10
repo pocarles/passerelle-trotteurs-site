@@ -58,9 +58,8 @@ import "../styles/race-and-care.css";
             </p>
           </div>
           <div
-            class="racecare-intro__gallery racecare-auto-gallery"
-            data-auto-gallery
-            tabindex="0"
+            class="racecare-intro__gallery"
+            role="group"
             aria-label="Photos des acteurs de la filière lors de journées Race and Care"
           >
             <figure class="racecare-story__image">
@@ -194,7 +193,7 @@ import "../styles/race-and-care.css";
           </p>
         </div>
 
-        <div class="racecare-story__gallery racecare-auto-gallery" data-auto-gallery tabindex="0" aria-label="Photos des journées #RaceAndCare">
+        <div class="racecare-story__gallery" role="group" aria-label="Photos des journées #RaceAndCare">
           <figure class="racecare-story__image">
             <img src="/media/race-and-care/racecare-stand-1.jpeg" alt="Le stand Passerelle lors d’une journée #RaceAndCare" width="600" height="338" loading="lazy" />
           </figure>
@@ -214,7 +213,7 @@ import "../styles/race-and-care.css";
 
         <div class="racecare-story__gallery-block">
           <h4 class="racecare-story__gallery-title">Race &amp; Care Enghien 2026</h4>
-          <div class="racecare-story__gallery racecare-story__gallery--enghien racecare-auto-gallery" data-auto-gallery tabindex="0" aria-label="Photos de Race &amp; Care Enghien 2026">
+          <div class="racecare-story__gallery racecare-story__gallery--enghien" role="group" aria-label="Photos de Race &amp; Care Enghien 2026">
             <figure class="racecare-story__image">
               <img src="/media/race-and-care/enghien-2026/enghien-2026-32.jpg" alt="Démonstration équestre à Enghien lors de Race &amp; Care 2026" width="1365" height="2048" loading="lazy" />
             </figure>
@@ -254,61 +253,9 @@ import "../styles/race-and-care.css";
   />
 </Base>
 
-<script>
-  const setupAutoGalleries = () => {
-    const galleries = document.querySelectorAll("[data-auto-gallery]");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    galleries.forEach((gallery) => {
-      let timer;
-      let resumeTimer;
-
-      const stop = () => {
-        window.clearInterval(timer);
-        window.clearTimeout(resumeTimer);
-      };
-
-      const start = () => {
-        stop();
-        if (!reducedMotion.matches) {
-          timer = window.setInterval(() => {
-            if (gallery.scrollWidth <= gallery.clientWidth + 1) return;
-            const firstImage = gallery.querySelector("figure");
-            if (!firstImage) return;
-            const gap = parseFloat(getComputedStyle(gallery).gap) || 0;
-            const step = firstImage.getBoundingClientRect().width + gap;
-            const end = gallery.scrollWidth - gallery.clientWidth;
-            const left = gallery.scrollLeft + step >= end - 2 ? 0 : gallery.scrollLeft + step;
-            gallery.scrollTo({ left, behavior: "smooth" });
-          }, 4500);
-        }
-      };
-
-      const pause = () => {
-        stop();
-        resumeTimer = window.setTimeout(start, 7000);
-      };
-
-      gallery.addEventListener("mouseenter", stop);
-      gallery.addEventListener("mouseleave", start);
-      gallery.addEventListener("focusin", stop);
-      gallery.addEventListener("focusout", start);
-      gallery.addEventListener("pointerdown", pause, { passive: true });
-      reducedMotion.addEventListener("change", start);
-      start();
-    });
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupAutoGalleries, { once: true });
-  } else {
-    setupAutoGalleries();
-  }
-</script>
-
 <style>
   .racecare-intro {
-    padding-top: 0;
+    padding-block: 0;
     border-bottom: 1px solid var(--line);
   }
   .racecare-intro > .wrap {
@@ -324,7 +271,7 @@ import "../styles/race-and-care.css";
     width: calc(100% - (2 * var(--gutter)));
     max-width: 60rem;
     margin-inline: auto;
-    padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
+    padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
     overflow: hidden;
     isolation: isolate;
   }
@@ -452,42 +399,39 @@ import "../styles/race-and-care.css";
     display: block;
   }
   .racecare-story__copy--merged {
-    max-width: 72ch;
+    max-width: min(100%, 82ch);
     margin-inline: auto;
   }
   .racecare-story__gallery,
   .racecare-intro__gallery {
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     width: 100%;
     min-width: 0;
     max-width: 100%;
-    gap: 1rem;
+    gap: clamp(0.8rem, 1.8vw, 1.4rem);
     margin-top: clamp(2.5rem, 5vw, 4rem);
-    padding-bottom: 0.75rem;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: x proximity;
-    scroll-behavior: smooth;
+    padding-bottom: 0;
   }
   .racecare-intro__gallery {
     margin-top: clamp(2rem, 5vw, 3.5rem);
   }
   .racecare-story__gallery .racecare-story__image,
   .racecare-intro__gallery .racecare-story__image {
-    display: flex;
-    flex: 0 0 auto;
-    width: fit-content;
-    height: clamp(18rem, 32vw, 26rem);
+    display: block;
+    width: 100%;
+    height: auto;
     aspect-ratio: auto;
-    scroll-snap-align: start;
   }
   .racecare-story__gallery .racecare-story__image img,
   .racecare-intro__gallery .racecare-story__image img {
-    width: auto;
-    max-width: none;
-    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     object-fit: contain;
+  }
+  .racecare-story__gallery--enghien {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .racecare-story__gallery-block {
     margin-top: clamp(3.5rem, 7vw, 6rem);
@@ -554,7 +498,12 @@ import "../styles/race-and-care.css";
     }
     .racecare-story__gallery .racecare-story__image,
     .racecare-intro__gallery .racecare-story__image {
-      height: min(86vw, 24rem);
+      width: 100%;
+    }
+    .racecare-story__gallery,
+    .racecare-intro__gallery,
+    .racecare-story__gallery--enghien {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .racecare-stories__identity {
       align-items: flex-start;
