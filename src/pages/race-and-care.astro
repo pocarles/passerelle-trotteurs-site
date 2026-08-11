@@ -237,28 +237,28 @@ import "../styles/race-and-care.css";
         <div class="racecare-story__gallery-block">
           <h4 class="racecare-story__gallery-title">Race &amp; Care Enghien 2026</h4>
           <div class="racecare-story__gallery racecare-story__gallery--enghien" role="group" aria-label="Photos de Race &amp; Care Enghien 2026">
-            <figure class="racecare-story__image racecare-story__image--portrait racecare-story__image--mosaic-left">
+            <figure class="racecare-story__image racecare-story__image--portrait">
               <img src="/media/race-and-care/enghien-2026/enghien-2026-32.jpg" alt="Démonstration équestre à Enghien lors de Race &amp; Care 2026" width="1365" height="2048" loading="lazy" />
             </figure>
-            <figure class="racecare-story__image racecare-story__image--landscape racecare-story__image--mosaic-center-top">
-              <img src="/media/race-and-care/enghien-2026/enghien-2026-22.jpg" alt="Cavalière et public à Enghien lors de Race &amp; Care 2026" width="2048" height="1365" loading="lazy" />
-            </figure>
-            <figure class="racecare-story__image racecare-story__image--portrait racecare-story__image--mosaic-right-top">
+            <figure class="racecare-story__image racecare-story__image--portrait">
               <img src="/media/race-and-care/enghien-2026/enghien-2026-24.jpg" alt="Cavalière et cheval noir à Enghien lors de Race &amp; Care 2026" width="1365" height="2048" loading="lazy" />
             </figure>
-            <figure class="racecare-story__image racecare-story__image--landscape racecare-story__image--center-bottom">
-              <img src="/media/race-and-care/enghien-2026/enghien-2026-26.jpg" alt="Cheval et public sur la piste d’Enghien lors de Race &amp; Care 2026" width="2048" height="1365" loading="lazy" />
+            <figure class="racecare-story__image racecare-story__image--landscape">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-22.jpg" alt="Cavalière et public à Enghien lors de Race &amp; Care 2026" width="2048" height="1365" loading="lazy" />
             </figure>
-            <figure class="racecare-story__image racecare-story__image--portrait racecare-story__image--lower-center">
+            <figure class="racecare-story__image racecare-story__image--portrait">
               <img src="/media/race-and-care/enghien-2026/enghien-2026-2.jpg" alt="Démonstration équestre devant le public à Enghien" width="1365" height="2048" loading="lazy" />
             </figure>
-            <figure class="racecare-story__image racecare-story__image--portrait racecare-story__image--lower-right-top">
+            <figure class="racecare-story__image racecare-story__image--portrait">
               <img src="/media/race-and-care/enghien-2026/enghien-2026-14.jpg" alt="Cavalier portant un drapeau à Enghien lors de Race &amp; Care 2026" width="1365" height="2048" loading="lazy" />
             </figure>
-            <figure class="racecare-story__image racecare-story__image--portrait racecare-story__image--lower-right-bottom">
+            <figure class="racecare-story__image racecare-story__image--landscape">
+              <img src="/media/race-and-care/enghien-2026/enghien-2026-26.jpg" alt="Cheval et public sur la piste d’Enghien lors de Race &amp; Care 2026" width="2048" height="1365" loading="lazy" />
+            </figure>
+            <figure class="racecare-story__image racecare-story__image--portrait racecare-story__image--wide-tile">
               <img src="/media/race-and-care/enghien-2026/enghien-2026-20.jpg" alt="Cavalière et cheval sur la piste d’Enghien" width="1365" height="2048" loading="lazy" />
             </figure>
-            <figure class="racecare-story__image racecare-story__image--landscape racecare-story__image--lower-wide">
+            <figure class="racecare-story__image racecare-story__image--landscape">
               <img src="/media/race-and-care/enghien-2026/enghien-2026-11.jpg" alt="Cavalier et cheval devant le public à Enghien" width="2048" height="1365" loading="lazy" />
             </figure>
           </div>
@@ -549,8 +549,6 @@ import "../styles/race-and-care.css";
   .racecare-story__gallery--enghien {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(4, minmax(0, 1fr));
-    aspect-ratio: 4 / 3;
     column-count: initial;
     column-gap: initial;
     gap: clamp(0.55rem, 1vw, 0.8rem);
@@ -560,58 +558,18 @@ import "../styles/race-and-care.css";
     margin: 0;
     break-inside: auto;
   }
-  .racecare-story__gallery--enghien .racecare-story__image--mosaic-left {
-    grid-column: 1;
-    grid-row: 1 / span 2;
+  .racecare-story__gallery--enghien .racecare-story__image--portrait {
+    grid-column: span 1;
   }
-  .racecare-story__gallery--enghien .racecare-story__image--mosaic-center-top {
-    grid-column: 2 / span 2;
-    grid-row: 1 / span 2;
+  .racecare-story__gallery--enghien .racecare-story__image--landscape {
+    grid-column: span 2;
   }
-  .racecare-story__gallery--enghien .racecare-story__image--mosaic-right-top {
-    grid-column: 4;
-    grid-row: 1 / span 2;
+  .racecare-story__gallery--enghien .racecare-story__image--wide-tile {
+    grid-column: span 2;
   }
-  .racecare-story__gallery--enghien .racecare-story__image--center-bottom {
-    grid-column: 2 / span 2;
-    grid-row: 3 / span 2;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--lower-wide {
-    grid-column: 1 / span 2;
-    grid-row: 3 / span 2;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--lower-center {
-    grid-column: 3;
-    grid-row: 3 / span 2;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--lower-right-top {
-    grid-column: 4;
-    grid-row: 3;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--lower-right-bottom {
-    grid-column: 4;
-    grid-row: 4;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--mosaic-left img {
-    object-position: center 56%;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--mosaic-center-top img {
-    object-position: center 58%;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--mosaic-right-top img {
-    object-position: center 58%;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--center-bottom img {
-    object-position: center 56%;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--lower-center img {
-    object-position: center 55%;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--lower-right-top img {
-    object-position: center 62%;
-  }
-  .racecare-story__gallery--enghien .racecare-story__image--lower-right-bottom img {
-    object-position: center 52%;
+  .racecare-story__gallery--enghien .racecare-story__image--wide-tile img {
+    object-fit: contain;
+    background: var(--card);
   }
   .racecare-story__gallery-block {
     margin-top: clamp(0.875rem, 1.75vw, 1.5rem);
