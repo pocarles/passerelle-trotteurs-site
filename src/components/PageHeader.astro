@@ -7,6 +7,7 @@ interface Props {
   lead?: string;
   image?: string;
   imageAlt?: string;
+  video?: string;
   logo?: string;
   logoAlt?: string;
   class?: string;
@@ -19,6 +20,7 @@ const {
   lead,
   image,
   imageAlt = "",
+  video,
   logo,
   logoAlt = "",
   class: className,
@@ -27,9 +29,15 @@ const {
 ---
 
 <header
-  class:list={["ph", image && !background && "ph--split", background && "ph--background", className]}
+  class:list={["ph", (image || video) && !background && "ph--split", background && (image || video) && "ph--background", className]}
 >
-  {background && image && <img class="ph__bg" src={image} alt="" aria-hidden="true" loading="eager" />}
+  {background && video ? (
+    <video class="ph__bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src={video} type="video/mp4" />
+    </video>
+  ) : (
+    background && image && <img class="ph__bg" src={image} alt="" aria-hidden="true" loading="eager" />
+  )}
   <div class="wrap ph__in">
     <div class="ph__copy">
       <p class="eyebrow">{eyebrow}</p>
@@ -151,6 +159,12 @@ const {
     }
     .ph__fig {
       aspect-ratio: 16 / 10;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ph--background video {
+      display: none;
     }
   }
 </style>
