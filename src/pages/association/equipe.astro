@@ -80,10 +80,11 @@ const team = [
     display: grid;
     gap: clamp(4rem, 9vw, 7rem);
   }
-  :global(.team-page-header.ph--background .ph__copy) {
+  :global(.team-page-header.ph--background) .ph__copy {
+    width: 100%;
     max-width: 100%;
   }
-  :global(.team-page-header.ph--background .lead) {
+  :global(.team-page-header.ph--background) .lead {
     max-width: 100%;
   }
   .person {
