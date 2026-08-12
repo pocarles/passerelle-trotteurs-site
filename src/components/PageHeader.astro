@@ -13,6 +13,7 @@ interface Props {
   logo?: string;
   logoAlt?: string;
   class?: string;
+  compactTitle?: boolean;
   background?: boolean;
 }
 const {
@@ -27,12 +28,13 @@ const {
   logo,
   logoAlt = "",
   class: className,
+  compactTitle = false,
   background = false,
 } = Astro.props;
 ---
 
 <header
-  class:list={["ph", (image || video) && !background && "ph--split", background && (image || video) && "ph--background", className]}
+  class:list={["ph", (image || video) && !background && "ph--split", background && (image || video) && "ph--background", compactTitle && "ph--compact-title", className]}
 >
   {background && video ? (
     <video class="ph__bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -54,8 +56,10 @@ const {
         {secondLine ? (
           <>
             <br />
-            {secondLine}{" "}
-            {accent && <span class="accent">{accent}</span>}
+            <span class="ph__second-line">
+              {secondLine}{" "}
+              {accent && <span class="accent">{accent}</span>}
+            </span>
           </>
         ) : (
           accent && <><br /><span class="accent">{accent}</span></>
@@ -153,6 +157,12 @@ const {
   .ph h1 {
     font-size: clamp(2.4rem, 4.6vw, 3.9rem);
   }
+  .ph--compact-title h1 {
+    font-size: clamp(1.9rem, 2.4vw, 2.15rem);
+  }
+  .ph__second-line {
+    white-space: nowrap;
+  }
   .ph .lead {
     margin: 0;
   }
@@ -174,6 +184,12 @@ const {
     }
     .ph__fig {
       aspect-ratio: 16 / 10;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .ph__second-line {
+      white-space: normal;
     }
   }
 
