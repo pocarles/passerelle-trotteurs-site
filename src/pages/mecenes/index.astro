@@ -46,9 +46,6 @@ const routes = [
 
   <section class="section pathways">
     <div class="wrap">
-      <p class="eyebrow">À leurs côtés</p>
-      <h2>Découvrez celles et ceux qui font avancer <span class="accent">la reconversion.</span></h2>
-
       <div class="cards">
         {
           routes.map((route) => (
@@ -82,17 +79,13 @@ const routes = [
 </Base>
 
 <style>
-  .pathways h2 {
-    max-width: 22ch;
-  }
   .pathways {
-    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    padding-block: clamp(2.5rem, 5vw, 4rem);
   }
   .cards {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(1.5rem, 4vw, 3rem);
-    margin-top: clamp(2rem, 4vw, 3rem);
   }
   .card {
     display: flex;
