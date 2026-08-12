@@ -39,8 +39,9 @@ const routes = [
     secondLine="qui font avancer"
     accent="la reconversion."
     compactTitle
+    class="mecenes-header"
     lead="Institutions, hippodromes, entreprises, médias et ambassadeurs : toutes et tous contribuent à offrir un avenir aux Trotteurs Français après les courses."
-    video="/media/mecenes-horse-racing-preparation.mp4"
+    video="/media/mecenes-trotteurs-atteles.mp4"
     background
   />
 
@@ -79,6 +80,10 @@ const routes = [
 </Base>
 
 <style>
+  :global(.mecenes-header.ph--compact-title h1) {
+    font-size: clamp(2.3rem, 3.4vw, 3.25rem);
+  }
+
   .pathways {
     padding-block: clamp(2.5rem, 5vw, 4rem);
   }
