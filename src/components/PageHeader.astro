@@ -2,6 +2,8 @@
 interface Props {
   eyebrow: string;
   title: string;
+  /** Optional second line before the italic accent. */
+  secondLine?: string;
   /** Rendered in italic moss after the title — the design's accent clause. */
   accent?: string;
   lead?: string;
@@ -16,6 +18,7 @@ interface Props {
 const {
   eyebrow,
   title,
+  secondLine,
   accent,
   lead,
   image,
@@ -48,7 +51,15 @@ const {
       )}
       <h1>
         {title}
-        {accent && <><br /><span class="accent">{accent}</span></>}
+        {secondLine ? (
+          <>
+            <br />
+            {secondLine}{" "}
+            {accent && <span class="accent">{accent}</span>}
+          </>
+        ) : (
+          accent && <><br /><span class="accent">{accent}</span></>
+        )}
       </h1>
       <hr class="rule" />
       {lead && <p class="lead">{lead}</p>}
