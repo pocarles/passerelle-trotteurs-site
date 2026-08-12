@@ -4,88 +4,67 @@ import PageHeader from "../../components/PageHeader.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import Icon from "../../components/Icon.astro";
 import { meceneGroupes, ambassadeurs } from "../../data/mecenes";
-import { links } from "../../data/site";
 
 const total = meceneGroupes.reduce((n, g) => n + g.membres.length, 0);
+
+const routes = [
+  {
+    eyebrow: "Nos mécènes",
+    title: "Celles et ceux qui rendent notre action possible.",
+    body: `${total} institutions, hippodromes, entreprises et médias accompagnent Passerelle au quotidien.`,
+    href: "/mecenes/nos-mecenes",
+    label: "Découvrir les mécènes",
+    image: "/media/mecenes-hero.jpg",
+    alt: "Le public et les professionnels réunis lors d’une journée sur un hippodrome",
+  },
+  {
+    eyebrow: "Nos ambassadeurs",
+    title: "Des histoires qui donnent un avenir aux trotteurs.",
+    body: "Ils vivent la reconversion au quotidien et font connaître les multiples vies possibles après les courses.",
+    href: "/mecenes/nos-ambassadeurs",
+    label: "Découvrir nos ambassadeurs",
+    image: "/media/ambassadeurs/darling-1.jpg",
+    alt: "Jade et Darling des Mares, ambassadrices Passerelle",
+  },
+];
 ---
 
 <Base
-  title="La reconversion des trotteurs : toute la filière est concernée — Association Passerelle"
-  description="Institutions de la filière, hippodromes, entreprises et ambassadeurs : celles et ceux qui soutiennent la reconversion des Trotteurs Français aux côtés de Passerelle."
+  title="Ils nous soutiennent — Association Passerelle"
+  description="Découvrez les mécènes et les ambassadeurs qui accompagnent Passerelle et la reconversion des Trotteurs Français."
 >
   <PageHeader
     eyebrow="Ils nous soutiennent"
-    title="La reconversion des trotteurs :"
-    accent="toute la filière est concernée"
-    lead={`${total} institutions, hippodromes, entreprises et médias accompagnent Passerelle. Un immense merci à eux.`}
+    title="Autour de chaque trotteur,"
+    accent="une chaîne de soutien."
+    lead="Institutions, hippodromes, entreprises, médias et ambassadeurs : toutes et tous contribuent à offrir un avenir aux Trotteurs Français après les courses."
     image="/media/mecenes-hero.jpg"
     imageAlt="Le public et les professionnels réunis lors d’une journée sur un hippodrome"
   />
 
-  {
-    meceneGroupes.map((groupe) => (
-      <section class="section grp">
-        <div class="wrap">
-          <h2 class="grp__title">{groupe.titre}</h2>
-          <ul class="wall">
-            {groupe.membres.map((m) => (
-              <li>
-                {m.url ? (
-                  <a href={m.url} target="_blank" rel="noreferrer">
-                    <img src={m.logo} alt={m.nom} loading="lazy" />
-                    <span>
-                      {m.nom}
-                      <Icon name="arrowUpRight" class="wall__ico" />
-                    </span>
-                  </a>
-                ) : (
-                  <div>
-                    <img src={m.logo} alt={m.nom} loading="lazy" />
-                    <span>{m.nom}</span>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    ))
-  }
-
-  <section class="section amb">
+  <section class="section pathways">
     <div class="wrap">
-      <p class="eyebrow eyebrow--light">Nos ambassadeurs</p>
-      <h2 class="amb__title">
-        Des binômes qui racontent{" "}
-        <span class="accent--light">ce que devient un trotteur.</span>
-      </h2>
-      <p class="amb__lead">
-        Nos ambassadeurs vivent la reconversion au quotidien et la font connaître
-        bien au-delà du monde des courses.
-      </p>
+      <p class="eyebrow">À leurs côtés</p>
+      <h2>Découvrez celles et ceux qui font avancer <span class="accent">la reconversion.</span></h2>
 
-      <ul class="amb__list">
+      <div class="cards">
         {
-          ambassadeurs.map((a) => (
-            <li>
-              <a href={`/mecenes/${a.slug}`}>
-                <div class="amb__media">
-                  <img src={a.photo} alt={`${a.nom}`} loading="lazy" />
-                </div>
-                <div class="amb__copy">
-                  <p class="amb__role">{a.role}</p>
-                  <h3>{a.nom}</h3>
-                  <p>{a.resume}</p>
-                  <span class="tlink tlink--light">
-                    Lire leur histoire
-                    <Icon name="arrow" />
-                  </span>
-                </div>
-              </a>
-            </li>
+          routes.map((route) => (
+            <article class="card">
+              <img class="card__media" src={route.image} alt={route.alt} loading="lazy" />
+              <div class="card__body">
+                <p class="eyebrow">{route.eyebrow}</p>
+                <h3>{route.title}</h3>
+                <p>{route.body}</p>
+                <a class="tlink" href={route.href}>
+                  {route.label}
+                  <Icon name="arrow" />
+                </a>
+              </div>
+            </article>
           ))
         }
-      </ul>
+      </div>
     </div>
   </section>
 
@@ -100,138 +79,53 @@ const total = meceneGroupes.reduce((n, g) => n + g.membres.length, 0);
 </Base>
 
 <style>
-  .grp {
-    padding-block: clamp(2.5rem, 4vw, 3.5rem);
+  .pathways h2 {
+    max-width: 22ch;
   }
-  .grp + .grp {
-    padding-top: 0;
-  }
-  .grp__title {
-    margin-bottom: 2rem;
-    font-family: var(--sans);
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--moss);
-  }
-
-  /* Self-contained tiles: an incomplete last row simply has fewer of them,
-     with no empty cells left over. */
-  .wall {
+  .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: clamp(0.7rem, 1.4vw, 1rem);
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
   }
-  .wall a,
-  .wall div {
+  .card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
-    height: 100%;
-    padding: 1.8rem 1.2rem 1.5rem;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    text-align: center;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  .wall a:hover {
-    background: var(--cream-warm);
-    border-color: var(--line-strong);
-  }
-  .wall img {
-    width: 100%;
-    max-width: 140px;
-    height: 62px;
-    object-fit: contain;
-  }
-  .wall span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    color: var(--ink-soft);
-    font-size: 0.8rem;
-    line-height: 1.35;
-  }
-  .wall__ico {
-    width: 12px;
-    height: 12px;
-    flex: 0 0 auto;
-    color: var(--moss);
-  }
-
-  .amb {
-    background: var(--forest-deep);
-    color: #fff;
-  }
-  .amb__title {
-    width: 100%;
-    max-width: none;
-    text-wrap: pretty;
-    color: #fff;
-  }
-  .amb__lead {
-    margin: 1.4rem 0 3rem;
-    max-width: 52ch;
-    color: rgba(255, 255, 255, 0.78);
-  }
-  .amb__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .amb__list a {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: clamp(1.5rem, 4vw, 3rem);
-    align-items: center;
-    padding: clamp(1.2rem, 2.5vw, 1.8rem);
-    border: 1px solid var(--line-light);
-    border-radius: var(--radius-lg);
-    transition: background 0.2s ease;
-  }
-  .amb__list a:hover {
-    background: rgba(255, 255, 255, 0.05);
-  }
-  .amb__media {
-    aspect-ratio: 4 / 3;
-    border-radius: var(--radius);
     overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--card);
   }
-  .amb__media img {
+  .card__media {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
   }
-  .amb__role {
-    margin: 0 0 0.6rem;
-    color: var(--sage);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+  .card:nth-child(2) .card__media {
+    object-position: center 38%;
   }
-  .amb__copy h3 {
-    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  .card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(1.5rem, 3vw, 2.2rem);
   }
-  .amb__copy p {
-    margin: 0.9rem 0 1.5rem;
-    max-width: 46ch;
-    color: rgba(255, 255, 255, 0.78);
+  .card__body .eyebrow {
+    margin-bottom: 0.8rem;
+  }
+  .card h3 {
+    max-width: 18ch;
+    font-size: clamp(1.7rem, 3vw, 2.35rem);
+  }
+  .card__body > p:not(.eyebrow) {
+    flex: 1;
+    margin: 1rem 0 1.6rem;
+    color: var(--ink-soft);
   }
 
   @media (max-width: 760px) {
-    .amb__title .accent--light {
-      display: block;
-    }
-
-    .amb__list a {
+    .cards {
       grid-template-columns: 1fr;
     }
   }

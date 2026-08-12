@@ -1,0 +1,135 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { ambassadeurs } from "../../data/mecenes";
+---
+
+<Base
+  title="Nos ambassadeurs — Association Passerelle"
+  description="Les ambassadeurs Passerelle racontent la reconversion des Trotteurs Français au quotidien."
+>
+  <PageHeader
+    eyebrow="Ils nous soutiennent"
+    title="Nos ambassadeurs,"
+    accent="la reconversion vécue au quotidien."
+    lead="Ils font connaître les multiples vies possibles après les courses, à travers les liens uniques qu’ils tissent avec leur trotteur."
+    image="/media/ambassadeurs/darling-1.jpg"
+    imageAlt="Jade et Darling des Mares, ambassadrices Passerelle"
+  />
+
+  <section class="section amb">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--light">Des histoires à partager</p>
+      <h2>
+        Des binômes qui racontent <span class="accent--light">ce que devient un trotteur.</span>
+      </h2>
+      <p class="amb__lead">
+        Nos ambassadeurs vivent la reconversion au quotidien et la font connaître bien au-delà du monde des courses.
+      </p>
+
+      <ul class="amb__list">
+        {
+          ambassadeurs.map((a) => (
+            <li>
+              <a href={`/mecenes/${a.slug}`}>
+                <div class="amb__media">
+                  <img src={a.photo} alt={a.nom} loading="lazy" />
+                </div>
+                <div class="amb__copy">
+                  <p class="amb__role">{a.role}</p>
+                  <h3>{a.nom}</h3>
+                  <p>{a.resume}</p>
+                  <span class="tlink tlink--light">
+                    Lire leur histoire
+                    <Icon name="arrow" />
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Vous souhaitez raconter l’histoire de votre trotteur&nbsp;?"
+    accent="Parlons-en."
+    label="Nous contacter"
+    href="/contact"
+    icon="users"
+  />
+</Base>
+
+<style>
+  .amb {
+    background: var(--forest-deep);
+    color: #fff;
+  }
+  .amb h2 {
+    width: 100%;
+    max-width: none;
+    color: #fff;
+    text-wrap: pretty;
+  }
+  .amb__lead {
+    max-width: 52ch;
+    margin: 1.4rem 0 3rem;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .amb__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .amb__list a {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.2rem, 2.5vw, 1.8rem);
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius-lg);
+    transition: background 0.2s ease;
+  }
+  .amb__list a:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .amb__media {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+  }
+  .amb__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .amb__role {
+    margin: 0 0 0.6rem;
+    color: var(--sage);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .amb__copy h3 {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  }
+  .amb__copy > p:not(.amb__role) {
+    max-width: 46ch;
+    margin: 0.9rem 0 1.5rem;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  @media (max-width: 760px) {
+    .amb h2 .accent--light {
+      display: block;
+    }
+    .amb__list a {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

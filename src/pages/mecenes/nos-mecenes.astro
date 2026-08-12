@@ -1,0 +1,127 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { meceneGroupes } from "../../data/mecenes";
+
+const total = meceneGroupes.reduce((n, g) => n + g.membres.length, 0);
+---
+
+<Base
+  title="Nos mécènes — Association Passerelle"
+  description="Institutions, hippodromes, entreprises et médias qui soutiennent la reconversion des Trotteurs Français aux côtés de Passerelle."
+>
+  <PageHeader
+    eyebrow="Ils nous soutiennent"
+    title="Nos mécènes,"
+    accent="des soutiens essentiels."
+    lead={`${total} institutions, hippodromes, entreprises et médias accompagnent Passerelle. Un immense merci à eux.`}
+    image="/media/mecenes-hero.jpg"
+    imageAlt="Le public et les professionnels réunis lors d’une journée sur un hippodrome"
+  />
+
+  {
+    meceneGroupes.map((groupe) => (
+      <section class="section grp">
+        <div class="wrap">
+          <h2 class="grp__title">{groupe.titre}</h2>
+          <ul class="wall">
+            {groupe.membres.map((m) => (
+              <li>
+                {m.url ? (
+                  <a href={m.url} target="_blank" rel="noreferrer">
+                    <img src={m.logo} alt={m.nom} loading="lazy" />
+                    <span>
+                      {m.nom}
+                      <Icon name="arrowUpRight" class="wall__ico" />
+                    </span>
+                  </a>
+                ) : (
+                  <div>
+                    <img src={m.logo} alt={m.nom} loading="lazy" />
+                    <span>{m.nom}</span>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <CtaBand
+    text="Votre entreprise souhaite soutenir la reconversion&nbsp;?"
+    accent="Parlons-en."
+    label="Nous contacter"
+    href="/contact"
+    icon="users"
+    note="Le mécénat d’entreprise ouvre droit à une réduction d’impôt de 60 % du montant du don."
+  />
+</Base>
+
+<style>
+  .grp {
+    padding-block: clamp(2.5rem, 4vw, 3.5rem);
+  }
+  .grp + .grp {
+    padding-top: 0;
+  }
+  .grp__title {
+    margin-bottom: 2rem;
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moss);
+  }
+  .wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: clamp(0.7rem, 1.4vw, 1rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .wall a,
+  .wall div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.8rem 1.2rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--card);
+    text-align: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .wall a:hover {
+    border-color: var(--line-strong);
+    background: var(--cream-warm);
+  }
+  .wall img {
+    width: 100%;
+    max-width: 140px;
+    height: 62px;
+    object-fit: contain;
+  }
+  .wall span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+  .wall__ico {
+    width: 12px;
+    height: 12px;
+    flex: 0 0 auto;
+    color: var(--moss);
+  }
+</style>
