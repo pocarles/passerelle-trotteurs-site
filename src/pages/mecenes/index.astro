@@ -69,18 +69,22 @@ const routes = [
   </section>
 
   <CtaBand
-    text="Votre entreprise souhaite soutenir la reconversion&nbsp;?"
+    text="Votre entreprise souhaite soutenir la reconversion des trotteurs ?"
     accent="Parlons-en."
     label="Nous contacter"
     href="/contact"
     icon="users"
     note="Le mécénat d’entreprise ouvre droit à une réduction d’impôt de 60 % du montant du don."
+    className="cta-sec--compact"
   />
 </Base>
 
 <style>
   .pathways h2 {
     max-width: 22ch;
+  }
+  .pathways {
+    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
   }
   .cards {
     display: grid;
