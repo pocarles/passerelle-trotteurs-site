@@ -44,8 +44,9 @@ const team = [
     eyebrow="L’association"
     title="L’équipe Passerelle,"
     accent="un même engagement."
-    lead="L’équipe de Passerelle rassemble des profils complémentaires, réunis par une même conviction : chaque cheval mérite une attention constante et un avenir à la hauteur de ce qu’il a donné. Son expérience de terrain et sa connaissance de la filière équine comme du monde des courses lui permettent d’agir au plus près des réalités, aux côtés des propriétaires, éleveurs, entraîneurs et professionnels qui accompagnent les chevaux au quotidien. De la prévention à la reconversion, de la protection au suivi des placements, l’équipe œuvre pour le bien-être équin avant, pendant et après les courses."
+    lead="L’équipe de Passerelle rassemble des profils complémentaires, réunis par une même conviction : chaque cheval mérite une attention constante et un avenir à la hauteur de ce qu’il a donné. Son expérience de terrain et sa connaissance de la filière équine comme du monde des courses lui permettent d’agir au plus près des réalités, aux côtés des propriétaires, éleveurs, entraîneurs et professionnels qui accompagnent les chevaux au quotidien. De la prévention à la reconversion, de la protection au suivi des placements, l’équipe œuvre pour le bien-être équin après les courses."
     video="/media/team/horse-pasture-92852.mp4"
+    class="team-page-header"
     background
   />
 
@@ -78,6 +79,12 @@ const team = [
   .team {
     display: grid;
     gap: clamp(4rem, 9vw, 7rem);
+  }
+  :global(.team-page-header.ph--background .ph__copy) {
+    max-width: min(100%, 76rem);
+  }
+  :global(.team-page-header.ph--background .lead) {
+    max-width: 78ch;
   }
   .person {
     display: grid;
