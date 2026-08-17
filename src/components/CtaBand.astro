@@ -9,6 +9,7 @@ interface Props {
   external?: boolean;
   note?: string;
   icon?: string;
+  iconImage?: string;
   className?: string;
 }
 const {
@@ -19,6 +20,7 @@ const {
   external = false,
   note,
   icon = "heart",
+  iconImage,
   className,
 } = Astro.props;
 ---
@@ -26,7 +28,9 @@ const {
 <section class={`cta-sec ${className ?? ""}`}>
   <div class="wrap">
     <div class="cta">
-      <span class="badge cta__badge"><Icon name={icon} /></span>
+      <span class="badge cta__badge">
+        {iconImage ? <img class="cta__badge-image" src={iconImage} alt="" /> : <Icon name={icon} />}
+      </span>
       <p class="cta__text">
         {text}{accent && <> <span class="accent">{accent}</span></>}
       </p>
@@ -72,6 +76,13 @@ const {
   .cta__badge {
     background: var(--sage);
     color: var(--forest-deep);
+  }
+  .cta__badge-image {
+    display: block;
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
   }
   .cta__text {
     flex: 1;
