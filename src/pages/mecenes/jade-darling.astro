@@ -28,16 +28,16 @@ const photos = [
 
       <header class="story__head">
         <p class="eyebrow">{a.role}</p>
-        <h1>Jade & <span class="accent">Darling des Mares</span></h1>
+        <h1 class="story__title">Jade & <span class="accent">Darling des Mares</span></h1>
         <hr class="rule" />
         <p class="lead">
           Darling et Jade, c’est l’évolution conjointe de deux êtres qui se sont
           appris l’un l’autre. Une preuve que la persévérance et la patience
           font des merveilles.
         </p>
-        <a class="tlink" href={a.instagram} target="_blank" rel="noreferrer">
-          Suivre leurs aventures
-          <Icon name="arrowUpRight" />
+        <a class="story__instagram" href={a.instagram} target="_blank" rel="noreferrer">
+          <Icon name="instagram" />
+          <span>Suivre leurs aventures</span>
         </a>
       </header>
 
@@ -153,13 +153,40 @@ const photos = [
     transform: rotate(180deg);
   }
   .story__head {
-    max-width: 46ch;
+    max-width: none;
   }
   .story__head h1 {
     font-size: clamp(2.2rem, 4.4vw, 3.6rem);
   }
+  .story__title {
+    white-space: nowrap;
+  }
   .story__head .lead {
     margin: 0 0 1.8rem;
+  }
+  .story__instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.05rem;
+    border-radius: 999px;
+    background: var(--sage);
+    color: var(--forest-deep);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .story__instagram:hover {
+    background: #a6c879;
+    transform: translateY(-1px);
+  }
+  .story__instagram :global(svg) {
+    width: 1rem;
+    height: 1rem;
   }
 
   .story__hero {
@@ -201,6 +228,9 @@ const photos = [
   }
 
   @media (max-width: 900px) {
+    .story__title {
+      white-space: normal;
+    }
     .story__body {
       grid-template-columns: 1fr;
     }
