@@ -20,31 +20,34 @@ const photos = [
   description="L’histoire de Jade et de Darling des Mares, trotteuse réformée : sept ans d’apprentissage mutuel, du premier coup de cœur à l’endurance en licol."
 >
   <article class="story">
-    <div class="wrap">
-      <a class="tlink back" href="/mecenes/nos-ambassadeurs">
-        <Icon name="arrow" class="back__ico" />
-        Nos ambassadeurs
-      </a>
-
-      <header class="story__head">
-        <p class="eyebrow">{a.role}</p>
-        <h1 class="story__title">Jade & <span class="accent">Darling des Mares</span></h1>
-        <hr class="rule" />
-        <p class="lead">
-          Darling et Jade, c’est l’évolution conjointe de deux êtres qui se sont
-          appris l’un l’autre. Une preuve que la persévérance et la patience
-          font des merveilles.
-        </p>
-        <a class="story__instagram" href={a.instagram} target="_blank" rel="noreferrer">
-          <Icon name="instagram" />
-          <span>Suivre leurs aventures</span>
+    <header class="story__head">
+      <video class="story__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="/media/ambassadeurs/jade-darling-drone.mp4" type="video/mp4" />
+      </video>
+      <div class="wrap story__head-in">
+        <a class="tlink back" href="/mecenes/nos-ambassadeurs">
+          <Icon name="arrow" class="back__ico" />
+          Nos ambassadeurs
         </a>
-      </header>
 
-      <figure class="story__hero">
-        <img src="/media/ambassadeurs/darling-1.jpg" alt="Jade et Darling des Mares" loading="eager" />
-      </figure>
+        <div class="story__copy">
+          <p class="eyebrow">{a.role}</p>
+          <h1 class="story__title">Jade & <span class="accent">Darling des Mares</span></h1>
+          <hr class="rule" />
+          <p class="lead">
+            Darling et Jade, c’est l’évolution conjointe de deux êtres qui se sont
+            appris l’un l’autre. Une preuve que la persévérance et la patience
+            font des merveilles.
+          </p>
+          <a class="story__instagram" href={a.instagram} target="_blank" rel="noreferrer">
+            <Icon name="instagram" />
+            <span>Suivre leurs aventures</span>
+          </a>
+        </div>
+      </div>
+    </header>
 
+    <div class="wrap">
       <div class="story__body">
         <Prose>
           <h2>Le mot de l’ambassadrice</h2>
@@ -145,27 +148,65 @@ const photos = [
 
 <style>
   .story {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .story__head {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+    background: var(--forest-deep);
+    color: #fff;
+  }
+  .story__head::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(11, 35, 22, 0.88), rgba(11, 35, 22, 0.45));
+  }
+  .story__video {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .story__head-in {
+    position: relative;
+    z-index: 2;
   }
   .back {
     margin-bottom: 2.5rem;
+    color: var(--sage);
   }
   .back__ico {
     transform: rotate(180deg);
   }
-  .story__head {
+  .story__copy {
     max-width: none;
   }
-  .story__head h1 {
+  .story__copy h1 {
     font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+    color: #fff;
   }
   .story__title {
     white-space: nowrap;
   }
-  .story__head .lead {
+  .story__copy .eyebrow,
+  .story__copy .accent {
+    color: var(--sage);
+  }
+  .story__copy .rule {
+    background: var(--sage);
+  }
+  .story__copy .lead {
     width: 100%;
     max-width: none;
     margin: 0 0 1.8rem;
+    color: rgba(255, 255, 255, 0.86);
   }
   .story__instagram {
     display: inline-flex;
@@ -190,19 +231,6 @@ const photos = [
   .story__instagram :global(svg) {
     width: 1rem;
     height: 1rem;
-  }
-
-  .story__hero {
-    margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    aspect-ratio: 3 / 2;
-  }
-  .story__hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
   }
 
   .story__body {
