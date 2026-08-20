@@ -179,71 +179,80 @@ export const network = [
   ["SOS Cheval", "Puy-de-Dôme"],
 ] as const;
 
-/** Conditions and commitments from the network accreditation brief. */
+/** A concise, web-first summary of the network accreditation requirements. */
 export const networkConditions = [
   {
+    number: "01",
     title: "Connaissance du Trotteur Français",
+    summary:
+      "Une expérience concrète de la reconversion, des soins adaptés et une bonne connaissance de la filière courses.",
     items: [
-      "Justifier d'une expérience de la reconversion : avoir déjà reconverti des trotteurs réformés en chevaux de loisir, de club ou de sport, et pouvoir fournir des lettres de recommandation de cavaliers ayant acheté des chevaux.",
-      "Justifier d'une expérience dans les soins apportés aux trotteurs : identifier les pathologies courantes, appliquer un protocole adapté, soigner les pathologies ou blessures bénignes et fournir une alimentation adaptée. Une lettre de recommandation du vétérinaire qui suit la structure peut être demandée.",
-      "Avoir une connaissance de la filière courses, du sport hippique et de la vie d'un trotteur pendant sa carrière.",
-      "Soutenir le monde des courses hippiques ou, à défaut, ne pas porter préjudice à son image dans ses actions, communications ou supports.",
+      "Avoir déjà reconverti des trotteurs et pouvoir présenter des recommandations d'anciens acquéreurs.",
+      "Connaître les pathologies courantes, les soins, l'alimentation et les protocoles adaptés aux trotteurs ; une recommandation vétérinaire peut être demandée.",
+      "Comprendre le monde des courses et respecter son image dans ses actions et communications.",
     ],
   },
   {
+    number: "02",
     title: "Qualité des infrastructures",
+    summary:
+      "Des installations pensées pour accueillir, travailler et laisser vivre les chevaux en sécurité.",
     items: [
-      "Disposer de boxes sécurisés et entretenus quotidiennement pour l'accueil des chevaux réformés.",
-      "Disposer d'espaces de travail avec des sols adaptés : carrière ou manège, rond de longe et chemins de balade.",
-      "Disposer d'espaces de détente et de liberté sécurisés : paddocks en sable ou en herbe.",
+      "Proposer des boxes sécurisés et entretenus au quotidien.",
+      "Disposer de sols adaptés pour le travail : carrière ou manège, rond de longe et chemins de balade.",
+      "Offrir des paddocks sécurisés, en sable ou en herbe, pour la détente et la liberté.",
     ],
   },
   {
+    number: "03",
     title: "Modèle économique viable",
+    summary:
+      "La reconversion doit reposer sur une organisation pérenne, au-delà de la seule activité de placement.",
     items: [
-      "La reconversion des trotteurs est une activité peu lucrative. Justifier d'une activité annexe : écurie de propriétaires, centre équestre ou activité sans lien avec les chevaux.",
+      "Justifier d'une activité annexe : écurie de propriétaires, centre équestre ou activité hors secteur équin.",
     ],
   },
 ] as const;
 
 export const networkCommitments = [
   {
-    title: "Bien-être du cheval : pour une reconversion sérieuse et aboutie",
+    title: "Bien-être du cheval : une reconversion sérieuse et aboutie",
+    summary:
+      "Chaque cheval est accueilli, rééduqué et confié à un propriétaire adapté à ses besoins.",
     items: [
-      "Offrir à chaque cheval un cadre de vie sain et sécurisé et une activité adaptée à son état physique et mental, à son énergie et à son caractère.",
-      "Fournir chaque jour une ration adaptée, de l'eau potable à volonté et les soins nécessaires : vaccins, vermifuge, parage et/ou ferrure, soins dentaires et traitement de la douleur.",
-      "Conserver chaque cheval placé par Passerelle au minimum un mois. Avant de le proposer à la vente, il doit avoir acquis les bases de l'équitation classique et suivi un processus de désensibilisation et de rééducation adapté aux trotteurs réformés. Pour un cheval en convalescence, le délai dépend de sa remise en forme.",
-      "Rechercher le meilleur acquéreur pour chaque cheval reconverti, en tenant compte du niveau d'équitation du cavalier, de sa capacité financière et de l'environnement qu'il peut offrir au cheval.",
+      "Garantir un cadre de vie sain et sécurisé, une activité adaptée, une ration quotidienne, de l'eau à volonté et les soins nécessaires.",
+      "Conserver le cheval au minimum un mois avant la vente, le temps d'acquérir les bases de l'équitation classique et de suivre une rééducation adaptée. En convalescence, le délai dépend de sa remise en forme.",
+      "Choisir l'acquéreur en fonction de son niveau, de ses moyens et de l'environnement qu'il peut offrir au cheval.",
     ],
   },
   {
     title: "Cas spécifique des centres équestres",
-    intro: "Les trotteurs placés par Passerelle peuvent avoir une activité d'enseignement : une fois reconvertis, ils peuvent devenir des maîtres d'école polyvalents.",
+    summary:
+      "Les chevaux reconvertis peuvent enseigner, à condition que leur qualité de vie reste prioritaire.",
     items: [
-      "Adopter une gestion responsable et éthique de la cavalerie ; la charge de travail quotidienne doit rester raisonnable (trois heures de cours par jour au maximum les jours de grande affluence).",
-      "Préserver la vie sociale des chevaux en organisant quotidiennement des sorties au paddock avec des congénères.",
-      "Anticiper la retraite du cheval : le proposer à la vente entre sa treizième et sa quatorzième année à des particuliers afin qu'il finisse sa vie comme cheval de famille.",
-      "Organiser la cession et le suivi comme pour tout cheval pris en charge par une structure de reconversion. Passerelle accompagne la structure dans ces étapes, notamment lors du renouvellement de sa cavalerie.",
+      "Limiter la charge de travail à trois heures de cours par jour lors des journées les plus chargées.",
+      "Préserver la vie sociale avec des sorties quotidiennes au paddock, avec des congénères.",
+      "Anticiper la retraite : proposer le cheval à la vente entre 13 et 14 ans, avec le même suivi que pour toute reconversion et l'accompagnement de Passerelle.",
     ],
   },
   {
-    title: "Réactivité et rigueur administrative pour une bonne traçabilité",
+    title: "Traçabilité et protection à vie",
+    summary:
+      "Chaque étape est déclarée, suivie et encadrée par des documents qui protègent durablement le cheval.",
     items: [
-      "Tenir un registre d'élevage recensant les mouvements d'équidés, les interventions et les soins courants réalisés sur le cheptel.",
-      "Déclarer les lieux de détention dont la structure est responsable. À partir de trois équidés, déclarer également un vétérinaire sanitaire.",
-      "Veiller à ce que tout acheteur particulier possède le certificat d'engagement et de connaissance avant l'acquisition du cheval.",
-      "Soumettre les trotteurs réformés accueillis et placés par Passerelle à la procédure de restriction d'exploitation réalisée en partenariat avec la SETF, qui interdit de recourir dans toute l'UET. À la réception du cheval, transmettre les livrets signalétiques (7 pages), les attestations de propriété et l'attestation d'exploitation limitée.",
-      "Soumettre les trotteurs accueillis à la protection sous contrat Passerelle ou contrat équivalent validé par Passerelle : interdiction d'abattage et de consommation humaine, d'expérimentation animale, de location pour les saisons de chasse à courre, de reproduction en race Trotteur Français et de recours aux juments comme mères porteuses.",
-      "Vendre chaque trotteur reconverti avec le contrat fourni par Passerelle ou un contrat équivalent validé par l'association, puis transmettre une copie du contrat signé et les coordonnées du nouveau propriétaire.",
-      "Transmettre chaque mois à Passerelle la liste des trotteurs accueillis et leur destination après revente, qu'ils aient été placés par Passerelle ou non.",
-      "Devenir membre de l'Association Passerelle, moyennant une cotisation annuelle de 20 €.",
+      "Tenir un registre d'élevage, déclarer les lieux de détention et, dès trois équidés, un vétérinaire sanitaire.",
+      "Vérifier le certificat d'engagement de l'acquéreur et appliquer la restriction d'exploitation avec la SETF. À l'arrivée du cheval, transmettre ses livrets, attestations de propriété et d'exploitation limitée.",
+      "Vendre sous contrat Passerelle — ou équivalent validé — et protéger le cheval de l'abattage, de la consommation, de l'expérimentation, de la chasse à courre, de la reproduction et de la gestation pour autrui.",
+      "Envoyer chaque mois la liste des chevaux accueillis et leur destination après revente ; devenir membre de l'association (cotisation annuelle de 20 €).",
     ],
   },
   {
-    title: "Transparence : pour une prise en charge et une communication adaptées",
+    title: "Transparence et communication",
+    summary:
+      "Passerelle reste informée afin d'accompagner au mieux chaque cheval et de partager son évolution.",
     items: [
-      "Informer Passerelle dès que l'entourage d'un cheval contacte la structure au sujet de soins importants afin de définir ensemble le protocole et la répartition de la prise en charge.",
-      "Donner des nouvelles de chaque cheval placé par Passerelle à son arrivée puis tout au long de la reconversion ou de la convalescence ; transmettre régulièrement des photos et vidéos partageables avec son ancien entourage et sur les réseaux sociaux.",
+      "Prévenir Passerelle lors de soins importants afin de définir ensemble le protocole et la prise en charge.",
+      "Donner des nouvelles dès l'arrivée puis tout au long de la reconversion ou de la convalescence, avec des photos et vidéos partageables.",
     ],
   },
 ] as const;

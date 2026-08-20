@@ -2,9 +2,7 @@
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import CtaBand from "../components/CtaBand.astro";
-import Icon from "../components/Icon.astro";
 import {
-  links,
   network,
   networkCommitments,
   networkConditions,
@@ -27,25 +25,41 @@ import {
 
   <section class="network-entry">
     <div class="wrap">
-      <div class="network-entry__document">
-        <div>
-          <p class="eyebrow">Avant de rejoindre le réseau</p>
-          <h2>Consultez le <span class="accent">cahier des charges.</span></h2>
-        </div>
-        <a class="tlink" href={links.accreditation} target="_blank" rel="noreferrer">
-          Lire le cahier des charges
-          <Icon name="arrowUpRight" />
-        </a>
+      <div class="network-entry__intro">
+        <p class="eyebrow">Rejoindre le réseau Passerelle</p>
+        <h2>
+          Les critères et les engagements,
+          <span class="accent"> en toute transparence.</span>
+        </h2>
+        <p class="lead">
+          Pour devenir une structure accréditée, vous devez garantir une
+          reconversion responsable, protectrice et durable pour chaque Trotteur
+          Français accueilli.
+        </p>
       </div>
+      <nav class="network-entry__steps" aria-label="Découvrir le référencement">
+        <a href="#conditions">
+          <span>01</span>
+          <strong>Les conditions d'entrée</strong>
+          <small>Votre expérience, vos installations et votre organisation.</small>
+        </a>
+        <a href="#engagements">
+          <span>02</span>
+          <strong>Les engagements</strong>
+          <small>Le bien-être, la protection et le suivi de chaque cheval.</small>
+        </a>
+        <a href="#candidater">
+          <span>03</span>
+          <strong>Votre candidature</strong>
+          <small>Vous vous reconnaissez dans ce cadre&nbsp;? Échangeons.</small>
+        </a>
+      </nav>
       <div class="network-entry__cta">
-        <p class="network-entry__cta-text">
+        <p>
           Vous remplissez ces conditions&nbsp;?
           <span class="accent">Rejoignez-nous&nbsp;!</span>
         </p>
-        <a class="btn btn--primary" href="/contact">
-          Nous contacter
-          <span class="btn__ico"><Icon name="arrow" /></span>
-        </a>
+        <a class="btn btn--primary" href="/contact">Nous contacter</a>
       </div>
     </div>
   </section>
@@ -54,17 +68,23 @@ import {
     <div class="wrap">
       <div class="criteria__intro">
         <p class="eyebrow">Conditions de référencement</p>
-        <h2>Un cadre exigeant pour <span class="accent">une reconversion durable.</span></h2>
+        <h2>
+          Votre structure doit réunir
+          <span class="accent"> trois essentiels.</span>
+        </h2>
         <p class="lead">
-          Avant de recevoir le dossier de demande de référencement, chaque
-          structure est invitée à prendre connaissance des conditions suivantes.
+          Ces conditions permettent de s'assurer que les chevaux confiés au
+          réseau Passerelle évoluent dans un environnement adapté à leur
+          transition vers une nouvelle vie.
         </p>
       </div>
       <div class="criteria__grid">
         {
           networkConditions.map((condition) => (
             <article class="criteria-card">
+              <span class="criteria-card__number">{condition.number}</span>
               <h3>{condition.title}</h3>
+              <p>{condition.summary}</p>
               <ul>
                 {condition.items.map((item) => <li>{item}</li>)}
               </ul>
@@ -75,26 +95,25 @@ import {
     </div>
   </section>
 
-  <section class="section join" id="engagements">
-    <div class="wrap join__grid">
-      <div class="join__intro">
-        <p class="eyebrow eyebrow--light">Les engagements</p>
-        <h2>Un cadre, un soutien, <span class="accent--light">un réseau.</span></h2>
-        <p>
-          Rejoindre le réseau Passerelle, c’est s’engager pour la qualité de
-          vie, la traçabilité et la protection des Trotteurs Français.
+  <section class="section commitments-section" id="engagements">
+    <div class="wrap">
+      <div class="commitments-section__intro">
+        <p class="eyebrow">Les engagements des structures accréditées</p>
+        <h2>
+          Une protection à chaque étape
+          <span class="accent"> de la reconversion.</span>
+        </h2>
+        <p class="lead">
+          Rejoindre le réseau Passerelle, c’est s'engager concrètement pour la
+          qualité de vie, la traçabilité et l'avenir des Trotteurs Français.
         </p>
-        <a class="tlink tlink--light" href={links.accreditation} target="_blank" rel="noreferrer">
-          Consulter le document complet
-          <Icon name="arrowUpRight" />
-        </a>
       </div>
       <div class="commitments">
         {
-          networkCommitments.map((commitment) => (
-            <article class="commitment">
+          networkCommitments.map((commitment, index) => (
+            <article class:list={["commitment", { "commitment--feature": index === 0 }]}>
               <h3>{commitment.title}</h3>
-              {commitment.intro && <p>{commitment.intro}</p>}
+              <p>{commitment.summary}</p>
               <ul>
                 {commitment.items.map((item) => <li>{item}</li>)}
               </ul>
@@ -126,14 +145,16 @@ import {
     </div>
   </section>
 
-  <CtaBand
-    text="Tenté(e) par l’aventure Passerelle ?"
-    accent="Recevez votre dossier de demande de référencement."
-    label="Nous contacter"
-    href="/contact"
-    note={`Ou écrivez-nous directement à ${site.email}.`}
-    icon="users"
-  />
+  <div id="candidater">
+    <CtaBand
+      text="Votre structure partage nos valeurs ?"
+      accent="Faisons connaissance."
+      label="Nous contacter"
+      href="/contact"
+      note={`Présentez-nous votre activité à ${site.email}.`}
+      icon="users"
+    />
+  </div>
 
 </Base>
 
@@ -143,22 +164,64 @@ import {
     background: var(--cream-warm);
     border-bottom: 1px solid var(--line);
   }
-  .network-entry__document,
+  .network-entry__intro {
+    max-width: 68ch;
+  }
+  .network-entry__intro h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4vw, 3.35rem);
+  }
+  .network-entry__intro .lead {
+    margin-bottom: 0;
+  }
+  .network-entry__steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: clamp(2.25rem, 5vw, 3.5rem);
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .network-entry__steps a {
+    display: grid;
+    gap: 0.35rem;
+    min-height: 100%;
+    padding: 1.25rem;
+    color: inherit;
+    text-decoration: none;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background-color 180ms ease;
+  }
+  .network-entry__steps a:hover {
+    background: var(--cream);
+  }
+  .network-entry__steps span {
+    color: var(--moss-mid);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  .network-entry__steps strong {
+    color: var(--forest);
+    font-size: 0.98rem;
+  }
+  .network-entry__steps small {
+    color: var(--ink-faint);
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
   .network-entry__cta {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
   }
-  .network-entry__document h2 {
-    font-size: clamp(1.8rem, 3vw, 2.7rem);
-  }
   .network-entry__cta {
-    margin-top: 2.5rem;
-    padding-top: 2.5rem;
+    margin-top: clamp(2.25rem, 5vw, 3.5rem);
+    padding-top: clamp(2.25rem, 5vw, 3.5rem);
     border-top: 1px solid var(--line);
   }
-  .network-entry__cta-text {
+  .network-entry__cta p {
     margin: 0;
     font-family: var(--serif);
     font-size: clamp(1.45rem, 2.8vw, 2.2rem);
@@ -181,17 +244,32 @@ import {
     gap: 1rem;
   }
   .criteria-card {
+    position: relative;
     padding: clamp(1.5rem, 3vw, 2.2rem);
     background: var(--cream-warm);
     border: 1px solid var(--line);
     border-radius: var(--radius);
   }
+  .criteria-card__number {
+    display: block;
+    margin-bottom: 1.5rem;
+    color: var(--moss);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
   .criteria-card h3 {
+    margin-bottom: 0.75rem;
     color: var(--forest);
+  }
+  .criteria-card > p {
+    margin: 0;
+    color: var(--ink-soft);
+    line-height: 1.55;
   }
   .criteria-card ul,
   .commitment ul {
-    margin: 1.35rem 0 0;
+    margin: 1.25rem 0 0;
     padding: 0;
     list-style: none;
   }
@@ -205,7 +283,7 @@ import {
   }
   .criteria-card li + li,
   .commitment li + li {
-    margin-top: 1rem;
+    margin-top: 0.85rem;
   }
   .criteria-card li::before,
   .commitment li::before {
@@ -251,58 +329,78 @@ import {
     font-size: 0.78rem;
     text-align: right;
   }
-  .join {
-    background: var(--forest-deep);
-    color: #fff;
+  .commitments-section {
+    background: var(--cream-warm);
+    border-block: 1px solid var(--line);
   }
-  .join__grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: clamp(2.5rem, 7vw, 6rem);
+  .commitments-section__intro {
+    max-width: 64ch;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
   }
-  .join__intro > p {
-    max-width: 32ch;
-    color: rgba(255, 255, 255, 0.78);
-  }
-  .join__intro .tlink {
-    margin-top: 1.2rem;
+  .commitments-section__intro .lead {
+    margin-bottom: 0;
   }
   .commitments {
-    max-width: 70ch;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
-  .commitment + .commitment {
-    margin-top: clamp(2.5rem, 5vw, 4rem);
-    padding-top: clamp(2.5rem, 5vw, 4rem);
-    border-top: 1px solid var(--line-light);
+  .commitment {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
   }
   .commitment h3 {
+    margin-bottom: 0.75rem;
+    color: var(--forest);
+  }
+  .commitment > p {
+    margin: 0;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .commitment--feature {
+    grid-column: 1 / -1;
+    background: var(--forest-deep);
+    border-color: var(--forest-deep);
+  }
+  .commitment--feature h3 {
     color: #fff;
   }
-  .commitment p,
-  .commitment li {
-    color: rgba(255, 255, 255, 0.78);
+  .commitment--feature > p,
+  .commitment--feature li {
+    color: rgba(255, 255, 255, 0.8);
   }
-  .commitment li::before {
+  .commitment--feature li::before {
     background: var(--sage);
   }
 
   @media (max-width: 900px) {
-    .criteria__grid {
+    .criteria__grid,
+    .commitments {
       grid-template-columns: 1fr;
+    }
+    .commitment--feature {
+      grid-column: auto;
     }
   }
 
   @media (max-width: 800px) {
-    .network-entry__document,
     .network-entry__cta {
       align-items: flex-start;
       flex-direction: column;
     }
-    .join__grid {
+  }
+  @media (max-width: 680px) {
+    .network-entry__steps {
       grid-template-columns: 1fr;
     }
   }
   @media (max-width: 640px) {
+    .network-entry__cta {
+      gap: 1.25rem;
+    }
     .directory {
       columns: 1;
     }
