@@ -44,7 +44,14 @@ export const nav = [
       { label: "Mécènes & ambassadeurs", href: "/mecenes" },
     ],
   },
-  { label: "Réseau", href: "/reseau" },
+  {
+    label: "Réseau",
+    href: "/reseau",
+    children: [
+      { label: "Annuaire des structures", href: "/reseau/annuaire#annuaire" },
+      { label: "Carte des structures", href: "/reseau/annuaire#carte" },
+    ],
+  },
   { label: "Protection", href: "/protection" },
   {
     label: "Participer",
