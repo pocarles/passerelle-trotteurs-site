@@ -246,27 +246,35 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
   }
   .criteria__grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.8rem;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 70rem;
+    margin-inline: auto;
   }
   .criteria-card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(14rem, 0.9fr) minmax(0, 1.25fr);
     align-items: center;
-    justify-content: center;
-    gap: clamp(1.15rem, 2.5vw, 1.75rem);
-    aspect-ratio: 1;
-    padding: clamp(1.5rem, 3vw, 2.25rem);
-    text-align: center;
-    background: color-mix(in srgb, var(--sage) 26%, transparent);
+    gap: clamp(1.25rem, 4vw, 3.5rem);
+    width: 100%;
+    justify-self: center;
+    min-height: 7.5rem;
+    padding: clamp(1rem, 2vw, 1.4rem) clamp(1.5rem, 3vw, 2.5rem);
+    background: color-mix(in srgb, var(--sage) 20%, transparent);
     border: 1px solid color-mix(in srgb, var(--moss-mid) 32%, transparent);
-    border-radius: 50%;
+    border-radius: var(--radius-lg);
+  }
+  .criteria-card:nth-child(1) {
+    width: 72%;
+  }
+  .criteria-card:nth-child(2) {
+    width: 86%;
   }
   .criteria-card__title {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
+    align-items: flex-start;
+    gap: 0.6rem;
   }
   .criteria-card__icon {
     display: grid;
@@ -288,7 +296,6 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
   }
   .criteria-card > p {
     margin: 0;
-    max-width: 24ch;
     color: var(--ink-soft);
     font-size: 0.95rem;
     line-height: 1.55;
@@ -445,25 +452,23 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     line-height: 1.55;
   }
   @media (max-width: 900px) {
-    .criteria__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
     .criteria-card {
-      width: min(100%, 25rem);
-      justify-self: center;
+      width: 100%;
     }
   }
 
   @media (max-width: 640px) {
-    .criteria__grid {
+    .criteria-card {
       grid-template-columns: 1fr;
+      gap: 0.9rem;
+      text-align: center;
+    }
+    .criteria-card__title {
+      align-items: center;
     }
   }
 
   @media (max-width: 760px) {
-    .criteria-card__title {
-      padding: 0;
-    }
     .commitment summary {
       align-items: start;
     }
