@@ -2,7 +2,6 @@
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Prose from "../components/Prose.astro";
-import CtaBand from "../components/CtaBand.astro";
 import Icon from "../components/Icon.astro";
 import { links, network } from "../data/site";
 ---
@@ -20,6 +19,31 @@ import { links, network } from "../data/site";
     imageAlt="Un Trotteur Français réformé mené en attelage de loisir"
   />
 
+  <section class="network-entry">
+    <div class="wrap">
+      <div class="network-entry__document">
+        <div>
+          <p class="eyebrow">Avant de rejoindre le réseau</p>
+          <h2>Consultez le <span class="accent">cahier des charges.</span></h2>
+        </div>
+        <a class="tlink" href={links.accreditation} target="_blank" rel="noreferrer">
+          Lire le cahier des charges
+          <Icon name="arrowUpRight" />
+        </a>
+      </div>
+      <div class="network-entry__cta">
+        <p class="network-entry__cta-text">
+          Vous remplissez ces conditions&nbsp;?
+          <span class="accent">Rejoignez-nous&nbsp;!</span>
+        </p>
+        <a class="btn btn--primary" href="/contact">
+          Nous contacter
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="directory__head">
@@ -27,10 +51,6 @@ import { links, network } from "../data/site";
           <p class="eyebrow">Annuaire</p>
           <h2>{network.length} structures accréditées</h2>
         </div>
-        <a class="tlink" href={links.accreditation} target="_blank" rel="noreferrer">
-          Cahier des charges
-          <Icon name="arrowUpRight" />
-        </a>
       </div>
       <ul class="directory">
         {
@@ -108,17 +128,36 @@ import { links, network } from "../data/site";
     </div>
   </section>
 
-  <CtaBand
-    text="Consultez notre documentation"
-    accent="avant de déposer votre candidature."
-    label="Cahier des charges"
-    href={links.accreditation}
-    external
-    icon="map"
-  />
 </Base>
 
 <style>
+  .network-entry {
+    padding-block: clamp(3rem, 6vw, 5rem);
+    background: var(--cream-warm);
+    border-bottom: 1px solid var(--line);
+  }
+  .network-entry__document,
+  .network-entry__cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .network-entry__document h2 {
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+  }
+  .network-entry__cta {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .network-entry__cta-text {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.45rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+  }
+
   .directory__head {
     display: flex;
     align-items: end;
@@ -173,6 +212,11 @@ import { links, network } from "../data/site";
   }
 
   @media (max-width: 800px) {
+    .network-entry__document,
+    .network-entry__cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
     .join__grid {
       grid-template-columns: 1fr;
     }
