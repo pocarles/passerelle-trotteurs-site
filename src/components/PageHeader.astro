@@ -38,7 +38,7 @@ const hasActions = Astro.slots.has("actions");
   class:list={["ph", (image || video) && !background && "ph--split", background && (image || video) && "ph--background", compactTitle && "ph--compact-title", className]}
 >
   {background && video ? (
-    <video class="ph__bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <video class="ph__bg" autoplay muted loop playsinline preload="metadata" poster={image} aria-hidden="true">
       <source src={video} type="video/mp4" />
     </video>
   ) : (
