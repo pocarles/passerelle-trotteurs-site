@@ -57,13 +57,6 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
           <small>Vous vous reconnaissez dans ce cadre&nbsp;? Échangeons.</small>
         </a>
       </nav>
-      <div class="network-entry__cta">
-        <p>
-          Vous remplissez ces conditions&nbsp;?
-          <span class="accent">Rejoignez-nous&nbsp;!</span>
-        </p>
-        <a class="btn btn--primary" href="/contact">Nous contacter</a>
-      </div>
     </div>
   </section>
 
@@ -193,13 +186,14 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     border-bottom: 1px solid var(--line);
   }
   .network-entry__intro {
-    max-width: 68ch;
+    max-width: none;
   }
   .network-entry__intro h2 {
     margin-bottom: 1rem;
     font-size: clamp(2rem, 4vw, 3.35rem);
   }
   .network-entry__intro .lead {
+    max-width: none;
     margin-bottom: 0;
   }
   .network-entry__steps {
@@ -238,24 +232,6 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     font-size: 0.82rem;
     line-height: 1.45;
   }
-  .network-entry__cta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-  .network-entry__cta {
-    margin-top: clamp(2.25rem, 5vw, 3.5rem);
-    padding-top: clamp(2.25rem, 5vw, 3.5rem);
-    border-top: 1px solid var(--line);
-  }
-  .network-entry__cta p {
-    margin: 0;
-    font-family: var(--serif);
-    font-size: clamp(1.45rem, 2.8vw, 2.2rem);
-    line-height: 1.2;
-  }
-
   .section.criteria {
     background: var(--cream);
     padding-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
@@ -516,21 +492,12 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     }
   }
 
-  @media (max-width: 800px) {
-    .network-entry__cta {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
   @media (max-width: 680px) {
     .network-entry__steps {
       grid-template-columns: 1fr;
     }
   }
   @media (max-width: 640px) {
-    .network-entry__cta {
-      gap: 1.25rem;
-    }
     .directory {
       columns: 1;
     }
