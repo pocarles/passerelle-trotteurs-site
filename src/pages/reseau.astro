@@ -229,7 +229,7 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
   }
   .section.criteria {
     background: var(--cream);
-    padding-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
+    padding-bottom: clamp(2.25rem, 3vw, 3rem);
   }
   .criteria__intro {
     max-width: none;
@@ -318,10 +318,14 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
   }
   .commitments-section__intro {
-    max-width: 64ch;
+    max-width: none;
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
   }
+  .commitments-section__intro h2 {
+    max-width: 28ch;
+  }
   .commitments-section__intro .lead {
+    max-width: none;
     margin-bottom: 0;
   }
   .commitments {
