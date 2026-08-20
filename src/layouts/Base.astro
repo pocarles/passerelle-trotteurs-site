@@ -45,6 +45,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
       type="font/woff2"
       crossorigin
     />
+    <slot name="head" />
   </head>
   <body class={hasHero ? "has-hero" : ""}>
     <a class="skip-link" href="#contenu">Aller au contenu</a>

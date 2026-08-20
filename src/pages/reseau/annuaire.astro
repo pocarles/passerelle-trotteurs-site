@@ -1,0 +1,330 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { network, networkMapDepartments, site } from "../../data/site";
+
+const mapDepartments = JSON.stringify(networkMapDepartments);
+---
+
+<Base
+  title="Annuaire & carte du réseau — Association Passerelle"
+  description="Retrouvez les structures accréditées du réseau Passerelle dans l’annuaire et sur la carte de France."
+>
+  <Fragment slot="head">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      crossorigin=""
+    />
+  </Fragment>
+
+  <PageHeader
+    eyebrow="Le réseau accrédité"
+    title="Nos structures"
+    accent="partout en France."
+    lead="Retrouvez les professionnels accrédités par Passerelle, engagés pour une reconversion responsable et durable des Trotteurs Français."
+    image="/media/attelage.jpg"
+    imageAlt="Un Trotteur Français réformé mené en attelage de loisir"
+  />
+
+  <section class="section directory-section" id="annuaire">
+    <div class="wrap">
+      <div class="directory-section__intro">
+        <p class="eyebrow">Annuaire</p>
+        <h2>{network.length} structures accréditées</h2>
+        <p class="lead">
+          Des professionnels sélectionnés pour la qualité de leur accueil, de
+          leur accompagnement et de leur engagement auprès de chaque cheval.
+        </p>
+      </div>
+      <ul class="directory">
+        {
+          network.map(([name, department]) => (
+            <li>
+              <span>{name}</span>
+              <span class="directory__place">{department}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section map-section" id="carte">
+    <div class="wrap">
+      <div class="map-section__intro">
+        <p class="eyebrow">Carte</p>
+        <h2>Le réseau Passerelle <span class="accent">près de chez vous.</span></h2>
+        <p class="lead">
+          Explorez les départements où nos structures accréditées accompagnent
+          les Trotteurs vers leur nouvelle vie.
+        </p>
+      </div>
+      <div class="map-layout">
+        <aside class="map-layout__aside">
+          <span class="map-layout__icon"><Icon name="map" /></span>
+          <h3>Un réseau national</h3>
+          <p>
+            Sélectionnez un repère sur la carte pour découvrir les structures
+            présentes dans le département.
+          </p>
+          <p class="map-layout__note">
+            La carte indique les départements renseignés dans l’annuaire.
+          </p>
+        </aside>
+        <div
+          class="network-map"
+          data-departments={mapDepartments}
+          aria-label="Carte des structures accréditées Passerelle"
+        >
+          <p class="network-map__loading">Chargement de la carte…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Votre structure partage nos valeurs ?"
+    accent="Faisons connaissance."
+    label="Nous contacter"
+    href="/contact"
+    note={`Présentez-nous votre activité à ${site.email}.`}
+    icon="users"
+  />
+
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script is:inline>
+    const mapElement = document.querySelector(".network-map");
+
+    const escapeHtml = (value) =>
+      value.replace(/[&<>'"]/g, (character) => {
+        const characters = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "'": "&#39;",
+          '"': "&quot;",
+        };
+        return characters[character];
+      });
+
+    if (mapElement && window.L) {
+      const departments = JSON.parse(mapElement.dataset.departments || "[]");
+      const structuresByDepartment = new Map(
+        departments.map((department) => [department.code, department]),
+      );
+      const map = window.L.map(mapElement, {
+        attributionControl: false,
+        scrollWheelZoom: false,
+        zoomControl: false,
+      }).setView([46.7, 2.5], 5.5);
+
+      fetch("https://france-geojson.gregoiredavid.fr/repo/departements.geojson")
+        .then((response) => {
+          if (!response.ok) throw new Error("Carte indisponible");
+          return response.json();
+        })
+        .then((geojson) => {
+          const departmentsLayer = window.L.geoJSON(geojson, {
+            filter: (feature) => /^\d{2}$/.test(feature.properties.code),
+            style: (feature) => {
+              const hasStructure = structuresByDepartment.has(feature.properties.code);
+              return {
+                color: hasStructure ? "#78954c" : "#d8d4c9",
+                fillColor: hasStructure ? "#dce9b6" : "#f7f4ec",
+                fillOpacity: hasStructure ? 0.95 : 0.72,
+                weight: hasStructure ? 1.5 : 0.8,
+              };
+            },
+          }).addTo(map);
+
+          departmentsLayer.eachLayer((layer) => {
+            const department = structuresByDepartment.get(layer.feature.properties.code);
+            if (!department) return;
+
+            const structures = department.structures
+              .map((structure) => `<li>${escapeHtml(structure)}</li>`)
+              .join("");
+            const marker = window.L.circleMarker(layer.getBounds().getCenter(), {
+              radius: 7 + Math.min(department.structures.length, 3),
+              color: "#173a27",
+              fillColor: "#173a27",
+              fillOpacity: 1,
+              weight: 2,
+            })
+              .addTo(map)
+              .bindPopup(
+                `<strong>${escapeHtml(department.label)}</strong><ul>${structures}</ul>`,
+                { closeButton: false, offset: [0, -2] },
+              );
+
+            layer.on({
+              click: () => marker.openPopup(),
+              mouseover: () => layer.setStyle({ fillColor: "#bfd38a" }),
+              mouseout: () => departmentsLayer.resetStyle(layer),
+            });
+          });
+
+          const bounds = departmentsLayer.getBounds();
+          if (bounds.isValid()) map.fitBounds(bounds.pad(0.06));
+        })
+        .catch(() => {
+          map.remove();
+          mapElement.innerHTML =
+            "<p class=\"network-map__error\">La carte ne peut pas être chargée pour le moment. Retrouvez toutes les structures dans l’annuaire ci-dessus.</p>";
+        });
+    }
+  </script>
+</Base>
+
+<style>
+  .directory-section {
+    background: var(--cream);
+  }
+  .directory-section__intro,
+  .map-section__intro {
+    max-width: 62rem;
+    margin-bottom: clamp(2rem, 4vw, 3.25rem);
+  }
+  .directory-section__intro .lead,
+  .map-section__intro .lead {
+    margin-bottom: 0;
+  }
+  .directory {
+    columns: 2;
+    column-gap: clamp(2rem, 5vw, 4.5rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .directory li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    break-inside: avoid;
+  }
+  .directory__place {
+    flex: 0 1 auto;
+    min-width: 0;
+    color: var(--ink-faint);
+    font-size: 0.78rem;
+    text-align: right;
+  }
+  .map-section {
+    background: var(--cream-warm);
+    border-block: 1px solid var(--line);
+  }
+  .map-layout {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.38fr) minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: stretch;
+  }
+  .map-layout__aside {
+    padding: clamp(1.4rem, 3vw, 2rem);
+    color: #fff;
+    background: var(--forest-deep);
+    border-radius: var(--radius-lg);
+  }
+  .map-layout__icon {
+    display: grid;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin-bottom: 1.5rem;
+    place-items: center;
+    color: var(--forest-deep);
+    background: var(--sage);
+    border-radius: 50%;
+  }
+  .map-layout__icon :global(svg) {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+  .map-layout__aside h3 {
+    margin-bottom: 0.75rem;
+    color: #fff;
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
+  }
+  .map-layout__aside p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.84);
+    line-height: 1.55;
+  }
+  .map-layout__aside .map-layout__note {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    color: var(--sage);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.85rem;
+  }
+  .network-map {
+    min-height: clamp(24rem, 48vw, 34rem);
+    overflow: hidden;
+    background: #eef0e5;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .network-map__loading,
+  .network-map__error {
+    display: grid;
+    min-height: inherit;
+    max-width: 32rem;
+    padding: 2rem;
+    margin: 0 auto;
+    place-items: center;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  :global(.network-map .leaflet-popup-content-wrapper) {
+    border-radius: 0.85rem;
+    box-shadow: 0 0.75rem 1.75rem rgba(23, 58, 39, 0.16);
+  }
+  :global(.network-map .leaflet-popup-content) {
+    margin: 1rem 1.1rem;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+  :global(.network-map .leaflet-popup-content strong) {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+  }
+  :global(.network-map .leaflet-popup-content ul) {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  :global(.network-map .leaflet-popup-tip) {
+    background: var(--cream);
+  }
+
+  @media (max-width: 760px) {
+    .map-layout {
+      grid-template-columns: 1fr;
+    }
+    .map-layout__aside {
+      min-height: auto;
+    }
+  }
+  @media (max-width: 640px) {
+    .directory {
+      columns: 1;
+    }
+    .directory li {
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .directory__place {
+      text-align: left;
+    }
+  }
+</style>

@@ -179,6 +179,55 @@ export const network = [
   ["SOS Cheval", "Puy-de-Dôme"],
 ] as const;
 
+/** Département used to position each accredited structure on the network map. */
+export const networkMapDepartments = [
+  { code: "02", label: "Aisne", structures: ["Écuries de Chigny"] },
+  {
+    code: "04",
+    label: "Alpes-de-Haute-Provence",
+    structures: ["Centre équestre Château Laval"],
+  },
+  {
+    code: "14",
+    label: "Calvados",
+    structures: [
+      "Domaine des Dakotines",
+      "Les Crins de la Baie",
+      "Société Hippique de Vire en Bocage",
+    ],
+  },
+  { code: "25", label: "Doubs", structures: ["L’Élevage de tous temps"] },
+  { code: "42", label: "Loire", structures: ["Rehab Ranch"] },
+  {
+    code: "45",
+    label: "Loiret",
+    structures: ["Écurie HADAH", "Écurie L’Eau de Fosse"],
+  },
+  { code: "56", label: "Morbihan", structures: ["AnimOsmose"] },
+  { code: "59", label: "Nord", structures: ["Écurie du Saule"] },
+  {
+    code: "60",
+    label: "Oise & Calvados",
+    structures: ["Écuries de la Brèche", "L’Écrin du Bonheur"],
+  },
+  { code: "61", label: "Orne", structures: ["Les Écuries du Moulin d’Aubry"] },
+  {
+    code: "63",
+    label: "Puy-de-Dôme",
+    structures: ["Les Crins de Liberté", "SOS Cheval"],
+  },
+  {
+    code: "67",
+    label: "Bas-Rhin",
+    structures: ["Education LF — Écurie du Hirlenbach"],
+  },
+  { code: "77", label: "Seine-et-Marne", structures: ["Écurie TDS"] },
+  { code: "82", label: "Tarn-et-Garonne", structures: ["Haras des Plaines"] },
+  { code: "85", label: "Vendée", structures: ["La Grange de Prétôt"] },
+  { code: "87", label: "Haute-Vienne", structures: ["Héliominos"] },
+  { code: "89", label: "Yonne", structures: ["Les chevaux d’Elo"] },
+] as const;
+
 /** A concise, web-first summary of the network accreditation requirements. */
 export const networkConditions = [
   {
