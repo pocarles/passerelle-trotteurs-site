@@ -15,8 +15,7 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
   <Fragment slot="head">
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      crossorigin=""
+      href="/vendor/leaflet/leaflet.css"
     />
   </Fragment>
 
@@ -94,7 +93,7 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
     icon="users"
   />
 
-  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script is:inline src="/vendor/leaflet/leaflet.js"></script>
   <script is:inline>
     const mapElement = document.querySelector(".network-map");
 
@@ -111,6 +110,7 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
       });
 
     if (mapElement && window.L) {
+      mapElement.innerHTML = "";
       const departments = JSON.parse(mapElement.dataset.departments || "[]");
       const structuresByDepartment = new Map(
         departments.map((department) => [department.code, department]),
@@ -121,7 +121,7 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
         zoomControl: false,
       }).setView([46.7, 2.5], 5.5);
 
-      fetch("https://france-geojson.gregoiredavid.fr/repo/departements.geojson")
+      fetch("/data/departements.geojson")
         .then((response) => {
           if (!response.ok) throw new Error("Carte indisponible");
           return response.json();
