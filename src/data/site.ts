@@ -183,6 +183,7 @@ export const network = [
 export const networkConditions = [
   {
     number: "01",
+    icon: "horse",
     title: "Connaissance du Trotteur Français",
     summary:
       "Une expérience concrète de la reconversion, des soins adaptés et une bonne connaissance de la filière courses.",
@@ -194,6 +195,7 @@ export const networkConditions = [
   },
   {
     number: "02",
+    icon: "house",
     title: "Qualité des infrastructures",
     summary:
       "Des installations pensées pour accueillir, travailler et laisser vivre les chevaux en sécurité.",
@@ -205,6 +207,7 @@ export const networkConditions = [
   },
   {
     number: "03",
+    icon: "sprout",
     title: "Modèle économique viable",
     summary:
       "La reconversion doit reposer sur une organisation pérenne, au-delà de la seule activité de placement.",

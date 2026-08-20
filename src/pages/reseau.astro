@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
 import {
   network,
   networkCommitments,
@@ -69,8 +70,7 @@ import {
       <div class="criteria__intro">
         <p class="eyebrow">Conditions de référencement</p>
         <h2>
-          Votre structure doit réunir
-          <span class="accent"> trois essentiels.</span>
+          Votre structure doit réunir trois éléments essentiels.
         </h2>
         <p class="lead">
           Ces conditions permettent de s'assurer que les chevaux confiés au
@@ -82,12 +82,12 @@ import {
         {
           networkConditions.map((condition) => (
             <article class="criteria-card">
-              <span class="criteria-card__number">{condition.number}</span>
+              <div class="criteria-card__top">
+                <span class="criteria-card__number">{condition.number}</span>
+                <span class="criteria-card__icon"><Icon name={condition.icon} /></span>
+              </div>
               <h3>{condition.title}</h3>
               <p>{condition.summary}</p>
-              <ul>
-                {condition.items.map((item) => <li>{item}</li>)}
-              </ul>
             </article>
           ))
         }
@@ -232,10 +232,15 @@ import {
     background: var(--cream);
   }
   .criteria__intro {
-    max-width: 58ch;
+    max-width: none;
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
   }
+  .criteria__intro h2 {
+    font-size: clamp(1.75rem, 2.45vw, 2.15rem);
+    text-wrap: nowrap;
+  }
   .criteria__intro .lead {
+    max-width: none;
     margin-bottom: 0;
   }
   .criteria__grid {
@@ -245,18 +250,38 @@ import {
   }
   .criteria-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 15.5rem;
     padding: clamp(1.5rem, 3vw, 2.2rem);
     background: var(--cream-warm);
     border: 1px solid var(--line);
     border-radius: var(--radius);
   }
   .criteria-card__number {
-    display: block;
-    margin-bottom: 1.5rem;
     color: var(--moss);
     font-size: 0.76rem;
     font-weight: 700;
     letter-spacing: 0.12em;
+  }
+  .criteria-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .criteria-card__icon {
+    display: grid;
+    width: 2.35rem;
+    height: 2.35rem;
+    place-items: center;
+    color: var(--forest);
+    background: color-mix(in srgb, var(--sage) 40%, transparent);
+    border-radius: 50%;
+  }
+  .criteria-card__icon :global(svg) {
+    width: 1.2rem;
+    height: 1.2rem;
   }
   .criteria-card h3 {
     margin-bottom: 0.75rem;
@@ -267,13 +292,11 @@ import {
     color: var(--ink-soft);
     line-height: 1.55;
   }
-  .criteria-card ul,
   .commitment ul {
     margin: 1.25rem 0 0;
     padding: 0;
     list-style: none;
   }
-  .criteria-card li,
   .commitment li {
     position: relative;
     padding-left: 1.25rem;
@@ -281,11 +304,9 @@ import {
     font-size: 0.94rem;
     line-height: 1.55;
   }
-  .criteria-card li + li,
   .commitment li + li {
     margin-top: 0.85rem;
   }
-  .criteria-card li::before,
   .commitment li::before {
     content: "";
     position: absolute;
@@ -383,6 +404,11 @@ import {
     }
     .commitment--feature {
       grid-column: auto;
+    }
+  }
+  @media (max-width: 760px) {
+    .criteria__intro h2 {
+      text-wrap: balance;
     }
   }
 
