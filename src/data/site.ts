@@ -196,7 +196,7 @@ export const networkConditions = [
     icon: "house",
     title: "Qualité des infrastructures",
     summary:
-      "Des installations pensées pour accueillir, travailler et laisser vivre les chevaux en sécurité.",
+      "Des installations propres à accueillir, travailler et assurer les soins et le bien-être des trotteurs accueillis.",
     items: [
       "Proposer des boxes sécurisés et entretenus au quotidien.",
       "Disposer de sols adaptés pour le travail : carrière ou manège, rond de longe et chemins de balade.",
@@ -207,7 +207,7 @@ export const networkConditions = [
     icon: "sprout",
     title: "Modèle économique viable",
     summary:
-      "La reconversion doit reposer sur une organisation pérenne, au-delà de la seule activité de placement.",
+      "Vous devez avoir une activité principale à côté de l’activité de reconversion dans votre foyer.",
     items: [
       "Justifier d'une activité annexe : écurie de propriétaires, centre équestre ou activité hors secteur équin.",
     ],
