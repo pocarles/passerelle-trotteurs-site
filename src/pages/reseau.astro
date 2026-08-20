@@ -20,14 +20,12 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     eyebrow="Notre réseau"
     title="Des professionnels engagés"
     accent="partout en France."
-    lead="Les structures professionnelles de la reconversion sont sélectionnées selon des critères destinés à assurer le bien-être des chevaux réformés."
+    lead="Les structures professionnelles de la reconversion sont sélectionnées selon des critères destinés à assurer le bien-être des chevaux reconvertis."
     image="/media/attelage.jpg"
     imageAlt="Un Trotteur Français réformé mené en attelage de loisir"
-  />
-
-  <section class="network-directory-links" aria-label="Accès à l’annuaire et à la carte">
-    <div class="wrap network-directory-links__inner">
-      <div class="network-directory-links__actions">
+  >
+    <Fragment slot="actions">
+      <div class="network-header-actions">
         <a class="btn btn--ghost" href="/reseau/annuaire#annuaire">
           Voir l’annuaire <span class="btn__ico"><Icon name="arrow" /></span>
         </a>
@@ -35,8 +33,8 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
           Voir la carte <span class="btn__ico"><Icon name="map" /></span>
         </a>
       </div>
-    </div>
-  </section>
+    </Fragment>
+  </PageHeader>
 
   <section class="network-entry">
     <div class="wrap">
@@ -171,20 +169,9 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
 </Base>
 
 <style>
-  .network-directory-links {
-    padding-block: clamp(1.15rem, 2.2vw, 1.65rem);
-    background: var(--cream);
-    border-bottom: 1px solid var(--line);
-  }
-  .network-directory-links__inner,
-  .network-directory-links__actions {
+  .network-header-actions {
     display: flex;
     align-items: center;
-  }
-  .network-directory-links__inner {
-    justify-content: flex-end;
-  }
-  .network-directory-links__actions {
     flex-wrap: wrap;
     gap: 0.65rem;
   }
@@ -447,9 +434,6 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
   }
 
   @media (max-width: 760px) {
-    .network-directory-links__inner {
-      justify-content: flex-start;
-    }
     .criteria__intro h2 {
       text-wrap: balance;
     }

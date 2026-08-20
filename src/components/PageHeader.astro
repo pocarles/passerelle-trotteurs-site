@@ -31,6 +31,7 @@ const {
   compactTitle = false,
   background = false,
 } = Astro.props;
+const hasActions = Astro.slots.has("actions");
 ---
 
 <header
@@ -67,6 +68,7 @@ const {
       </h1>
       <hr class="rule" />
       {lead && <p class="lead">{lead}</p>}
+      {hasActions && <div class="ph__actions"><slot name="actions" /></div>}
     </div>
     {
       image && !background && (
@@ -165,6 +167,12 @@ const {
   }
   .ph .lead {
     margin: 0;
+  }
+  .ph__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
   }
   .ph__fig {
     margin: 0;
