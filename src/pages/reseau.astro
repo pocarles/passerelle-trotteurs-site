@@ -21,12 +21,12 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     title="Des professionnels engagés"
     accent="partout en France."
     lead="Les structures professionnelles de la reconversion sont sélectionnées selon des critères destinés à assurer le bien-être des chevaux reconvertis."
-    image="/media/attelage.jpg"
-    imageAlt="Un Trotteur Français réformé mené en attelage de loisir"
+    image="/media/bond.jpg"
+    background
   >
     <Fragment slot="actions">
       <div class="network-header-actions">
-        <a class="btn btn--ghost" href="/reseau/annuaire#annuaire">
+        <a class="btn btn--ghost-light" href="/reseau/annuaire#annuaire">
           Voir l’annuaire <span class="btn__ico"><Icon name="arrow" /></span>
         </a>
         <a class="btn btn--primary" href="/reseau/annuaire#carte">
@@ -107,7 +107,7 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
           Vos engagements auprès de nos
           <span class="accent"> Trotteurs en reconversion.</span>
         </h2>
-        <p class="lead">
+        <p class="lead commitments-section__lead">
           Rejoindre le réseau Passerelle, c’est s'engager concrètement pour la
           qualité de vie, la traçabilité et l'avenir des Trotteurs Français.
         </p>
@@ -324,8 +324,9 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
   .commitments-section__intro h2 {
     max-width: 28ch;
   }
-  .commitments-section__intro .lead {
-    max-width: none;
+  .commitments-section__lead {
+    width: 100%;
+    max-width: 100%;
     margin-bottom: 0;
   }
   .commitments {
