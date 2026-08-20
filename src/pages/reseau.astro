@@ -50,27 +50,6 @@ import {
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="directory__head">
-        <div>
-          <p class="eyebrow">Annuaire</p>
-          <h2>{network.length} structures accréditées</h2>
-        </div>
-      </div>
-      <ul class="directory">
-        {
-          network.map(([name, department]) => (
-            <li>
-              <span>{name}</span>
-              <span class="directory__place">{department}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
   <section class="section criteria" id="conditions">
     <div class="wrap">
       <div class="criteria__intro">
@@ -123,6 +102,27 @@ import {
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="directory__head">
+        <div>
+          <p class="eyebrow">Annuaire</p>
+          <h2>{network.length} structures accréditées</h2>
+        </div>
+      </div>
+      <ul class="directory">
+        {
+          network.map(([name, department]) => (
+            <li>
+              <span>{name}</span>
+              <span class="directory__place">{department}</span>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
