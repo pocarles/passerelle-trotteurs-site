@@ -216,43 +216,34 @@ export const networkConditions = [
 
 export const networkCommitments = [
   {
-    title: "Bien-être du cheval : une reconversion sérieuse et aboutie",
+    title: "Bien-être du cheval",
     summary:
-      "Chaque cheval est accueilli, rééduqué et confié à un propriétaire adapté à ses besoins.",
+      "Chaque Trotteur bénéficie d’une reconversion progressive, adaptée à son état physique, mental et à son profil.",
     items: [
-      "Garantir un cadre de vie sain et sécurisé, une activité adaptée, une ration quotidienne, de l'eau à volonté et les soins nécessaires.",
-      "Conserver le cheval au minimum un mois avant la vente, le temps d'acquérir les bases de l'équitation classique et de suivre une rééducation adaptée. En convalescence, le délai dépend de sa remise en forme.",
-      "Choisir l'acquéreur en fonction de son niveau, de ses moyens et de l'environnement qu'il peut offrir au cheval.",
+      "Mettre en place une reconversion adaptée, avec une activité, une ration et des soins ajustés aux besoins de chaque cheval.",
+      "Conserver le cheval au minimum un mois afin de consolider les bases de l’équitation classique, à pied comme monté, et de lui faire découvrir le travail en carrière aux trois allures.",
+      "Veiller à un placement responsable auprès d’un cavalier au niveau adapté, capable d’assumer le cheval financièrement et de lui offrir des conditions de vie appropriées.",
+    ],
+    note:
+      "Centres équestres : une vigilance particulière est portée à la gestion responsable et éthique de la cavalerie, à la charge de travail quotidienne, à la vie sociale des chevaux et à l’anticipation de leur retraite.",
+  },
+  {
+    title: "Réactivité et rigueur administrative",
+    summary:
+      "Une gestion rigoureuse garantit la conformité de la structure et le suivi fiable de chaque cheval accueilli.",
+    items: [
+      "Respecter la réglementation applicable à la détention d’équidés : registre d’élevage, déclaration des lieux de détention, vétérinaire sanitaire et vérification du certificat d’engagement et de connaissance de l’acheteur avant l’acquisition.",
+      "Transmettre à Passerelle les sept premières pages du livret signalétique, l’attestation de propriété au nom de la structure de reconversion et l’attestation d’exploitation limitée fournie par l’association.",
+      "Placer chaque Trotteur sous le contrat de protection Passerelle, informer l’association des entrées et sorties de chevaux et adhérer à l’association.",
     ],
   },
   {
-    title: "Cas spécifique des centres équestres",
+    title: "Transparence et traçabilité",
     summary:
-      "Les chevaux reconvertis peuvent enseigner, à condition que leur qualité de vie reste prioritaire.",
+      "Un lien régulier avec Passerelle permet d’accompagner au mieux les structures et chaque cheval pris en charge.",
     items: [
-      "Limiter la charge de travail à trois heures de cours par jour lors des journées les plus chargées.",
-      "Préserver la vie sociale avec des sorties quotidiennes au paddock, avec des congénères.",
-      "Anticiper la retraite : proposer le cheval à la vente entre 13 et 14 ans, avec le même suivi que pour toute reconversion et l'accompagnement de Passerelle.",
-    ],
-  },
-  {
-    title: "Traçabilité et protection à vie",
-    summary:
-      "Chaque étape est déclarée, suivie et encadrée par des documents qui protègent durablement le cheval.",
-    items: [
-      "Tenir un registre d'élevage, déclarer les lieux de détention et, dès trois équidés, un vétérinaire sanitaire.",
-      "Vérifier le certificat d'engagement de l'acquéreur et appliquer la restriction d'exploitation avec la SETF. À l'arrivée du cheval, transmettre ses livrets, attestations de propriété et d'exploitation limitée.",
-      "Vendre sous contrat Passerelle — ou équivalent validé — et protéger le cheval de l'abattage, de la consommation, de l'expérimentation, de la chasse à courre, de la reproduction et de la gestation pour autrui.",
-      "Envoyer chaque mois la liste des chevaux accueillis et leur destination après revente ; devenir membre de l'association (cotisation annuelle de 20 €).",
-    ],
-  },
-  {
-    title: "Transparence et communication",
-    summary:
-      "Passerelle reste informée afin d'accompagner au mieux chaque cheval et de partager son évolution.",
-    items: [
-      "Prévenir Passerelle lors de soins importants afin de définir ensemble le protocole et la prise en charge.",
-      "Donner des nouvelles dès l'arrivée puis tout au long de la reconversion ou de la convalescence, avec des photos et vidéos partageables.",
+      "Prendre contact avec Passerelle en cas de difficulté afin d’étudier ensemble les solutions possibles, y compris un accompagnement financier lorsque la situation le justifie.",
+      "Donner régulièrement des nouvelles des chevaux pris en charge, de leur arrivée jusqu’à leur reconversion ou leur placement, avec des photos ou vidéos lorsque cela est possible.",
     ],
   },
 ] as const;

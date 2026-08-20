@@ -116,6 +116,11 @@ import {
               <ul>
                 {commitment.items.map((item) => <li>{item}</li>)}
               </ul>
+              {commitment.note && (
+                <aside class="commitment__note">
+                  <strong>À noter.</strong> {commitment.note}
+                </aside>
+              )}
             </article>
           ))
         }
@@ -391,6 +396,16 @@ import {
   }
   .commitment--feature li::before {
     background: var(--sage);
+  }
+  .commitment__note {
+    margin-top: 1.35rem;
+    padding: 1rem 1.15rem;
+    color: rgba(255, 255, 255, 0.9);
+    background: color-mix(in srgb, var(--sage) 16%, transparent);
+    border-left: 2px solid var(--sage);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   @media (max-width: 900px) {
