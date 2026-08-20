@@ -246,22 +246,23 @@ import {
   .criteria__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.8rem;
+    gap: 1rem;
   }
   .criteria-card {
     display: grid;
-    grid-template-columns: minmax(22rem, 1.2fr) minmax(0, 0.8fr);
+    grid-template-columns: minmax(25rem, 1.2fr) minmax(0, 0.8fr);
     align-items: center;
-    gap: clamp(1.5rem, 5vw, 4rem);
-    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 4vw, 3rem);
-    background: var(--forest-deep);
-    border: 1px solid var(--forest-deep);
-    border-radius: 999px;
+    gap: clamp(1.25rem, 3vw, 3rem);
   }
   .criteria-card__title {
     display: flex;
     align-items: center;
     gap: 1rem;
+    min-height: 7.25rem;
+    padding: 1.5rem clamp(2rem, 3vw, 2.75rem);
+    color: #fff;
+    background: var(--forest-deep);
+    border-radius: 999px;
   }
   .criteria-card__icon {
     display: grid;
@@ -283,7 +284,7 @@ import {
   }
   .criteria-card > p {
     margin: 0;
-    color: color-mix(in srgb, #fff 84%, transparent);
+    color: var(--ink);
     line-height: 1.55;
   }
   .commitment ul {
@@ -407,6 +408,10 @@ import {
     .criteria-card {
       grid-template-columns: 1fr;
       gap: 1rem;
+    }
+    .criteria-card__title {
+      min-height: 0;
+      padding: 1.25rem 1.5rem;
     }
     .criteria-card h3 {
       white-space: normal;
