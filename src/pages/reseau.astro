@@ -250,27 +250,30 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     gap: 0.8rem;
   }
   .criteria-card {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-content: space-between;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.15rem, 2.5vw, 1.75rem);
     aspect-ratio: 1;
     padding: clamp(1.5rem, 3vw, 2.25rem);
-    background: var(--forest-deep);
-    border: 1px solid var(--forest-deep);
-    border-radius: var(--radius-lg);
+    text-align: center;
+    background: color-mix(in srgb, var(--sage) 26%, transparent);
+    border: 1px solid color-mix(in srgb, var(--moss-mid) 32%, transparent);
+    border-radius: 50%;
   }
   .criteria-card__title {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
   }
   .criteria-card__icon {
     display: grid;
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.75rem;
+    height: 2.75rem;
     place-items: center;
-    color: var(--forest-deep);
+    color: var(--forest);
     background: var(--sage);
     border-radius: 50%;
   }
@@ -280,12 +283,13 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
   }
   .criteria-card h3 {
     font-size: clamp(1.35rem, 1.75vw, 1.65rem);
-    color: #fff;
+    color: var(--forest);
     white-space: normal;
   }
   .criteria-card > p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.84);
+    max-width: 24ch;
+    color: var(--ink-soft);
     font-size: 0.95rem;
     line-height: 1.55;
   }
@@ -445,8 +449,8 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .criteria-card {
-      aspect-ratio: auto;
-      min-height: 16rem;
+      width: min(100%, 25rem);
+      justify-self: center;
     }
   }
 
