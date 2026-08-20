@@ -182,7 +182,6 @@ export const network = [
 /** A concise, web-first summary of the network accreditation requirements. */
 export const networkConditions = [
   {
-    number: "01",
     icon: "horse",
     title: "Connaissance du Trotteur Français",
     summary:
@@ -194,7 +193,6 @@ export const networkConditions = [
     ],
   },
   {
-    number: "02",
     icon: "house",
     title: "Qualité des infrastructures",
     summary:
@@ -206,7 +204,6 @@ export const networkConditions = [
     ],
   },
   {
-    number: "03",
     icon: "sprout",
     title: "Modèle économique viable",
     summary:
