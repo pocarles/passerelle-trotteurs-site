@@ -1,9 +1,15 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
-import Prose from "../components/Prose.astro";
+import CtaBand from "../components/CtaBand.astro";
 import Icon from "../components/Icon.astro";
-import { links, network } from "../data/site";
+import {
+  links,
+  network,
+  networkCommitments,
+  networkConditions,
+  site,
+} from "../data/site";
 ---
 
 <Base
@@ -65,68 +71,69 @@ import { links, network } from "../data/site";
     </div>
   </section>
 
-  <section class="section join">
-    <div class="wrap join__grid">
-      <div>
-        <p class="eyebrow eyebrow--light">Rejoindre le réseau</p>
-        <h2>Un cadre, un soutien, <span class="accent--light">un réseau.</span></h2>
+  <section class="section criteria" id="conditions">
+    <div class="wrap">
+      <div class="criteria__intro">
+        <p class="eyebrow">Conditions de référencement</p>
+        <h2>Un cadre exigeant pour <span class="accent">une reconversion durable.</span></h2>
+        <p class="lead">
+          Avant de recevoir le dossier de demande de référencement, chaque
+          structure est invitée à prendre connaissance des conditions suivantes.
+        </p>
       </div>
-      <Prose>
-        <p>
-          Vous avez une expérience dans la reconversion de Trotteurs Français,
-          vous partagez nos valeurs et souhaitez rejoindre une association
-          reconnue&nbsp;?
-        </p>
-        <p>
-          Passerelle vous offre un cadre sécuritaire, un soutien, un réseau et
-          souhaite partager avec vous de belles histoires de reconversion.
-        </p>
-
-        <h3>Nos engagements</h3>
-        <p>
-          Nos structures professionnelles de la reconversion sont sélectionnées
-          selon des critères spécifiques destinés à assurer le bien-être des
-          chevaux réformés.
-        </p>
-        <ul>
-          <li>Qualité des infrastructures, de l’alimentation et des soins.</li>
-          <li>Expérience de la reconversion.</li>
-          <li>Capacité à vérifier les compétences et la fiabilité des acheteurs.</li>
-        </ul>
-
-        <h3>Avantages du référencement Passerelle</h3>
-        <ul>
-          <li>
-            Gage de qualité auprès des propriétaires de chevaux de courses à
-            réformer ainsi que des futurs propriétaires.
-          </li>
-          <li>Visibilité sur nos outils de communication.</li>
-          <li>Participation à nos événements.</li>
-          <li>
-            Soutien individualisé sur le plan juridique, administratif et pour
-            la communication.
-          </li>
-        </ul>
-
-        <h3>Pour les professionnels des courses</h3>
-        <p>
-          La garantie contractuelle de la meilleure «&nbsp;seconde vie&nbsp;»
-          possible pour leur cheval, à l’issue de sa carrière.
-        </p>
-
-        <h3>Pour les cavaliers</h3>
-        <p>
-          L’opportunité d’acheter en toute tranquillité, sous contrat, un cheval
-          qui a bénéficié des meilleurs soins et d’un travail adapté à ses
-          capacités physiques et mentales.
-        </p>
-
-        <blockquote>
-          <p>Nous sommes tous responsables de leur avenir&nbsp;!</p>
-        </blockquote>
-      </Prose>
+      <div class="criteria__grid">
+        {
+          networkConditions.map((condition) => (
+            <article class="criteria-card">
+              <h3>{condition.title}</h3>
+              <ul>
+                {condition.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
+
+  <section class="section join" id="engagements">
+    <div class="wrap join__grid">
+      <div class="join__intro">
+        <p class="eyebrow eyebrow--light">Les engagements</p>
+        <h2>Un cadre, un soutien, <span class="accent--light">un réseau.</span></h2>
+        <p>
+          Rejoindre le réseau Passerelle, c’est s’engager pour la qualité de
+          vie, la traçabilité et la protection des Trotteurs Français.
+        </p>
+        <a class="tlink tlink--light" href={links.accreditation} target="_blank" rel="noreferrer">
+          Consulter le document complet
+          <Icon name="arrowUpRight" />
+        </a>
+      </div>
+      <div class="commitments">
+        {
+          networkCommitments.map((commitment) => (
+            <article class="commitment">
+              <h3>{commitment.title}</h3>
+              {commitment.intro && <p>{commitment.intro}</p>}
+              <ul>
+                {commitment.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    text="Tenté(e) par l’aventure Passerelle ?"
+    accent="Recevez votre dossier de demande de référencement."
+    label="Nous contacter"
+    href="/contact"
+    note={`Ou écrivez-nous directement à ${site.email}.`}
+    icon="users"
+  />
 
 </Base>
 
@@ -156,6 +163,60 @@ import { links, network } from "../data/site";
     font-family: var(--serif);
     font-size: clamp(1.45rem, 2.8vw, 2.2rem);
     line-height: 1.2;
+  }
+
+  .criteria {
+    background: var(--cream);
+  }
+  .criteria__intro {
+    max-width: 58ch;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .criteria__intro .lead {
+    margin-bottom: 0;
+  }
+  .criteria__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .criteria-card {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .criteria-card h3 {
+    color: var(--forest);
+  }
+  .criteria-card ul,
+  .commitment ul {
+    margin: 1.35rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .criteria-card li,
+  .commitment li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--ink-soft);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+  .criteria-card li + li,
+  .commitment li + li {
+    margin-top: 1rem;
+  }
+  .criteria-card li::before,
+  .commitment li::before {
+    content: "";
+    position: absolute;
+    top: 0.62em;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--moss-mid);
   }
 
   .directory__head {
@@ -199,16 +260,36 @@ import { links, network } from "../data/site";
     grid-template-columns: 0.8fr 1.2fr;
     gap: clamp(2.5rem, 7vw, 6rem);
   }
-  .join :global(.prose p),
-  .join :global(.prose li) {
+  .join__intro > p {
+    max-width: 32ch;
     color: rgba(255, 255, 255, 0.78);
   }
-  .join :global(.prose h3),
-  .join h2 {
+  .join__intro .tlink {
+    margin-top: 1.2rem;
+  }
+  .commitments {
+    max-width: 70ch;
+  }
+  .commitment + .commitment {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--line-light);
+  }
+  .commitment h3 {
     color: #fff;
   }
-  .join :global(.prose li::before) {
+  .commitment p,
+  .commitment li {
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .commitment li::before {
     background: var(--sage);
+  }
+
+  @media (max-width: 900px) {
+    .criteria__grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 800px) {
