@@ -23,9 +23,14 @@
   );
   const map = Leaflet.map(mapElement, {
     attributionControl: false,
-    scrollWheelZoom: false,
-    zoomControl: false,
-  }).setView([46.7, 2.5], 5.5);
+    scrollWheelZoom: true,
+    zoomControl: true,
+    touchZoom: true,
+    doubleClickZoom: true,
+    minZoom: 5,
+    maxZoom: 9,
+    zoomSnap: 0.25,
+  }).setView([46.7, 2.5], 6);
 
   fetch("/data/departements.geojson")
     .then((response) => {
@@ -74,7 +79,10 @@
       });
 
       const bounds = departmentsLayer.getBounds();
-      if (bounds.isValid()) map.fitBounds(bounds.pad(0.06));
+      if (bounds.isValid()) {
+        map.fitBounds(bounds.pad(0.01), { animate: false });
+        map.setZoom(Math.min(map.getZoom() + 0.75, 7));
+      }
     })
     .catch(() => {
       map.remove();
