@@ -85,16 +85,24 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
           transition vers une nouvelle vie.
         </p>
       </div>
-      <div class="criteria__grid">
+      <div class="criteria__accordions" data-accordion-group>
         {
-          networkConditions.map((condition) => (
-            <article class="criteria-card">
-              <div class="criteria-card__title">
-                <span class="criteria-card__icon"><Icon name={condition.icon} /></span>
-                <h3>{condition.title}</h3>
+          networkConditions.map((condition, index) => (
+            <details class="accordion-panel criteria-accordion" open={index === 0}>
+              <summary>
+                <span class="commitment__icon"><Icon name={condition.icon} /></span>
+                <span class="commitment__summary-copy">
+                  <span class="commitment__title">{condition.title}</span>
+                  <span class="commitment__summary">{condition.summary}</span>
+                </span>
+                <span class="commitment__toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="commitment__content">
+                <ul>
+                  {condition.items.map((item) => <li>{item}</li>)}
+                </ul>
               </div>
-              <p>{condition.summary}</p>
-            </article>
+            </details>
           ))
         }
       </div>
@@ -114,10 +122,10 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
           qualité de vie, la traçabilité et l'avenir des Trotteurs Français.
         </p>
       </div>
-      <div class="commitments">
+      <div class="commitments" data-accordion-group>
         {
           networkCommitments.map((commitment, index) => (
-            <details class="commitment" open={index === 0}>
+            <details class="accordion-panel commitment" open={index === 0}>
               <summary>
                 <span class="commitment__icon"><Icon name={commitmentIcons[index]} /></span>
                 <span class="commitment__summary-copy">
@@ -155,14 +163,18 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
   </div>
 
   <script>
-    const commitmentPanels = document.querySelectorAll<HTMLDetailsElement>(".commitment");
+    const accordionGroups = document.querySelectorAll<HTMLElement>("[data-accordion-group]");
 
-    commitmentPanels.forEach((panel) => {
-      panel.addEventListener("toggle", () => {
-        if (!panel.open) return;
+    accordionGroups.forEach((group) => {
+      const panels = group.querySelectorAll<HTMLDetailsElement>(".accordion-panel");
 
-        commitmentPanels.forEach((otherPanel) => {
-          if (otherPanel !== panel) otherPanel.open = false;
+      panels.forEach((panel) => {
+        panel.addEventListener("toggle", () => {
+          if (!panel.open) return;
+
+          panels.forEach((otherPanel) => {
+            if (otherPanel !== panel) otherPanel.open = false;
+          });
         });
       });
     });
@@ -244,78 +256,27 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     max-width: none;
     margin-bottom: 0;
   }
-  .criteria__grid {
+  .criteria__accordions {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.75rem;
-    max-width: 70rem;
-    margin-inline: auto;
+    gap: 0.85rem;
   }
-  .criteria-card {
-    display: grid;
-    grid-template-columns: minmax(14rem, 0.9fr) minmax(0, 1.25fr);
-    align-items: center;
-    gap: clamp(1.25rem, 4vw, 3.5rem);
-    width: 100%;
-    justify-self: center;
-    min-height: 7.5rem;
-    padding: clamp(1rem, 2vw, 1.4rem) clamp(1.5rem, 3vw, 2.5rem);
-    background: color-mix(in srgb, var(--sage) 20%, transparent);
-    border: 1px solid color-mix(in srgb, var(--moss-mid) 32%, transparent);
-    border-radius: var(--radius-lg);
-  }
-  .criteria-card:nth-child(1) {
-    width: 72%;
-  }
-  .criteria-card:nth-child(2) {
-    width: 86%;
-  }
-  .criteria-card__title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.6rem;
-  }
-  .criteria-card__icon {
-    display: grid;
-    width: 2.75rem;
-    height: 2.75rem;
-    place-items: center;
-    color: var(--forest);
-    background: var(--sage);
-    border-radius: 50%;
-  }
-  .criteria-card__icon :global(svg) {
-    width: 1.2rem;
-    height: 1.2rem;
-  }
-  .criteria-card h3 {
-    font-size: clamp(1.35rem, 1.75vw, 1.65rem);
-    color: var(--forest);
-    white-space: normal;
-  }
-  .criteria-card > p {
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-  .commitment ul {
+  .accordion-panel ul {
     margin: 1.25rem 0 0;
     padding: 0;
     list-style: none;
   }
-  .commitment li {
+  .accordion-panel li {
     position: relative;
     padding-left: 1.25rem;
     color: var(--ink-soft);
     font-size: 0.94rem;
     line-height: 1.55;
   }
-  .commitment li + li {
+  .accordion-panel li + li {
     margin-top: 0.85rem;
   }
-  .commitment li::before {
+  .accordion-panel li::before {
     content: "";
     position: absolute;
     top: 0.62em;
@@ -348,11 +309,11 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     grid-template-columns: 1fr;
     gap: 0.85rem;
   }
-  .commitment {
+  .accordion-panel {
     overflow: hidden;
     border-radius: var(--radius);
   }
-  .commitment summary {
+  .accordion-panel summary {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
@@ -364,7 +325,7 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     cursor: pointer;
     list-style: none;
   }
-  .commitment summary::-webkit-details-marker {
+  .accordion-panel summary::-webkit-details-marker {
     display: none;
   }
   .commitment__icon {
@@ -412,22 +373,22 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     font-size: 1.35rem;
     line-height: 1;
   }
-  .commitment[open] summary {
+  .accordion-panel[open] summary {
     background: var(--forest-deep);
     border-color: var(--forest-deep);
   }
-  .commitment[open] .commitment__title {
+  .accordion-panel[open] .commitment__title {
     color: #fff;
   }
-  .commitment[open] .commitment__summary {
+  .accordion-panel[open] .commitment__summary {
     color: rgba(255, 255, 255, 0.8);
   }
-  .commitment[open] .commitment__icon,
-  .commitment[open] .commitment__toggle {
+  .accordion-panel[open] .commitment__icon,
+  .accordion-panel[open] .commitment__toggle {
     color: var(--forest-deep);
     background: var(--sage);
   }
-  .commitment[open] .commitment__toggle::before {
+  .accordion-panel[open] .commitment__toggle::before {
     content: "–";
   }
   .commitment__content {
@@ -451,25 +412,8 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
     font-size: 0.92rem;
     line-height: 1.55;
   }
-  @media (max-width: 900px) {
-    .criteria-card {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .criteria-card {
-      grid-template-columns: 1fr;
-      gap: 0.9rem;
-      text-align: center;
-    }
-    .criteria-card__title {
-      align-items: center;
-    }
-  }
-
   @media (max-width: 760px) {
-    .commitment summary {
+    .accordion-panel summary {
       align-items: start;
     }
     .commitment__toggle {
