@@ -255,6 +255,7 @@ export const networkConditions = [
       "Des installations propres à accueillir, travailler et assurer les soins et le bien-être des trotteurs accueillis.",
     items: [
       "Disposer d’au moins un box ou d’une stabulation entretenue, disponible en cas de besoin pour assurer les soins.",
+      "Veiller à ce que les infrastructures et le mode de vie des équidés soient conformes à la Charte du bien-être équin.",
       "Disposer de sols adaptés pour le travail : carrière ou manège, rond de longe et chemins de balade.",
       "Offrir des paddocks sécurisés, en sable ou en herbe, pour la détente et la liberté.",
     ],
