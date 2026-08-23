@@ -1,0 +1,84 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+secrets.*
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Production data and backups
+*.sql
+*.sql.gz
+*.sql.bz2
+*.sql.zst
+*.dump
+*.mysql
+*.sqlite
+*.db
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.zst
+*.tgz
+*.zip
+*.7z
+*.rar
+private/
+web/sites/default/files/
+web/sites/*/files/
+
+# The production private-file directory sits outside the webroot under a name
+# not yet recorded. Add its real name here once the inventory confirms it;
+# the generic `private/` rule above may not match it.
+
+# Encrypted migration exports. Artifacts are encrypted with age or Restic
+# before touching disk, and must still never reach Git history.
+*.age
+*.gpg
+*.asc
+*.enc
+
+# Documents and tabular exports. Denied by default because this repository
+# must never hold private association documents, member lists or personal
+# data pulled from the database. Use `git add -f` for a genuinely public
+# asset that belongs in the repo.
+*.pdf
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.ods
+*.doc
+*.docx
+*.mbox
+
+# Scratch space. `tmp/pdfs/` already exists and would otherwise be
+# stageable, which is exactly how a private document reaches GitHub.
+tmp/
+
+# Unrelated project sharing this workspace. Migration work happens in a
+# clean worktree, but ignoring it removes the `git add -A` failure mode.
+public-site/
+
+# Drupal production configuration containing credentials
+web/sites/default/settings.php
+web/sites/*/settings.php
+
+# Composer-generated dependencies
+vendor/
+web/core/
+web/modules/contrib/
+web/themes/contrib/
+
+# Local tooling
+.DS_Store
+.idea/
+.vscode/
+
+# Sorties brutes des scripts de collecte de preuves (avant sanitisation)
+*-brut.txt
+routes-a-sonder.txt
