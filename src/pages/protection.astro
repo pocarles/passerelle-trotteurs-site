@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Icon from "../components/Icon.astro";
-import { protections } from "../data/site";
+import { intakeProfiles, protections } from "../data/site";
 ---
 
 <Base
@@ -42,6 +42,44 @@ import { protections } from "../data/site";
           rel="noreferrer"
         >
           Faire une demande de prise en charge
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section profiles-sec">
+    <div class="wrap">
+      <p class="eyebrow">Propriétaires · Entraîneurs · Éleveurs</p>
+      <h2 class="profiles__title">Pour quels chevaux&nbsp;?</h2>
+      <ul class="profiles">
+        {
+          intakeProfiles.map((profile) => (
+            <li>
+              <span class="badge"><Icon name="horse" /></span>
+              <h3>{profile.title}</h3>
+              <p>{profile.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="notice-sec">
+    <div class="wrap">
+      <div class="notice">
+        <span class="notice__ico"><Icon name="info" /></span>
+        <div>
+          <h3>Nos capacités d’accueil sont actuellement limitées.</h3>
+          <p>
+            Nos structures sont saturées. Les chevaux peuvent être inscrits sur
+            liste d’attente, sans garantie de délai. Passerelle peut également
+            fournir un contrat protecteur pour encadrer un placement direct.
+          </p>
+        </div>
+        <a class="btn btn--ghost" href="/contact">
+          Nous contacter
           <span class="btn__ico"><Icon name="arrow" /></span>
         </a>
       </div>
@@ -154,6 +192,64 @@ import { protections } from "../data/site";
   }
   .why__list strong {
     color: var(--ink);
+  }
+
+  .profiles__title {
+    margin-bottom: 3rem;
+  }
+  .profiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.8rem, 4vw, 3rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .profiles h3 {
+    margin: 1.2rem 0 0.5rem;
+  }
+  .profiles p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .notice-sec {
+    padding-block: 0 clamp(3rem, 6vw, 4.5rem);
+  }
+  .notice {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.2rem, 3vw, 2.4rem);
+    padding: clamp(1.6rem, 3vw, 2.2rem);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss-mid);
+    border-radius: var(--radius);
+    background: var(--cream-warm);
+  }
+  .notice__ico {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    color: var(--moss);
+  }
+  .notice__ico :global(svg) {
+    width: 30px;
+    height: 30px;
+  }
+  .notice h3 {
+    margin-bottom: 0.35rem;
+    font-family: var(--sans);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .notice p {
+    max-width: 62ch;
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .notice .btn {
+    flex: 0 0 auto;
   }
 
   .protect {
@@ -320,6 +416,7 @@ import { protections } from "../data/site";
 
   @media (max-width: 860px) {
     .why__grid,
+    .profiles,
     .protect__grid,
     .benefits__grid {
       grid-template-columns: 1fr;
@@ -328,6 +425,13 @@ import { protections } from "../data/site";
       left: 1rem;
       bottom: 1rem;
       width: 9rem;
+    }
+  }
+  @media (max-width: 720px) {
+    .notice {
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: var(--radius-lg);
     }
   }
   @media (max-width: 620px) {

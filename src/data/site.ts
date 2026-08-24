@@ -58,7 +58,6 @@ export const nav = [
     label: "Participer",
     href: "/participer",
     children: [
-      { label: "Confier un trotteur", href: "/confier" },
       { label: "Adopter un trotteur", href: "/adopter" },
       { label: "Devenir membre", href: "/participer/adherer" },
       { label: "Parrainer un trotteur", href: "/participer/parrainer" },
@@ -109,6 +108,21 @@ export const missionPillars = [
     icon: "shield",
     title: "Protéger à vie",
     body: "Chaque cheval placé l’est sous contrat Passerelle, qui le suit et le protège pour le reste de sa vie.",
+  },
+];
+
+export const intakeProfiles = [
+  {
+    title: "Yearlings & jeunes chevaux",
+    body: "Poulains et pouliches non qualifiés.",
+  },
+  {
+    title: "Chevaux sortants du circuit course",
+    body: "Chevaux non performants ou blessés.",
+  },
+  {
+    title: "Poulinières",
+    body: "Poulinières sortant de la reproduction.",
   },
 ];
 
