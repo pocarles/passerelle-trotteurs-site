@@ -62,8 +62,10 @@ import { protections } from "../data/site";
               loading="lazy"
             />
           </figure>
-          <span class="badge"><Icon name="horse" /></span>
-          <h3>Pour les professionnels des courses</h3>
+          <div class="benefits__heading">
+            <span class="badge"><Icon name="horse" /></span>
+            <h3>Pour les professionnels des courses</h3>
+          </div>
           <p>
             Le professionnel sait que son cheval passe entre les mains d’une
             équipe formée à la reconversion, qui connaît le monde des courses,
@@ -80,8 +82,10 @@ import { protections } from "../data/site";
               loading="lazy"
             />
           </figure>
-          <span class="badge"><Icon name="heart" /></span>
-          <h3>Pour les cavaliers</h3>
+          <div class="benefits__heading">
+            <span class="badge"><Icon name="heart" /></span>
+            <h3>Pour les cavaliers</h3>
+          </div>
           <p>
             L’opportunité d’acheter en toute tranquillité, sous contrat, un
             cheval qui a bénéficié des meilleurs soins et d’un travail adapté à
@@ -209,7 +213,7 @@ import { protections } from "../data/site";
   }
   .benefits__image {
     aspect-ratio: 16 / 9;
-    margin: 0 0 0.8rem;
+    margin: 0;
     overflow: hidden;
     border-radius: var(--radius);
     background: var(--cream-warm);
@@ -220,13 +224,16 @@ import { protections } from "../data/site";
     object-fit: cover;
   }
   .benefits article .badge {
-    position: relative;
-    z-index: 1;
-    margin: -1.75rem 0 0 1.25rem;
-    border: 3px solid var(--cream);
+    flex: 0 0 auto;
+  }
+  .benefits__heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.8rem 0 0.7rem;
   }
   .benefits h3 {
-    margin: 0.8rem 0 0.7rem;
+    margin: 0;
     color: var(--moss);
   }
   .benefits p {
