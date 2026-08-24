@@ -18,6 +18,7 @@
 
   mapElement.innerHTML = "";
   const departments = JSON.parse(mapElement.dataset.departments || "[]");
+  const directoryLinks = JSON.parse(mapElement.dataset.directoryLinks || "{}");
   const structuresByDepartment = new Map(
     departments.map((department) => [department.code, department]),
   );
@@ -56,7 +57,14 @@
         if (!department) return;
 
         const structures = department.structures
-          .map((structure) => `<li>${escapeHtml(structure)}</li>`)
+          .map((structure) => {
+            const directoryId = directoryLinks[structure];
+            const name = escapeHtml(structure);
+
+            return directoryId
+              ? `<li><a href="#${escapeHtml(directoryId)}">${name}</a></li>`
+              : `<li>${name}</li>`;
+          })
           .join("");
         const marker = Leaflet.circleMarker(layer.getBounds().getCenter(), {
           radius: 7 + Math.min(department.structures.length, 3),

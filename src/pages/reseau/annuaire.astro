@@ -6,6 +6,16 @@ import Icon from "../../components/Icon.astro";
 import { networkDirectory, networkMapDepartments, site } from "../../data/site";
 
 const mapDepartments = JSON.stringify(networkMapDepartments);
+const directoryId = (name: string) =>
+  `structure-${name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")}`;
+const directoryLinks = JSON.stringify(
+  Object.fromEntries(networkDirectory.map((structure) => [structure.name, directoryId(structure.name)])),
+);
 ---
 
 <Base
@@ -62,6 +72,7 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
         <div
           class="network-map"
           data-departments={mapDepartments}
+          data-directory-links={directoryLinks}
           aria-label="Carte des structures accréditées Passerelle"
         >
           <p class="network-map__loading">Chargement de la carte…</p>
@@ -84,7 +95,7 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
       <div class="directory" data-directory>
         {
           networkDirectory.map((structure) => (
-            <details class="directory-card">
+            <details class="directory-card" id={directoryId(structure.name)}>
               <summary>
                 <span class="directory-card__summary-copy">
                   <span class="directory-card__name">{structure.name}</span>
@@ -160,6 +171,26 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
         });
       });
     });
+
+    const openDirectoryCardFromHash = () => {
+      const targetId = window.location.hash.slice(1);
+      const card = document.getElementById(targetId);
+
+      if (!(card instanceof HTMLDetailsElement) || !card.classList.contains("directory-card")) {
+        return;
+      }
+
+      cards?.forEach((otherCard) => {
+        if (otherCard !== card) otherCard.open = false;
+      });
+      card.open = true;
+      requestAnimationFrame(() => {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    };
+
+    window.addEventListener("hashchange", openDirectoryCardFromHash);
+    openDirectoryCardFromHash();
   </script>
 </Base>
 
@@ -265,6 +296,13 @@ const mapDepartments = JSON.stringify(networkMapDepartments);
   :global(.network-map .leaflet-popup-content ul) {
     margin: 0;
     padding-left: 1.1rem;
+  }
+  :global(.network-map .leaflet-popup-content a) {
+    color: var(--forest);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
   }
   :global(.network-map .leaflet-popup-tip) {
     background: var(--cream);
