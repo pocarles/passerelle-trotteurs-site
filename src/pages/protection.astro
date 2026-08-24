@@ -74,7 +74,7 @@ import { intakeProfiles, protections } from "../data/site";
         {
           intakeProfiles.map((profile) => (
             <li>
-              <figure class="profiles__image">
+              <figure class="profiles__image" style={`--profile-image: url(${profile.image});`}>
                 <img src={profile.image} alt={profile.alt} loading="lazy" />
               </figure>
               <span class="badge"><Icon name="horse" /></span>
@@ -230,16 +230,39 @@ import { intakeProfiles, protections } from "../data/site";
     margin: 1.2rem 0 0.5rem;
   }
   .profiles__image {
+    position: relative;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
     aspect-ratio: 1.45;
     margin: 0 0 1.2rem;
     overflow: hidden;
     border-radius: var(--radius-lg);
     background: var(--cream-warm);
   }
+  .profiles__image::before,
+  .profiles__image::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+  }
+  .profiles__image::before {
+    z-index: -2;
+    inset: -1.5rem;
+    background: center / cover no-repeat var(--profile-image);
+    filter: blur(1rem);
+    opacity: 0.38;
+    transform: scale(1.08);
+  }
+  .profiles__image::after {
+    z-index: -1;
+    inset: 0;
+    background: rgb(248 245 238 / 0.16);
+  }
   .profiles__image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
   .profiles p {
