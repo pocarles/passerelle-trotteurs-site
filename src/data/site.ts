@@ -49,6 +49,7 @@ export const nav = [
     label: "Réseau",
     href: "/reseau",
     children: [
+      { label: "Rejoindre le réseau", href: "/reseau" },
       { label: "Annuaire des structures", href: "/reseau/annuaire#annuaire" },
       { label: "Carte des structures", href: "/reseau/annuaire#carte" },
     ],
