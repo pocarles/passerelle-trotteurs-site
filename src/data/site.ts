@@ -231,7 +231,10 @@ export const networkDirectory = [
     phones: ["06 70 99 22 03"],
     email: "delphinebaudet@outlook.fr",
     links: [],
-    socials: [{ label: "Facebook", href: "https://www.facebook.com/Les-Ecuries-du-Saule-946423072082831/" }],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/Les-Ecuries-du-Saule-946423072082831/" },
+      { label: "Instagram", href: "https://www.instagram.com/les_ecuries_du_saule/" },
+    ],
   },
   {
     name: "Écurie HADAH",
@@ -251,7 +254,10 @@ export const networkDirectory = [
     address: ["L’Eau de Fosse", "45600 Viglain"],
     phones: ["07 86 75 43 61"],
     links: [],
-    socials: [{ label: "Facebook", href: "https://www.facebook.com/ecurieeaudefosse/" }],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/ecurieeaudefosse/" },
+      { label: "Instagram", href: "https://www.instagram.com/ecurieleaudefosse/" },
+    ],
   },
   {
     name: "Écurie TDS",
@@ -260,6 +266,10 @@ export const networkDirectory = [
     phones: ["06 84 74 15 12"],
     email: "ecurietds@gmail.com",
     links: [],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/ecurietds/" },
+      { label: "Instagram", href: "https://www.instagram.com/ecurietds/" },
+    ],
   },
   {
     name: "Écuries de la Brèche",
@@ -372,7 +382,12 @@ export const networkDirectory = [
     phones: ["06 68 26 19 74"],
     email: "juignetjesa@hotmail.com",
     links: [{ label: "Site internet", href: "https://www.lescrinsdeliberte.fr/" }],
-    socials: [{ label: "Facebook", href: "https://www.facebook.com/lescrinsdeliberte/" }],
+    socials: [
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/stories/104757408355358/?source=EMBED_PAGE&ref=embed_page",
+      },
+    ],
   },
   {
     name: "Les Écuries du Moulin d’Aubry",
@@ -389,12 +404,13 @@ export const networkDirectory = [
     address: ["Roche", "42550 Usson-en-Forez"],
     phones: ["06 24 69 35 16"],
     email: "urga73@hotmail.fr",
-    links: [],
+    links: [{ label: "Site internet", href: "http://rehabranch.fr/" }],
     socials: [
       {
         label: "Facebook",
         href: "https://www.facebook.com/p/Rehab-Ranch-R%C3%A9%C3%A9ducation-retraite-%C3%A9levage-100091920780786/",
       },
+      { label: "Instagram", href: "https://www.instagram.com/rehab__ranch_/" },
     ],
   },
   {
