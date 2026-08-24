@@ -90,7 +90,7 @@ export const legal = {
 export const stats = [
   { value: "2020", label: "Année de création", icon: "calendar" },
   { value: "22", label: "Structures accréditées", icon: "map" },
-  { value: "10–15", label: "Chevaux confiés par semaine", icon: "horse" },
+  { value: "150–200", label: "Chevaux confiés par an", icon: "horse" },
   { value: "6", label: "Protections à vie", icon: "shield" },
 ];
 
