@@ -231,6 +231,7 @@ export const networkDirectory = [
     phones: ["06 70 99 22 03"],
     email: "delphinebaudet@outlook.fr",
     links: [],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/Les-Ecuries-du-Saule-946423072082831/" }],
   },
   {
     name: "Écurie HADAH",
@@ -276,6 +277,7 @@ export const networkDirectory = [
     phones: ["07 83 65 74 82"],
     email: "vanhaeckemeg@outlook.fr",
     links: [{ label: "Site internet", href: "https://www.ecuriesdechigny.com/" }],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/EcuriesChigny" }],
   },
   {
     name: "Education LF — Écurie du Hirlenbach",
@@ -296,6 +298,7 @@ export const networkDirectory = [
     phones: ["06 65 14 68 28"],
     email: "harasdesplaines@gmail.com",
     links: [{ label: "Site internet", href: "https://www.harasdesplaines.com/" }],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/inseminationequine" }],
   },
   {
     name: "Héliominos",
@@ -304,6 +307,7 @@ export const networkDirectory = [
     phones: ["06 98 05 92 81"],
     email: "nathalie.francelle@orange.fr",
     links: [{ label: "Site internet", href: "http://association-heliominos.e-monsite.com/" }],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/Heliominos/" }],
   },
   {
     name: "L’Écrin du Bonheur",
@@ -368,6 +372,7 @@ export const networkDirectory = [
     phones: ["06 68 26 19 74"],
     email: "juignetjesa@hotmail.com",
     links: [{ label: "Site internet", href: "https://www.lescrinsdeliberte.fr/" }],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/lescrinsdeliberte/" }],
   },
   {
     name: "Les Écuries du Moulin d’Aubry",
@@ -405,6 +410,10 @@ export const networkDirectory = [
     phones: ["06 18 06 66 18", "04 73 31 00 45"],
     email: "contact@soscheval.fr",
     links: [{ label: "Site internet", href: "https://www.soscheval.fr/" }],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/SOS.Cheval" },
+      { label: "Instagram", href: "https://www.instagram.com/associationsoscheval/" },
+    ],
   },
 ] as const;
 
