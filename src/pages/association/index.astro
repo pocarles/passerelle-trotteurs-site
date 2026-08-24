@@ -1,16 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import { dateLabel } from "../../data/dates";
 import Base from "../../layouts/Base.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import Prose from "../../components/Prose.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import Icon from "../../components/Icon.astro";
 import { links, stats, missionPillars } from "../../data/site";
-
-const latestNews = (await getCollection("actualites"))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
 
 const objectifs = [
   "Sensibiliser le grand public et les acteurs de la filière hippique aux enjeux de la reconversion.",
@@ -154,36 +148,6 @@ const values = [
     </div>
   </section>
 
-  <section class="section association-news">
-    <div class="wrap">
-      <div class="association-news__head">
-        <div>
-          <p class="eyebrow">Actualités</p>
-          <h2>Sur le terrain</h2>
-        </div>
-        <a class="tlink" href="/actualites">
-          Toutes les actualités
-          <Icon name="arrow" />
-        </a>
-      </div>
-      <ul class="association-news__list">
-        {
-          latestNews.map((article) => (
-            <li>
-              <a href={`/actualites/${article.id}`}>
-                <time datetime={article.data.date.toISOString().slice(0, 10)}>
-                  {dateLabel(article.data.date, article.data.dateLabel)}
-                </time>
-                <h3>{article.data.title}</h3>
-                <Icon name="arrow" />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
   <CtaBand
     text="Chaque adhésion et chaque don participe directement à la reconversion d’un cheval."
     accent="Rejoignez-nous."
@@ -245,56 +209,6 @@ const values = [
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.72);
-  }
-
-  .association-news {
-    background: var(--cream-warm);
-    border-block: 1px solid var(--line);
-  }
-  .association-news__head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .association-news__head h2 {
-    margin-bottom: 0;
-  }
-  .association-news__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid var(--line);
-  }
-  .association-news__list a {
-    display: grid;
-    grid-template-columns: 170px 1fr auto;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--line);
-    transition: padding-inline 0.2s ease;
-  }
-  .association-news__list a:hover {
-    padding-inline: 0.75rem;
-  }
-  .association-news__list time {
-    color: var(--moss);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-  }
-  .association-news__list h3 {
-    margin: 0;
-    font-size: 1.28rem;
-  }
-  .association-news__list :global(svg) {
-    width: 17px;
-    height: 17px;
-    color: var(--ink-faint);
   }
 
   .sec-title {
@@ -452,12 +366,6 @@ const values = [
     }
     .stat:nth-child(3) {
       border-left: 0;
-    }
-    .association-news__list a {
-      grid-template-columns: 1fr auto;
-    }
-    .association-news__list time {
-      grid-column: 1 / -1;
     }
     .pillars {
       grid-template-columns: 1fr;

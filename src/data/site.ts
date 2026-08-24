@@ -42,6 +42,7 @@ export const nav = [
       { label: "L’équipe", href: "/association/equipe" },
       { label: "#RaceAndCare", href: "/race-and-care" },
       { label: "Mécènes & ambassadeurs", href: "/mecenes" },
+      { label: "Actualités", href: "/actualites" },
     ],
   },
   {
