@@ -97,6 +97,10 @@ import { protections } from "../data/site";
   </section>
 
   <section class="section protect">
+    <div class="protect__lock" aria-hidden="true">
+      <span class="protect__lock-shackle"></span>
+      <span class="protect__lock-body"></span>
+    </div>
     <div class="wrap protect__grid">
       <div>
         <p class="eyebrow eyebrow--light">Six protections</p>
@@ -162,14 +166,93 @@ import { protections } from "../data/site";
   }
 
   .protect {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background: var(--forest-deep);
     color: #fff;
   }
   .protect__grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 0.75fr 1.25fr;
     gap: clamp(2.5rem, 7vw, 6rem);
     align-items: start;
+  }
+  .protect__lock {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    width: clamp(12rem, 23vw, 24rem);
+    aspect-ratio: 0.78;
+    opacity: 0.14;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+  .protect__lock-shackle {
+    position: absolute;
+    top: 0;
+    left: 19%;
+    width: 62%;
+    height: 58%;
+    border: clamp(4px, 0.45vw, 7px) solid var(--sage);
+    border-bottom: 0;
+    border-radius: 50% 50% 0 0;
+    transform-origin: 85% 100%;
+    animation: protect-lock-close 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  .protect__lock-body {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 62%;
+    border: clamp(4px, 0.45vw, 7px) solid var(--sage);
+    border-radius: 14% 14% 8% 8%;
+    background: rgba(186, 214, 136, 0.08);
+  }
+  .protect__lock-body::before {
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    width: clamp(0.8rem, 1.4vw, 1.25rem);
+    height: clamp(1.15rem, 2.1vw, 1.8rem);
+    border-radius: 50% 50% 40% 40%;
+    background: var(--sage);
+    content: "";
+    transform: translateX(-50%);
+  }
+  .protect__lock-body::after {
+    position: absolute;
+    top: calc(34% + clamp(0.8rem, 1.4vw, 1.25rem));
+    left: 50%;
+    width: clamp(0.3rem, 0.55vw, 0.5rem);
+    height: clamp(1.1rem, 1.8vw, 1.6rem);
+    border-radius: 0 0 999px 999px;
+    background: var(--sage);
+    content: "";
+    transform: translateX(-50%);
+  }
+  @keyframes protect-lock-close {
+    0%,
+    20% {
+      transform: translateY(-24%) rotate(-8deg);
+    }
+    40%,
+    80% {
+      transform: translateY(0) rotate(0);
+    }
+    100% {
+      transform: translateY(-24%) rotate(-8deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .protect__lock-shackle {
+      animation: none;
+      transform: translateY(0);
+    }
   }
   .protect h2 {
     color: #fff;
