@@ -109,8 +109,8 @@ import { intakeProfiles, protections } from "../data/site";
 
   <section class="section benefits">
     <div class="wrap">
-      <p class="eyebrow">Une garantie partagée</p>
-      <h2 class="benefits__title">Protéger le cheval, <span class="accent">sécuriser chaque partie.</span></h2>
+      <p class="eyebrow eyebrow--light">Une garantie partagée</p>
+      <h2 class="benefits__title">Protéger le cheval, <span class="accent--light">sécuriser chaque partie.</span></h2>
       <div class="benefits__grid">
         <article>
           <figure class="benefits__image">
@@ -161,8 +161,8 @@ import { intakeProfiles, protections } from "../data/site";
     </div>
     <div class="wrap protect__grid">
       <div>
-        <p class="eyebrow eyebrow--light">Six protections</p>
-        <h2>La protection Passerelle <span class="accent--light">pour tous.</span></h2>
+        <p class="eyebrow">Six protections</p>
+        <h2>La protection Passerelle <span class="accent">pour tous.</span></h2>
       </div>
       <ol class="protect__list">
         {
@@ -342,8 +342,9 @@ import { intakeProfiles, protections } from "../data/site";
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background: var(--forest-deep);
-    color: #fff;
+    background: var(--cream-warm);
+    color: var(--ink);
+    border-top: 1px solid var(--line);
   }
   .protect__grid {
     position: relative;
@@ -360,7 +361,7 @@ import { intakeProfiles, protections } from "../data/site";
     left: clamp(1rem, 5vw, 5rem);
     width: clamp(12rem, 18vw, 20rem);
     aspect-ratio: 0.78;
-    opacity: 0.2;
+    opacity: 0.16;
     pointer-events: none;
   }
   .protect__lock::before {
@@ -381,7 +382,7 @@ import { intakeProfiles, protections } from "../data/site";
     left: 20%;
     width: 60%;
     height: 61%;
-    border: clamp(9px, 0.85vw, 14px) solid var(--sage);
+    border: clamp(9px, 0.85vw, 14px) solid var(--moss);
     border-bottom: 0;
     border-radius: 50% 50% 0 0 / 64% 64% 0 0;
     box-shadow:
@@ -405,11 +406,11 @@ import { intakeProfiles, protections } from "../data/site";
     bottom: 0;
     left: 0;
     height: 58%;
-    border: clamp(9px, 0.85vw, 14px) solid var(--sage);
+    border: clamp(9px, 0.85vw, 14px) solid var(--moss);
     border-radius: 14% 14% 9% 9%;
     background:
       linear-gradient(115deg, rgba(255, 255, 255, 0.2), transparent 35%),
-      linear-gradient(155deg, rgba(186, 214, 136, 0.42), rgba(108, 145, 70, 0.22));
+      linear-gradient(155deg, rgba(110, 139, 61, 0.35), rgba(31, 61, 43, 0.12));
     box-shadow:
       inset 0 clamp(3px, 0.35vw, 6px) 0 rgba(255, 255, 255, 0.2),
       inset 0 -5px 0 rgba(0, 0, 0, 0.16),
@@ -476,7 +477,7 @@ import { intakeProfiles, protections } from "../data/site";
     }
   }
   .protect h2 {
-    color: #fff;
+    color: var(--ink);
   }
   .protect__list {
     display: grid;
@@ -486,20 +487,20 @@ import { intakeProfiles, protections } from "../data/site";
     padding: 0;
     list-style: none;
     overflow: hidden;
-    border: 1px solid var(--line-light);
+    border: 1px solid var(--line-strong);
     border-radius: var(--radius);
-    background: var(--line-light);
+    background: var(--line-strong);
   }
   .protect__list li {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
     padding: 1.5rem 1.4rem;
-    background: var(--forest-deep);
+    background: var(--card);
   }
   .protect__num {
     flex: 0 0 auto;
-    color: var(--sage);
+    color: var(--moss);
     font-family: var(--serif);
   }
   .benefits__title {
@@ -508,6 +509,8 @@ import { intakeProfiles, protections } from "../data/site";
   }
   .section.benefits {
     padding-top: clamp(3.5rem, 7vw, 6rem);
+    background: var(--forest-deep);
+    color: rgba(255, 255, 255, 0.82);
   }
   .benefits__grid {
     display: grid;
@@ -541,11 +544,15 @@ import { intakeProfiles, protections } from "../data/site";
   }
   .benefits h3 {
     margin: 0;
-    color: var(--moss);
+    color: var(--sage);
   }
   .benefits p {
     max-width: 50ch;
-    color: var(--ink-soft);
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .benefits article .badge {
+    background: var(--sage);
+    color: var(--forest-deep);
   }
 
   @media (max-width: 860px) {
