@@ -53,7 +53,7 @@ export const nav = [
       { label: "Annuaire & carte des structures", href: "/reseau/annuaire" },
     ],
   },
-  { label: "Protection", href: "/protection" },
+  { label: "Confier & protéger", href: "/protection" },
   {
     label: "Participer",
     href: "/participer",
