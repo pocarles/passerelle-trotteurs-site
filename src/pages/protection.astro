@@ -182,14 +182,13 @@ import { protections } from "../data/site";
   }
   .protect__lock {
     position: absolute;
-    z-index: 0;
-    top: 50%;
-    left: 50%;
-    width: clamp(12rem, 23vw, 24rem);
+    z-index: 2;
+    right: clamp(1rem, 5vw, 5rem);
+    bottom: clamp(0.75rem, 2vw, 2rem);
+    width: clamp(10rem, 16vw, 17rem);
     aspect-ratio: 0.78;
-    opacity: 0.14;
+    opacity: 0.12;
     pointer-events: none;
-    transform: translate(-50%, -50%);
   }
   .protect__lock-shackle {
     position: absolute;
@@ -329,6 +328,11 @@ import { protections } from "../data/site";
     .protect__grid,
     .benefits__grid {
       grid-template-columns: 1fr;
+    }
+    .protect__lock {
+      right: 1rem;
+      bottom: 1rem;
+      width: 9rem;
     }
   }
   @media (max-width: 620px) {
