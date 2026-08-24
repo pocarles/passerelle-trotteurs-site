@@ -254,27 +254,6 @@ const schema = {
     </div>
   </section>
 
-  <!-- ═══════════ CAPACITY NOTICE ═══════════ -->
-  <section class="section notice-sec">
-    <div class="wrap">
-      <div class="notice">
-        <span class="notice__ico"><Icon name="info" /></span>
-        <div>
-          <h3>Nos capacités d’accueil sont actuellement limitées.</h3>
-          <p>
-            Nos structures sont saturées. Les chevaux peuvent être inscrits sur
-            liste d’attente, sans garantie de délai. Passerelle peut également
-            fournir un contrat protecteur pour encadrer un placement direct.
-          </p>
-        </div>
-        <a class="btn btn--ghost" href="/contact">
-          Nous contacter
-          <span class="btn__ico"><Icon name="arrow" /></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
 </Base>
 
 <style>
@@ -643,47 +622,6 @@ const schema = {
     flex: 0 0 auto;
   }
 
-  /* ───────── notice ───────── */
-  .notice-sec {
-    padding-block: clamp(3rem, 6vw, 4.5rem);
-  }
-  .notice {
-    display: flex;
-    align-items: center;
-    gap: clamp(1.2rem, 3vw, 2.4rem);
-    padding: clamp(1.6rem, 3vw, 2.2rem);
-    background: var(--cream-warm);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--moss-mid);
-    border-radius: var(--radius);
-  }
-  .notice__ico {
-    display: grid;
-    place-items: center;
-    flex: 0 0 auto;
-    color: var(--moss);
-  }
-  .notice__ico :global(svg) {
-    width: 30px;
-    height: 30px;
-  }
-  .notice h3 {
-    font-family: var(--sans);
-    font-size: 1.02rem;
-    font-weight: 600;
-    letter-spacing: 0;
-    margin-bottom: 0.35rem;
-  }
-  .notice p {
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 0.95rem;
-    max-width: 62ch;
-  }
-  .notice .btn {
-    flex: 0 0 auto;
-  }
-
   /* ───────── news ───────── */
   .news {
     background: var(--cream-warm);
@@ -828,12 +766,6 @@ const schema = {
     }
     .protect__list {
       grid-template-columns: 1fr;
-    }
-    .notice {
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-      border-radius: var(--radius-lg);
     }
   }
 </style>
