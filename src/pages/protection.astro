@@ -52,6 +52,24 @@ import { intakeProfiles, protections } from "../data/site";
     <div class="wrap">
       <p class="eyebrow">Propriétaires · Entraîneurs · Éleveurs</p>
       <h2 class="profiles__title">Pour quels chevaux&nbsp;?</h2>
+      <div class="profiles__details">
+        <p>
+          Passerelle prend en charge uniquement les chevaux Trotteurs Français
+          sortant de la filière course. Pour organiser leur départ, vous devez
+          disposer du carnet et de la carte de propriétaire.
+        </p>
+        <p>
+          Selon son âge, son état de santé et ses capacités — montable ou non,
+          sain ou convalescent — nous pouvons reprendre votre cheval suivant
+          une grille tarifaire pré-établie. Pour fluidifier les délais de prise
+          en charge, <strong class="profiles__donation">nous privilégions toutefois le don, avec une réduction d’impôt à la clé.</strong>
+        </p>
+        <p>
+          Nous nous engageons à orienter votre cheval vers une
+          <a href="/reseau">structure d’accueil affiliée Passerelle</a> dans
+          les plus brefs délais.
+        </p>
+      </div>
       <ul class="profiles">
         {
           intakeProfiles.map((profile) => (
@@ -63,24 +81,6 @@ import { intakeProfiles, protections } from "../data/site";
           ))
         }
       </ul>
-      <div class="profiles__details">
-        <p>
-          Passerelle prend en charge uniquement les chevaux Trotteurs Français
-          sortant de la filière course. Pour organiser leur départ, vous devez
-          disposer du carnet et de la carte de propriétaire.
-        </p>
-        <p>
-          Selon son âge, son état de santé et ses capacités — montable ou non,
-          sain ou convalescent — nous pouvons reprendre votre cheval suivant
-          une grille tarifaire pré-établie. Pour fluidifier les délais de prise
-          en charge, nous privilégions toutefois le don, avec une réduction
-          d’impôt à la clé.
-        </p>
-        <p>
-          Nous nous engageons à orienter votre cheval vers une structure
-          d’accueil affiliée Passerelle dans les plus brefs délais.
-        </p>
-      </div>
     </div>
   </section>
 
@@ -234,15 +234,30 @@ import { intakeProfiles, protections } from "../data/site";
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem clamp(2rem, 5vw, 4rem);
-    margin-top: clamp(2.5rem, 5vw, 4rem);
-    padding-top: clamp(1.7rem, 3vw, 2.4rem);
-    border-top: 1px solid var(--line);
+    margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: clamp(1.7rem, 3vw, 2.4rem);
+    border-bottom: 1px solid var(--line);
   }
   .profiles__details p {
     max-width: 52ch;
     margin: 0;
     color: var(--ink-soft);
     line-height: 1.65;
+  }
+  .profiles__donation {
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--moss-mid);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
+  }
+  .profiles__details a {
+    color: var(--moss);
+    font-weight: 600;
+    text-decoration-color: var(--moss-mid);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
   }
   .notice-sec {
     padding-block: 0 clamp(3rem, 6vw, 4.5rem);
