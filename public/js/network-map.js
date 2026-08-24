@@ -23,21 +23,36 @@
     departments.map((department) => [department.code, department]),
   );
 
-  mapElement.addEventListener("click", (event) => {
+  const openDirectoryCard = (directoryId) => {
+    const card = document.getElementById(directoryId);
+    if (!(card instanceof HTMLDetailsElement) || !card.classList.contains("directory-card")) {
+      return;
+    }
+
+    document.querySelectorAll(".directory-card[open]").forEach((otherCard) => {
+      if (otherCard !== card) otherCard.open = false;
+    });
+    card.open = true;
+    requestAnimationFrame(() => {
+      card.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  document.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) return;
 
     const link = event.target.closest("a[data-directory-card]");
-    if (!(link instanceof HTMLAnchorElement)) return;
+    if (!(link instanceof HTMLAnchorElement) || !mapElement.contains(link)) return;
 
     const directoryId = link.dataset.directoryCard;
     if (!directoryId) return;
 
     event.preventDefault();
-    window.history.pushState(null, "", `#${directoryId}`);
-    document.dispatchEvent(
-      new CustomEvent("network-directory-card-request", { detail: { id: directoryId } }),
-    );
-  });
+    if (window.location.hash !== `#${directoryId}`) {
+      window.history.pushState(null, "", `#${directoryId}`);
+    }
+    openDirectoryCard(directoryId);
+  }, true);
 
   const map = Leaflet.map(mapElement, {
     attributionControl: false,
