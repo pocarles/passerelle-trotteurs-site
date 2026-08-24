@@ -65,7 +65,7 @@ import { intakeProfiles, protections } from "../data/site";
           en charge, <strong class="profiles__donation">nous privilégions toutefois le don, avec une réduction d’impôt à la clé.</strong>
         </p>
         <p>
-          Nous nous engageons à orienter votre cheval vers une
+          Nous nous engageons à orienter votre cheval vers une&nbsp;
           <a href="/reseau">structure d’accueil affiliée Passerelle</a> dans
           les plus brefs délais.
         </p>
@@ -232,8 +232,8 @@ import { intakeProfiles, protections } from "../data/site";
   }
   .profiles__details {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem clamp(2rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 74ch);
+    gap: 1rem;
     margin: 0 0 clamp(2.5rem, 5vw, 4rem);
     padding-bottom: clamp(1.7rem, 3vw, 2.4rem);
     border-bottom: 1px solid var(--line);
