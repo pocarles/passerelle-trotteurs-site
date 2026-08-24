@@ -64,7 +64,6 @@ export const nav = [
       { label: "Parrainer un trotteur", href: "/participer/parrainer" },
     ],
   },
-  { label: "Actualités", href: "/actualites" },
   { label: "Contact", href: "/contact" },
 ];
 
