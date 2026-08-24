@@ -172,8 +172,7 @@ const directoryLinks = JSON.stringify(
       });
     });
 
-    const openDirectoryCardFromHash = () => {
-      const targetId = window.location.hash.slice(1);
+    const openDirectoryCard = (targetId: string) => {
       const card = document.getElementById(targetId);
 
       if (!(card instanceof HTMLDetailsElement) || !card.classList.contains("directory-card")) {
@@ -189,7 +188,13 @@ const directoryLinks = JSON.stringify(
       });
     };
 
+    const openDirectoryCardFromHash = () => openDirectoryCard(window.location.hash.slice(1));
+
     window.addEventListener("hashchange", openDirectoryCardFromHash);
+    document.addEventListener("network-directory-card-request", (event) => {
+      const { id } = (event as CustomEvent<{ id?: string }>).detail ?? {};
+      if (id) openDirectoryCard(id);
+    });
     openDirectoryCardFromHash();
   </script>
 </Base>

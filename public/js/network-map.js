@@ -22,6 +22,23 @@
   const structuresByDepartment = new Map(
     departments.map((department) => [department.code, department]),
   );
+
+  mapElement.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest("a[data-directory-card]");
+    if (!(link instanceof HTMLAnchorElement)) return;
+
+    const directoryId = link.dataset.directoryCard;
+    if (!directoryId) return;
+
+    event.preventDefault();
+    window.history.pushState(null, "", `#${directoryId}`);
+    document.dispatchEvent(
+      new CustomEvent("network-directory-card-request", { detail: { id: directoryId } }),
+    );
+  });
+
   const map = Leaflet.map(mapElement, {
     attributionControl: false,
     scrollWheelZoom: true,
@@ -62,7 +79,7 @@
             const name = escapeHtml(structure);
 
             return directoryId
-              ? `<li><a href="#${escapeHtml(directoryId)}">${name}</a></li>`
+              ? `<li><a href="#${escapeHtml(directoryId)}" data-directory-card="${escapeHtml(directoryId)}">${name}</a></li>`
               : `<li>${name}</li>`;
           })
           .join("");
