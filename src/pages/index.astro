@@ -10,7 +10,6 @@ import {
   missionPillars,
   pathways,
   protections,
-  network,
 } from "../data/site";
 
 const latestNews = (await getCollection("actualites"))
@@ -145,6 +144,37 @@ const schema = {
     </div>
   </section>
 
+  <!-- ═══════════ NEWS ═══════════ -->
+  <section class="section news">
+    <div class="wrap">
+      <div class="news__head">
+        <div>
+          <p class="eyebrow">Actualités</p>
+          <h2>Sur le terrain</h2>
+        </div>
+        <a class="tlink" href="/actualites">
+          Toutes les actualités
+          <Icon name="arrow" />
+        </a>
+      </div>
+      <ul class="news__list">
+        {
+          latestNews.map((n) => (
+            <li>
+              <a href={`/actualites/${n.id}`}>
+                <time datetime={n.data.date.toISOString().slice(0, 10)}>
+                  {dateLabel(n.data.date, n.data.dateLabel)}
+                </time>
+                <h3>{n.data.title}</h3>
+                <Icon name="arrow" class="news__arrow" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
   <!-- ═══════════ PATHWAYS ═══════════ -->
   <section class="section pathways">
     <div class="wrap">
@@ -242,76 +272,6 @@ const schema = {
           <span class="btn__ico"><Icon name="arrow" /></span>
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ NETWORK ═══════════ -->
-  <section class="section net">
-    <div class="wrap net__grid">
-      <div>
-        <p class="eyebrow">Le réseau accrédité</p>
-        <h2>
-          {network.length} structures<br />
-          <span class="accent">partout en France.</span>
-        </h2>
-        <p class="lead">
-          Nos structures professionnelles sont sélectionnées sur la qualité de
-          leurs infrastructures, de l’alimentation et des soins, leur expérience
-          de la reconversion et leur capacité à vérifier la fiabilité des
-          acheteurs.
-        </p>
-        <div class="net__cta">
-          <a class="btn btn--ghost" href="/reseau">
-            Consulter l’annuaire
-            <span class="btn__ico"><Icon name="arrow" /></span>
-          </a>
-          <a class="tlink" href={links.accreditation} target="_blank" rel="noreferrer">
-            Cahier des charges
-            <Icon name="arrowUpRight" />
-          </a>
-        </div>
-      </div>
-      <ul class="net__list">
-        {
-          network.map(([name, dept]) => (
-            <li>
-              <span>{name}</span>
-              <span class="net__dept">{dept}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <!-- ═══════════ NEWS ═══════════ -->
-  <section class="section news">
-    <div class="wrap">
-      <div class="news__head">
-        <div>
-          <p class="eyebrow">Actualités</p>
-          <h2>Sur le terrain</h2>
-        </div>
-        <a class="tlink" href="/actualites">
-          Toutes les actualités
-          <Icon name="arrow" />
-        </a>
-      </div>
-      <ul class="news__list">
-        {
-          latestNews.map((n) => (
-            <li>
-              <a href={`/actualites/${n.id}`}>
-                <time datetime={n.data.date.toISOString().slice(0, 10)}>
-                  {dateLabel(n.data.date, n.data.dateLabel)}
-                </time>
-                <h3>{n.data.title}</h3>
-                <Icon name="arrow" class="news__arrow" />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </section>
 
@@ -744,49 +704,6 @@ const schema = {
     flex: 0 0 auto;
   }
 
-  /* ───────── network ───────── */
-  .net__grid {
-    display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: clamp(2.5rem, 6vw, 5rem);
-    align-items: start;
-  }
-  .net__cta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  /* CSS columns, not grid: rows must not share a height across the two
-     columns, or a long structure name leaves a gap beside its neighbour. */
-  .net__list {
-    columns: 2;
-    column-gap: 2.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .net__list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-    padding: 0.72rem 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 0.92rem;
-    break-inside: avoid;
-  }
-  .net__dept {
-    color: var(--ink-faint);
-    font-size: 0.78rem;
-    text-align: right;
-    /* shrinkable: "Alpes-de-Haute-Provence" must wrap rather than push the
-       row past the viewport */
-    flex: 0 1 auto;
-    min-width: 0;
-  }
-
   /* ───────── news ───────── */
   .news {
     background: var(--cream-warm);
@@ -907,8 +824,7 @@ const schema = {
   /* ───────── responsive ───────── */
   @media (max-width: 960px) {
     .mission__grid,
-    .protect__grid,
-    .net__grid {
+    .protect__grid {
       grid-template-columns: 1fr;
     }
     .cards {
@@ -967,17 +883,6 @@ const schema = {
     }
     .protect__list {
       grid-template-columns: 1fr;
-    }
-    .net__list {
-      columns: 1;
-    }
-    .net__list li {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.15rem;
-    }
-    .net__dept {
-      text-align: left;
     }
     .notice,
     .cta {
