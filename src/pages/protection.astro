@@ -232,14 +232,14 @@ import { intakeProfiles, protections } from "../data/site";
   }
   .profiles__details {
     display: grid;
-    grid-template-columns: minmax(0, 74ch);
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin: 0 0 clamp(2.5rem, 5vw, 4rem);
     padding-bottom: clamp(1.7rem, 3vw, 2.4rem);
     border-bottom: 1px solid var(--line);
   }
   .profiles__details p {
-    max-width: 52ch;
+    max-width: none;
     margin: 0;
     color: var(--ink-soft);
     line-height: 1.65;
