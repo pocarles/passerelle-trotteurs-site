@@ -504,7 +504,7 @@ import { intakeProfiles, protections } from "../data/site";
     font-family: var(--serif);
   }
   .benefits__title {
-    max-width: 22ch;
+    max-width: none;
     margin-bottom: 3rem;
   }
   .section.benefits {
@@ -567,6 +567,11 @@ import { intakeProfiles, protections } from "../data/site";
       left: 1rem;
       bottom: 1rem;
       width: 9rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .benefits__title {
+      white-space: nowrap;
     }
   }
   @media (max-width: 720px) {
