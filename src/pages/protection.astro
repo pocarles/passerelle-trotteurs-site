@@ -19,22 +19,33 @@ import { protections } from "../data/site";
     background
   />
 
-  <section class="section protect">
-    <div class="wrap protect__grid">
-      <div>
-        <p class="eyebrow eyebrow--light">Six garanties</p>
-        <h2>La protection Passerelle <span class="accent--light">pour tous.</span></h2>
+  <section class="section why">
+    <div class="wrap why__grid">
+      <div class="why__intro">
+        <p class="eyebrow">Pourquoi choisir Passerelle&nbsp;?</p>
+        <h2>Une prise en charge <span class="accent">pensée pour leur avenir.</span></h2>
       </div>
-      <ol class="protect__list">
-        {
-          protections.map((protection, index) => (
-            <li>
-              <span class="protect__num">{String(index + 1).padStart(2, "0")}</span>
-              <span>{protection}</span>
-            </li>
-          ))
-        }
-      </ol>
+      <div class="why__content">
+        <p>
+          Notre partenariat avec la SETF permet d’accompagner chaque Trotteur
+          dès sa sortie des courses. Il bénéficie d’une reconversion adaptée,
+          d’une protection contractuelle et d’un suivi tout au long de sa vie.
+        </p>
+        <ul class="why__list">
+          <li><strong>Un réseau reconnu</strong> de professionnels formés à la reconversion.</li>
+          <li><strong>Un contrat protecteur</strong> qui encadre chaque placement.</li>
+          <li><strong>Un suivi à vie</strong> pour ne jamais perdre la trace du cheval.</li>
+        </ul>
+        <a
+          class="btn btn--primary"
+          href="https://intranet.passerelle-trotteurs.fr/user/login?destination=/accueil"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Faire une demande de prise en charge
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -64,6 +75,25 @@ import { protections } from "../data/site";
     </div>
   </section>
 
+  <section class="section protect">
+    <div class="wrap protect__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Six protections</p>
+        <h2>La protection Passerelle <span class="accent--light">pour tous.</span></h2>
+      </div>
+      <ol class="protect__list">
+        {
+          protections.map((protection, index) => (
+            <li>
+              <span class="protect__num">{String(index + 1).padStart(2, "0")}</span>
+              <span>{protection}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
   <CtaBand
     text="Un cheval Passerelle change de vie,"
     accent="jamais de protection."
@@ -74,6 +104,42 @@ import { protections } from "../data/site";
 </Base>
 
 <style>
+  .why {
+    background: var(--cream-warm);
+    border-bottom: 1px solid var(--line);
+  }
+  .why__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2.5rem, 8vw, 7rem);
+    align-items: start;
+  }
+  .why h2 {
+    max-width: 14ch;
+  }
+  .why__content > p {
+    margin: 0;
+    max-width: 58ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+  .why__list {
+    display: grid;
+    gap: 0.85rem;
+    margin: 1.8rem 0 2rem;
+    padding: 0;
+    list-style: none;
+  }
+  .why__list li {
+    padding-left: 1.15rem;
+    border-left: 2px solid var(--sage);
+    color: var(--ink-soft);
+  }
+  .why__list strong {
+    color: var(--ink);
+  }
+
   .protect {
     background: var(--forest-deep);
     color: #fff;
@@ -133,6 +199,7 @@ import { protections } from "../data/site";
   }
 
   @media (max-width: 860px) {
+    .why__grid,
     .protect__grid,
     .benefits__grid {
       grid-template-columns: 1fr;
