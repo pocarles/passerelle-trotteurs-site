@@ -55,14 +55,31 @@ import { protections } from "../data/site";
       <h2 class="benefits__title">Protéger le cheval, <span class="accent">sécuriser chaque partie.</span></h2>
       <div class="benefits__grid">
         <article>
+          <figure class="benefits__image">
+            <img
+              src="/media/hero-trotteurs.jpg"
+              alt="Trotteurs Français en course de trot attelé"
+              loading="lazy"
+            />
+          </figure>
           <span class="badge"><Icon name="horse" /></span>
           <h3>Pour les professionnels des courses</h3>
           <p>
-            La garantie contractuelle de la meilleure «&nbsp;seconde vie&nbsp;»
-            possible pour leur cheval, à l’issue de sa carrière.
+            Le professionnel sait que son cheval passe entre les mains d’une
+            équipe formée à la reconversion, qui connaît le monde des courses,
+            notamment l’entraînement des chevaux de course. Il bénéficie de la
+            garantie contractuelle de la meilleure «&nbsp;seconde vie&nbsp;»
+            possible pour son cheval, à l’issue de sa carrière.
           </p>
         </article>
         <article>
+          <figure class="benefits__image">
+            <img
+              src="/media/pathway-adoption.jpg"
+              alt="Cavalière de club avec un Trotteur Français"
+              loading="lazy"
+            />
+          </figure>
           <span class="badge"><Icon name="heart" /></span>
           <h3>Pour les cavaliers</h3>
           <p>
@@ -187,8 +204,26 @@ import { protections } from "../data/site";
     gap: clamp(2rem, 5vw, 4rem);
   }
   .benefits article {
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
+    position: relative;
+    padding-top: 0;
+  }
+  .benefits__image {
+    aspect-ratio: 16 / 9;
+    margin: 0 0 0.8rem;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--cream-warm);
+  }
+  .benefits__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .benefits article .badge {
+    position: relative;
+    z-index: 1;
+    margin: -1.75rem 0 0 1.25rem;
+    border: 3px solid var(--cream);
   }
   .benefits h3 {
     margin: 1.3rem 0 0.7rem;
