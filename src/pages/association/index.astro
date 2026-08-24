@@ -94,9 +94,18 @@ const values = [
 
       <Prose width="wide">
 
-        <h2>Nos objectifs</h2>
-        <ol>
-          {objectifs.map((o) => <li>{o}</li>)}
+        <h2 id="objectifs" class="values-heading objectives-heading">Nos objectifs</h2>
+        <ol class="objectives-grid">
+          {
+            objectifs.map((objective, index) => (
+              <li>
+                <span class="objectives-grid__number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p>{objective}</p>
+              </li>
+            ))
+          }
         </ol>
 
         <h2 id="valeurs" class="values-heading">Nos valeurs</h2>
@@ -228,6 +237,57 @@ const values = [
     height: 1px;
     background: var(--line);
   }
+  .objectives-heading {
+    margin: 0;
+  }
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin: 1.2rem 0 clamp(3.5rem, 6vw, 5.5rem);
+    padding: 0;
+    list-style: none;
+  }
+  :global(.prose ol.objectives-grid) {
+    padding-left: 0;
+  }
+  .objectives-grid li {
+    display: grid;
+    grid-template-columns: 2.45rem minmax(0, 1fr);
+    gap: 0.9rem;
+    align-items: start;
+    min-height: 7rem;
+    padding: 1.15rem;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--sage) 17%, transparent);
+  }
+  :global(.prose ol.objectives-grid > li) {
+    margin-top: 0;
+    padding-left: 1.15rem;
+  }
+  :global(.prose ol.objectives-grid > li::before) {
+    display: none;
+    content: none;
+  }
+  .objectives-grid__number {
+    display: grid;
+    width: 2.45rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--sage);
+    color: var(--forest);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  :global(.prose) .objectives-grid p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
   .values-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -308,6 +368,9 @@ const values = [
       border-left: 0;
     }
     .pillars {
+      grid-template-columns: 1fr;
+    }
+    .objectives-grid {
       grid-template-columns: 1fr;
     }
     .values-grid {
