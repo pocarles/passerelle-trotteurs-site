@@ -115,14 +115,20 @@ export const intakeProfiles = [
   {
     title: "Yearlings & jeunes chevaux",
     body: "Poulains et pouliches non qualifiés.",
+    image: "/media/protection/yearling-foal.jpg",
+    alt: "Poulain dans un pré",
   },
   {
     title: "Chevaux sortants du circuit course",
     body: "Chevaux non performants ou blessés.",
+    image: "/media/protection/trotteur-attele.jpg",
+    alt: "Trotteurs Français en course de trot attelé",
   },
   {
     title: "Poulinières",
     body: "Poulinières sortant de la reproduction.",
+    image: "/media/protection/pouliniere-trotteur-poulain.jpg",
+    alt: "Jument Trotteur Français avec son poulain",
   },
 ];
 
