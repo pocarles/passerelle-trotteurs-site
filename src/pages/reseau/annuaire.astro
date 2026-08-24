@@ -129,13 +129,32 @@ const directoryLinks = JSON.stringify(
                   }
                 </div>
                 {
-                  structure.links.length > 0 && (
-                    <div class="directory-card__links" aria-label={`Liens de ${structure.name}`}>
-                      {structure.links.map((link) => (
-                        <a href={link.href} target="_blank" rel="noreferrer">
-                          {link.label} <Icon name="arrowUpRight" />
-                        </a>
-                      ))}
+                  (structure.links.length > 0 || structure.socials?.length) && (
+                    <div class="directory-card__resources">
+                      {structure.links.length > 0 && (
+                        <div class="directory-card__links" aria-label={`Liens de ${structure.name}`}>
+                          {structure.links.map((link) => (
+                            <a href={link.href} target="_blank" rel="noreferrer">
+                              {link.label} <Icon name="arrowUpRight" />
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      {structure.socials?.length && (
+                        <div class="directory-card__socials" aria-label={`Réseaux sociaux de ${structure.name}`}>
+                          {structure.socials.map((social) => (
+                            <a
+                              href={social.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`${social.label} de ${structure.name}`}
+                              title={`${social.label} de ${structure.name}`}
+                            >
+                              <Icon name={social.label === "Facebook" ? "facebook" : "instagram"} />
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )
                 }
@@ -332,6 +351,7 @@ const directoryLinks = JSON.stringify(
     gap: 0.85rem;
   }
   .directory-card {
+    scroll-margin-top: 7.5rem;
     overflow: hidden;
     border-radius: var(--radius);
   }
@@ -435,7 +455,15 @@ const directoryLinks = JSON.stringify(
     color: inherit;
     overflow-wrap: anywhere;
   }
-  .directory-card__links {
+  .directory-card__resources {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.55rem;
+  }
+  .directory-card__links,
+  .directory-card__socials {
     display: flex;
     flex-wrap: wrap;
     gap: 0.55rem;
@@ -460,6 +488,24 @@ const directoryLinks = JSON.stringify(
   .directory-card__links :global(svg) {
     width: 0.85rem;
     height: 0.85rem;
+  }
+  .directory-card__socials a {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    place-items: center;
+    color: var(--forest);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+  .directory-card__socials a:hover {
+    color: var(--forest-deep);
+    background: color-mix(in srgb, var(--sage) 42%, transparent);
+  }
+  .directory-card__socials :global(svg) {
+    width: 1.05rem;
+    height: 1.05rem;
   }
 
   @media (max-width: 760px) {

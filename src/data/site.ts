@@ -195,6 +195,10 @@ export const networkDirectory = [
     phones: ["06 25 81 48 45"],
     email: "animosmose@gmail.com",
     links: [{ label: "Site internet", href: "https://animosmose.bzh/reconversion-de-chevaux/" }],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/animosmose56/" },
+      { label: "Instagram", href: "https://www.instagram.com/animosmose/" },
+    ],
   },
   {
     name: "Centre équestre Château Laval",
@@ -203,6 +207,10 @@ export const networkDirectory = [
     phones: ["06 34 11 42 70", "06 49 63 31 69"],
     email: "lesecuriesdegrambois@gmail.com",
     links: [{ label: "Site internet", href: "https://ecurieschateaulaval.wixsite.com/monsite" }],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/peraldi.florence" },
+      { label: "Instagram", href: "https://www.instagram.com/florence_peraldi_dr" },
+    ],
   },
   {
     name: "Domaine des Dakotines",
@@ -211,6 +219,10 @@ export const networkDirectory = [
     phones: ["06 33 32 80 74"],
     email: "perrine.bcr@laposte.net",
     links: [],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/PerrineMonitriceCavaliere/" },
+      { label: "Instagram", href: "https://www.instagram.com/domaine_des_dakotines/" },
+    ],
   },
   {
     name: "Écurie du Saule",
@@ -227,6 +239,10 @@ export const networkDirectory = [
     phones: ["06 89 89 03 57"],
     email: "ecuriehadah@gmail.com",
     links: [],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61574908630592" },
+      { label: "Instagram", href: "https://www.instagram.com/ecurie_hadah/" },
+    ],
   },
   {
     name: "Écurie L’Eau de Fosse",
@@ -234,6 +250,7 @@ export const networkDirectory = [
     address: ["L’Eau de Fosse", "45600 Viglain"],
     phones: ["07 86 75 43 61"],
     links: [],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/ecurieeaudefosse/" }],
   },
   {
     name: "Écurie TDS",
@@ -250,6 +267,7 @@ export const networkDirectory = [
     phones: ["06 66 49 28 51"],
     email: "aurelie@lesecuriesdelabreche.com",
     links: [{ label: "Site internet", href: "https://www.lesecuriesdelabreche.com" }],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/lesecuriesdelabreche" }],
   },
   {
     name: "Écuries de Chigny",
@@ -266,6 +284,10 @@ export const networkDirectory = [
     phones: ["07 86 33 75 90"],
     email: "lizafdhpro@gmail.com",
     links: [],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100093354406370" },
+      { label: "Instagram", href: "https://www.instagram.com/education.lf/" },
+    ],
   },
   {
     name: "Haras des Plaines",
@@ -289,7 +311,8 @@ export const networkDirectory = [
     address: ["38 rue Principale, 60120 Le Crocq", "Valmeray, 14005 Valambray"],
     phones: ["06 77 17 97 99"],
     email: "aurelie.malet@wanadoo.fr",
-    links: [{ label: "Facebook", href: "https://www.facebook.com/profile.php?id=100069868989695" }],
+    links: [],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/profile.php?id=100069868989695" }],
   },
   {
     name: "L’Élevage de tous temps",
@@ -298,6 +321,10 @@ export const networkDirectory = [
     phones: ["06 14 91 10 40"],
     email: "quitodubief@hotmail.fr",
     links: [],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/spectaclesequestre" },
+      { label: "Instagram", href: "https://www.instagram.com/lescavaliersdetoustemps/" },
+    ],
   },
   {
     name: "La Grange de Prétôt",
@@ -306,6 +333,7 @@ export const networkDirectory = [
     phones: ["06 70 30 10 30"],
     email: "earllagrangedepretot@gmail.com",
     links: [],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/profile.php?id=100090973516312" }],
   },
   {
     name: "Les chevaux d’Elo",
@@ -314,6 +342,12 @@ export const networkDirectory = [
     phones: ["06 02 44 80 76"],
     email: "leschevauxdelo@gmail.com",
     links: [],
+    socials: [
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/Association-Les-chevaux-dElo-100035350466278/",
+      },
+    ],
   },
   {
     name: "Les Crins de la Baie",
@@ -322,6 +356,10 @@ export const networkDirectory = [
     phones: ["06 77 33 67 30"],
     email: "thibault@lescrins.com",
     links: [{ label: "Site internet", href: "https://www.lescrins.com/" }],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/Les-Crins-de-la-Baie-101852721317405" },
+      { label: "Instagram", href: "https://www.instagram.com/lescrinsdelabaie/" },
+    ],
   },
   {
     name: "Les Crins de Liberté",
@@ -338,6 +376,7 @@ export const networkDirectory = [
     phones: ["06 12 05 38 83"],
     email: "lesecuriesdumoulindaubry@gmail.com",
     links: [],
+    socials: [{ label: "Facebook", href: "https://www.facebook.com/LEDMDA" }],
   },
   {
     name: "Rehab Ranch",
@@ -346,6 +385,12 @@ export const networkDirectory = [
     phones: ["06 24 69 35 16"],
     email: "urga73@hotmail.fr",
     links: [],
+    socials: [
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/p/Rehab-Ranch-R%C3%A9%C3%A9ducation-retraite-%C3%A9levage-100091920780786/",
+      },
+    ],
   },
   {
     name: "Société Hippique de Vire en Bocage",
