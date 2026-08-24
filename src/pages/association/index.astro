@@ -72,6 +72,27 @@ const values = [
             vous, nous, leur devons bien cela.
           </p>
         </blockquote>
+      </Prose>
+
+      <div class="association-actions">
+        <p class="eyebrow">Comment nous agissons</p>
+        <h2 class="sec-title">Trois engagements, du premier appel à la fin de leur vie.</h2>
+        <ul class="pillars">
+          {
+            missionPillars.map((p) => (
+              <li>
+                <span class="badge"><Icon name={p.icon} /></span>
+                <div>
+                  <h3>{p.title}</h3>
+                  <p>{p.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <Prose width="wide">
 
         <h2>Nos objectifs</h2>
         <ol>
@@ -115,40 +136,6 @@ const values = [
           </div>
         ))
       }
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <p class="eyebrow">Comment nous agissons</p>
-      <h2 class="sec-title">Trois engagements, du premier appel à la fin de leur vie.</h2>
-      <ul class="pillars">
-        {
-          missionPillars.map((p) => (
-            <li>
-              <span class="badge"><Icon name={p.icon} /></span>
-              <div>
-                <h3>{p.title}</h3>
-                <p>{p.body}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-      <div class="links">
-        <a class="tlink" href="#valeurs">
-          Nos valeurs
-          <Icon name="arrow" />
-        </a>
-        <a class="tlink" href="/association/equipe">
-          L’équipe
-          <Icon name="arrow" />
-        </a>
-        <a class="tlink" href="/protection">
-          La protection Passerelle
-          <Icon name="arrow" />
-        </a>
-      </div>
     </div>
   </section>
 
@@ -218,6 +205,9 @@ const values = [
   .sec-title {
     max-width: 20ch;
     margin-bottom: 3rem;
+  }
+  .association-actions {
+    margin-block: clamp(3.5rem, 7vw, 6.5rem);
   }
   .values-heading {
     display: flex;
@@ -309,15 +299,6 @@ const values = [
     color: var(--ink-soft);
     font-size: 0.98rem;
   }
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem 2.5rem;
-    margin-top: clamp(2.5rem, 5vw, 4rem);
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
-  }
-
   @media (max-width: 960px) {
     .stats__grid {
       grid-template-columns: 1fr 1fr;
