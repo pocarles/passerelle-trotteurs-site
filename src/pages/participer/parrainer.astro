@@ -45,6 +45,49 @@ import { links } from "../../data/site";
         <p>Un reçu fiscal vous sera adressé directement sur la plateforme.</p>
       </Prose>
     </div>
+
+    <div class="wrap tax-diagram" aria-labelledby="tax-diagram-title">
+      <div class="tax-diagram__heading">
+        <p class="eyebrow">En pratique</p>
+        <h2 id="tax-diagram-title">Un don de 100&nbsp;€ <span class="accent">par mois.</span></h2>
+      </div>
+
+      <div class="tax-diagram__start" aria-label="Don mensuel de 100 euros">
+        <span class="tax-diagram__symbol" aria-hidden="true">€</span>
+        <span>
+          <strong>Votre don</strong>
+          <small>100&nbsp;€</small>
+        </span>
+      </div>
+
+      <div class="tax-diagram__arrow" aria-hidden="true">↓</div>
+
+      <div class="tax-diagram__cases">
+        <article class="tax-case">
+          <h3><span aria-hidden="true">◌</span> Professionnel</h3>
+          <div class="tax-case__flow">
+            <span class="tax-step">100&nbsp;€<small>don</small></span>
+            <span class="tax-case__operator" aria-hidden="true">−</span>
+            <span class="tax-step tax-step--reduction">60&nbsp;€<small>réduction</small></span>
+            <span class="tax-case__operator" aria-hidden="true">→</span>
+            <span class="tax-step tax-step--total">40&nbsp;€<small>coût réel</small></span>
+          </div>
+        </article>
+
+        <article class="tax-case">
+          <h3><span aria-hidden="true">♡</span> Particulier</h3>
+          <div class="tax-case__flow">
+            <span class="tax-step">100&nbsp;€<small>don</small></span>
+            <span class="tax-case__operator" aria-hidden="true">−</span>
+            <span class="tax-step tax-step--reduction">66&nbsp;€<small>réduction</small></span>
+            <span class="tax-case__operator" aria-hidden="true">→</span>
+            <span class="tax-step tax-step--total">34&nbsp;€<small>coût réel</small></span>
+          </div>
+        </article>
+      </div>
+
+      <p class="tax-diagram__note">Réductions présentées à titre indicatif, sous réserve d’éligibilité et des plafonds en vigueur.</p>
+    </div>
   </section>
 
   <section class="section stories">
@@ -70,9 +113,156 @@ import { links } from "../../data/site";
     grid-template-columns: 0.8fr 1.2fr;
     gap: clamp(2.5rem, 7vw, 6rem);
   }
+  .tax-diagram {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.7fr) minmax(12rem, 1fr);
+    align-items: center;
+    gap: 1.2rem clamp(2rem, 6vw, 5rem);
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--cream-warm);
+  }
+  .tax-diagram__heading h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  }
+  .tax-diagram__start {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    width: fit-content;
+    padding: 0.9rem 1.2rem 0.9rem 0.9rem;
+    border-radius: 999px;
+    background: var(--forest);
+    color: #fff;
+  }
+  .tax-diagram__start span:last-child,
+  .tax-step {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .tax-diagram__start strong {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .tax-diagram__start small,
+  .tax-step small {
+    margin-top: 0.12rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .tax-diagram__symbol {
+    display: grid;
+    width: 2.4rem;
+    height: 2.4rem;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--sage);
+    color: var(--forest-deep);
+    font-family: var(--serif);
+    font-size: 1.5rem;
+  }
+  .tax-diagram__arrow {
+    display: grid;
+    place-items: center;
+    color: var(--moss);
+    font-size: 1.8rem;
+  }
+  .tax-diagram__cases {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .tax-case {
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--cream);
+  }
+  .tax-case h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0 0 0.8rem;
+    color: var(--forest);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .tax-case h3 span {
+    color: var(--moss);
+    font-size: 1.25rem;
+  }
+  .tax-case__flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .tax-step {
+    min-width: 0;
+    padding: 0.7rem 0.45rem;
+    border-radius: 0.7rem;
+    background: var(--cream-warm);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+    line-height: 1;
+    text-align: center;
+  }
+  .tax-step small {
+    overflow: hidden;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .tax-step--reduction {
+    background: var(--sage);
+  }
+  .tax-step--total {
+    background: var(--forest);
+    color: #fff;
+  }
+  .tax-step--total small {
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .tax-case__operator {
+    color: var(--moss);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .tax-diagram__note {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
   @media (max-width: 800px) {
     .sponsor__grid {
       grid-template-columns: 1fr;
+    }
+    .tax-diagram {
+      grid-template-columns: 1fr;
+    }
+    .tax-diagram__arrow {
+      transform: rotate(-90deg);
+    }
+  }
+  @media (max-width: 520px) {
+    .tax-case__flow {
+      grid-template-columns: 1fr auto 1fr;
+    }
+    .tax-case__operator:nth-of-type(4) {
+      display: none;
+    }
+    .tax-step--total {
+      grid-column: 1 / -1;
     }
   }
 </style>
