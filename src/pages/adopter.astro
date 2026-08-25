@@ -45,7 +45,7 @@ const routes = [
   description="Découvrez les Trotteurs Français proposés à la vente ou à l’adoption, tous placés sous contrat Passerelle qui les protège à vie de l’abattage et du retour aux courses."
 >
   <PageHeader
-    eyebrow="Adopter"
+    eyebrow="Acheter / Adopter un trotteur"
     title="Offrir une seconde vie"
     accent="à un Trotteur Français."
     lead="Tous les chevaux placés par Passerelle le sont sous un contrat qui les suit et les protège pour le reste de leur vie."
@@ -53,9 +53,34 @@ const routes = [
     background
   />
 
-  <section class="section">
+  <section class="section routes-section">
     <div class="wrap">
-      <p class="eyebrow">Nos trotteurs</p>
+      <p class="eyebrow">Trois options</p>
+      <h2 class="sec-title">
+        Un trotteur, une histoire, <span class="accent">un cadre adapté.</span>
+      </h2>
+      <ul class="routes">
+        {
+          routes.map((r) => (
+            <li>
+              <div class="route__media">
+                <img src={r.image} alt={r.alt} loading="lazy" />
+              </div>
+              <span class="badge route__badge"><Icon name={r.icon} /></span>
+              <div class="route__body">
+                <h3>{r.title}</h3>
+                <p>{r.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section adopter-list-section">
+    <div class="wrap">
+      <p class="eyebrow">Nos trotteurs disponibles</p>
       <h2 class="sec-title">
         Les chevaux <span class="accent">actuellement proposés.</span>
       </h2>
@@ -115,31 +140,6 @@ const routes = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <p class="eyebrow">Trois options</p>
-      <h2 class="sec-title">
-        Un trotteur, une histoire, <span class="accent">un cadre adapté.</span>
-      </h2>
-      <ul class="routes">
-        {
-          routes.map((r) => (
-            <li>
-              <div class="route__media">
-                <img src={r.image} alt={r.alt} loading="lazy" />
-              </div>
-              <span class="badge route__badge"><Icon name={r.icon} /></span>
-              <div class="route__body">
-                <h3>{r.title}</h3>
-                <p>{r.body}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
   <section class="section protect">
     <div class="wrap protect__grid">
       <div>
@@ -182,6 +182,12 @@ const routes = [
 <script is:inline defer src="/js/filters.js"></script>
 
 <style>
+  .adopter-list-section {
+    padding-bottom: clamp(3rem, 5vw, 5rem);
+  }
+  .routes-section {
+    padding-top: clamp(3rem, 5vw, 5rem);
+  }
   .sec-title {
     max-width: 22ch;
     margin-bottom: 3rem;
