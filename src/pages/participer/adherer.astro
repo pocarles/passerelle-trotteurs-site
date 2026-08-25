@@ -3,7 +3,6 @@ import Base from "../../layouts/Base.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import Prose from "../../components/Prose.astro";
 import CtaBand from "../../components/CtaBand.astro";
-import Icon from "../../components/Icon.astro";
 import { links } from "../../data/site";
 ---
 
@@ -16,8 +15,9 @@ import { links } from "../../data/site";
     title="Pourquoi devenir"
     accent="membre ?"
     lead="Chaque adhésion participe à la reconversion des chevaux et permet de sauver davantage de chevaux vulnérables."
-    image="/media/riders.jpg"
-    imageAlt="Deux cavaliers participant à une journée dédiée aux chevaux réformés"
+    image="/media/adherer-group.jpg"
+    imageAlt="Groupe de membres et de passionnés réunis autour de la reconversion des chevaux"
+    background
   />
 
   <section class="section">
@@ -49,20 +49,6 @@ import { links } from "../../data/site";
     </div>
   </section>
 
-  <section class="section movement">
-    <div class="wrap">
-      <span class="badge"><Icon name="heart" /></span>
-      <blockquote>
-        Tout simplement parce qu’issus de la filière ou passionnés, les chevaux,
-        vous les aimez. Pour certains d’entre vous, vous les avez faits naître,
-        les avez élevés puis entraînés. Que l’on soit professionnel ou non, ils
-        vous ont fait vibrer. Vous avez partagé vos joies et vos peines avec
-        eux. Alors peu importe leurs gains&nbsp;: vous, nous, leur devons bien
-        cela&nbsp;!
-      </blockquote>
-    </div>
-  </section>
-
   <CtaBand
     text="Rejoignez le mouvement."
     accent="Devenez membre de Passerelle."
@@ -79,23 +65,6 @@ import { links } from "../../data/site";
     grid-template-columns: 0.8fr 1.2fr;
     gap: clamp(2.5rem, 7vw, 6rem);
   }
-  .movement {
-    background: var(--forest-deep);
-    color: #fff;
-  }
-  .movement .badge {
-    margin-bottom: 2rem;
-    background: var(--sage);
-    color: var(--forest-deep);
-  }
-  .movement blockquote {
-    max-width: 42ch;
-    margin: 0;
-    font-family: var(--serif);
-    font-size: clamp(1.45rem, 3vw, 2.35rem);
-    line-height: 1.36;
-  }
-
   @media (max-width: 800px) {
     .member__grid {
       grid-template-columns: 1fr;
