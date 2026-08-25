@@ -78,6 +78,34 @@ const routes = [
     </div>
   </section>
 
+  <section class="section protect">
+    <div class="wrap protect__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Le contrat Passerelle</p>
+        <h2>Ce que vous vous engagez <span class="accent--light">à respecter.</span></h2>
+        <p class="protect__lead">
+          L’association et ses structures conservent un droit d’information et
+          de préemption en cas de revente. Ces engagements valent pour toute la
+          vie du cheval, quel que soit le nombre de propriétaires successifs.
+        </p>
+        <a class="tlink tlink--light" href="/confier-et-proteger">
+          Tout savoir sur la protection
+          <Icon name="arrow" />
+        </a>
+      </div>
+      <ol class="protect__list">
+        {
+          protections.map((p, i) => (
+            <li>
+              <span class="protect__num">{String(i + 1).padStart(2, "0")}</span>
+              <span>{p}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
   <section class="section adopter-list-section">
     <div class="wrap">
       <p class="eyebrow">Nos trotteurs disponibles</p>
@@ -140,34 +168,6 @@ const routes = [
     </div>
   </section>
 
-  <section class="section protect">
-    <div class="wrap protect__grid">
-      <div>
-        <p class="eyebrow eyebrow--light">Le contrat Passerelle</p>
-        <h2>Ce que vous vous engagez <span class="accent--light">à respecter.</span></h2>
-        <p class="protect__lead">
-          L’association et ses structures conservent un droit d’information et
-          de préemption en cas de revente. Ces engagements valent pour toute la
-          vie du cheval, quel que soit le nombre de propriétaires successifs.
-        </p>
-        <a class="tlink tlink--light" href="/confier-et-proteger">
-          Tout savoir sur la protection
-          <Icon name="arrow" />
-        </a>
-      </div>
-      <ol class="protect__list">
-        {
-          protections.map((p, i) => (
-            <li>
-              <span class="protect__num">{String(i + 1).padStart(2, "0")}</span>
-              <span>{p}</span>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
-
   <CtaBand
     text="Vous n’êtes pas en mesure d’accueillir un cheval ?"
     accent="Parrainez-en un."
@@ -183,9 +183,11 @@ const routes = [
 
 <style>
   .adopter-list-section {
+    background: var(--cream);
     padding-bottom: clamp(1.5rem, 3vw, 3rem);
   }
   .routes-section {
+    background: var(--cream-warm);
     padding-top: clamp(1.5rem, 3vw, 3rem);
   }
   .sec-title {
@@ -220,7 +222,7 @@ const routes = [
     position: relative;
     z-index: 1;
     margin: -1.45rem 0 1.1rem 1.1rem;
-    border: 4px solid var(--cream);
+    border: 4px solid var(--cream-warm);
   }
   .route__body {
     flex: 1;
