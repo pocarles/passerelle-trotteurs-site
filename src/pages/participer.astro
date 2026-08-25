@@ -156,8 +156,8 @@ const routes = [
     align-self: flex-start;
   }
   .support {
-    background: var(--forest-deep);
-    color: #fff;
+    background: var(--cream-warm);
+    color: var(--ink);
   }
   .support__in {
     display: flex;
@@ -166,17 +166,30 @@ const routes = [
     gap: 2rem;
   }
   .support h2 {
-    color: #fff;
+    color: var(--ink);
   }
   .support__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.9rem;
   }
-  .support .cta-sec--support {
+  .support .eyebrow--light {
+    color: var(--moss);
+  }
+  .support .accent--light {
+    color: var(--moss-mid);
+  }
+  .support .btn--ghost-light {
+    color: var(--ink);
+    border-color: var(--line-strong);
+  }
+  .support .btn--ghost-light .btn__ico {
+    background: rgba(35, 35, 31, 0.07);
+  }
+  :global(.support .cta-sec--support) {
     padding-bottom: 0;
   }
-  .support .cta__text {
+  :global(.support .cta__text) {
     color: var(--ink);
   }
 
