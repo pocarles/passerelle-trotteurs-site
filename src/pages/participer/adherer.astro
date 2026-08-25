@@ -20,7 +20,7 @@ import { links } from "../../data/site";
     background
   />
 
-  <section class="section">
+  <section class="section member-copy">
     <div class="wrap member__grid">
       <div>
         <p class="eyebrow">Votre adhésion compte</p>
@@ -50,6 +50,7 @@ import { links } from "../../data/site";
   </section>
 
   <CtaBand
+    className="member-cta"
     text="Rejoignez le mouvement."
     accent="Devenez membre de Passerelle."
     label="Adhérer"
@@ -60,6 +61,12 @@ import { links } from "../../data/site";
 </Base>
 
 <style>
+  .member-copy {
+    padding-bottom: clamp(2rem, 3vw, 3rem);
+  }
+  .member-cta {
+    padding-top: clamp(2rem, 4vw, 3.5rem);
+  }
   .member__grid {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
