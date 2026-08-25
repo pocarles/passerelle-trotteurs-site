@@ -19,16 +19,22 @@ const routes = [
   {
     icon: "horse",
     title: "Chevaux à la vente",
+    image: "/media/adopter-vente.jpg",
+    alt: "Portrait d’un Trotteur Français",
     body: "Des Trotteurs Français passés par une structure de reconversion accréditée, remis au travail et prêts pour une nouvelle discipline. Un contrat Passerelle entre la structure et l’acquéreur est obligatoire.",
   },
   {
     icon: "heart",
     title: "Chevaux à l’adoption",
+    image: "/media/adopter-adoption.jpg",
+    alt: "Trotteur Français au pré",
     body: "Des chevaux vieillissants ou atteints de pathologies, souvent non montables, destinés au travail à pied ou aux balades en main dans des familles bienveillantes. Des frais d’adoption s’appliquent, et l’adoptant accepte l’état de santé du cheval et les soins qu’il demande.",
   },
   {
     icon: "hand",
     title: "Adoption directe",
+    image: "/media/adopter-adoption-directe.jpg",
+    alt: "Trotteur Français avec un licol vert au pré",
     body: "Des chevaux n’ayant pas suivi de programme de reconversion. Ils sont proposés comme chevaux de compagnie, ou montables uniquement avec l’accompagnement d’un professionnel, sous contrat de placement provisoire d’un an.",
   },
 ];
@@ -85,6 +91,7 @@ const routes = [
         <div class="empty">
           <span class="badge empty__badge"><Icon name="horse" /></span>
           <div>
+            <p class="empty__notice">Le site est encore en travaux.</p>
             <h3>Aucun cheval n’est publié sur le site pour le moment.</h3>
             <p>
               Les annonces en cours sont diffusées dans le groupe Facebook de
@@ -94,7 +101,7 @@ const routes = [
             </p>
             <div class="actions">
               <a class="btn btn--primary" href={links.adoptionGroup} target="_blank" rel="noreferrer">
-                Voir les annonces
+                Voir les annonces sur Facebook
                 <span class="btn__ico"><Icon name="arrowUpRight" /></span>
               </a>
               <a class="btn btn--ghost" href="/contact">
@@ -110,16 +117,19 @@ const routes = [
 
   <section class="section">
     <div class="wrap">
-      <p class="eyebrow">Trois formules</p>
+      <p class="eyebrow">Trois options</p>
       <h2 class="sec-title">
-        Un cheval, un projet, <span class="accent">un cadre adapté.</span>
+        Un trotteur, une histoire, <span class="accent">un cadre adapté.</span>
       </h2>
       <ul class="routes">
         {
           routes.map((r) => (
             <li>
-              <span class="badge"><Icon name={r.icon} /></span>
-              <div>
+              <div class="route__media">
+                <img src={r.image} alt={r.alt} loading="lazy" />
+              </div>
+              <span class="badge route__badge"><Icon name={r.icon} /></span>
+              <div class="route__body">
                 <h3>{r.title}</h3>
                 <p>{r.body}</p>
               </div>
@@ -187,7 +197,27 @@ const routes = [
   .routes li {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 0;
+  }
+  .route__media {
+    aspect-ratio: 4 / 5;
+    margin-bottom: 0.2rem;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+  }
+  .route__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .route__badge {
+    position: relative;
+    z-index: 1;
+    margin: -1.45rem 0 1.1rem 1.1rem;
+    border: 4px solid var(--cream);
+  }
+  .route__body {
+    flex: 1;
   }
   .routes h3 {
     margin-bottom: 0.4rem;
@@ -320,6 +350,14 @@ const routes = [
     font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: 0;
+  }
+  .empty__notice {
+    margin: 0 0 0.75rem;
+    color: var(--moss);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .empty p {
     margin: 0;
