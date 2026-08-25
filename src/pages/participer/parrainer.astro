@@ -50,21 +50,22 @@ import { links } from "../../data/site";
       <div class="tax-diagram__heading">
         <p class="eyebrow">En pratique</p>
         <h2 id="tax-diagram-title">Un don de 100&nbsp;€ <span class="accent">par mois.</span></h2>
+        <p>Visualisez simplement le coût réel de votre soutien.</p>
       </div>
 
       <div class="tax-diagram__start" aria-label="Don mensuel de 100 euros">
         <span class="tax-diagram__symbol" aria-hidden="true">€</span>
         <span>
           <strong>Votre don</strong>
-          <small>100&nbsp;€</small>
+          <small>100&nbsp;€ chaque mois</small>
         </span>
       </div>
 
-      <div class="tax-diagram__arrow" aria-hidden="true">↓</div>
+      <div class="tax-diagram__connector" aria-hidden="true">↓</div>
 
       <div class="tax-diagram__cases">
         <article class="tax-case">
-          <h3><span aria-hidden="true">◌</span> Professionnel</h3>
+          <h3><span aria-hidden="true">✦</span> Professionnel</h3>
           <div class="tax-case__flow">
             <span class="tax-step">100&nbsp;€<small>don</small></span>
             <span class="tax-case__operator" aria-hidden="true">−</span>
@@ -115,9 +116,9 @@ import { links } from "../../data/site";
   }
   .tax-diagram {
     display: grid;
-    grid-template-columns: minmax(13rem, 0.7fr) minmax(12rem, 1fr);
+    grid-template-columns: minmax(14rem, 0.72fr) minmax(16rem, 1fr);
     align-items: center;
-    gap: 1.2rem clamp(2rem, 6vw, 5rem);
+    gap: 0.85rem clamp(2rem, 6vw, 5rem);
     margin-top: clamp(3.5rem, 7vw, 6rem);
     padding: clamp(1.5rem, 3vw, 2.5rem);
     border: 1px solid var(--line);
@@ -128,6 +129,11 @@ import { links } from "../../data/site";
     margin: 0;
     font-size: clamp(1.8rem, 3.5vw, 2.7rem);
   }
+  .tax-diagram__heading > p:last-child {
+    max-width: 24ch;
+    margin: 1rem 0 0;
+    color: var(--muted);
+  }
   .tax-diagram__start {
     display: inline-flex;
     align-items: center;
@@ -137,6 +143,7 @@ import { links } from "../../data/site";
     border-radius: 999px;
     background: var(--forest);
     color: #fff;
+    justify-self: center;
   }
   .tax-diagram__start span:last-child,
   .tax-step {
@@ -165,18 +172,26 @@ import { links } from "../../data/site";
     font-family: var(--serif);
     font-size: 1.5rem;
   }
-  .tax-diagram__arrow {
+  .tax-diagram__connector {
     display: grid;
+    grid-column: 2;
     place-items: center;
     color: var(--moss);
-    font-size: 1.8rem;
+    justify-self: center;
+    width: 2rem;
+    height: 1.7rem;
+    font-size: 1.55rem;
+    line-height: 1;
   }
   .tax-diagram__cases {
     display: grid;
-    gap: 0.8rem;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding-top: 0.25rem;
   }
   .tax-case {
-    padding: 1rem;
+    padding: 1.1rem;
     border: 1px solid var(--line);
     border-radius: 1rem;
     background: var(--cream);
@@ -185,7 +200,7 @@ import { links } from "../../data/site";
     display: flex;
     align-items: center;
     gap: 0.45rem;
-    margin: 0 0 0.8rem;
+    margin: 0 0 1rem;
     color: var(--forest);
     font-size: 0.82rem;
     letter-spacing: 0.08em;
@@ -199,11 +214,11 @@ import { links } from "../../data/site";
     display: grid;
     grid-template-columns: 1fr auto 1fr auto 1fr;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.4rem;
   }
   .tax-step {
     min-width: 0;
-    padding: 0.7rem 0.45rem;
+    padding: 0.8rem 0.35rem;
     border-radius: 0.7rem;
     background: var(--cream-warm);
     color: var(--ink);
@@ -247,12 +262,12 @@ import { links } from "../../data/site";
     .sponsor__grid {
       grid-template-columns: 1fr;
     }
-    .tax-diagram {
-      grid-template-columns: 1fr;
-    }
-    .tax-diagram__arrow {
-      transform: rotate(-90deg);
-    }
+    .tax-diagram { grid-template-columns: 1fr; }
+    .tax-diagram__start,
+    .tax-diagram__connector { grid-column: 1; }
+    .tax-diagram__start { justify-self: start; }
+    .tax-diagram__connector { justify-self: start; }
+    .tax-diagram__cases { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
     .tax-case__flow {
