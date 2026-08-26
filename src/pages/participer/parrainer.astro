@@ -37,29 +37,31 @@ import { links } from "../../data/site";
           provisoire.
         </p>
         <p>
-          Réalisez un don mensuel pour devenir parrain Passerelle&nbsp;! Un don
-          de 10&nbsp;€ par mois vous revient réellement à 4&nbsp;€ pour un
-          professionnel, après 6&nbsp;€ de réduction d’impôt, et à 3,40&nbsp;€ pour
-          un particulier, après 6,60&nbsp;€ de réduction d’impôt.
+          Réalisez un don mensuel pour devenir parrain Passerelle&nbsp;! Le
+          simulateur ci-dessous vous permet de visualiser le montant de votre
+          réduction d’impôt et le coût réel de votre soutien.
         </p>
         <p>Un reçu fiscal vous sera adressé directement sur la plateforme.</p>
       </Prose>
     </div>
 
-    <div class="wrap tax-diagram" aria-labelledby="tax-diagram-title">
+    <div class="wrap tax-diagram" data-tax-simulator aria-labelledby="tax-diagram-title">
       <div class="tax-diagram__heading">
         <p class="eyebrow">En pratique</p>
-        <h2 id="tax-diagram-title">Un don de 10&nbsp;€ <span class="accent">par mois.</span></h2>
-        <p>Visualisez simplement le coût réel de votre soutien.</p>
+        <h2 id="tax-diagram-title">Un don de <span data-simulator-amount="heading">10&nbsp;€</span> <span class="accent">par mois.</span></h2>
+        <p>Visualisez simplement le coût réel de votre soutien, selon le montant que vous souhaitez donner.</p>
       </div>
 
-      <div class="tax-diagram__start" aria-label="Don mensuel de 10 euros">
+      <label class="tax-diagram__start" for="monthly-donation">
         <span class="tax-diagram__symbol" aria-hidden="true">€</span>
         <span>
           <strong>Votre don</strong>
-          <small>10&nbsp;€ chaque mois</small>
+          <span class="tax-diagram__input-wrap">
+            <input id="monthly-donation" name="monthly-donation" type="number" min="0" step="1" value="10" inputmode="decimal" aria-describedby="tax-diagram-note" />
+            <small>€ chaque mois</small>
+          </span>
         </span>
-      </div>
+      </label>
 
       <div class="tax-diagram__connector" aria-hidden="true">↓</div>
 
@@ -67,27 +69,27 @@ import { links } from "../../data/site";
         <article class="tax-case">
           <h3><span aria-hidden="true">✦</span> Professionnel</h3>
           <div class="tax-case__flow">
-            <span class="tax-step">10&nbsp;€<small>don</small></span>
+            <span class="tax-step"><span data-simulator-amount="don-professional">10&nbsp;€</span><small>don</small></span>
             <span class="tax-case__operator" aria-hidden="true">−</span>
-            <span class="tax-step tax-step--reduction">6&nbsp;€<small>réduction d’impôt</small></span>
+            <span class="tax-step tax-step--reduction"><span data-simulator-amount="reduction-professional">6&nbsp;€</span><small>réduction d’impôt</small></span>
             <span class="tax-case__operator" aria-hidden="true">→</span>
-            <span class="tax-step tax-step--total">4&nbsp;€<small>coût réel</small></span>
+            <span class="tax-step tax-step--total"><span data-simulator-amount="total-professional">4&nbsp;€</span><small>coût réel</small></span>
           </div>
         </article>
 
         <article class="tax-case">
           <h3><span aria-hidden="true">♡</span> Particulier</h3>
           <div class="tax-case__flow">
-            <span class="tax-step">10&nbsp;€<small>don</small></span>
+            <span class="tax-step"><span data-simulator-amount="don-individual">10&nbsp;€</span><small>don</small></span>
             <span class="tax-case__operator" aria-hidden="true">−</span>
-            <span class="tax-step tax-step--reduction">6,60&nbsp;€<small>réduction d’impôt</small></span>
+            <span class="tax-step tax-step--reduction"><span data-simulator-amount="reduction-individual">6,60&nbsp;€</span><small>réduction d’impôt</small></span>
             <span class="tax-case__operator" aria-hidden="true">→</span>
-            <span class="tax-step tax-step--total">3,40&nbsp;€<small>coût réel</small></span>
+            <span class="tax-step tax-step--total"><span data-simulator-amount="total-individual">3,40&nbsp;€</span><small>coût réel</small></span>
           </div>
         </article>
       </div>
 
-      <p class="tax-diagram__note">Réductions présentées à titre indicatif, sous réserve d’éligibilité et des plafonds en vigueur.</p>
+      <p class="tax-diagram__note" id="tax-diagram-note">Réductions présentées à titre indicatif, sous réserve d’éligibilité et des plafonds en vigueur.</p>
     </div>
   </section>
 
@@ -125,12 +127,15 @@ import { links } from "../../data/site";
     border-radius: var(--radius-lg);
     background: var(--cream-warm);
   }
+  .tax-diagram__heading {
+    grid-column: 1 / -1;
+  }
   .tax-diagram__heading h2 {
     margin: 0;
     font-size: clamp(1.8rem, 3.5vw, 2.7rem);
   }
   .tax-diagram__heading > p:last-child {
-    max-width: 24ch;
+    max-width: none;
     margin: 1rem 0 0;
     color: var(--muted);
   }
@@ -144,6 +149,7 @@ import { links } from "../../data/site";
     background: var(--forest);
     color: #fff;
     justify-self: center;
+    cursor: text;
   }
   .tax-diagram__start span:last-child,
   .tax-step {
@@ -154,6 +160,30 @@ import { links } from "../../data/site";
     font-size: 0.82rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+  .tax-diagram__input-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+  .tax-diagram__input-wrap input {
+    width: 5.5rem;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .tax-diagram__input-wrap input::-webkit-inner-spin-button,
+  .tax-diagram__input-wrap input::-webkit-outer-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+  .tax-diagram__input-wrap input[type="number"] {
+    appearance: textfield;
   }
   .tax-diagram__start small,
   .tax-step small {
@@ -227,6 +257,9 @@ import { links } from "../../data/site";
     line-height: 1;
     text-align: center;
   }
+  .tax-step > span {
+    display: block;
+  }
   .tax-step small {
     color: var(--muted);
     font-family: var(--sans);
@@ -256,6 +289,9 @@ import { links } from "../../data/site";
     color: var(--muted);
     font-size: 0.8rem;
   }
+  [data-simulator-amount] {
+    font-variant-numeric: tabular-nums;
+  }
   @media (max-width: 800px) {
     .sponsor__grid {
       grid-template-columns: 1fr;
@@ -279,3 +315,38 @@ import { links } from "../../data/site";
     }
   }
 </style>
+
+<script>
+  const simulator = document.querySelector("[data-tax-simulator]");
+
+  if (simulator) {
+    const input = simulator.querySelector("#monthly-donation");
+    const amountNodes = simulator.querySelectorAll("[data-simulator-amount]");
+    const euro = new Intl.NumberFormat("fr-FR", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
+
+    const formatAmount = (amount) => `${euro.format(amount)}\u00a0€`;
+
+    const updateSimulator = () => {
+      const amount = Math.max(0, Number.parseFloat(input.value) || 0);
+      const values = {
+        heading: amount,
+        "don-professional": amount,
+        "reduction-professional": amount * 0.6,
+        "total-professional": amount * 0.4,
+        "don-individual": amount,
+        "reduction-individual": amount * 0.66,
+        "total-individual": amount * 0.34,
+      };
+
+      amountNodes.forEach((node) => {
+        node.textContent = formatAmount(values[node.dataset.simulatorAmount]);
+      });
+    };
+
+    input.addEventListener("input", updateSimulator);
+    updateSimulator();
+  }
+</script>
