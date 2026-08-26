@@ -4,6 +4,21 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="ftr">
+  <section class="ftr__newsletter" aria-labelledby="newsletter-title">
+    <div class="ftr__newsletter-copy">
+      <span class="ftr__eyebrow">Newsletter</span>
+      <h2 id="newsletter-title">Recevez les nouvelles de Passerelle.</h2>
+      <p>Inscrivez-vous pour suivre nos actions et les actualités de la reconversion.</p>
+    </div>
+    <iframe
+      title="Inscription à la newsletter Passerelle"
+      src="https://b778a3ac.sibforms.com/v2/serve/MUIFAEpeO5DaBYIsuYto-dvKzhLslfhP3Zv3rWM5BvUG6oqUWNHPOS2oZGe5HqklP3QO48oiSuX7gWSI6nIROynZ07O5mwF-COe7VqPOVbGt1v4VjCpvTCSDYfAS6rpRTrS17-zPESN1bZAliptbmdNFlhnwd8PWdmTr9RuThtZ1Ho7Hhwt1oC0LE0F5-slOHmRG0YdyWk9biwh1Tg=="
+      frameborder="0"
+      scrolling="auto"
+      loading="lazy"
+    ></iframe>
+  </section>
+
   <div class="ftr__in">
     <div class="ftr__brand">
       <img src="/media/logo.png" alt="Passerelle" width="1472" height="869" />
@@ -59,6 +74,50 @@ const year = new Date().getFullYear();
     background: var(--forest-deep);
     color: rgba(255, 255, 255, 0.72);
     padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
+  }
+  .ftr__newsletter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 540px);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6rem);
+    max-width: var(--maxw);
+    margin: 0 auto clamp(3.5rem, 7vw, 6rem);
+    padding: 0 var(--gutter) clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 1px solid var(--line-light);
+  }
+  .ftr__newsletter-copy {
+    max-width: 36rem;
+  }
+  .ftr__eyebrow {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--sage);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .ftr__newsletter h2 {
+    margin: 0 0 1rem;
+    color: #fff;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    text-transform: none;
+  }
+  .ftr__newsletter p {
+    max-width: 34ch;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  .ftr__newsletter iframe {
+    display: block;
+    width: 100%;
+    min-height: 305px;
+    border: 0;
+    background: transparent;
   }
   .ftr__in {
     display: grid;
@@ -132,6 +191,9 @@ const year = new Date().getFullYear();
   }
 
   @media (max-width: 900px) {
+    .ftr__newsletter {
+      grid-template-columns: 1fr;
+    }
     .ftr__in {
       grid-template-columns: 1fr 1fr;
     }
