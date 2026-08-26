@@ -34,13 +34,15 @@ import { nav, links } from "../data/site";
     </nav>
 
     <div class="hdr__end">
-      <a class="btn btn--donate" href={links.donate} target="_blank" rel="noreferrer">
-        <Icon name="heart" />
-        Faire un don
-      </a>
-      <a class="btn btn--access" href={links.intake} target="_blank" rel="noreferrer">
-        Accès structure/adoptant
-      </a>
+      <div class="hdr__actions">
+        <a class="btn btn--donate" href={links.donate} target="_blank" rel="noreferrer">
+          <Icon name="heart" />
+          Faire un don
+        </a>
+        <a class="btn btn--access" href={links.intake} target="_blank" rel="noreferrer">
+          Accès structure/adoptant
+        </a>
+      </div>
       <button class="burger" type="button" aria-expanded="false" aria-controls="m-nav">
         <span class="sr">Ouvrir le menu</span>
         <span aria-hidden="true"></span>
@@ -192,6 +194,12 @@ import { nav, links } from "../data/site";
     gap: 0.75rem;
     flex: 0 0 auto;
   }
+  .hdr__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+  }
   :global(body.has-hero) .btn--donate {
     background: var(--sage);
   }
@@ -280,10 +288,7 @@ import { nav, links } from "../data/site";
     }
   }
   @media (max-width: 560px) {
-    .btn--donate {
-      display: none;
-    }
-    .btn--access {
+    .hdr__actions {
       display: none;
     }
   }
