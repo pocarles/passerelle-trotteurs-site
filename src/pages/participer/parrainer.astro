@@ -58,7 +58,7 @@ import { links } from "../../data/site";
           <strong>Votre don</strong>
           <span class="tax-diagram__input-wrap">
             <input id="monthly-donation" name="monthly-donation" type="number" min="0" step="0.01" value="10" inputmode="decimal" aria-label="Montant du don mensuel en euros" aria-describedby="tax-diagram-note" />
-            <small>€ chaque mois</small>
+            <small>€ chaque mois ou ponctuellement</small>
           </span>
         </span>
       </label>
@@ -154,7 +154,7 @@ import { links } from "../../data/site";
     justify-self: center;
     cursor: text;
   }
-  .tax-diagram__start span:last-child,
+  .tax-diagram__start > span:last-child,
   .tax-step {
     display: inline-flex;
     flex-direction: column;
@@ -178,6 +178,7 @@ import { links } from "../../data/site";
     display: flex;
     flex: 1;
     align-items: baseline;
+    justify-content: space-between;
     gap: 0.3rem;
     min-width: 0;
     white-space: nowrap;
@@ -209,6 +210,7 @@ import { links } from "../../data/site";
   }
   .tax-diagram__start small {
     margin-top: 0;
+    margin-left: auto;
     white-space: nowrap;
   }
   .tax-diagram__symbol {
