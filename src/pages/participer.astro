@@ -92,36 +92,12 @@ const routes = [
           </div>
         </article>
       </div>
+      <a class="tax-diagram__donate btn btn--primary" href={links.donate} target="_blank" rel="noreferrer">
+        Faire un don
+        <span class="btn__ico"><Icon name="arrowUpRight" /></span>
+      </a>
       <p class="tax-diagram__note" id="participation-tax-diagram-note">Réductions présentées à titre indicatif, sous réserve d’éligibilité et des plafonds en vigueur.</p>
     </div>
-  </section>
-
-  <section class="section support">
-    <div class="wrap support__in">
-      <div>
-        <p class="eyebrow eyebrow--light">Soutenir autrement</p>
-        <h2>Chaque geste <span class="accent--light">compte.</span></h2>
-      </div>
-      <div class="support__actions">
-        <a class="btn btn--primary" href={links.donate} target="_blank" rel="noreferrer">
-          Faire un don
-          <span class="btn__ico"><Icon name="arrowUpRight" /></span>
-        </a>
-        <a class="btn btn--ghost-light" href={links.shop} target="_blank" rel="noreferrer">
-          Visiter la boutique
-          <span class="btn__ico"><Icon name="arrowUpRight" /></span>
-        </a>
-      </div>
-    </div>
-
-    <CtaBand
-      className="cta-sec--support"
-      text="Vous hésitez sur la meilleure façon d’aider ?"
-      accent="Parlons-nous."
-      label="Nous contacter"
-      href="/contact"
-      icon="heart"
-    />
   </section>
 
   <section class="section">
@@ -147,6 +123,30 @@ const routes = [
         }
       </div>
     </div>
+  </section>
+
+  <section class="section support">
+    <div class="wrap support__in">
+      <div>
+        <p class="eyebrow eyebrow--light">Soutenir autrement</p>
+        <h2>Chaque geste <span class="accent--light">compte.</span></h2>
+      </div>
+      <div class="support__actions">
+        <a class="btn btn--ghost-light" href={links.shop} target="_blank" rel="noreferrer">
+          Visiter la boutique
+          <span class="btn__ico"><Icon name="arrowUpRight" /></span>
+        </a>
+      </div>
+    </div>
+
+    <CtaBand
+      className="cta-sec--support"
+      text="Vous hésitez sur la meilleure façon d’aider ?"
+      accent="Parlons-nous."
+      label="Nous contacter"
+      href="/contact"
+      icon="heart"
+    />
   </section>
 
   <script is:inline defer src="/js/donation-simulator.js"></script>
@@ -384,6 +384,10 @@ const routes = [
     margin: 0;
     color: var(--muted);
     font-size: 0.8rem;
+  }
+  .tax-diagram__donate {
+    justify-self: center;
+    margin-top: 0.3rem;
   }
   [data-simulator-amount] {
     font-variant-numeric: tabular-nums;
