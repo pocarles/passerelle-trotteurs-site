@@ -24,7 +24,7 @@ export const links = {
   join: "https://www.helloasso.com/beta/associations/passerelle-trotteurs/adhesions/adhesion-2026-a-l-association-passerelle",
   sponsor:
     "https://www.helloasso.com/associations/passerelle-trotteurs/formulaires/9",
-  intake: "https://intranet.passerelle-trotteurs.fr/user/register",
+  intake: "https://intranet.passerelle-trotteurs.fr/user/login?destination=/accueil",
   shop: "https://blagapro.com/categorie-produit/boutiques-des-clubs/hauts-de-france/oise-60/association-passerelle-60120/",
   accreditation:
     "https://cdn.eu.yapla.com/company/CPYbcCvkD6pajr3uBXPgxYoAE/asset/files/CAHIER%20DES%20CHARGES.pdf",

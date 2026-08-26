@@ -38,6 +38,9 @@ import { nav, links } from "../data/site";
         <Icon name="heart" />
         Faire un don
       </a>
+      <a class="btn btn--access" href={links.intake} target="_blank" rel="noreferrer">
+        Accès structure/adoptant
+      </a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="m-nav">
         <span class="sr">Ouvrir le menu</span>
         <span aria-hidden="true"></span>
@@ -68,6 +71,9 @@ import { nav, links } from "../data/site";
       }
       <li>
         <a href={links.donate} target="_blank" rel="noreferrer">Faire un don ↗</a>
+      </li>
+      <li>
+        <a href={links.intake} target="_blank" rel="noreferrer">Accès structure/adoptant ↗</a>
       </li>
     </ul>
   </nav>
@@ -189,6 +195,22 @@ import { nav, links } from "../data/site";
   :global(body.has-hero) .btn--donate {
     background: var(--sage);
   }
+  .btn--access {
+    border-color: var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .btn--access:hover {
+    background: var(--cream-warm);
+  }
+  :global(body.has-hero) .btn--access {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+  }
+  :global(body.has-hero) .btn--access:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
 
   .burger {
     display: none;
@@ -259,6 +281,9 @@ import { nav, links } from "../data/site";
   }
   @media (max-width: 560px) {
     .btn--donate {
+      display: none;
+    }
+    .btn--access {
       display: none;
     }
   }
