@@ -54,7 +54,7 @@ const routes = [
               <img class="card__media" src={route.image} alt={route.alt} loading="lazy" />
               <div class="card__body">
                 <p class="eyebrow">{route.eyebrow}</p>
-                <h3>{route.title}</h3>
+                <h2>{route.title}</h2>
                 <p>{route.body}</p>
                 <a class="tlink" href={route.href}>
                   {route.label}
@@ -118,7 +118,7 @@ const routes = [
   .card__body .eyebrow {
     margin-bottom: 0.8rem;
   }
-  .card h3 {
+  .card h2 {
     max-width: 18ch;
     font-size: clamp(1.7rem, 3vw, 2.35rem);
   }

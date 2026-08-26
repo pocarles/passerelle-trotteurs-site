@@ -50,6 +50,6 @@ legacyUrl: "https://www.passerelle-trotteurs.fr/fr/actualites/cheval-de-bataille
 		
 	
 
-<h4><a href="https://www.amiens.fr/Actualites/Cheval-de-bataille" target="_blank" rel="noreferrer">Pour lire l&#39;article sur le site du JDA, cliquez ici </a></h4>
+<h3><a href="https://www.amiens.fr/Actualites/Cheval-de-bataille" target="_blank" rel="noreferrer">Pour lire l&#39;article sur le site du JDA, cliquez ici </a></h3>
 
-<h4> </h4>
+<p></p>
