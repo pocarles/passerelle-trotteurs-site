@@ -57,7 +57,7 @@ import { links } from "../../data/site";
         <span>
           <strong>Votre don</strong>
           <span class="tax-diagram__input-wrap">
-            <input id="monthly-donation" name="monthly-donation" type="number" min="0" step="1" value="10" inputmode="decimal" aria-describedby="tax-diagram-note" />
+            <input id="monthly-donation" name="monthly-donation" type="number" min="0" step="1" value="10" inputmode="decimal" aria-label="Montant du don mensuel en euros" aria-describedby="tax-diagram-note" />
             <small>€ chaque mois</small>
           </span>
         </span>
@@ -148,6 +148,7 @@ import { links } from "../../data/site";
     border-radius: 999px;
     background: var(--forest);
     color: #fff;
+    grid-column: 1 / -1;
     justify-self: center;
     cursor: text;
   }
@@ -204,7 +205,7 @@ import { links } from "../../data/site";
   }
   .tax-diagram__connector {
     display: grid;
-    grid-column: 2;
+    grid-column: 1 / -1;
     place-items: center;
     color: var(--moss);
     justify-self: center;
@@ -347,6 +348,8 @@ import { links } from "../../data/site";
     };
 
     input.addEventListener("input", updateSimulator);
+    input.addEventListener("change", updateSimulator);
+    input.addEventListener("keyup", updateSimulator);
     updateSimulator();
   }
 </script>
