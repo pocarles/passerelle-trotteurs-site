@@ -57,7 +57,7 @@ import { links } from "../../data/site";
         <span>
           <strong>Votre don</strong>
           <span class="tax-diagram__input-wrap">
-            <input id="monthly-donation" name="monthly-donation" type="number" min="0" step="0.01" value="10" inputmode="decimal" aria-label="Montant du don mensuel en euros" aria-describedby="tax-diagram-note" />
+            <input id="monthly-donation" name="monthly-donation" type="number" min="0" step="0.01" value="10" inputmode="decimal" aria-label="Montant du don mensuel en euros" aria-describedby="tax-diagram-note" oninput="window.updateDonationSimulator && window.updateDonationSimulator()" onchange="window.updateDonationSimulator && window.updateDonationSimulator()" />
             <small>€ chaque mois</small>
           </span>
         </span>
@@ -317,43 +317,53 @@ import { links } from "../../data/site";
   }
 </style>
 
-<script>
-  const simulator = document.querySelector("[data-tax-simulator]");
+<script is:inline>
+  (() => {
+    const setupDonationSimulator = () => {
+      const simulator = document.querySelector("[data-tax-simulator]");
+      if (!simulator) return;
 
-  if (simulator) {
-    const input = simulator.querySelector("#monthly-donation");
-    const amountNodes = simulator.querySelectorAll("[data-simulator-amount]");
-    const euro = new Intl.NumberFormat("fr-FR", {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 2,
-    });
-    let lastAmount;
+      const input = simulator.querySelector("#monthly-donation");
+      const amountNodes = simulator.querySelectorAll("[data-simulator-amount]");
+      const euro = new Intl.NumberFormat("fr-FR", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+      let lastAmount;
 
-    const formatAmount = (amount) => `${euro.format(amount)}\u00a0€`;
+      const formatAmount = (amount) => `${euro.format(amount)}\u00a0€`;
 
-    const updateSimulator = () => {
-      const amount = Math.max(0, Number.parseFloat(input.value) || 0);
-      if (amount === lastAmount) return;
-      lastAmount = amount;
-      const values = {
-        heading: amount,
-        "don-professional": amount,
-        "reduction-professional": amount * 0.6,
-        "total-professional": amount * 0.4,
-        "don-individual": amount,
-        "reduction-individual": amount * 0.66,
-        "total-individual": amount * 0.34,
+      const updateSimulator = () => {
+        const amount = Math.max(0, Number.parseFloat(input.value) || 0);
+        if (amount === lastAmount) return;
+        lastAmount = amount;
+        const values = {
+          heading: amount,
+          "don-professional": amount,
+          "reduction-professional": amount * 0.6,
+          "total-professional": amount * 0.4,
+          "don-individual": amount,
+          "reduction-individual": amount * 0.66,
+          "total-individual": amount * 0.34,
+        };
+
+        amountNodes.forEach((node) => {
+          node.textContent = formatAmount(values[node.dataset.simulatorAmount]);
+        });
       };
 
-      amountNodes.forEach((node) => {
-        node.textContent = formatAmount(values[node.dataset.simulatorAmount]);
-      });
+      window.updateDonationSimulator = updateSimulator;
+      input.addEventListener("input", updateSimulator);
+      input.addEventListener("change", updateSimulator);
+      input.addEventListener("keyup", updateSimulator);
+      window.setInterval(updateSimulator, 250);
+      updateSimulator();
     };
 
-    input.addEventListener("input", updateSimulator);
-    input.addEventListener("change", updateSimulator);
-    input.addEventListener("keyup", updateSimulator);
-    window.setInterval(updateSimulator, 250);
-    updateSimulator();
-  }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupDonationSimulator, { once: true });
+    } else {
+      setupDonationSimulator();
+    }
+  })();
 </script>
