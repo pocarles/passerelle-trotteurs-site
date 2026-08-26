@@ -6,6 +6,7 @@ name: Deploy
 # preview deploys on pull requests.
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
