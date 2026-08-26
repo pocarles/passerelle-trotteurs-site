@@ -145,8 +145,8 @@ import { links } from "../../data/site";
     display: inline-flex;
     align-items: center;
     gap: 0.9rem;
-    min-width: min(18rem, 100%);
-    padding: 1rem 1.75rem 1rem 1rem;
+    width: min(34rem, 100%);
+    padding: 0.9rem 1.5rem 0.9rem 1rem;
     border-radius: 999px;
     background: var(--forest);
     color: #fff;
@@ -159,15 +159,26 @@ import { links } from "../../data/site";
     display: inline-flex;
     flex-direction: column;
   }
+  .tax-diagram__start > span:last-child {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+  }
   .tax-diagram__start strong {
+    white-space: nowrap;
     font-size: 0.82rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
   .tax-diagram__input-wrap {
     display: flex;
+    flex: 1;
     align-items: baseline;
     gap: 0.3rem;
+    min-width: 0;
   }
   .tax-diagram__input-wrap input {
     width: 5.5rem;
@@ -193,6 +204,10 @@ import { links } from "../../data/site";
     margin-top: 0.12rem;
     font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.72);
+  }
+  .tax-diagram__start small {
+    margin-top: 0;
+    white-space: nowrap;
   }
   .tax-diagram__symbol {
     display: grid;
