@@ -96,31 +96,6 @@ const routes = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cards">
-        {
-          routes.map((route) => (
-            <article class="card">
-              <div class="card__media">
-                <img src={route.image} alt={route.alt} loading="lazy" style={`object-position: ${route.imagePosition};`} />
-              </div>
-              <span class="badge card__badge"><Icon name={route.icon} /></span>
-              <div class="card__body">
-                <h2>{route.title}</h2>
-                <p>{route.body}</p>
-                <a class="tlink" href={route.href}>
-                  Découvrir
-                  <Icon name="arrow" />
-                </a>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <section class="section support">
     <div class="wrap support__in">
       <div>
@@ -147,6 +122,31 @@ const routes = [
       href="/contact"
       icon="heart"
     />
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cards">
+        {
+          routes.map((route) => (
+            <article class="card">
+              <div class="card__media">
+                <img src={route.image} alt={route.alt} loading="lazy" style={`object-position: ${route.imagePosition};`} />
+              </div>
+              <span class="badge card__badge"><Icon name={route.icon} /></span>
+              <div class="card__body">
+                <h2>{route.title}</h2>
+                <p>{route.body}</p>
+                <a class="tlink" href={route.href}>
+                  Découvrir
+                  <Icon name="arrow" />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
   </section>
 
   <script is:inline defer src="/js/donation-simulator.js"></script>
