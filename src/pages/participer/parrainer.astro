@@ -38,9 +38,9 @@ import { links } from "../../data/site";
         </p>
         <p>
           Réalisez un don mensuel pour devenir parrain Passerelle&nbsp;! Un don
-          de 100&nbsp;€ par mois vous revient réellement à 40&nbsp;€ pour un
-          professionnel, après 60&nbsp;€ de réduction d’impôt, et à 34&nbsp;€ pour
-          un particulier, après 66&nbsp;€ de réduction d’impôt.
+          de 10&nbsp;€ par mois vous revient réellement à 4&nbsp;€ pour un
+          professionnel, après 6&nbsp;€ de réduction d’impôt, et à 3,40&nbsp;€ pour
+          un particulier, après 6,60&nbsp;€ de réduction d’impôt.
         </p>
         <p>Un reçu fiscal vous sera adressé directement sur la plateforme.</p>
       </Prose>
@@ -49,15 +49,15 @@ import { links } from "../../data/site";
     <div class="wrap tax-diagram" aria-labelledby="tax-diagram-title">
       <div class="tax-diagram__heading">
         <p class="eyebrow">En pratique</p>
-        <h2 id="tax-diagram-title">Un don de 100&nbsp;€ <span class="accent">par mois.</span></h2>
+        <h2 id="tax-diagram-title">Un don de 10&nbsp;€ <span class="accent">par mois.</span></h2>
         <p>Visualisez simplement le coût réel de votre soutien.</p>
       </div>
 
-      <div class="tax-diagram__start" aria-label="Don mensuel de 100 euros">
+      <div class="tax-diagram__start" aria-label="Don mensuel de 10 euros">
         <span class="tax-diagram__symbol" aria-hidden="true">€</span>
         <span>
           <strong>Votre don</strong>
-          <small>100&nbsp;€ chaque mois</small>
+          <small>10&nbsp;€ chaque mois</small>
         </span>
       </div>
 
@@ -67,22 +67,22 @@ import { links } from "../../data/site";
         <article class="tax-case">
           <h3><span aria-hidden="true">✦</span> Professionnel</h3>
           <div class="tax-case__flow">
-            <span class="tax-step">100&nbsp;€<small>don</small></span>
+            <span class="tax-step">10&nbsp;€<small>don</small></span>
             <span class="tax-case__operator" aria-hidden="true">−</span>
-            <span class="tax-step tax-step--reduction">60&nbsp;€<small>réduction</small></span>
+            <span class="tax-step tax-step--reduction">6&nbsp;€<small>réduction d’impôt</small></span>
             <span class="tax-case__operator" aria-hidden="true">→</span>
-            <span class="tax-step tax-step--total">40&nbsp;€<small>coût réel</small></span>
+            <span class="tax-step tax-step--total">4&nbsp;€<small>coût réel</small></span>
           </div>
         </article>
 
         <article class="tax-case">
           <h3><span aria-hidden="true">♡</span> Particulier</h3>
           <div class="tax-case__flow">
-            <span class="tax-step">100&nbsp;€<small>don</small></span>
+            <span class="tax-step">10&nbsp;€<small>don</small></span>
             <span class="tax-case__operator" aria-hidden="true">−</span>
-            <span class="tax-step tax-step--reduction">66&nbsp;€<small>réduction</small></span>
+            <span class="tax-step tax-step--reduction">6,60&nbsp;€<small>réduction d’impôt</small></span>
             <span class="tax-case__operator" aria-hidden="true">→</span>
-            <span class="tax-step tax-step--total">34&nbsp;€<small>coût réel</small></span>
+            <span class="tax-step tax-step--total">3,40&nbsp;€<small>coût réel</small></span>
           </div>
         </article>
       </div>
@@ -228,14 +228,12 @@ import { links } from "../../data/site";
     text-align: center;
   }
   .tax-step small {
-    overflow: hidden;
     color: var(--muted);
     font-family: var(--sans);
     font-size: 0.66rem;
     line-height: 1.2;
-    text-overflow: ellipsis;
     text-transform: uppercase;
-    white-space: nowrap;
+    white-space: normal;
   }
   .tax-step--reduction {
     background: var(--sage);
