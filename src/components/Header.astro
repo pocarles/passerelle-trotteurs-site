@@ -53,6 +53,12 @@ import { nav, links } from "../data/site";
 
   <nav class="mnav" id="m-nav" aria-label="Navigation mobile" hidden>
     <ul>
+      <li class="mnav__priority mnav__priority--donate">
+        <a href={links.donate} target="_blank" rel="noreferrer">Faire un don ↗</a>
+      </li>
+      <li class="mnav__priority mnav__priority--access">
+        <a href={links.intake} target="_blank" rel="noreferrer">Accès structure/adoptant ↗</a>
+      </li>
       {
         nav.flatMap((item) =>
           item.children
@@ -71,12 +77,6 @@ import { nav, links } from "../data/site";
               ],
         )
       }
-      <li>
-        <a href={links.donate} target="_blank" rel="noreferrer">Faire un don ↗</a>
-      </li>
-      <li>
-        <a href={links.intake} target="_blank" rel="noreferrer">Accès structure/adoptant ↗</a>
-      </li>
     </ul>
   </nav>
 </header>
@@ -282,6 +282,38 @@ import { nav, links } from "../data/site";
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+  }
+  .mnav__priority {
+    margin: 0.35rem 0;
+    border-radius: 0.7rem;
+    overflow: hidden;
+  }
+  .mnav__priority + .mnav__priority {
+    margin-top: 0.55rem;
+  }
+  .mnav__priority a {
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .mnav__priority--donate {
+    background: var(--forest);
+    color: #fff;
+  }
+  .mnav__priority--donate a:hover,
+  .mnav__priority--donate a:focus-visible {
+    background: var(--forest-deep);
+  }
+  .mnav__priority--access {
+    background: var(--sage);
+    color: var(--forest);
+  }
+  .mnav__priority--access a:hover,
+  .mnav__priority--access a:focus-visible {
+    background: var(--moss-mid);
+    color: #fff;
   }
 
   /* Six top-level items plus the logo and the donate pill need about 1020px
