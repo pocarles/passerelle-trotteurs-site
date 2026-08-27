@@ -5,6 +5,7 @@ import Base from "../../layouts/Base.astro";
 import Prose from "../../components/Prose.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import Icon from "../../components/Icon.astro";
+import { site } from "../../data/site";
 
 export async function getStaticPaths() {
   const all = (await getCollection("actualites")).sort(
@@ -29,18 +30,47 @@ const description =
     .split(" ")
     .slice(0, 32)
     .join(" ") + "…";
+const publishedTime = entry.data.date.toISOString().slice(0, 10);
+const articleUrl = `${site.url}/actualites/${entry.id}`;
+const articleImage = entry.data.image
+  ? new URL(entry.data.image, site.url).href
+  : `${site.url}/media/hero-trotteurs.jpg`;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
+  "@id": `${articleUrl}/#article`,
   headline: entry.data.title,
-  datePublished: entry.data.date.toISOString().slice(0, 10),
-  author: { "@type": "Organization", name: entry.data.source ?? "Association Passerelle" },
-  publisher: { "@type": "Organization", name: "Association Passerelle" },
+  description,
+  datePublished: publishedTime,
+  inLanguage: "fr-FR",
+  url: articleUrl,
+  mainEntityOfPage: articleUrl,
+  image: articleImage,
+  author: entry.data.source
+    ? { "@type": "Organization", name: entry.data.source }
+    : { "@id": `${site.url}/#organization` },
+  publisher: {
+    "@type": "Organization",
+    "@id": `${site.url}/#organization`,
+    name: site.fullName,
+    url: site.url,
+    logo: {
+      "@type": "ImageObject",
+      url: `${site.url}/media/logo.png`,
+    },
+  },
 };
 ---
 
-<Base title={`${entry.data.title} — Passerelle`} description={description}>
+<Base
+  title={`${entry.data.title} — Passerelle`}
+  description={description}
+  image={entry.data.image}
+  imageAlt={entry.data.title}
+  type="article"
+  publishedTime={publishedTime}
+>
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <article>
@@ -64,7 +94,7 @@ const schema = {
       entry.data.image && (
         <figure class="hero-img">
           <div class="wrap">
-            <img src={entry.data.image} alt="" loading="eager" />
+            <img src={entry.data.image} alt={entry.data.title} loading="eager" decoding="async" />
           </div>
         </figure>
       )

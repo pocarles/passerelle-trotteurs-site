@@ -1,0 +1,53 @@
+---
+interface Props {
+  src: string;
+  optimizedName: string;
+  widths: number[];
+  sizes: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "low" | "auto";
+  class?: string;
+}
+
+const {
+  src,
+  optimizedName,
+  widths,
+  sizes,
+  alt,
+  width,
+  height,
+  loading,
+  fetchpriority,
+  class: className,
+} = Astro.props;
+
+const srcset = (format: "avif" | "webp") =>
+  widths
+    .map((imageWidth) => `/media/optimized/${optimizedName}-${imageWidth}.${format} ${imageWidth}w`)
+    .join(", ");
+---
+
+<picture>
+  <source type="image/avif" srcset={srcset("avif")} sizes={sizes} />
+  <source type="image/webp" srcset={srcset("webp")} sizes={sizes} />
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+    class={className}
+  />
+</picture>
+
+<style>
+  picture {
+    display: contents;
+  }
+</style>

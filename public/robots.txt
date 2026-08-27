@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
 
 Sitemap: https://www.passerelle-trotteurs.fr/sitemap-index.xml
