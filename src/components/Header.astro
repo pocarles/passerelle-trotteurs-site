@@ -256,9 +256,14 @@ import { nav, links } from "../data/site";
   }
 
   .mnav {
+    max-height: calc(100vh - 7rem);
+    max-height: calc(100dvh - 7rem);
+    overflow-y: auto;
     border-top: 1px solid var(--line);
     background: var(--cream-warm);
     color: var(--ink);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   .mnav ul {
     margin: 0;
