@@ -17,39 +17,27 @@ image: "/media/race-and-care/lannemezan-2026/prix.jpg"
 
 <div class="article-gallery" aria-label="Retour en images sur Race &amp; Care à Lannemezan">
   <figure>
-    <button type="button" class="article-gallery__trigger" aria-label="Agrandir : le lauréat du Prix Passerelle Race &amp; Care">
-      <img src="/media/race-and-care/lannemezan-2026/gagnant.jpg" alt="Le lauréat du Prix Passerelle Race &amp; Care sur la piste de Lannemezan" width="1620" height="1080" loading="lazy" />
-    </button>
+    <img src="/media/race-and-care/lannemezan-2026/gagnant.jpg" alt="Le lauréat du Prix Passerelle Race &amp; Care sur la piste de Lannemezan" width="1620" height="1080" loading="lazy" />
     <figcaption>Le lauréat du Prix Passerelle Race &amp; Care.</figcaption>
   </figure>
   <figure>
-    <button type="button" class="article-gallery__trigger" aria-label="Agrandir : portrait d’un cheval">
-      <img src="/media/race-and-care/lannemezan-2026/cheval-portrait.jpg" alt="Portrait d’un cheval pendant la journée Race &amp; Care à Lannemezan" width="1620" height="1080" loading="lazy" />
-    </button>
+    <img src="/media/race-and-care/lannemezan-2026/cheval-portrait.jpg" alt="Portrait d’un cheval pendant la journée Race &amp; Care à Lannemezan" width="1620" height="1080" loading="lazy" />
     <figcaption>Un cheval de la journée Race &amp; Care.</figcaption>
   </figure>
   <figure>
-    <button type="button" class="article-gallery__trigger" aria-label="Agrandir : le départ d’une course de trot">
-      <img src="/media/race-and-care/lannemezan-2026/course.jpg" alt="Départ d’une course de trot à Lannemezan" width="1620" height="1080" loading="lazy" />
-    </button>
+    <img src="/media/race-and-care/lannemezan-2026/course.jpg" alt="Départ d’une course de trot à Lannemezan" width="1620" height="1080" loading="lazy" />
     <figcaption>Une journée de courses très animée.</figcaption>
   </figure>
   <figure>
-    <button type="button" class="article-gallery__trigger" aria-label="Agrandir : le stand Passerelle">
-      <img src="/media/race-and-care/lannemezan-2026/stand.jpg" alt="Stand Passerelle lors de la journée Race &amp; Care à Lannemezan" width="1620" height="1080" loading="lazy" />
-    </button>
+    <img src="/media/race-and-care/lannemezan-2026/stand.jpg" alt="Stand Passerelle lors de la journée Race &amp; Care à Lannemezan" width="1620" height="1080" loading="lazy" />
     <figcaption>Passerelle au rendez-vous pour échanger avec le public.</figcaption>
   </figure>
   <figure>
-    <button type="button" class="article-gallery__trigger" aria-label="Agrandir : les soins apportés à un cheval">
-      <img src="/media/race-and-care/lannemezan-2026/marechal.jpg" alt="Un maréchal intervient auprès d’un cheval à Lannemezan" width="1620" height="1080" loading="lazy" />
-    </button>
+    <img src="/media/race-and-care/lannemezan-2026/marechal.jpg" alt="Un maréchal intervient auprès d’un cheval à Lannemezan" width="1620" height="1080" loading="lazy" />
     <figcaption>Les soins et le bien-être au cœur de la démarche.</figcaption>
   </figure>
   <figure>
-    <button type="button" class="article-gallery__trigger" aria-label="Agrandir : un cheval rafraîchi après l’effort">
-      <img src="/media/race-and-care/lannemezan-2026/rafraichissement.jpg" alt="Un cheval rafraîchi après l’effort à Lannemezan" width="1620" height="1080" loading="lazy" />
-    </button>
+    <img src="/media/race-and-care/lannemezan-2026/rafraichissement.jpg" alt="Un cheval rafraîchi après l’effort à Lannemezan" width="1620" height="1080" loading="lazy" />
     <figcaption>Après l’effort, l’attention portée aux chevaux se poursuit.</figcaption>
   </figure>
 </div>
