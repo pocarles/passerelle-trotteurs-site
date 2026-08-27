@@ -85,7 +85,7 @@ import { nav, links } from "../data/site";
   .hdr {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1100;
     background: rgba(247, 244, 236, 0.92);
     backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 1px solid var(--line);
@@ -319,6 +319,11 @@ import { nav, links } from "../data/site";
   /* Six top-level items plus the logo and the donate pill need about 1020px
      inside the 1200px header. Below that, switch to the burger. */
   @media (max-width: 1200px) {
+    .hdr {
+      background: var(--cream-warm);
+      backdrop-filter: none;
+      isolation: isolate;
+    }
     .nav {
       display: none;
     }
@@ -327,6 +332,8 @@ import { nav, links } from "../data/site";
     }
     :global(body.has-hero) .hdr {
       position: absolute;
+      background: transparent;
+      backdrop-filter: none;
     }
   }
   @media (max-width: 560px) {
