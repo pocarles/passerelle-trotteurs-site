@@ -10,13 +10,15 @@ const year = new Date().getFullYear();
       <h2 id="newsletter-title">Recevez les nouvelles de Passerelle.</h2>
       <p>Inscrivez-vous pour suivre nos actions et les actualités de la reconversion.</p>
     </div>
-    <iframe
-      title="Inscription à la newsletter Passerelle"
-      src="https://b778a3ac.sibforms.com/v2/serve/MUIFAEpeO5DaBYIsuYto-dvKzhLslfhP3Zv3rWM5BvUG6oqUWNHPOS2oZGe5HqklP3QO48oiSuX7gWSI6nIROynZ07O5mwF-COe7VqPOVbGt1v4VjCpvTCSDYfAS6rpRTrS17-zPESN1bZAliptbmdNFlhnwd8PWdmTr9RuThtZ1Ho7Hhwt1oC0LE0F5-slOHmRG0YdyWk9biwh1Tg=="
-      frameborder="0"
-      scrolling="auto"
-      loading="lazy"
-    ></iframe>
+    <a
+      class="btn btn--primary ftr__newsletter-btn"
+      href="https://b778a3ac.sibforms.com/v2/serve/MUIFAEpeO5DaBYIsuYto-dvKzhLslfhP3Zv3rWM5BvUG6oqUWNHPOS2oZGe5HqklP3QO48oiSuX7gWSI6nIROynZ07O5mwF-COe7VqPOVbGt1v4VjCpvTCSDYfAS6rpRTrS17-zPESN1bZAliptbmdNFlhnwd8PWdmTr9RuThtZ1Ho7Hhwt1oC0LE0F5-slOHmRG0YdyWk9biwh1Tg=="
+      target="_blank"
+      rel="noreferrer"
+    >
+      S’inscrire à la newsletter
+      <span class="btn__ico" aria-hidden="true">↗</span>
+    </a>
   </section>
 
   <div class="ftr__in">
@@ -77,7 +79,7 @@ const year = new Date().getFullYear();
   }
   .ftr__newsletter {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 540px);
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
     align-items: center;
     gap: clamp(2rem, 6vw, 6rem);
     max-width: var(--maxw);
@@ -112,12 +114,12 @@ const year = new Date().getFullYear();
     margin: 0;
     font-size: 0.95rem;
   }
-  .ftr__newsletter iframe {
-    display: block;
-    width: 100%;
-    min-height: 305px;
-    border: 0;
-    background: transparent;
+  .ftr__newsletter-btn {
+    justify-self: end;
+    white-space: nowrap;
+  }
+  .ftr__newsletter-btn .btn__ico {
+    font-size: 1.05rem;
   }
   .ftr__in {
     display: grid;
@@ -193,6 +195,9 @@ const year = new Date().getFullYear();
   @media (max-width: 900px) {
     .ftr__newsletter {
       grid-template-columns: 1fr;
+    }
+    .ftr__newsletter-btn {
+      justify-self: start;
     }
     .ftr__in {
       grid-template-columns: 1fr 1fr;
