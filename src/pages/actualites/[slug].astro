@@ -77,8 +77,8 @@ const schema = {
           <Content />
         </Prose>
       </div>
-    </div>
-  </article>
+  </div>
+</article>
 
   <div class="image-lightbox" data-image-lightbox hidden>
     <div class="image-lightbox__backdrop" data-lightbox-close></div>
@@ -127,54 +127,46 @@ const schema = {
     href="https://www.facebook.com/profile.php?id=61590792746490"
     external
   />
-</Base>
+  <script>
+    const galleryTriggers = document.querySelectorAll<HTMLButtonElement>(".article-gallery__trigger");
+    const lightbox = document.querySelector<HTMLElement>("[data-image-lightbox]");
+    const lightboxImage = document.querySelector<HTMLImageElement>("[data-lightbox-image]");
+    const closeButton = document.querySelector<HTMLButtonElement>(".image-lightbox__close");
+    let previouslyFocused: HTMLElement | null = null;
 
-<script>
-  const galleryImages = document.querySelectorAll<HTMLImageElement>(".article-gallery img");
-  const lightbox = document.querySelector<HTMLElement>("[data-image-lightbox]");
-  const lightboxImage = document.querySelector<HTMLImageElement>("[data-lightbox-image]");
-  const closeButton = document.querySelector<HTMLButtonElement>(".image-lightbox__close");
-  let previouslyFocused: HTMLElement | null = null;
+    if (lightbox && lightboxImage && closeButton) {
+      const closeLightbox = () => {
+        lightbox.hidden = true;
+        document.body.classList.remove("lightbox-open");
+        lightboxImage.removeAttribute("src");
+        previouslyFocused?.focus();
+        previouslyFocused = null;
+      };
 
-  if (lightbox && lightboxImage && closeButton) {
-    const closeLightbox = () => {
-      lightbox.hidden = true;
-      document.body.classList.remove("lightbox-open");
-      lightboxImage.removeAttribute("src");
-      previouslyFocused?.focus();
-      previouslyFocused = null;
-    };
+      const openLightbox = (trigger: HTMLButtonElement) => {
+        const image = trigger.querySelector<HTMLImageElement>("img");
+        if (!image) return;
+        previouslyFocused = document.activeElement as HTMLElement | null;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.hidden = false;
+        document.body.classList.add("lightbox-open");
+        closeButton.focus();
+      };
 
-    const openLightbox = (image: HTMLImageElement) => {
-      previouslyFocused = document.activeElement as HTMLElement | null;
-      lightboxImage.src = image.currentSrc || image.src;
-      lightboxImage.alt = image.alt;
-      lightbox.hidden = false;
-      document.body.classList.add("lightbox-open");
-      closeButton.focus();
-    };
-
-    galleryImages.forEach((image) => {
-      image.tabIndex = 0;
-      image.setAttribute("role", "button");
-      image.setAttribute("aria-label", `Agrandir : ${image.alt}`);
-      image.addEventListener("click", () => openLightbox(image));
-      image.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openLightbox(image);
-        }
+      galleryTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => openLightbox(trigger));
       });
-    });
 
-    lightbox.querySelectorAll<HTMLElement>("[data-lightbox-close]").forEach((element) => {
-      element.addEventListener("click", closeLightbox);
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
-    });
-  }
-</script>
+      lightbox.querySelectorAll<HTMLElement>("[data-lightbox-close]").forEach((element) => {
+        element.addEventListener("click", closeLightbox);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
+      });
+    }
+  </script>
+</Base>
 
 <style>
   .head {
@@ -300,16 +292,25 @@ const schema = {
     min-width: 0;
     margin: 0;
   }
+  .prose .article-gallery__trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: zoom-in;
+    text-align: left;
+  }
   .prose .article-gallery img {
     display: block;
     width: 100%;
     height: auto;
     margin: 0;
-    cursor: zoom-in;
     transition: opacity 0.2s ease;
   }
-  .prose .article-gallery img:hover,
-  .prose .article-gallery img:focus-visible {
+  .prose .article-gallery__trigger:hover img,
+  .prose .article-gallery__trigger:focus-visible img {
     opacity: 0.82;
   }
   .image-lightbox[hidden] {
