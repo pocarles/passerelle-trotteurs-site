@@ -97,7 +97,7 @@ export const missionPillars = [
   {
     icon: "house",
     title: "Accueillir",
-    body: "Nous prenons en charge les Trotteurs Français sortant de la filière course, sans discrimination d’âge ni d’état de santé.",
+    body: "Nous prenons en charge les Trotteurs Français sortant de la filière courses / élevage, sans discrimination d’âge ni d’état de santé.",
   },
   {
     icon: "sprout",
@@ -119,7 +119,7 @@ export const intakeProfiles = [
     alt: "Poulain dans un pré",
   },
   {
-    title: "Chevaux sortants du circuit course",
+    title: "Chevaux sortants du circuit courses / élevage",
     body: "Chevaux non performants ou blessés.",
     image: "/media/protection/trotteur-attele.jpg",
     alt: "Trotteurs Français en course de trot attelé",
