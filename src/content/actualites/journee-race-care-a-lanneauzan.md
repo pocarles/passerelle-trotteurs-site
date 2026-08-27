@@ -5,7 +5,7 @@ dateLabel: "19 août 2026"
 image: "/media/race-and-care/lannemezan-2026/prix.jpg"
 ---
 
-<p>Le 19 août 2026, l’hippodrome de Lannemezan a accueilli une nouvelle journée <a href="/race-and-care">Race &amp; Care</a>, placée sous le signe du bien-être équin. Avec sept courses au programme, la réunion a rassemblé une belle participation autour des chevaux et de celles et ceux qui les accompagnent.</p>
+<p>Le 19 août 2026, la journée s’est déroulée à l’<a href="https://www.facebook.com/profile.php?id=61590792746490" target="_blank" rel="noreferrer">Hippodrome de Lannemezan</a>, qui a accueilli une nouvelle journée <a href="/race-and-care">Race &amp; Care</a>, placée sous le signe du bien-être équin. Avec sept courses au programme, la réunion a rassemblé une belle participation autour des chevaux et de celles et ceux qui les accompagnent.</p>
 
 <p>Le temps fort de la journée s’est tenu lors de la 7<sup>e</sup> course, avec le Prix Passerelle <a href="/race-and-care">Race &amp; Care</a>. Le cheval lauréat a ensuite été mis à l’honneur lors de la remise des prix, un moment symbolique qui rappelle l’importance d’accompagner les chevaux de course avant, pendant et après leur passage sur la piste.</p>
 
