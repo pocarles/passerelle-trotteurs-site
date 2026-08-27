@@ -447,4 +447,82 @@ const routes = [
       grid-template-columns: 1fr;
     }
   }
+  @media (max-width: 520px) {
+    .tax-diagram {
+      gap: 0.7rem;
+      padding: 1.15rem;
+    }
+    .tax-diagram__heading h2 {
+      font-size: clamp(1.65rem, 8vw, 2.15rem);
+    }
+    .tax-diagram__heading > p:last-child {
+      margin-top: 0.75rem;
+    }
+    .tax-diagram__start {
+      width: 100%;
+      max-width: 100%;
+      padding: 0.8rem 0.9rem;
+      border-radius: 1.25rem;
+    }
+    .tax-diagram__start > span:last-child {
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.2rem 0.65rem;
+      white-space: normal;
+    }
+    .tax-diagram__input-wrap {
+      flex: 1 1 0;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 0.25rem 0.5rem;
+      white-space: normal;
+    }
+    .tax-diagram__input-wrap input {
+      flex: 0 0 5rem;
+      width: 5rem;
+    }
+    .tax-diagram__start small {
+      flex-basis: 100%;
+      margin-left: 0;
+      white-space: normal;
+      font-size: 0.68rem;
+      line-height: 1.3;
+    }
+    .tax-diagram__symbol {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+    .tax-case {
+      padding: 0.85rem;
+    }
+    .tax-case__flow {
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      grid-template-areas:
+        "don operator reduction"
+        "total total total";
+      gap: 0.55rem;
+    }
+    .tax-case__flow > .tax-step:first-child {
+      grid-area: don;
+    }
+    .tax-case__flow > .tax-case__operator:nth-child(2) {
+      grid-area: operator;
+    }
+    .tax-case__flow > .tax-step--reduction {
+      grid-area: reduction;
+    }
+    .tax-case__flow > .tax-case__operator:nth-child(4) {
+      display: none;
+    }
+    .tax-case__flow > .tax-step--total {
+      grid-area: total;
+    }
+    .tax-step {
+      padding: 0.75rem 0.25rem;
+      font-size: clamp(1.15rem, 7vw, 1.4rem);
+    }
+    .tax-step small {
+      font-size: 0.58rem;
+    }
+  }
 </style>
