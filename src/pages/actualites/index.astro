@@ -39,7 +39,7 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
     featured && (
       <section class="section feat-sec">
         <div class="wrap">
-          <a class="feat" href={`/actualites/${featured.id}`}>
+          <a class:list={["feat", !featured.data.image && "feat--no-image"]} href={`/actualites/${featured.id}`}>
             {featured.data.image && (
               <div class="feat__media">
                 <img src={featured.data.image} alt="" loading="eager" />
@@ -156,6 +156,9 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .feat--no-image {
+    grid-template-columns: 1fr;
   }
   .feat:hover {
     transform: translateY(-3px);
