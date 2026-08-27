@@ -10,6 +10,7 @@ interface Props {
   image?: string;
   imageAlt?: string;
   video?: string;
+  backgroundVideo?: string;
   logo?: string;
   logoAlt?: string;
   class?: string;
@@ -25,6 +26,7 @@ const {
   image,
   imageAlt = "",
   video,
+  backgroundVideo,
   logo,
   logoAlt = "",
   class: className,
@@ -35,7 +37,7 @@ const hasActions = Astro.slots.has("actions");
 ---
 
 <header
-  class:list={["ph", (image || video) && !background && "ph--split", background && (image || video) && "ph--background", compactTitle && "ph--compact-title", className]}
+  class:list={["ph", (image || video) && !background && "ph--split", background && (image || video) && "ph--background", backgroundVideo && "ph--motion-background", compactTitle && "ph--compact-title", className]}
 >
   {background && video ? (
     <video class="ph__bg" autoplay muted loop playsinline preload="metadata" poster={image} aria-hidden="true">
@@ -43,6 +45,11 @@ const hasActions = Astro.slots.has("actions");
     </video>
   ) : (
     background && image && <img class="ph__bg" src={image} alt="" aria-hidden="true" loading="eager" />
+  )}
+  {backgroundVideo && (
+    <video class="ph__motion-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src={backgroundVideo} type="video/mp4" />
+    </video>
   )}
   <div class="wrap ph__in">
     <div class="ph__copy">
@@ -148,6 +155,33 @@ const hasActions = Astro.slots.has("actions");
   .ph--background .lead {
     color: rgba(255, 255, 255, 0.86);
   }
+  .ph--motion-background {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .ph--motion-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(247, 244, 236, 0.97), rgba(247, 244, 236, 0.78));
+    pointer-events: none;
+  }
+  .ph--motion-background .ph__motion-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.22;
+  }
+  .ph--motion-background .ph__in {
+    position: relative;
+    z-index: 2;
+  }
   .ph__in {
     display: grid;
     gap: clamp(2rem, 5vw, 4rem);
@@ -202,7 +236,8 @@ const hasActions = Astro.slots.has("actions");
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ph--background video {
+    .ph--background video,
+    .ph--motion-background .ph__motion-bg {
       display: none;
     }
   }
