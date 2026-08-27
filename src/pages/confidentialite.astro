@@ -2,7 +2,6 @@
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Prose from "../components/Prose.astro";
-import Icon from "../components/Icon.astro";
 import { legal, site, links } from "../data/site";
 
 const maj = "26 juillet 2026";
@@ -12,23 +11,6 @@ const maj = "26 juillet 2026";
   title="Politique de confidentialité — Association Passerelle"
   description="Politique de confidentialité du site public de l’Association Passerelle : données traitées, hébergement, services externes, droits RGPD et contact."
 >
-  <section class="review-note" aria-label="Avertissement de publication">
-    <div class="wrap">
-      <div class="notice">
-        <span class="notice__ico"><Icon name="info" /></span>
-        <div>
-          <h2>Un point reste à arrêter par l’association</h2>
-          <p>
-            Les durées de conservation des messages reçus (section
-            « Conservation ») doivent être précisées par l’association avant la
-            mise en ligne. Le reste de cette page décrit le fonctionnement réel
-            du site et a été vérifié.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <PageHeader
     eyebrow="Données personnelles"
     title="Politique de"
@@ -165,43 +147,6 @@ const maj = "26 juillet 2026";
 </Base>
 
 <style>
-  .review-note {
-    padding-block: 1.25rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .notice {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    padding: 1.3rem 1.5rem;
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--moss-mid);
-    border-radius: var(--radius);
-    background: var(--cream-warm);
-  }
-  .notice__ico {
-    display: grid;
-    place-items: center;
-    flex: 0 0 auto;
-    color: var(--moss);
-  }
-  .notice__ico :global(svg) {
-    width: 28px;
-    height: 28px;
-  }
-  .notice h2 {
-    margin: 0 0 0.3rem;
-    font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0;
-  }
-  .notice p {
-    margin: 0;
-    max-width: 70ch;
-    color: var(--ink-soft);
-    font-size: 0.93rem;
-  }
   .maj {
     color: var(--ink-faint);
     font-size: 0.85rem;

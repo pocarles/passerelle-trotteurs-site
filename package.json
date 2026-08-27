@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "optimize:home-images": "node scripts/optimize-home-images.mjs",
+    "verify:launch": "npm run build && node scripts/verify-launch.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "npm run build && wrangler pages deploy dist --project-name passerelle-trotteurs-site"
@@ -16,6 +18,11 @@
     "astro": "^7.1.3"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.7.3"
+    "@astrojs/sitemap": "^3.7.3",
+    "sharp": "^0.35.3"
+  },
+  "overrides": {
+    "js-yaml": "4.3.2",
+    "nanoid": "3.3.18"
   }
 }

@@ -1,2 +1,58 @@
+# Canonical hostname after both domain variants are attached to Pages.
+https://passerelle-trotteurs.fr/* https://www.passerelle-trotteurs.fr/:splat 301
+
+# Previous site navigation.
+/fr / 301
+/fr/ / 301
+/fr/accueil / 301
+/fr/accueil/ / 301
+/fr/acheter-adopter-un-trotteur /adopter 301
+/fr/acheter-adopter-un-trotteur/ /adopter 301
+/fr/actualites /actualites 301
+/fr/actualites/ /actualites 301
+/fr/adhesion-devenir-membre /participer/adherer 301
+/fr/adhesion-devenir-membre/ /participer/adherer 301
+/fr/contact /contact 301
+/fr/contact/ /contact 301
+/fr/devenir-une-structure-accreditee /reseau 301
+/fr/devenir-une-structure-accreditee/ /reseau 301
+/fr/equibiogenes-1 /mecenes/nos-mecenes 301
+/fr/equibiogenes-1/ /mecenes/nos-mecenes 301
+/fr/equipe /association/equipe 301
+/fr/equipe/ /association/equipe 301
+/fr/faire-un-don /participer 301
+/fr/faire-un-don/ /participer 301
+/fr/formulaire-nous-confier-un-trotteur /confier-et-proteger 301
+/fr/formulaire-nous-confier-un-trotteur/ /confier-et-proteger 301
+/fr/jade-darling /mecenes/jade-darling 301
+/fr/jade-darling/ /mecenes/jade-darling 301
+/fr/mentions-legales /mentions-legales 301
+/fr/mentions-legales/ /mentions-legales 301
+/fr/nos-m-c-nes /mecenes/nos-mecenes 301
+/fr/nos-m-c-nes/ /mecenes/nos-mecenes 301
+/fr/nos-valeurs /association/valeurs 301
+/fr/nos-valeurs/ /association/valeurs 301
+/fr/notre-reseau /reseau 301
+/fr/notre-reseau/ /reseau 301
+/fr/parrainer-un-trotteur /participer/parrainer 301
+/fr/parrainer-un-trotteur/ /participer/parrainer 301
+/fr/passerelle-sur-le-territoire /reseau/annuaire 301
+/fr/passerelle-sur-le-territoire/ /reseau/annuaire 301
+/fr/politique-de-confidentialite /confidentialite 301
+/fr/politique-de-confidentialite/ /confidentialite 301
+/fr/pour-quels-chevaux- /confier-et-proteger 301
+/fr/pour-quels-chevaux-/ /confier-et-proteger 301
+/fr/race-care /race-and-care 301
+/fr/race-care/ /race-and-care 301
+
+# Imported articles kept their legacy slug.
+/fr/actualites/* /actualites/:splat 301
+
+# The English site is not available yet; do not make this temporary fallback permanent.
+/en / 302
+/en/ / 302
+/en/* / 302
+
+# Earlier preview route.
 /protection /confier-et-proteger 301
-/protection/ /confier-et-proteger/ 301
+/protection/ /confier-et-proteger 301

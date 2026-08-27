@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { dateLabel } from "../data/dates";
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
+import ResponsiveImage from "../components/ResponsiveImage.astro";
 import {
   site,
   links,
@@ -16,45 +17,84 @@ const latestNews = (await getCollection("actualites"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
+const imageStem = (path: string) => path.split("/").at(-1)!.replace(/\.[^.]+$/, "");
+const heroWidths = [640, 960, 1440, 1920];
+const heroAvifSrcset = heroWidths
+  .map((width) => `/media/optimized/hero-trotteurs-${width}.avif ${width}w`)
+  .join(", ");
+
+const organizationId = `${site.url}/#organization`;
 const schema = {
   "@context": "https://schema.org",
-  "@type": "NGO",
-  name: site.fullName,
-  alternateName: "Passerelle Trotteurs",
-  url: site.url,
-  logo: `${site.url}/media/logo.png`,
-  description:
-    "Association reconnue d’intérêt général dédiée à la reconversion et à la protection à vie des Trotteurs Français réformés des courses.",
-  foundingDate: "2020-12",
-  areaServed: "FR",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.street,
-    postalCode: site.address.postalCode,
-    addressLocality: site.address.city,
-    addressCountry: "FR",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: site.phone,
-    email: site.email,
-    contactType: "customer support",
-    availableLanguage: "French",
-  },
-  sameAs: [links.facebook, links.instagram],
+  "@graph": [
+    {
+      "@type": "NGO",
+      "@id": organizationId,
+      name: site.fullName,
+      alternateName: "Passerelle Trotteurs",
+      url: site.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/media/logo.png`,
+      },
+      description:
+        "Association reconnue d’intérêt général dédiée à la reconversion et à la protection à vie des Trotteurs Français réformés des courses.",
+      foundingDate: "2020-12",
+      areaServed: "FR",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.address.street,
+        postalCode: site.address.postalCode,
+        addressLocality: site.address.city,
+        addressCountry: "FR",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: site.phone,
+        email: site.email,
+        contactType: "customer support",
+        availableLanguage: "fr",
+      },
+      sameAs: [links.facebook, links.instagram],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.fullName,
+      description: site.tagline,
+      inLanguage: "fr-FR",
+      publisher: { "@id": organizationId },
+    },
+  ],
 };
 ---
 
 <Base
   title="Passerelle — La seconde vie des Trotteurs Français"
-    description="Passerelle prend en charge, reconvertit et protège à vie les Trotteurs Français sortant de la filière courses / élevage. Confier un cheval, adopter, soutenir ou rejoindre le réseau accrédité."
+  description="Passerelle prend en charge, reconvertit et protège à vie les Trotteurs Français sortant de la filière courses / élevage. Confier un cheval, adopter, soutenir ou rejoindre le réseau accrédité."
   hasHero
+  preloadImage="/media/optimized/hero-trotteurs-960.avif"
+  preloadImageSrcset={heroAvifSrcset}
+  preloadImageSizes="100vw"
+  preloadImageType="image/avif"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
-    <img class="hero__img" src="/media/hero-trotteurs.jpg" alt="" width="1920" height="1281" fetchpriority="high" />
+    <ResponsiveImage
+      class="hero__img"
+      src="/media/hero-trotteurs.jpg"
+      optimizedName="hero-trotteurs"
+      widths={heroWidths}
+      sizes="100vw"
+      alt=""
+      width={1920}
+      height={1281}
+      loading="eager"
+      fetchpriority="high"
+    />
     <div class="hero__scrim"></div>
     <div class="hero__in wrap">
       <p class="eyebrow eyebrow--light">
@@ -191,7 +231,14 @@ const schema = {
           pathways.map((p) => (
             <article class="card">
               <div class="card__media">
-                <img src={p.image} alt={p.alt} loading="lazy" />
+                <ResponsiveImage
+                  src={p.image}
+                  optimizedName={imageStem(p.image)}
+                  widths={p.image === "/media/expo.jpg" ? [384] : [480, 800, 1200]}
+                  sizes="(min-width: 960px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  alt={p.alt}
+                  loading="lazy"
+                />
                 <span class="badge card__badge"><Icon name={p.icon} /></span>
               </div>
               <div class="card__body">
@@ -217,12 +264,16 @@ const schema = {
   <!-- ═══════════ THE CONTRACT ═══════════ -->
   <section class="section protect">
     <div class="protect__horse-track" aria-hidden="true">
-      <img
+      <ResponsiveImage
         class="protect__horse"
         src="/media/trotting-horse.png"
+        optimizedName="trotting-horse"
+        widths={[192, 384]}
+        sizes="152px"
         alt=""
-        width="1536"
-        height="1024"
+        width={1536}
+        height={1024}
+        loading="lazy"
       />
     </div>
     <div class="wrap protect__grid">
@@ -267,7 +318,7 @@ const schema = {
     overflow: hidden;
     isolation: isolate;
   }
-  .hero__img {
+  :global(.hero__img) {
     position: absolute;
     inset: 0;
     z-index: -2;
@@ -505,7 +556,7 @@ const schema = {
     aspect-ratio: 4 / 3;
   }
   /* Absolute so a portrait source can't stretch the card past its ratio. */
-  .card__media img {
+  .card__media :global(img) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -575,7 +626,7 @@ const schema = {
     height: 1px;
     background: rgba(186, 214, 136, 0.22);
   }
-  .protect__horse {
+  :global(.protect__horse) {
     position: absolute;
     bottom: 0.18rem;
     left: 0;
@@ -697,7 +748,7 @@ const schema = {
   @media (prefers-reduced-motion: reduce) {
     .mission__track-rail--middle,
     .mission__track-runner,
-    .protect__horse {
+    :global(.protect__horse) {
       animation: none;
       left: 50%;
       transform: translateX(-50%);

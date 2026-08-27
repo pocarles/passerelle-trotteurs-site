@@ -1,0 +1,51 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<Base
+  title="Page introuvable — Association Passerelle"
+  description="Cette page n’existe pas ou a été déplacée. Retrouvez les principales rubriques du site de l’Association Passerelle."
+  noindex
+>
+  <section class="section not-found">
+    <div class="wrap not-found__in">
+      <p class="eyebrow">Erreur 404</p>
+      <h1>Cette page a changé de chemin.</h1>
+      <p class="lead">
+        Retrouvez les actions de Passerelle depuis l’accueil, ou consultez les
+        Trotteurs Français proposés à l’adoption.
+      </p>
+      <div class="not-found__actions">
+        <a class="btn btn--primary" href="/">
+          Retour à l’accueil
+          <span class="btn__ico"><Icon name="arrow" /></span>
+        </a>
+        <a class="btn btn--ghost" href="/adopter">Voir les chevaux</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found {
+    min-height: 60vh;
+    display: grid;
+    align-items: center;
+  }
+  .not-found__in {
+    max-width: 760px;
+  }
+  .not-found h1 {
+    max-width: 16ch;
+  }
+  .not-found .lead {
+    max-width: 58ch;
+  }
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+</style>

@@ -127,24 +127,46 @@ script inséré en ligne sera bloqué par le navigateur.**
 ### Propriété du compte
 
 Le projet est hébergé sur le compte Cloudflare personnel « Apiruck Account ».
-Pour que l'association possède réellement son site, ce projet devra être
-recréé sur un compte Cloudflare détenu par Passerelle — même problème que
-celui décrit dans l'audit de propriété de la plateforme.
+Ce compte reste l'hébergement retenu pour la mise en ligne actuelle.
 
 Le domaine `www.passerelle-trotteurs.fr` est actuellement servi par AWS
 CloudFront et sa zone DNS est gérée chez OVH. Le basculement du domaine
 nécessite d'abord la récupération du compte OVH — voir l'audit de propriété
 de la plateforme.
 
+### Bascule du domaine
+
+Le code est préparé pour la bascule : le domaine de production est indexable,
+les adresses `*.pages.dev` restent en `noindex`, l'ancien chemin `/fr/...` est
+redirigé vers chaque nouvelle page et le domaine sans `www` est redirigé vers
+le domaine canonique.
+
+Ordre de bascule :
+
+0. Au moins une heure avant la bascule, réduire temporairement le TTL du CNAME
+   `www` de 3600 à 300 secondes, puis le remettre à 3600 après validation.
+1. Ajouter `www.passerelle-trotteurs.fr` comme domaine personnalisé dans le
+   projet Cloudflare Pages et attendre qu'il soit prêt.
+2. Chez OVH, remplacer uniquement le CNAME `www` qui pointe actuellement vers
+   AWS CloudFront par la cible `passerelle-trotteurs-site.pages.dev` indiquée
+   par Cloudflare Pages. Ne modifier aucun enregistrement MX de messagerie.
+3. Conserver d'abord le domaine nu `passerelle-trotteurs.fr` sur son adresse A
+   actuelle : il redirige déjà vers `www`. Pour le servir plus tard depuis
+   Pages, il faudra soit déplacer la zone DNS vers Cloudflare, soit utiliser un
+   service DNS compatible avec l'aplatissement CNAME à la racine.
+4. Vérifier le certificat, les redirections, `robots.txt`, le sitemap et les
+   principales pages sur le domaine public.
+5. Soumettre le sitemap dans Google Search Console et Bing Webmaster Tools.
+
+Le site n'installe ni mesure d'audience, ni pixel publicitaire, ni cookie. Une
+bannière de consentement n'est donc pas nécessaire. Si un outil marketing est
+ajouté plus tard, la politique et le consentement devront être revus avant son
+activation.
+
 ## À faire
 
-- [ ] **Au moment de la bascule du domaine :** retirer l'en-tête
-      `X-Robots-Tag: noindex, nofollow` de `public/_headers`. Il empêche
-      l'indexation de l'adresse `*.pages.dev` pendant la phase de relecture.
 - [ ] Publier de vraies fiches chevaux (le système est prêt, les données
       manquent — voir « Ajouter un cheval »)
-- [ ] Confirmer deux liens partenaires (voir « Mécènes »)
-- [ ] Fixer les durées de conservation dans la politique de confidentialité
 - [ ] Version anglaise
 - [ ] Photographies haute définition
 
