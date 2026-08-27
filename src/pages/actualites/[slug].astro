@@ -87,6 +87,14 @@ const schema = {
     </div>
   </div>
 
+  <CtaBand
+    text="Suivez l’Hippodrome de Lannemezan."
+    accent="Retrouvez leurs actualités sur Facebook."
+    label="Voir la page Facebook"
+    href="https://www.facebook.com/profile.php?id=61590792746490"
+    external
+  />
+
   <nav class="pager" aria-label="Navigation entre articles">
     <div class="wrap pager__in">
       {
@@ -110,13 +118,6 @@ const schema = {
     </div>
   </nav>
 
-  <CtaBand
-    text="Suivez l’Hippodrome de Lannemezan."
-    accent="Retrouvez leurs actualités sur Facebook."
-    label="Voir la page Facebook"
-    href="https://www.facebook.com/profile.php?id=61590792746490"
-    external
-  />
   <script>
     const galleryTriggers = document.querySelectorAll<HTMLButtonElement>(".article-gallery__trigger");
     const lightbox = document.querySelector<HTMLElement>("[data-image-lightbox]");
