@@ -5,7 +5,6 @@ import Base from "../../layouts/Base.astro";
 import Prose from "../../components/Prose.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import Icon from "../../components/Icon.astro";
-import { links } from "../../data/site";
 
 export async function getStaticPaths() {
   const all = (await getCollection("actualites")).sort(
@@ -110,15 +109,6 @@ const schema = {
       }
     </div>
   </nav>
-
-  <CtaBand
-    text="La reconversion a un coût."
-    accent="Chaque don a un impact."
-    label="Faire un don"
-    href={links.donate}
-    external
-    note="66 % du montant de votre don est déductible de vos impôts — 60 % pour les entreprises."
-  />
 
   <CtaBand
     text="Suivez l’Hippodrome de Lannemezan."
