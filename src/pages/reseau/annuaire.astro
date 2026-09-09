@@ -150,7 +150,15 @@ const directoryLinks = JSON.stringify(
                               aria-label={`${social.label} de ${structure.name}`}
                               title={`${social.label} de ${structure.name}`}
                             >
-                              <Icon name={social.label === "Facebook" ? "facebook" : "instagram"} />
+                              <Icon
+                                name={
+                                  social.label === "Facebook"
+                                    ? "facebook"
+                                    : social.label === "Instagram"
+                                      ? "instagram"
+                                      : "tiktok"
+                                }
+                              />
                             </a>
                           ))}
                         </div>

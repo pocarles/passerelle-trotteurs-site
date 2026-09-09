@@ -245,6 +245,19 @@ export const networkDirectory = [
     ],
   },
   {
+    name: "Ecurie des Beaux AR",
+    department: "Charente-Maritime",
+    address: ["9 le Crepet", "17160 Blanzac les Matha"],
+    phones: ["06 16 55 04 81"],
+    email: "alisonrousseaub@hotmail.com",
+    links: [{ label: "Site internet", href: "https://www.ecurie-des-beaux-ar.com" }],
+    socials: [
+      { label: "Facebook", href: "https://www.facebook.com/alison.boulan/" },
+      { label: "Instagram", href: "https://www.instagram.com/ecurie_des_beaux_ar_17/" },
+      { label: "TikTok", href: "https://www.tiktok.com/@ecurie_des_beaux_ar" },
+    ],
+  },
+  {
     name: "Écurie du Saule",
     department: "Nord",
     address: ["65 rue du Saule", "59570 Obies"],
@@ -470,6 +483,7 @@ export const networkMapDepartments = [
       "Société Hippique de Vire en Bocage",
     ],
   },
+  { code: "17", label: "Charente-Maritime", structures: ["Ecurie des Beaux AR"] },
   { code: "25", label: "Doubs", structures: ["L’Élevage de tous temps"] },
   { code: "42", label: "Loire", structures: ["Rehab Ranch"] },
   {
