@@ -129,30 +129,21 @@ const directoryLinks = JSON.stringify(
                   }
                 </div>
                 {
-                  "video" in structure && structure.video && (
-                    <div class="directory-card__video">
-                      <div class="directory-card__video-heading">
-                        <span>Présentation vidéo</span>
-                        <strong>{structure.video.title}</strong>
-                      </div>
-                      <video
-                        controls
-                        playsinline
-                        preload="none"
-                        poster={structure.video.poster}
-                        aria-label={structure.video.title}
-                      >
-                        <source src={structure.video.src} type="video/mp4" />
-                        Votre navigateur ne permet pas de lire cette vidéo.
-                      </video>
-                    </div>
-                  )
-                }
-                {
-                  (structure.links.length > 0 || structure.socials?.length) && (
+                  (structure.links.length > 0 || structure.socials?.length || ("video" in structure && structure.video)) && (
                     <div class="directory-card__resources">
-                      {structure.links.length > 0 && (
+                      {(structure.links.length > 0 || ("video" in structure && structure.video)) && (
                         <div class="directory-card__links" aria-label={`Liens de ${structure.name}`}>
+                          {"video" in structure && structure.video && (
+                            <a
+                              class="directory-card__video-link"
+                              href={structure.video.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`${structure.video.title} sur YouTube`}
+                            >
+                              Voir la vidéo de présentation <Icon name="arrowUpRight" />
+                            </a>
+                          )}
                           {structure.links.map((link) => (
                             <a href={link.href} target="_blank" rel="noreferrer">
                               {link.label} <Icon name="arrowUpRight" />
@@ -211,10 +202,7 @@ const directoryLinks = JSON.stringify(
 
     cards?.forEach((card) => {
       card.addEventListener("toggle", () => {
-        if (!card.open) {
-          card.querySelectorAll<HTMLVideoElement>("video").forEach((video) => video.pause());
-          return;
-        }
+        if (!card.open) return;
 
         cards.forEach((otherCard) => {
           if (otherCard !== card) otherCard.open = false;
@@ -486,39 +474,6 @@ const directoryLinks = JSON.stringify(
     color: inherit;
     overflow-wrap: anywhere;
   }
-  .directory-card__video {
-    display: grid;
-    gap: 0.75rem;
-    padding: clamp(0.85rem, 2vw, 1rem);
-    background: color-mix(in srgb, var(--sage) 13%, var(--cream));
-    border: 1px solid var(--line);
-    border-radius: calc(var(--radius) * 0.7);
-  }
-  .directory-card__video-heading {
-    display: grid;
-    gap: 0.2rem;
-  }
-  .directory-card__video-heading span {
-    color: var(--forest);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-  }
-  .directory-card__video-heading strong {
-    color: var(--forest-deep);
-    font-family: var(--font-display);
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    font-weight: 500;
-  }
-  .directory-card__video video {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: var(--forest-deep);
-    border-radius: calc(var(--radius) * 0.45);
-    object-fit: contain;
-  }
   .directory-card__resources {
     display: flex;
     flex-wrap: wrap;
@@ -548,6 +503,16 @@ const directoryLinks = JSON.stringify(
   }
   .directory-card__links a:hover {
     background: color-mix(in srgb, var(--sage) 30%, transparent);
+  }
+  .directory-card__links .directory-card__video-link {
+    color: #fff;
+    background: var(--forest);
+    border-color: var(--forest);
+  }
+  .directory-card__links .directory-card__video-link:hover {
+    color: var(--forest-deep);
+    background: var(--sage);
+    border-color: var(--sage);
   }
   .directory-card__links :global(svg) {
     width: 0.85rem;
