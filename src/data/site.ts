@@ -349,6 +349,11 @@ export const networkDirectory = [
     address: ["6 Le Ronlard", "87230 Les Cars"],
     phones: ["06 98 05 92 81"],
     email: "nathalie.francelle@orange.fr",
+    video: {
+      src: "/media/structures/heliominos-presentation.mp4",
+      poster: "/media/structures/heliominos-poster.jpg",
+      title: "Présentation du refuge Héliominos",
+    },
     links: [{ label: "Site internet", href: "http://association-heliominos.e-monsite.com/" }],
     socials: [{ label: "Facebook", href: "https://www.facebook.com/Heliominos/" }],
   },

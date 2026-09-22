@@ -129,6 +129,26 @@ const directoryLinks = JSON.stringify(
                   }
                 </div>
                 {
+                  "video" in structure && structure.video && (
+                    <div class="directory-card__video">
+                      <div class="directory-card__video-heading">
+                        <span>Présentation vidéo</span>
+                        <strong>{structure.video.title}</strong>
+                      </div>
+                      <video
+                        controls
+                        playsinline
+                        preload="none"
+                        poster={structure.video.poster}
+                        aria-label={structure.video.title}
+                      >
+                        <source src={structure.video.src} type="video/mp4" />
+                        Votre navigateur ne permet pas de lire cette vidéo.
+                      </video>
+                    </div>
+                  )
+                }
+                {
                   (structure.links.length > 0 || structure.socials?.length) && (
                     <div class="directory-card__resources">
                       {structure.links.length > 0 && (
@@ -191,7 +211,10 @@ const directoryLinks = JSON.stringify(
 
     cards?.forEach((card) => {
       card.addEventListener("toggle", () => {
-        if (!card.open) return;
+        if (!card.open) {
+          card.querySelectorAll<HTMLVideoElement>("video").forEach((video) => video.pause());
+          return;
+        }
 
         cards.forEach((otherCard) => {
           if (otherCard !== card) otherCard.open = false;
@@ -462,6 +485,39 @@ const directoryLinks = JSON.stringify(
   .directory-card__details a {
     color: inherit;
     overflow-wrap: anywhere;
+  }
+  .directory-card__video {
+    display: grid;
+    gap: 0.75rem;
+    padding: clamp(0.85rem, 2vw, 1rem);
+    background: color-mix(in srgb, var(--sage) 13%, var(--cream));
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) * 0.7);
+  }
+  .directory-card__video-heading {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .directory-card__video-heading span {
+    color: var(--forest);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+  .directory-card__video-heading strong {
+    color: var(--forest-deep);
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    font-weight: 500;
+  }
+  .directory-card__video video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--forest-deep);
+    border-radius: calc(var(--radius) * 0.45);
+    object-fit: contain;
   }
   .directory-card__resources {
     display: flex;
