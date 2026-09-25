@@ -19,6 +19,40 @@ import { ambassadeurs } from "../../data/mecenes";
     imageAlt="Jade et Darling des Mares, ambassadrices Passerelle"
   />
 
+  <section class="recruitment" aria-labelledby="recruitment-title">
+    <div class="wrap">
+      <div class="recruitment__panel">
+        <div class="recruitment__copy">
+          <p class="eyebrow">Campagne 2027</p>
+          <h2 id="recruitment-title">Devenez ambassadeur de la reconversion.</h2>
+          <p>
+            Vous partagez le quotidien d’un trotteur réformé&nbsp;? Faites rayonner son histoire
+            et rejoignez le programme des ambassadeurs Passerelle en 2027.
+          </p>
+        </div>
+        <div class="recruitment__dates" aria-label="Périodes de candidature">
+          <p><strong>Jusqu’à mi-novembre</strong><span>Trotteurs issus du réseau Passerelle</span></p>
+          <p><strong>Mi-novembre → mi-décembre</strong><span>Trotteurs hors réseau Passerelle</span></p>
+        </div>
+        <div class="recruitment__actions">
+          <a class="btn btn--primary" href="/mecenes/devenir-ambassadeur">
+            Découvrir le programme
+            <span class="btn__ico"><Icon name="arrow" /></span>
+          </a>
+          <a
+            class="tlink"
+            href="https://forms.gle/kzGNk5qNMoY6XqgC9"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Candidater
+            <Icon name="arrowUpRight" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section amb">
     <div class="wrap">
       <p class="eyebrow eyebrow--light">Des histoires à partager</p>
@@ -64,6 +98,65 @@ import { ambassadeurs } from "../../data/mecenes";
 </Base>
 
 <style>
+  .recruitment {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+    background: var(--cream);
+  }
+  .recruitment__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.7rem, 4vw, 3rem);
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .recruitment__copy h2 {
+    max-width: 18ch;
+    color: var(--forest-deep);
+    font-size: clamp(1.8rem, 3.3vw, 2.75rem);
+  }
+  .recruitment__copy > p:not(.eyebrow) {
+    max-width: 60ch;
+    margin: 1rem 0 0;
+    color: var(--ink-soft);
+  }
+  .recruitment__dates {
+    display: grid;
+    align-content: center;
+    gap: 0.7rem;
+  }
+  .recruitment__dates p {
+    margin: 0;
+    padding: 0.9rem 1rem;
+    background: color-mix(in srgb, var(--sage) 16%, var(--cream));
+    border-left: 3px solid var(--moss-mid);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .recruitment__dates strong,
+  .recruitment__dates span {
+    display: block;
+  }
+  .recruitment__dates strong {
+    color: var(--forest);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .recruitment__dates span {
+    margin-top: 0.2rem;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+  .recruitment__actions {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.35rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+  }
   .amb {
     background: var(--forest-deep);
     color: #fff;
@@ -126,6 +219,13 @@ import { ambassadeurs } from "../../data/mecenes";
   }
 
   @media (max-width: 760px) {
+    .recruitment__panel {
+      grid-template-columns: 1fr;
+    }
+    .recruitment__actions {
+      grid-column: auto;
+      align-items: flex-start;
+    }
     .amb h2 .accent--light {
       display: block;
     }
