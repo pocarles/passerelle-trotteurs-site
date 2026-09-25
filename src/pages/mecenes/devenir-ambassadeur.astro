@@ -6,28 +6,46 @@ import Icon from "../../components/Icon.astro";
 
 const applicationUrl = "https://forms.gle/kzGNk5qNMoY6XqgC9";
 
-const missions = [
+const expectations = [
+  "Partager régulièrement votre aventure avec votre cheval, à votre rythme et avec vos propres mots.",
+  "Publier ponctuellement des photos, vidéos ou témoignages sur votre quotidien et vos évolutions.",
+  "Identifier Passerelle lorsque vos contenus mettent en valeur le trotteur français ou sa reconversion.",
+  "Relayer les actualités de l’association lorsqu’elles trouvent naturellement leur place sur vos réseaux.",
+  "Fournir les éléments nécessaires à la création de votre portrait sur les supports de Passerelle.",
+  "Respecter la charte de bien-être équin et les valeurs de l’association dans vos communications et vos sorties.",
+];
+
+const commitments = [
   {
-    icon: "heart",
-    title: "Raconter une histoire vraie",
-    text: "Partager le parcours de votre trotteur, ses progrès et la relation que vous construisez ensemble.",
+    title: "Un kit Passerelle",
+    text: "Un kit textile, dont le contenu sera précisé, pour porter les couleurs de l’association à votre manière.",
   },
   {
-    icon: "horse",
-    title: "Montrer sa polyvalence",
-    text: "Faire découvrir au plus grand nombre les multiples vies possibles après une carrière de courses.",
+    title: "Un portrait dédié",
+    text: "La présentation de votre duo sur les réseaux sociaux et, selon les supports, sur le site de Passerelle.",
   },
   {
-    icon: "users",
-    title: "Faire connaître la reconversion",
-    text: "Porter les valeurs de bien-être, de patience et d’engagement défendues par Passerelle.",
+    title: "Des relais réguliers",
+    text: "Le partage de vos actualités, de vos progrès et des moments qui racontent votre parcours.",
+  },
+  {
+    title: "Votre structure valorisée",
+    text: "Une mise en lumière de la structure qui a accompagné la reconversion de votre trotteur.",
+  },
+  {
+    title: "Des projets à partager",
+    text: "Une place privilégiée dans certains reportages, actions de communication et événements.",
+  },
+  {
+    title: "Un lien avec l’équipe",
+    text: "Un contact direct pour échanger, proposer des idées et obtenir les informations dont vous avez besoin.",
   },
 ];
 ---
 
 <Base
   title="Devenir ambassadeur 2027 — Association Passerelle"
-  description="Découvrez le programme des ambassadeurs Passerelle 2027 et les périodes de candidature pour les propriétaires de trotteurs."
+  description="Découvrez le programme des ambassadeurs Passerelle 2027, les engagements de chacun et les périodes de candidature."
 >
   <PageHeader
     eyebrow="Campagne 2027"
@@ -38,68 +56,124 @@ const missions = [
     imageAlt="Une ambassadrice Passerelle avec sa trotteuse"
   >
     <Fragment slot="actions">
-      <a class="btn btn--primary" href="#candidater">
-        Voir les candidatures
+      <a class="btn btn--primary" href="#programme">
+        Découvrir le programme
         <span class="btn__ico"><Icon name="arrow" /></span>
       </a>
     </Fragment>
   </PageHeader>
 
-  <section class="section programme">
-    <div class="wrap">
-      <div class="programme__intro">
+  <section class="section programme" id="programme">
+    <div class="wrap programme__layout">
+      <div class="programme__heading">
         <p class="eyebrow">Le programme</p>
-        <h2>Faire vivre la reconversion <span class="accent">au quotidien.</span></h2>
+        <h2>Porter la voix de <span class="accent">la reconversion.</span></h2>
+      </div>
+
+      <div class="programme__copy">
         <p>
-          Le programme s’adresse aux propriétaires de trotteurs qui souhaitent témoigner de
-          leur parcours et contribuer à faire évoluer le regard porté sur les chevaux réformés
-          des courses. Qu’ils soient issus du réseau Passerelle ou non, les futurs ambassadeurs
-          partagent une même envie&nbsp;: montrer tout ce dont un trotteur est capable après les
-          pistes.
+          Chaque trotteur français a une histoire, des qualités et une nouvelle vie à raconter.
+          Avec le programme Ambassadeurs Passerelle, nous souhaitons mettre en lumière le parcours
+          des chevaux, de leurs cavaliers ou propriétaires, ainsi que celui des structures qui les
+          ont accompagnés.
+        </p>
+        <p>
+          Être ambassadeur ne consiste pas seulement à montrer des résultats en concours. Il s’agit
+          de partager une aventure authentique et de faire découvrir la diversité des projets dans
+          lesquels un trotteur peut s’épanouir&nbsp;: sport, loisir, extérieur, apprentissage, vie de
+          famille ou de club.
         </p>
       </div>
 
-      <ul class="missions">
-        {missions.map((mission) => (
+      <div class="programme__audience">
+        <span class="programme__audience-icon"><Icon name="horse" /></span>
+        <div>
+          <h3>Qui peut devenir ambassadeur&nbsp;?</h3>
+          <p>
+            Tous les profils ont leur place&nbsp;: du jeune duo en construction au cheval confirmé,
+            en compétition comme en loisir. L’essentiel est de raconter une histoire sincère et de
+            porter une image positive, respectueuse et réaliste du trotteur français. Les chevaux
+            accompagnés par une structure du réseau Passerelle seront prioritaires.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section expectations">
+    <div class="wrap">
+      <div class="section-intro section-intro--light">
+        <p class="eyebrow eyebrow--light">Votre rôle</p>
+        <h2>Faire connaître votre parcours <span class="accent--light">avec sincérité.</span></h2>
+        <p>
+          L’ambassadeur devient un relais de la reconversion dans son univers et sur ses réseaux
+          sociaux. Il communique avec pédagogie, nuance et respect pour tous les acteurs de la
+          filière.
+        </p>
+      </div>
+
+      <ul class="expectations__list">
+        {expectations.map((expectation, index) => (
           <li>
-            <span class="badge"><Icon name={mission.icon} /></span>
-            <h3>{mission.title}</h3>
-            <p>{mission.text}</p>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <p>{expectation}</p>
+          </li>
+        ))}
+      </ul>
+
+      <div class="expectations__note">
+        <Icon name="info" />
+        <p>
+          Un ambassadeur ne répond pas au nom de l’association, ne collecte pas de dons et ne
+          représente pas officiellement Passerelle lors d’un événement sans accord préalable.
+          L’équipe reste disponible pour apporter les informations nécessaires.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section commitments-section">
+    <div class="wrap">
+      <div class="section-intro">
+        <p class="eyebrow">Les engagements de Passerelle</p>
+        <h2>Vous accompagner et <span class="accent">faire rayonner votre duo.</span></h2>
+        <p>
+          Le programme est pensé comme une aventure collective, valorisante et agréable. Passerelle
+          donne aux ambassadeurs les moyens de partager leur histoire et met en lumière le travail
+          accompli autour de leur cheval.
+        </p>
+      </div>
+
+      <ul class="commitments">
+        {commitments.map((commitment) => (
+          <li>
+            <span class="commitments__icon"><Icon name="heart" /></span>
+            <div>
+              <h3>{commitment.title}</h3>
+              <p>{commitment.text}</p>
+            </div>
           </li>
         ))}
       </ul>
     </div>
   </section>
 
-  <section class="section calendar" id="candidater">
-    <div class="wrap calendar__grid">
-      <div class="calendar__intro">
-        <p class="eyebrow eyebrow--light">Calendrier des candidatures</p>
-        <h2>Deux périodes pour rejoindre <span class="accent--light">la promotion 2027.</span></h2>
-        <p>
-          Choisissez la période correspondant au parcours de votre trotteur. La première phase
-          est réservée aux chevaux confiés ou adoptés par l’intermédiaire du réseau Passerelle.
-        </p>
+  <section class="application-dates" id="candidater" aria-labelledby="application-dates-title">
+    <div class="wrap application-dates__inner">
+      <div>
+        <p class="eyebrow">Candidatures 2027</p>
+        <h2 id="application-dates-title">Les dates à retenir</h2>
       </div>
-
-      <ol class="periods">
-        <li class="periods__item periods__item--current">
-          <span class="periods__number">01</span>
-          <div>
-            <p class="periods__status">Candidatures ouvertes</p>
-            <h3>Jusqu’à mi-novembre 2026</h3>
-            <p>Pour les propriétaires d’un trotteur issu du réseau Passerelle.</p>
-          </div>
+      <ul>
+        <li>
+          <strong>Jusqu’à mi-novembre 2026</strong>
+          <span>Propriétaires d’un trotteur issu du réseau Passerelle</span>
         </li>
-        <li class="periods__item">
-          <span class="periods__number">02</span>
-          <div>
-            <p class="periods__status">Deuxième phase</p>
-            <h3>De mi-novembre à mi-décembre 2026</h3>
-            <p>Pour les propriétaires d’un trotteur hors réseau Passerelle.</p>
-          </div>
+        <li>
+          <strong>De mi-novembre à mi-décembre 2026</strong>
+          <span>Propriétaires d’un trotteur hors réseau Passerelle</span>
         </li>
-      </ol>
+      </ul>
     </div>
   </section>
 
@@ -110,140 +184,225 @@ const missions = [
     href={applicationUrl}
     external
     icon="users"
-    note="Sélectionnez dans le formulaire la situation correspondant au parcours de votre trotteur."
+    note="Le formulaire vous permettra de présenter votre duo, votre parcours et vos motivations."
   />
 </Base>
 
 <style>
-  .programme__intro {
+  .programme__layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(20rem, 1.2fr);
+    grid-template-columns: minmax(0, 0.82fr) minmax(20rem, 1.18fr);
     column-gap: clamp(2.5rem, 7vw, 6rem);
+    row-gap: clamp(2rem, 4vw, 3rem);
     align-items: start;
   }
-  .programme__intro .eyebrow,
-  .programme__intro h2 {
-    grid-column: 1;
-  }
-  .programme__intro > p:not(.eyebrow) {
-    grid-column: 2;
-    grid-row: 1 / span 2;
+  .programme__copy p {
     margin: 0;
     color: var(--ink-soft);
   }
-  .missions {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin: clamp(2.5rem, 5vw, 4rem) 0 0;
-    padding: 0;
-    list-style: none;
+  .programme__copy p + p {
+    margin-top: 1rem;
   }
-  .missions li {
+  .programme__audience {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
     padding: clamp(1.4rem, 3vw, 2rem);
     background: var(--cream-warm);
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
   }
-  .missions .badge {
-    width: 46px;
-    height: 46px;
-    margin-bottom: 1.4rem;
-    background: color-mix(in srgb, var(--sage) 34%, var(--cream));
+  .programme__audience-icon,
+  .commitments__icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 2.8rem;
+    height: 2.8rem;
+    place-items: center;
     color: var(--forest);
+    background: color-mix(in srgb, var(--sage) 38%, var(--cream));
+    border-radius: 50%;
   }
-  .missions .badge :global(svg) {
-    width: 21px;
-    height: 21px;
+  .programme__audience-icon :global(svg),
+  .commitments__icon :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
   }
-  .missions p {
-    margin: 0.7rem 0 0;
+  .programme__audience p {
+    max-width: 64rem;
+    margin: 0.6rem 0 0;
     color: var(--ink-soft);
-    font-size: 0.94rem;
   }
-  .calendar {
+  .section-intro {
+    max-width: 54rem;
+    margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
+  }
+  .section-intro > p:last-child {
+    margin: 1.1rem 0 0;
+    color: var(--ink-soft);
+  }
+  .expectations {
     color: #fff;
     background: var(--forest-deep);
   }
-  .calendar__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(22rem, 1.2fr);
-    gap: clamp(2.5rem, 7vw, 6rem);
-    align-items: start;
-  }
-  .calendar__intro h2 {
+  .section-intro--light h2 {
     color: #fff;
   }
-  .calendar__intro > p:not(.eyebrow) {
-    margin: 1.2rem 0 0;
+  .section-intro--light > p:last-child {
     color: rgba(255, 255, 255, 0.76);
   }
-  .periods {
+  .expectations__list {
     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line-light);
+  }
+  .expectations__list li {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 1rem;
+    padding: 1.25rem 1.1rem;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .expectations__list li:nth-child(odd) {
+    padding-left: 0;
+    border-right: 1px solid var(--line-light);
+  }
+  .expectations__list li > span {
+    color: var(--sage);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .expectations__list p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.94rem;
+  }
+  .expectations__note {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    max-width: 58rem;
+    margin-top: 1.75rem;
+    color: rgba(255, 255, 255, 0.68);
+  }
+  .expectations__note :global(svg) {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.15rem;
+    color: var(--sage);
+  }
+  .expectations__note p {
+    margin: 0;
+    font-size: 0.86rem;
+  }
+  .commitments-section {
+    background: var(--cream-warm);
+  }
+  .commitments {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.85rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  .periods__item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.2rem;
-    padding: clamp(1.2rem, 2.5vw, 1.6rem);
-    border: 1px solid var(--line-light);
-    border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.04);
+  .commitments li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: clamp(1.25rem, 2.5vw, 1.6rem);
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
   }
-  .periods__item--current {
-    background: rgba(186, 214, 136, 0.1);
-    border-color: rgba(186, 214, 136, 0.42);
+  .commitments__icon {
+    width: 2.4rem;
+    height: 2.4rem;
   }
-  .periods__number {
-    display: grid;
-    width: 2.7rem;
-    height: 2.7rem;
-    place-items: center;
-    color: var(--forest-deep);
-    background: var(--sage);
-    border-radius: 50%;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+  .commitments__icon :global(svg) {
+    width: 1.05rem;
+    height: 1.05rem;
   }
-  .periods__status {
-    margin: 0 0 0.35rem;
-    color: var(--sage);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .commitments h3 {
+    font-size: 1.08rem;
   }
-  .periods h3 {
-    color: #fff;
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
-  }
-  .periods__item div > p:last-child {
+  .commitments p {
     margin: 0.45rem 0 0;
-    color: rgba(255, 255, 255, 0.74);
-    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+  }
+  .application-dates {
+    padding: clamp(2.2rem, 4vw, 3.2rem) 0;
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+  }
+  .application-dates__inner {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.6fr) minmax(22rem, 1.4fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .application-dates h2 {
+    font-size: clamp(1.55rem, 2.5vw, 2rem);
+  }
+  .application-dates ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .application-dates li {
+    padding: 0.9rem 1rem;
+    background: var(--cream-warm);
+    border-left: 2px solid var(--sage);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .application-dates strong,
+  .application-dates span {
+    display: block;
+  }
+  .application-dates strong {
+    color: var(--forest);
+    font-size: 0.82rem;
+  }
+  .application-dates span {
+    margin-top: 0.28rem;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    line-height: 1.4;
   }
 
-  @media (max-width: 800px) {
-    .programme__intro,
-    .calendar__grid {
+  @media (max-width: 900px) {
+    .commitments {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 760px) {
+    .programme__layout,
+    .application-dates__inner {
       grid-template-columns: 1fr;
     }
-    .programme__intro .eyebrow,
-    .programme__intro h2,
-    .programme__intro > p:not(.eyebrow) {
+    .programme__audience {
       grid-column: auto;
-      grid-row: auto;
     }
-    .programme__intro > p:not(.eyebrow) {
-      margin-top: 1.2rem;
-    }
-    .missions {
+    .expectations__list,
+    .commitments,
+    .application-dates ul {
       grid-template-columns: 1fr;
+    }
+    .expectations__list li:nth-child(odd) {
+      padding-left: 1.1rem;
+      border-right: 0;
     }
   }
 </style>
