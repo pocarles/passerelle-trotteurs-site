@@ -16,6 +16,10 @@ const directoryId = (name: string) =>
 const directoryLinks = JSON.stringify(
   Object.fromEntries(networkDirectory.map((structure) => [structure.name, directoryId(structure.name)])),
 );
+const getStructureLocations = (structure: (typeof networkDirectory)[number]) =>
+  "locations" in structure && structure.locations
+    ? structure.locations
+    : [{ label: undefined, lines: structure.address }];
 ---
 
 <Base
@@ -105,10 +109,21 @@ const directoryLinks = JSON.stringify(
               </summary>
               <div class="directory-card__content">
                 <div class="directory-card__details">
-                  <p>
-                    <strong>Adresse</strong>
-                    {structure.address.map((line) => <span>{line}</span>)}
-                  </p>
+                  <div class="directory-card__address">
+                    <strong>
+                      {getStructureLocations(structure).length > 1 ? "Adresses" : "Adresse"}
+                    </strong>
+                    <div class="directory-card__address-list">
+                      {getStructureLocations(structure).map((location) => (
+                        <address class="directory-card__location">
+                          {location.label && (
+                            <span class="directory-card__location-label">{location.label}</span>
+                          )}
+                          {location.lines.map((line) => <span>{line}</span>)}
+                        </address>
+                      ))}
+                    </div>
+                  </div>
                   {
                     structure.phones && (
                       <p>
@@ -449,8 +464,12 @@ const directoryLinks = JSON.stringify(
   }
   .directory-card__details {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+  }
+  .directory-card__address {
+    grid-column: 1 / -1;
+    min-width: 0;
   }
   .directory-card__details p {
     min-width: 0;
@@ -468,6 +487,28 @@ const directoryLinks = JSON.stringify(
     color: var(--forest);
     font-size: 0.72rem;
     letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .directory-card__address-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0.55rem;
+  }
+  .directory-card__location {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.9rem;
+    font-style: normal;
+    line-height: 1.5;
+    background: color-mix(in srgb, var(--sage) 14%, transparent);
+    border-left: 2px solid color-mix(in srgb, var(--forest) 55%, transparent);
+    border-radius: 0 0.45rem 0.45rem 0;
+  }
+  .directory-card__location-label {
+    margin-bottom: 0.2rem;
+    color: var(--forest);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
   .directory-card__details a {

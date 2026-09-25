@@ -200,7 +200,6 @@ export const network = [
   ["Les chevaux d’Elo", "Yonne"],
   ["Les Crins de la Baie", "Calvados"],
   ["Les Crins de Liberté", "Puy-de-Dôme"],
-  ["Les Écuries du Moulin d’Aubry", "Orne"],
   ["Rehab Ranch", "Loire"],
   ["Société Hippique de Vire en Bocage", "Calvados"],
   ["SOS Cheval", "Puy-de-Dôme"],
@@ -359,7 +358,10 @@ export const networkDirectory = [
   {
     name: "L’Écrin du Bonheur",
     department: "Oise & Calvados",
-    address: ["38 rue Principale, 60120 Le Crocq", "Valmeray, 14005 Valambray"],
+    locations: [
+      { label: "Oise", lines: ["38 rue Principale", "60120 Le Crocq"] },
+      { label: "Calvados", lines: ["Valmeray", "14005 Valambray"] },
+    ],
     phones: ["06 77 17 97 99"],
     email: "aurelie.malet@wanadoo.fr",
     links: [],
@@ -427,15 +429,6 @@ export const networkDirectory = [
     ],
   },
   {
-    name: "Les Écuries du Moulin d’Aubry",
-    department: "Orne",
-    address: ["La Ferme du Moulin, Aubry-en-Exmes", "61160 Gouffern en Auge"],
-    phones: ["06 12 05 38 83"],
-    email: "lesecuriesdumoulindaubry@gmail.com",
-    links: [],
-    socials: [{ label: "Facebook", href: "https://www.facebook.com/LEDMDA" }],
-  },
-  {
     name: "Rehab Ranch",
     department: "Loire",
     address: ["Roche", "42550 Usson-en-Forez"],
@@ -483,6 +476,7 @@ export const networkMapDepartments = [
     label: "Calvados",
     structures: [
       "Domaine des Dakotines",
+      "L’Écrin du Bonheur",
       "Les Crins de la Baie",
       "Société Hippique de Vire en Bocage",
     ],
@@ -499,10 +493,9 @@ export const networkMapDepartments = [
   { code: "59", label: "Nord", structures: ["Écurie du Saule"] },
   {
     code: "60",
-    label: "Oise & Calvados",
+    label: "Oise",
     structures: ["Écuries de la Brèche", "L’Écrin du Bonheur"],
   },
-  { code: "61", label: "Orne", structures: ["Les Écuries du Moulin d’Aubry"] },
   {
     code: "63",
     label: "Puy-de-Dôme",
