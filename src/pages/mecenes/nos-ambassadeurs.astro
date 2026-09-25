@@ -36,14 +36,28 @@ import { ambassadeurs } from "../../data/mecenes";
         </div>
         <div class="recruitment__actions">
           <a
-            class="btn btn--primary"
+            class="recruitment__application recruitment__application--active"
             href="https://forms.gle/kzGNk5qNMoY6XqgC9"
             target="_blank"
             rel="noreferrer"
           >
-            Candidater
-            <span class="btn__ico"><Icon name="arrowUpRight" /></span>
+            <span>
+              <strong>Candidater</strong>
+              <small>Trotteur issu du réseau Passerelle</small>
+            </span>
+            <span class="recruitment__application-icon"><Icon name="arrowUpRight" /></span>
           </a>
+          <button
+            class="recruitment__application recruitment__application--disabled"
+            type="button"
+            disabled
+          >
+            <span>
+              <strong>Candidater</strong>
+              <small>Trotteur hors réseau Passerelle</small>
+            </span>
+            <span class="recruitment__soon">Bientôt</span>
+          </button>
           <a class="tlink" href="/mecenes/devenir-ambassadeur">
             Découvrir le programme
             <Icon name="arrow" />
@@ -151,11 +165,80 @@ import { ambassadeurs } from "../../data/mecenes";
   .recruitment__actions {
     display: flex;
     grid-column: 1 / -1;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
     gap: 1rem 1.35rem;
     padding-top: 1.4rem;
     border-top: 1px solid var(--line);
+  }
+  .recruitment__application {
+    display: inline-flex;
+    min-width: min(100%, 18.5rem);
+    min-height: 4.25rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.65rem 0.7rem 0.65rem 1.3rem;
+    border: 1.5px solid transparent;
+    border-radius: 999px;
+    font: inherit;
+    text-align: left;
+  }
+  .recruitment__application > span:first-child {
+    display: grid;
+    gap: 0.06rem;
+  }
+  .recruitment__application strong {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .recruitment__application small {
+    font-size: 0.69rem;
+    line-height: 1.35;
+  }
+  .recruitment__application--active {
+    color: var(--forest-deep);
+    background: var(--sage);
+    transition: background 180ms ease, transform 180ms ease;
+  }
+  .recruitment__application--active:hover {
+    background: #a6c879;
+    transform: translateY(-1px);
+  }
+  .recruitment__application-icon {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 2rem;
+    place-items: center;
+    background: rgba(31, 61, 43, 0.12);
+    border-radius: 50%;
+  }
+  .recruitment__application-icon :global(svg) {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+  .recruitment__application--disabled {
+    color: var(--ink-faint);
+    background: #e8e6df;
+    border-color: rgba(35, 35, 31, 0.08);
+    cursor: not-allowed;
+  }
+  .recruitment__soon {
+    padding: 0.28rem 0.48rem;
+    color: #77776f;
+    background: rgba(255, 255, 255, 0.54);
+    border-radius: 999px;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .recruitment__actions .tlink {
+    align-self: center;
   }
   .amb {
     background: var(--forest-deep);
@@ -225,6 +308,10 @@ import { ambassadeurs } from "../../data/mecenes";
     .recruitment__actions {
       grid-column: auto;
       align-items: flex-start;
+    }
+    .recruitment__application {
+      width: 100%;
+      min-width: 0;
     }
     .amb h2 .accent--light {
       display: block;
