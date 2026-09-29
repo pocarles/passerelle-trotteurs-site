@@ -15,6 +15,17 @@ const actualites = defineCollection({
     dateLabel: z.string().optional(),
     source: z.string().optional(),
     image: z.string().optional(),
+    /** Optional call to action displayed after the article body. */
+    cta: z
+      .object({
+        text: z.string(),
+        accent: z.string().optional(),
+        label: z.string(),
+        href: z.string(),
+        external: z.boolean().default(false),
+        note: z.string().optional(),
+      })
+      .optional(),
     /** Where this article lived on the old site, kept for redirects. */
     legacyUrl: z.string().url().optional(),
   }),

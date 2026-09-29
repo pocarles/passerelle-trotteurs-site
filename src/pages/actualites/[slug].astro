@@ -19,6 +19,7 @@ export async function getStaticPaths() {
 
 const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
+const articleCta = entry.data.cta;
 
 /** First 22 words of the body, tags stripped, for the meta description. */
 const description =
@@ -109,13 +110,18 @@ const schema = {
   </div>
 </article>
 
-  <CtaBand
-    text="Suivez l’Hippodrome de Lannemezan."
-    accent="Retrouvez leurs actualités sur Facebook."
-    label="Voir la page Facebook"
-    href="https://www.facebook.com/profile.php?id=61590792746490"
-    external
-  />
+  {
+    articleCta && (
+      <CtaBand
+        text={articleCta.text}
+        accent={articleCta.accent}
+        label={articleCta.label}
+        href={articleCta.href}
+        external={articleCta.external}
+        note={articleCta.note}
+      />
+    )
+  }
 
   <nav class="pager" aria-label="Navigation entre articles">
     <div class="wrap pager__in">
@@ -277,6 +283,24 @@ const schema = {
     color: var(--ink-faint);
     font-size: 0.8rem;
     line-height: 1.35;
+  }
+  .prose .article-social-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.9rem;
+    color: var(--forest-deep);
+    background: var(--moss-pale);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .prose .article-social-link:hover {
+    background: var(--sage);
+    transform: translateY(-1px);
   }
   @media (max-width: 620px) {
     .prose .article-gallery {
