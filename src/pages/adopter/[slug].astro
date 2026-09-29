@@ -37,7 +37,8 @@ const specs = [
   d.participation && { k: "Participation", v: d.participation },
 ].filter(Boolean) as { k: string; v: string }[];
 
-const subject = encodeURIComponent(`Renseignements — ${d.nom}`);
+const subject = encodeURIComponent(d.nom);
+const contactHref = `mailto:${site.email}?subject=${subject}`;
 ---
 
 <Base
@@ -88,7 +89,7 @@ const subject = encodeURIComponent(`Renseignements — ${d.nom}`);
           {
             !d.placed && (
               <div class="actions">
-                <a class="btn btn--primary" href={`mailto:${site.email}?subject=${subject}`}>
+                <a class="btn btn--primary" href={contactHref}>
                   Se renseigner
                   <span class="btn__ico"><Icon name="arrow" /></span>
                 </a>
@@ -136,12 +137,12 @@ const subject = encodeURIComponent(`Renseignements — ${d.nom}`);
   </article>
 
   <CtaBand
-    text="Ce cheval ne vous correspond pas ?"
-    accent="Dites-nous ce que vous cherchez."
-    label="Nous écrire"
-    href="/contact"
+    text={`${d.nom} vous intéresse ?`}
+    accent="Échangeons sur votre projet d’accueil."
+    label="Nous contacter"
+    href={contactHref}
     icon="users"
-    note="Nous connaissons les chevaux de notre réseau et nous pouvons vous orienter."
+    note={`L’objet du courriel sera automatiquement renseigné : ${d.nom}.`}
   />
 </Base>
 
