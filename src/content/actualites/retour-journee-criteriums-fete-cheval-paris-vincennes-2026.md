@@ -39,14 +39,17 @@ image: "/media/actualites/vincennes-criteriums-2026/cover.jpg"
 <p>Revivez quelques moments de cette journée à Paris-Vincennes.</p>
 
 <div class="article-reel">
-  <blockquote
-    class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/reel/DdMtELbMQ7q/?utm_source=ig_embed&amp;utm_campaign=loading"
-    data-instgrm-version="14"
-  >
-    <p><a href="https://www.instagram.com/reel/DdMtELbMQ7q/" target="_blank" rel="noreferrer">Voir ce Reel sur Instagram</a></p>
-  </blockquote>
-  <p class="article-reel__fallback"><a href="https://www.instagram.com/reel/DdMtELbMQ7q/" target="_blank" rel="noreferrer">Ouvrir le Reel directement sur Instagram&nbsp;↗</a></p>
+  <a class="article-reel-card" href="https://www.instagram.com/reel/DdMtELbMQ7q/" target="_blank" rel="noreferrer">
+    <span class="article-reel-card__media">
+      <img src="/media/actualites/vincennes-criteriums-2026/cover.jpg" alt="Le stand Passerelle à la Journée des Critériums" width="1600" height="1000" loading="lazy" />
+      <span class="article-reel-card__play" aria-hidden="true">▶</span>
+    </span>
+    <span class="article-reel-card__copy">
+      <span class="article-reel-card__eyebrow">Sur Instagram</span>
+      <strong>Revivez la journée en vidéo</strong>
+      <span>Voir le Reel&nbsp;↗</span>
+    </span>
+  </a>
 </div>
 
 <h2>Retour en images</h2>

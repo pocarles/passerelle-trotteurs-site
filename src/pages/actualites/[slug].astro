@@ -20,7 +20,6 @@ export async function getStaticPaths() {
 const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 const articleCta = entry.data.cta;
-const hasInstagramEmbed = entry.body?.includes("instagram-media") ?? false;
 
 /** First 22 words of the body, tags stripped, for the meta description. */
 const description =
@@ -110,12 +109,6 @@ const schema = {
       </div>
   </div>
 </article>
-
-  {
-    hasInstagramEmbed && (
-      <script is:inline async src="https://www.instagram.com/embed.js"></script>
-    )
-  }
 
   {
     articleCta && (
@@ -292,27 +285,91 @@ const schema = {
     line-height: 1.35;
   }
   .prose .article-reel {
-    width: min(100%, 540px);
+    width: 100%;
     margin: 2rem auto 3rem;
-    text-align: center;
   }
-  .prose .article-reel .instagram-media {
-    display: block;
-    width: calc(100% - 2px);
-    min-width: 0;
-    max-width: 540px;
-    margin: 0 auto;
-    padding: 0;
+  .prose .article-reel-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+    align-items: stretch;
     overflow: hidden;
-    background: #fff;
+    color: var(--forest-deep);
+    background: var(--cream-warm);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
-  .prose .article-reel__fallback {
-    margin: 0.8rem 0 0;
-    font-size: 0.85rem;
+  .prose .article-reel-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 50px -32px rgba(35, 35, 31, 0.5);
+  }
+  .prose .article-reel-card__media {
+    position: relative;
+    display: block;
+    min-height: 250px;
+    overflow: hidden;
+  }
+  .prose .article-reel-card__media img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.4s ease;
+  }
+  .prose .article-reel-card:hover .article-reel-card__media img {
+    transform: scale(1.035);
+  }
+  .prose .article-reel-card__play {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    display: grid;
+    width: 64px;
+    height: 64px;
+    place-items: center;
+    padding-left: 4px;
+    color: var(--forest-deep);
+    background: rgba(218, 236, 174, 0.94);
+    border-radius: 50%;
+    box-shadow: 0 12px 28px rgba(20, 59, 42, 0.22);
+    transform: translate(-50%, -50%);
+  }
+  .prose .article-reel-card__copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .prose .article-reel-card__eyebrow {
+    color: var(--moss);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .prose .article-reel-card__copy strong {
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+  .prose .article-reel-card__copy > span:last-child {
+    color: var(--moss);
+    font-size: 0.78rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   @media (max-width: 620px) {
+    .prose .article-reel-card {
+      grid-template-columns: 1fr;
+    }
+    .prose .article-reel-card__media {
+      min-height: 210px;
+    }
     .prose .article-gallery {
       grid-template-columns: 1fr;
     }
