@@ -34,6 +34,23 @@ image: "/media/actualites/vincennes-criteriums-2026/cover.jpg"
 
 <p>Derrière chaque goodie Passerelle, il y a donc plus qu’un souvenir : <strong>une contribution concrète à la seconde vie d’un Trotteur</strong>.</p>
 
+<h2>La journée en vidéo</h2>
+
+<p>Revivez quelques moments de cette journée à Paris-Vincennes.</p>
+
+<div class="article-reel">
+  <iframe
+    src="https://www.instagram.com/reel/DdMtELbMQ7q/embed/"
+    title="Reel Instagram de la Journée des Critériums et de la Fête du Cheval à Paris-Vincennes"
+    width="540"
+    height="960"
+    loading="lazy"
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+  <p><a href="https://www.instagram.com/reel/DdMtELbMQ7q/" target="_blank" rel="noreferrer">Voir le Reel directement sur Instagram&nbsp;↗</a></p>
+</div>
+
 <h2>Retour en images</h2>
 
 <div class="article-gallery" aria-label="Retour en images sur la Journée des Critériums et la Fête du Cheval à Paris-Vincennes">

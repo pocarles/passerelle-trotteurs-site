@@ -284,6 +284,24 @@ const schema = {
     font-size: 0.8rem;
     line-height: 1.35;
   }
+  .prose .article-reel {
+    width: min(100%, 540px);
+    margin: 2rem auto 3rem;
+    text-align: center;
+  }
+  .prose .article-reel iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--cream-warm);
+  }
+  .prose .article-reel p {
+    margin: 0.8rem 0 0;
+    font-size: 0.85rem;
+  }
   @media (max-width: 620px) {
     .prose .article-gallery {
       grid-template-columns: 1fr;
