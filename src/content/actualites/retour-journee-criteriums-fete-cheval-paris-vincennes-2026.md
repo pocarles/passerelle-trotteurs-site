@@ -10,8 +10,6 @@ image: "/media/actualites/vincennes-criteriums-2026/cover.jpg"
 
 <p>L’association Passerelle était au rendez-vous avec son stand pour aller à la rencontre du public et présenter ses actions en faveur de la reconversion, de la protection et de la valorisation des Trotteurs Français après leur carrière de courses.</p>
 
-<p><a class="article-social-link" href="https://www.instagram.com/dance_with_darling/" target="_blank" rel="noreferrer">Retrouvez @dance_with_darling sur Instagram&nbsp;↗</a></p>
-
 <h2>Une journée riche en rencontres et en échanges</h2>
 
 <p>Tout au long de la journée, le stand Passerelle a été un véritable lieu d’échanges. De nombreux visiteurs sont venus découvrir l’association, poser leurs questions sur l’après-carrière des trotteurs et partager leurs expériences.</p>
@@ -61,7 +59,7 @@ image: "/media/actualites/vincennes-criteriums-2026/cover.jpg"
 
 <p>Nous remercions chaleureusement la <a href="https://www.letrot.com/" target="_blank" rel="noreferrer">Société d’Encouragement à l’Élevage du Trotteur Français (SETF)</a> et l’<a href="https://www.vincennes-hippodrome.com/fr/" target="_blank" rel="noreferrer">hippodrome Paris-Vincennes</a> pour leur accueil et pour avoir permis à Passerelle de participer à cette belle journée.</p>
 
-<p>Merci également à nos bénévoles présents sur place, à toutes les personnes venues nous rencontrer, échanger avec nous, soutenir l’association ou repartir avec un goodie, ainsi qu’aux professionnels et aux différentes instances de la filière pour la qualité des échanges et l’intérêt porté à l’après-carrière des chevaux.</p>
+<p>Merci également à nos bénévoles présents sur place, notamment Jade — <a href="https://www.instagram.com/dance_with_darling/" target="_blank" rel="noreferrer">retrouvez Dance with Darling sur Instagram</a> — et Gabriel, à toutes les personnes venues nous rencontrer, échanger avec nous, soutenir l’association ou repartir avec un goodie, ainsi qu’aux professionnels et aux différentes instances de la filière pour la qualité des échanges et l’intérêt porté à l’après-carrière des chevaux.</p>
 
 <p><strong>Ces rencontres, ces échanges et cette mobilisation collective sont précieux pour continuer à construire, ensemble, des solutions pour les Trotteurs Français après les courses.</strong></p>
 
