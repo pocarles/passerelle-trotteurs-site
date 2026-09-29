@@ -35,7 +35,8 @@ const routes = [
     title: "Adoption directe",
     image: "/media/adopter-adoption-directe.jpg",
     alt: "Trotteur Français avec un licol vert au pré",
-    body: "Des chevaux n’ayant pas suivi de programme de reconversion. Ils sont proposés comme chevaux de compagnie, ou montables uniquement avec l’accompagnement d’un professionnel, sous contrat de placement provisoire d’un an.",
+    body: "Des chevaux n’ayant pas suivi de programme de reconversion. Ils sont proposés comme chevaux de compagnie, ou montables uniquement avec l’accompagnement d’un professionnel, sous contrat de placement provisoire d’un an. Une visite est réalisée avant l’adoption pour vérifier leurs futures conditions de vie.",
+    href: "/adopter/adoption-directe",
   },
 ];
 ---
@@ -62,7 +63,7 @@ const routes = [
       <ul class="routes">
         {
           routes.map((r) => (
-            <li>
+            <li class:list={[r.href && "route--link"]}>
               <div class="route__media">
                 <img src={r.image} alt={r.alt} loading="lazy" />
               </div>
@@ -70,6 +71,12 @@ const routes = [
               <div class="route__body">
                 <h3>{r.title}</h3>
                 <p>{r.body}</p>
+                {r.href && (
+                  <a class="tlink route__link" href={r.href}>
+                    Voir les chevaux disponibles
+                    <Icon name="arrow" />
+                  </a>
+                )}
               </div>
             </li>
           ))
@@ -203,9 +210,15 @@ const routes = [
     list-style: none;
   }
   .routes li {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0;
+    border-radius: var(--radius-lg);
+    transition: transform 0.25s ease;
+  }
+  .routes .route--link:hover {
+    transform: translateY(-4px);
   }
   .route__media {
     aspect-ratio: 4 / 5;
@@ -239,6 +252,20 @@ const routes = [
     margin: 0;
     color: var(--ink-soft);
     font-size: 0.98rem;
+  }
+  .route__link {
+    margin-top: 1rem;
+  }
+  .route__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: var(--radius-lg);
+  }
+  .route--link:has(.route__link:focus-visible) {
+    outline: 3px solid var(--moss-mid);
+    outline-offset: 5px;
   }
 
   .protect {

@@ -12,7 +12,7 @@ export const statutDescription: Record<string, string> = {
   adoption:
     "Chevaux vieillissants ou atteints de pathologies, souvent non montables, destinés au travail à pied ou aux balades en main. Des frais d’adoption s’appliquent.",
   "adoption-directe":
-    "Chevaux n’ayant pas suivi de programme de reconversion, sous contrat de placement provisoire d’un an.",
+    "Chevaux n’ayant pas suivi de programme de reconversion, placés pour compagnie uniquement ou montables avec l’accompagnement d’un professionnel. Le placement est encadré par un contrat provisoire d’un an et précédé d’une visite du futur lieu de vie.",
 };
 
 /**

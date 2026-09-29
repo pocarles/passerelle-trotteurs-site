@@ -16,4 +16,6 @@ updated: 2026-07-25
 
 Cheval n'ayant pas suivi de programme de reconversion, proposé comme cheval de
 compagnie, ou montable uniquement avec l'accompagnement d'un professionnel.
-Le placement est encadré par un contrat provisoire d'un an.
+Le placement est encadré par un contrat provisoire d'un an. Une visite du futur
+lieu de vie est organisée avant l'adoption afin de vérifier que les conditions
+d'accueil sont adaptées au cheval.

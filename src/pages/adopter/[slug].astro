@@ -21,6 +21,10 @@ const { entry } = Astro.props;
 const d = entry.data;
 const { Content } = await render(entry);
 const age = horseAge(d.annee);
+const backHref =
+  d.statut === "adoption-directe" ? "/adopter/adoption-directe" : "/adopter";
+const backLabel =
+  d.statut === "adoption-directe" ? "Les chevaux en adoption directe" : "Tous les trotteurs";
 
 const specs = [
   age !== null && { k: "Âge", v: `${age} ans (${d.annee})` },
@@ -42,9 +46,9 @@ const subject = encodeURIComponent(`Renseignements — ${d.nom}`);
 >
   <article class="sheet">
     <div class="wrap">
-      <a class="tlink back" href="/adopter">
+      <a class="tlink back" href={backHref}>
         <Icon name="arrow" class="back__ico" />
-        Tous les trotteurs
+        {backLabel}
       </a>
 
       <div class="sheet__top">

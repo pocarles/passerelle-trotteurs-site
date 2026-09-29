@@ -1,0 +1,246 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import HorseCard from "../../components/HorseCard.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { getHorses } from "../../data/chevaux";
+
+const horses = (await getHorses()).filter(
+  (horse) => horse.data.statut === "adoption-directe",
+);
+
+const conditions = [
+  {
+    icon: "heart",
+    title: "Un projet adapté au cheval",
+    body: "Ces chevaux sont placés pour compagnie uniquement. Lorsqu’un cheval est présenté comme montable, son accompagnement doit se faire avec un professionnel.",
+  },
+  {
+    icon: "calendar",
+    title: "Un contrat provisoire d’un an",
+    body: "Chaque adoption directe est encadrée par un contrat de placement provisoire pendant un an, afin de sécuriser l’arrivée du cheval dans son nouveau foyer.",
+  },
+  {
+    icon: "house",
+    title: "Une visite avant l’adoption",
+    body: "Une visite du futur lieu de vie est organisée avant le placement pour s’assurer que les conditions d’accueil correspondent aux besoins du cheval.",
+  },
+];
+---
+
+<Base
+  title="Chevaux en adoption directe — Passerelle"
+  description="Découvrez les Trotteurs Français proposés en adoption directe sous contrat de placement provisoire d’un an, avec visite préalable de leur futur lieu de vie."
+  image="/media/adopter-adoption-directe.jpg"
+  imageAlt="Trotteur Français proposé en adoption directe"
+>
+  <PageHeader
+    eyebrow="Adoption directe"
+    title="Accueillir un trotteur"
+    accent="dans un cadre sécurisé."
+    lead="Des chevaux proposés pour compagnie uniquement, ou montables avec l’accompagnement d’un professionnel, sous contrat de placement provisoire pendant un an."
+    image="/media/adopter-adoption-directe.jpg"
+    imageAlt="Trotteur Français avec un licol vert au pré"
+  >
+    <a slot="actions" class="btn btn--primary" href="#chevaux">
+      Voir les chevaux disponibles
+      <span class="btn__ico"><Icon name="arrow" /></span>
+    </a>
+    <a slot="actions" class="btn btn--ghost" href="/contact">
+      Poser une question
+      <span class="btn__ico"><Icon name="arrow" /></span>
+    </a>
+  </PageHeader>
+
+  <section class="section framework">
+    <div class="wrap">
+      <div class="framework__intro">
+        <div>
+          <p class="eyebrow">Un placement encadré</p>
+          <h2>Une adoption préparée <span class="accent">avec attention.</span></h2>
+        </div>
+        <p>
+          L’adoption directe concerne des chevaux qui n’ont pas suivi de programme
+          de reconversion. Leur projet est défini selon leurs aptitudes et leurs
+          besoins, puis le placement est accompagné pendant sa première année.
+        </p>
+      </div>
+
+      <ul class="conditions">
+        {conditions.map((condition) => (
+          <li>
+            <span class="badge conditions__badge"><Icon name={condition.icon} /></span>
+            <h3>{condition.title}</h3>
+            <p>{condition.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section horses" id="chevaux">
+    <div class="wrap">
+      <p class="eyebrow">Chevaux disponibles</p>
+      <h2>Les trotteurs proposés <span class="accent">en adoption directe.</span></h2>
+      <p class="horses__lead">
+        Chaque fiche porte clairement la mention « Adoption directe » et précise
+        le profil du cheval, son projet de vie et les conditions recherchées.
+      </p>
+
+      {horses.length > 0 ? (
+        <div class="horses__grid">
+          {horses.map((horse) => <HorseCard entry={horse} />)}
+        </div>
+      ) : (
+        <div class="empty">
+          <span class="badge empty__badge"><Icon name="horse" /></span>
+          <div>
+            <p class="empty__notice">Fiches à venir</p>
+            <h3>Aucun cheval n’est proposé en adoption directe pour le moment.</h3>
+            <p>
+              Les prochaines fiches seront publiées ici dès qu’un cheval sera
+              disponible. Vous pouvez également nous écrire pour nous présenter
+              votre projet d’accueil.
+            </p>
+            <a class="btn btn--primary" href="/contact">
+              Nous contacter
+              <span class="btn__ico"><Icon name="arrow" /></span>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CtaBand
+    text="Vous souhaitez préparer une adoption directe ?"
+    accent="Parlons de votre projet d’accueil."
+    label="Nous écrire"
+    href="/contact"
+    icon="users"
+  />
+</Base>
+
+<style>
+  .framework {
+    background: var(--cream-warm);
+  }
+  .framework__intro {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: end;
+    margin-bottom: clamp(2.2rem, 5vw, 4rem);
+  }
+  .framework__intro h2 {
+    max-width: 15ch;
+  }
+  .framework__intro > p {
+    margin: 0;
+    max-width: 58ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .conditions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    list-style: none;
+    background: var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .conditions li {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    background: var(--card);
+  }
+  .conditions__badge {
+    margin-bottom: 1.35rem;
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .conditions h3 {
+    margin-bottom: 0.7rem;
+    font-size: 1.35rem;
+  }
+  .conditions p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.94rem;
+  }
+
+  .horses {
+    scroll-margin-top: 5rem;
+  }
+  .horses h2 {
+    max-width: 20ch;
+  }
+  .horses__lead {
+    max-width: 62ch;
+    margin: 1rem 0 2.5rem;
+    color: var(--ink-soft);
+  }
+  .horses__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.2rem, 2.4vw, 2rem);
+  }
+  .empty {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1.2rem, 3vw, 2rem);
+    padding: clamp(1.6rem, 3.5vw, 2.6rem);
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss-mid);
+    border-radius: var(--radius-lg);
+  }
+  .empty__badge {
+    flex: 0 0 auto;
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .empty__notice {
+    margin: 0 0 0.65rem;
+    color: var(--moss);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .empty h3 {
+    margin-bottom: 0.6rem;
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .empty p:not(.empty__notice) {
+    max-width: 62ch;
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .empty .btn {
+    margin-top: 1.6rem;
+  }
+
+  @media (max-width: 900px) {
+    .framework__intro,
+    .conditions {
+      grid-template-columns: 1fr;
+    }
+    .horses__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .horses__grid {
+      grid-template-columns: 1fr;
+    }
+    .empty {
+      flex-direction: column;
+    }
+  }
+</style>
