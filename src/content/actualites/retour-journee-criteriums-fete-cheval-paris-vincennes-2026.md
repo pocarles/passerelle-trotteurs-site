@@ -39,16 +39,14 @@ image: "/media/actualites/vincennes-criteriums-2026/cover.jpg"
 <p>Revivez quelques moments de cette journée à Paris-Vincennes.</p>
 
 <div class="article-reel">
-  <iframe
-    src="https://www.instagram.com/reel/DdMtELbMQ7q/embed/"
-    title="Reel Instagram de la Journée des Critériums et de la Fête du Cheval à Paris-Vincennes"
-    width="540"
-    height="960"
-    loading="lazy"
-    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-    allowfullscreen
-  ></iframe>
-  <p><a href="https://www.instagram.com/reel/DdMtELbMQ7q/" target="_blank" rel="noreferrer">Voir le Reel directement sur Instagram&nbsp;↗</a></p>
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/reel/DdMtELbMQ7q/?utm_source=ig_embed&amp;utm_campaign=loading"
+    data-instgrm-version="14"
+  >
+    <p><a href="https://www.instagram.com/reel/DdMtELbMQ7q/" target="_blank" rel="noreferrer">Voir ce Reel sur Instagram</a></p>
+  </blockquote>
+  <p class="article-reel__fallback"><a href="https://www.instagram.com/reel/DdMtELbMQ7q/" target="_blank" rel="noreferrer">Ouvrir le Reel directement sur Instagram&nbsp;↗</a></p>
 </div>
 
 <h2>Retour en images</h2>

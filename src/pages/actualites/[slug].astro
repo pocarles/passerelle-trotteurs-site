@@ -20,6 +20,7 @@ export async function getStaticPaths() {
 const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 const articleCta = entry.data.cta;
+const hasInstagramEmbed = entry.body?.includes("instagram-media") ?? false;
 
 /** First 22 words of the body, tags stripped, for the meta description. */
 const description =
@@ -109,6 +110,12 @@ const schema = {
       </div>
   </div>
 </article>
+
+  {
+    hasInstagramEmbed && (
+      <script is:inline async src="https://www.instagram.com/embed.js"></script>
+    )
+  }
 
   {
     articleCta && (
@@ -289,16 +296,19 @@ const schema = {
     margin: 2rem auto 3rem;
     text-align: center;
   }
-  .prose .article-reel iframe {
+  .prose .article-reel .instagram-media {
     display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 9 / 16;
+    width: calc(100% - 2px);
+    min-width: 0;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    background: #fff;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: var(--cream-warm);
   }
-  .prose .article-reel p {
+  .prose .article-reel__fallback {
     margin: 0.8rem 0 0;
     font-size: 0.85rem;
   }
