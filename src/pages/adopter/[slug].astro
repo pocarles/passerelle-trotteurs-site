@@ -30,7 +30,7 @@ const specs = [
   d.sexe && { k: "Sexe", v: d.sexe.charAt(0).toUpperCase() + d.sexe.slice(1) },
   d.robe && { k: "Robe", v: d.robe },
   d.taille && { k: "Taille", v: d.taille },
-  { k: "Monté", v: d.montable ? "Oui" : "Non monté" },
+  { k: "Monté", v: d.montabilite ?? (d.montable ? "Oui" : "Non monté") },
   d.structure && { k: "Structure d’accueil", v: d.structure },
   d.departement && { k: "Localisation", v: d.departement },
   d.participation && { k: "Participation", v: d.participation },

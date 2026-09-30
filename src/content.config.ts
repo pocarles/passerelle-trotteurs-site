@@ -53,6 +53,8 @@ const chevaux = defineCollection({
     robe: z.string().optional(),
     taille: z.string().optional(),
     montable: z.boolean().default(false),
+    /** Optional public wording when the horse's current riding status needs nuance. */
+    montabilite: z.string().optional(),
     /** Accredited structure currently holding the horse. */
     structure: z.string().optional(),
     departement: z.string().optional(),
