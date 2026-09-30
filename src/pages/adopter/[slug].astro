@@ -3,7 +3,6 @@ import { render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Prose from "../../components/Prose.astro";
 import Icon from "../../components/Icon.astro";
-import CtaBand from "../../components/CtaBand.astro";
 import { links, site, protections } from "../../data/site";
 import {
   getHorses,
@@ -136,14 +135,6 @@ const contactHref = `mailto:${site.email}?subject=${subject}`;
     </div>
   </article>
 
-  <CtaBand
-    text={`${d.nom} vous intéresse ?`}
-    accent="Échangeons sur votre projet d’accueil."
-    label="Nous contacter"
-    href={contactHref}
-    icon="users"
-    note={`L’objet du courriel sera automatiquement renseigné : ${d.nom}.`}
-  />
 </Base>
 
 <style>
