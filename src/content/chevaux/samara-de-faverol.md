@@ -44,9 +44,11 @@ de lui offrir une vie de compagnie, avec des conditions d’hébergement adapté
 
 ## Son suivi sanitaire
 
-Le dossier transmis mentionne des séquelles mineures liées à son dernier
-poulinage. Son dernier vaccin enregistré date du **29 mars 2026** et son dernier
-vermifuge, administré par sonde, du **20 avril 2026**.
+Samara présente un antécédent de **déchirement du col de l’utérus survenu lors
+de son poulinage en 2024**. Elle en conserve des séquelles mineures et **ne
+pourra pas être remise à la reproduction**. Son dernier vaccin enregistré date
+du **29 mars 2026** et son dernier vermifuge, administré par sonde, du
+**20 avril 2026**.
 
 ## Les conditions de placement
 
