@@ -58,6 +58,9 @@ const chevaux = defineCollection({
     /** Accredited structure currently holding the horse. */
     structure: z.string().optional(),
     departement: z.string().optional(),
+    /** Optional direct contact for the structure presenting the horse. */
+    contactPhone: z.string().optional(),
+    contactPhoneDisplay: z.string().optional(),
     /** Free text ("1 500 €", "frais d'adoption") — never a bare number. */
     participation: z.string().optional(),
     resume: z.string(),

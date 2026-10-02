@@ -1,0 +1,243 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import HorseCard from "../../components/HorseCard.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import Icon from "../../components/Icon.astro";
+import { getHorses } from "../../data/chevaux";
+
+const horses = (await getHorses()).filter(
+  (horse) => horse.data.statut === "vente",
+);
+
+const guarantees = [
+  {
+    icon: "horse",
+    title: "Une reconversion accompagnée",
+    body: "Les chevaux présentés ont été accueillis et remis au travail par une structure de reconversion accréditée du réseau Passerelle.",
+  },
+  {
+    icon: "users",
+    title: "Un projet choisi avec soin",
+    body: "La structure échange avec chaque candidat afin de rechercher un projet cohérent avec le tempérament, le niveau de travail et les besoins du cheval.",
+  },
+  {
+    icon: "shield",
+    title: "Un contrat protecteur",
+    body: "La vente est encadrée par un contrat Passerelle qui protège le cheval et organise son suivi pendant toute sa vie.",
+  },
+];
+---
+
+<Base
+  title="Chevaux à la vente — Passerelle"
+  description="Découvrez les Trotteurs Français reconvertis et proposés à la vente par les structures accréditées du réseau Passerelle."
+  image="/media/adopter-vente.jpg"
+  imageAlt="Portrait d’un Trotteur Français"
+>
+  <PageHeader
+    eyebrow="Chevaux à la vente"
+    title="Trouver votre futur partenaire"
+    accent="dans un cadre protecteur."
+    lead="Des Trotteurs Français accompagnés dans leur reconversion, remis au travail et proposés avec un projet adapté à leurs aptitudes."
+    image="/media/adopter-vente.jpg"
+    imageAlt="Portrait d’un Trotteur Français"
+  >
+    <a slot="actions" class="btn btn--primary" href="#chevaux">
+      Voir les chevaux disponibles
+      <span class="btn__ico"><Icon name="arrow" /></span>
+    </a>
+    <a slot="actions" class="btn btn--ghost" href="/contact">
+      Poser une question
+      <span class="btn__ico"><Icon name="arrow" /></span>
+    </a>
+  </PageHeader>
+
+  <section class="section framework">
+    <div class="wrap">
+      <div class="framework__intro">
+        <div>
+          <p class="eyebrow">Une vente responsable</p>
+          <h2>Un cheval préparé, <span class="accent">un projet réfléchi.</span></h2>
+        </div>
+        <p>
+          Chaque cheval est présenté avec son histoire, son niveau de travail et
+          le type de cavalier recherché. La structure qui l’accompagne reste
+          disponible pour répondre aux questions et organiser une rencontre.
+        </p>
+      </div>
+
+      <ul class="guarantees">
+        {guarantees.map((guarantee) => (
+          <li>
+            <span class="badge guarantees__badge"><Icon name={guarantee.icon} /></span>
+            <h3>{guarantee.title}</h3>
+            <p>{guarantee.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section horses" id="chevaux">
+    <div class="wrap">
+      <p class="eyebrow">Chevaux disponibles</p>
+      <h2>Les trotteurs actuellement <span class="accent">proposés à la vente.</span></h2>
+      <p class="horses__lead">
+        Consultez leur fiche pour découvrir leur parcours, leur personnalité,
+        le projet recherché et les coordonnées utiles pour vous renseigner.
+      </p>
+
+      {horses.length > 0 ? (
+        <div class="horses__grid">
+          {horses.map((horse) => <HorseCard entry={horse} />)}
+        </div>
+      ) : (
+        <div class="empty">
+          <span class="badge empty__badge"><Icon name="horse" /></span>
+          <div>
+            <p class="empty__notice">Fiches à venir</p>
+            <h3>Aucun cheval n’est proposé à la vente pour le moment.</h3>
+            <p>
+              Les nouvelles fiches seront publiées ici au fil des chevaux
+              disponibles dans les structures accréditées.
+            </p>
+            <a class="btn btn--primary" href="/contact">
+              Nous contacter
+              <span class="btn__ico"><Icon name="arrow" /></span>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CtaBand
+    text="Vous avez repéré un cheval ?"
+    accent="Présentez-nous votre projet."
+    label="Nous écrire"
+    href="/contact"
+    icon="users"
+  />
+</Base>
+
+<style>
+  .framework {
+    background: var(--cream-warm);
+  }
+  .framework__intro {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: end;
+    margin-bottom: clamp(2.2rem, 5vw, 4rem);
+  }
+  .framework__intro h2 {
+    max-width: 16ch;
+  }
+  .framework__intro > p {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .guarantees {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    list-style: none;
+    background: var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .guarantees li {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    background: var(--card);
+  }
+  .guarantees__badge {
+    margin-bottom: 1.35rem;
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .guarantees h3 {
+    margin-bottom: 0.7rem;
+    font-size: 1.35rem;
+  }
+  .guarantees p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.94rem;
+  }
+  .horses {
+    scroll-margin-top: 5rem;
+  }
+  .horses h2 {
+    max-width: 22ch;
+  }
+  .horses__lead {
+    max-width: 62ch;
+    margin: 1rem 0 2.5rem;
+    color: var(--ink-soft);
+  }
+  .horses__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.2rem, 2.4vw, 2rem);
+  }
+  .empty {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1.2rem, 3vw, 2rem);
+    padding: clamp(1.6rem, 3.5vw, 2.6rem);
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss-mid);
+    border-radius: var(--radius-lg);
+  }
+  .empty__badge {
+    flex: 0 0 auto;
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .empty__notice {
+    margin: 0 0 0.65rem;
+    color: var(--moss);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .empty h3 {
+    margin-bottom: 0.6rem;
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .empty p:not(.empty__notice) {
+    max-width: 62ch;
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .empty .btn {
+    margin-top: 1.6rem;
+  }
+  @media (max-width: 900px) {
+    .framework__intro,
+    .guarantees {
+      grid-template-columns: 1fr;
+    }
+    .horses__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .horses__grid {
+      grid-template-columns: 1fr;
+    }
+    .empty {
+      flex-direction: column;
+    }
+  }
+</style>
