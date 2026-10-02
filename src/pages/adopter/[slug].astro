@@ -52,16 +52,59 @@ const contactHref = `mailto:${site.email}?subject=${subject}`;
       </a>
 
       <div class="sheet__top">
-        <div class="gallery">
+        <div
+          class="gallery"
+          data-horse-gallery
+          role="region"
+          aria-label={`Photos de ${d.nom}`}
+        >
           {
             d.photos.length > 0 ? (
-              d.photos.map((p: { src: string; alt: string }, i: number) => (
-                <figure class={i === 0 ? "gallery__main" : ""}>
-                  <img src={p.src} alt={p.alt} loading={i === 0 ? "eager" : "lazy"} />
-                </figure>
-              ))
+              <>
+                <div class="gallery__viewport" data-gallery-viewport>
+                  {d.photos.map((p: { src: string; alt: string }, i: number) => (
+                    <figure class="gallery__slide" data-gallery-slide>
+                      <img src={p.src} alt={p.alt} loading={i === 0 ? "eager" : "lazy"} />
+                    </figure>
+                  ))}
+                </div>
+
+                {d.photos.length > 1 && (
+                  <>
+                    <button
+                      class="gallery__arrow gallery__arrow--prev"
+                      type="button"
+                      data-gallery-prev
+                      aria-label="Afficher la photo précédente"
+                    >
+                      <Icon name="arrow" />
+                    </button>
+                    <button
+                      class="gallery__arrow gallery__arrow--next"
+                      type="button"
+                      data-gallery-next
+                      aria-label="Afficher la photo suivante"
+                    >
+                      <Icon name="arrow" />
+                    </button>
+                    <p class="gallery__count" aria-live="polite">
+                      <span data-gallery-current>1</span> / {d.photos.length}
+                    </p>
+                    <div class="gallery__dots" aria-label="Choisir une photo">
+                      {d.photos.map((_: { src: string; alt: string }, i: number) => (
+                        <button
+                          type="button"
+                          data-gallery-dot
+                          aria-label={`Afficher la photo ${i + 1}`}
+                          aria-current={i === 0 ? "true" : "false"}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </>
             ) : (
-              <figure class="gallery__main gallery__empty">
+              <figure class="gallery__empty">
                 <Icon name="horse" />
               </figure>
             )
@@ -137,6 +180,52 @@ const contactHref = `mailto:${site.email}?subject=${subject}`;
 
 </Base>
 
+<script>
+  document.querySelectorAll<HTMLElement>("[data-horse-gallery]").forEach((gallery) => {
+    const viewport = gallery.querySelector<HTMLElement>("[data-gallery-viewport]");
+    const slides = Array.from(gallery.querySelectorAll<HTMLElement>("[data-gallery-slide]"));
+    const dots = Array.from(gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-dot]"));
+    const current = gallery.querySelector<HTMLElement>("[data-gallery-current]");
+    const previous = gallery.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+    const next = gallery.querySelector<HTMLButtonElement>("[data-gallery-next]");
+
+    if (!viewport || slides.length < 2 || !previous || !next) return;
+
+    let activeIndex = 0;
+    let scrollFrame = 0;
+
+    const update = (index: number) => {
+      activeIndex = index;
+      if (current) current.textContent = String(index + 1);
+      dots.forEach((dot, dotIndex) => {
+        dot.setAttribute("aria-current", dotIndex === index ? "true" : "false");
+      });
+    };
+
+    const show = (index: number) => {
+      const targetIndex = (index + slides.length) % slides.length;
+      viewport.scrollTo({ left: slides[targetIndex].offsetLeft, behavior: "smooth" });
+      update(targetIndex);
+    };
+
+    previous.addEventListener("click", () => show(activeIndex - 1));
+    next.addEventListener("click", () => show(activeIndex + 1));
+    dots.forEach((dot, index) => dot.addEventListener("click", () => show(index)));
+
+    viewport.addEventListener(
+      "scroll",
+      () => {
+        cancelAnimationFrame(scrollFrame);
+        scrollFrame = requestAnimationFrame(() => {
+          const index = Math.round(viewport.scrollLeft / viewport.clientWidth);
+          update(Math.max(0, Math.min(index, slides.length - 1)));
+        });
+      },
+      { passive: true },
+    );
+  });
+</script>
+
 <style>
   .sheet {
     padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
@@ -156,25 +245,110 @@ const contactHref = `mailto:${site.email}?subject=${subject}`;
   }
 
   .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
+    position: relative;
+    min-width: 0;
   }
-  .gallery figure {
+  .gallery__viewport {
+    display: flex;
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+  }
+  .gallery__viewport::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery__slide,
+  .gallery__empty {
+    flex: 0 0 100%;
     margin: 0;
-    border-radius: var(--radius);
     overflow: hidden;
     aspect-ratio: 4 / 3;
-  }
-  .gallery__main {
-    grid-column: 1 / -1;
-    aspect-ratio: 4 / 3 !important;
-    border-radius: var(--radius-lg) !important;
+    border-radius: var(--radius-lg);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
   .gallery img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  .gallery__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: grid;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    place-items: center;
+    transform: translateY(-50%);
+    border: 1px solid rgba(31, 42, 31, 0.14);
+    border-radius: 50%;
+    background: rgba(249, 247, 241, 0.92);
+    color: var(--forest-deep);
+    box-shadow: 0 5px 18px rgba(31, 42, 31, 0.12);
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+  }
+  .gallery__arrow:hover {
+    background: var(--sage);
+    transform: translateY(-50%) scale(1.04);
+  }
+  .gallery__arrow:focus-visible {
+    outline: 2px solid var(--moss);
+    outline-offset: 3px;
+  }
+  .gallery__arrow :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+  .gallery__arrow--prev {
+    left: 1rem;
+  }
+  .gallery__arrow--prev :global(svg) {
+    transform: rotate(180deg);
+  }
+  .gallery__arrow--next {
+    right: 1rem;
+  }
+  .gallery__count {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    margin: 0;
+    padding: 0.34rem 0.62rem;
+    border-radius: 999px;
+    background: rgba(31, 42, 31, 0.78);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+  .gallery__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+  .gallery__dots button {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--line-strong);
+    cursor: pointer;
+    transition: width 160ms ease, background 160ms ease;
+  }
+  .gallery__dots button[aria-current="true"] {
+    width: 25px;
+    border-radius: 999px;
+    background: var(--moss-mid);
   }
   .gallery__empty {
     display: grid;
