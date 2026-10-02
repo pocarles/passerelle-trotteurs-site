@@ -25,13 +25,13 @@ const backHref =
     ? "/adopter/adoption-directe"
     : d.statut === "vente"
       ? "/adopter/chevaux-a-la-vente"
-      : "/adopter";
+      : "/adopter/chevaux-a-l-adoption";
 const backLabel =
   d.statut === "adoption-directe"
     ? "Les chevaux en adoption directe"
     : d.statut === "vente"
       ? "Les chevaux à la vente"
-      : "Tous les trotteurs";
+      : "Les chevaux à l’adoption";
 
 const specs = [
   age !== null && { k: "Âge", v: `${age} ans (${d.annee})` },
