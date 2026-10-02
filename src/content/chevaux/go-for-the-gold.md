@@ -21,9 +21,11 @@ photos:
 updated: 2026-10-02
 ---
 
-Go For The Gold est un hongre bai né en 2016. Après une très belle carrière de
-course, il poursuit aujourd’hui sa reconversion et recherche une nouvelle
-famille. Il est visible dans le Calvados, près d’Argences.
+Go For The Gold est un hongre bai né en 2016. Ce « champion au grand cœur »,
+comme le présente son entourage, se distingue autant par son parcours sportif
+que par son look unique et sa personnalité attachante. Il poursuit aujourd’hui
+sa reconversion et recherche une nouvelle famille. Il est visible dans le
+Calvados, près d’Argences.
 
 ## Son parcours
 
@@ -40,11 +42,16 @@ Vincennes.
 
 ## Son caractère et ses qualités
 
-Go For The Gold est décrit comme un cheval près du sang, courageux et
-volontaire. Très proche de l’humain et particulièrement attachant, il apprend
-vite et se montre disponible dans le travail. Son expérience de la compétition
-lui a apporté une excellente tête et un grand sang-froid dans de nombreuses
-situations.
+Reconnaissable entre mille grâce à son look singulier, Go For The Gold possède
+un très beau modèle et toise environ **1,65 m**. C’est un cheval près du sang,
+courageux et volontaire, mais aussi très proche de l’humain et particulièrement
+attachant.
+
+Intelligent, il comprend vite ce qui lui est demandé et se montre disponible
+pour faire plaisir. Son expérience de la compétition lui a donné une excellente
+tête et un grand sang-froid dans de nombreuses situations. Derrière son passé de
+champion se révèle ainsi un cheval généreux, sensible et volontaire, avec lequel
+la relation et la confiance auront une place essentielle.
 
 Il embarque et voyage parfaitement. Des vidéos complémentaires sont disponibles
 sur demande.
