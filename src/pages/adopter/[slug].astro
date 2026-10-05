@@ -41,11 +41,13 @@ const specs = [
   { k: "Monté", v: d.montabilite ?? (d.montable ? "Oui" : "Non monté") },
   d.structure && { k: "Structure d’accueil", v: d.structure },
   d.departement && { k: "Localisation", v: d.departement },
+  d.contactAddress && { k: "Adresse", v: d.contactAddress },
+  d.contactEmail && { k: "E-mail", v: d.contactEmail },
   d.participation && { k: "Participation", v: d.participation },
 ].filter(Boolean) as { k: string; v: string }[];
 
 const subject = encodeURIComponent(d.nom);
-const contactHref = `mailto:${site.email}?subject=${subject}`;
+const contactHref = `mailto:${d.contactEmail ?? site.email}?subject=${subject}`;
 const phoneHref = d.contactPhone ?? site.phone;
 const phoneLabel = d.contactPhoneDisplay ?? site.phoneDisplay;
 ---

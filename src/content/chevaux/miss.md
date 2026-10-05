@@ -8,6 +8,10 @@ montable: false
 montabilite: "Non montable — compagnie et activités à pied sans contrainte"
 structure: "Les Chevaux d’Elo"
 departement: "Yonne (89)"
+contactPhone: "+33602448076"
+contactPhoneDisplay: "06 02 44 80 76"
+contactEmail: "leschevauxdelo@gmail.com"
+contactAddress: "La Merlucherie, 89150 Saint-Valérien"
 participation: "Frais d’adoption"
 resume: "Jeune jument proche de l’humain et facile pour les soins, recherchant une famille pour compagnie et des activités à pied sans contrainte physique."
 photos:

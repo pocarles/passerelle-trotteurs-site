@@ -61,6 +61,8 @@ const chevaux = defineCollection({
     /** Optional direct contact for the structure presenting the horse. */
     contactPhone: z.string().optional(),
     contactPhoneDisplay: z.string().optional(),
+    contactEmail: z.string().email().optional(),
+    contactAddress: z.string().optional(),
     /** Free text ("1 500 €", "frais d'adoption") — never a bare number. */
     participation: z.string().optional(),
     resume: z.string(),
