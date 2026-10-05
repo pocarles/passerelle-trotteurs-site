@@ -14,10 +14,19 @@ contactPhoneDisplay: "06 77 17 97 99"
 participation: "2 300 € TTC — prix évolutif"
 resume: "Hongre bai de 10 ans, généreux et volontaire, proposé pour poursuivre sa reconversion avec un cavalier de niveau Galop 4 minimum."
 photos:
-  - src: "/media/chevaux/go-for-the-gold-2.jpg"
-    alt: "Portrait de Go For The Gold dans une carrière"
-  - src: "/media/chevaux/go-for-the-gold-1.jpg"
-    alt: "Vue à cheval pendant une sortie avec Go For The Gold"
+  - src: "/media/chevaux/go-for-the-gold-portrait.jpg"
+    alt: "Portrait de Go For The Gold au pré"
+  - src: "/media/chevaux/go-for-the-gold-profil.jpg"
+    alt: "Go For The Gold vu de profil avec un licol en corde"
+  - src: "/media/chevaux/go-for-the-gold-parcours.jpg"
+    alt: "Go For The Gold pendant un exercice de désensibilisation"
+videos:
+  - src: "/media/chevaux/go-for-the-gold-video-1.mp4"
+    title: "Go For The Gold en liberté dans la carrière"
+    poster: "/media/chevaux/go-for-the-gold-video-1-poster.jpg"
+  - src: "/media/chevaux/go-for-the-gold-video-2.mp4"
+    title: "Une sortie à cheval avec Go For The Gold"
+    poster: "/media/chevaux/go-for-the-gold-video-2-poster.jpg"
 updated: 2026-10-02
 ---
 

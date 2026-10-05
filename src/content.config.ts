@@ -65,6 +65,15 @@ const chevaux = defineCollection({
     participation: z.string().optional(),
     resume: z.string(),
     photos: z.array(z.object({ src: z.string(), alt: z.string() })).default([]),
+    videos: z
+      .array(
+        z.object({
+          src: z.string(),
+          title: z.string(),
+          poster: z.string().optional(),
+        }),
+      )
+      .default([]),
     placed: z.boolean().default(false),
     draft: z.boolean().default(false),
     updated: z.coerce.date().optional(),

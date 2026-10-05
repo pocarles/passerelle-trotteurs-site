@@ -167,6 +167,34 @@ const phoneLabel = d.contactPhoneDisplay ?? site.phoneDisplay;
         </div>
       </div>
 
+      {
+        d.videos.length > 0 && (
+          <section class="videos" aria-labelledby="horse-videos-title">
+            <p class="eyebrow">En mouvement</p>
+            <h2 id="horse-videos-title">{d.nom} en vidéo</h2>
+            <div class="videos__grid">
+              {d.videos.map(
+                (video: { src: string; title: string; poster?: string }) => (
+                  <figure class="video-card">
+                    <video
+                      controls
+                      playsinline
+                      preload="metadata"
+                      poster={video.poster}
+                      aria-label={video.title}
+                    >
+                      <source src={video.src} type="video/mp4" />
+                      Votre navigateur ne permet pas de lire cette vidéo.
+                    </video>
+                    <figcaption>{video.title}</figcaption>
+                  </figure>
+                ),
+              )}
+            </div>
+          </section>
+        )
+      }
+
       <div class="sheet__body">
         <Prose>
           <Content />
@@ -446,6 +474,40 @@ const phoneLabel = d.contactPhoneDisplay ?? site.phoneDisplay;
     font-size: 0.8rem;
   }
 
+  .videos {
+    margin-top: clamp(3rem, 6vw, 5rem);
+    padding-top: clamp(2.5rem, 5vw, 3.5rem);
+    border-top: 1px solid var(--line);
+  }
+  .videos h2 {
+    margin-bottom: 1.8rem;
+  }
+  .videos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.2rem, 3vw, 2rem);
+    align-items: start;
+  }
+  .video-card {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+  }
+  .video-card video {
+    display: block;
+    width: 100%;
+    height: min(68vh, 680px);
+    background: var(--ink);
+    object-fit: contain;
+  }
+  .video-card figcaption {
+    padding: 1rem 1.2rem;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
   .sheet__body {
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
@@ -504,8 +566,12 @@ const phoneLabel = d.contactPhoneDisplay ?? site.phoneDisplay;
 
   @media (max-width: 900px) {
     .sheet__top,
-    .sheet__body {
+    .sheet__body,
+    .videos__grid {
       grid-template-columns: 1fr;
+    }
+    .video-card video {
+      height: min(72vh, 720px);
     }
   }
   @media (max-width: 560px) {
