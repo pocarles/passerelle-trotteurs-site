@@ -30,6 +30,7 @@ export const links = {
     "https://cdn.eu.yapla.com/company/CPYbcCvkD6pajr3uBXPgxYoAE/asset/files/CAHIER%20DES%20CHARGES.pdf",
   facebook: "https://www.facebook.com/PasserelleTrotteurs/",
   instagram: "https://www.instagram.com/passerelle_tf/",
+  linkedin: "https://www.linkedin.com/company/association-passerelle-trotteurs/",
   adoptionGroup: "https://www.facebook.com/groups/25990426160643998",
 };
 
