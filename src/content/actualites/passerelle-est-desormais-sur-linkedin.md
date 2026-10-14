@@ -3,7 +3,7 @@ title: "Passerelle est désormais sur LinkedIn"
 date: 2026-10-14
 dateLabel: "14 octobre 2026"
 source: "Association Passerelle"
-image: "/media/passerelle-sign.jpg"
+image: "/media/actualites/passerelle-linkedin.png"
 cta:
   text: "Suivez Passerelle"
   accent: "sur LinkedIn."
