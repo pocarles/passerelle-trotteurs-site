@@ -3,7 +3,7 @@ import { render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Prose from "../../components/Prose.astro";
 import Icon from "../../components/Icon.astro";
-import { links, site, protections } from "../../data/site";
+import { site, protections, networkDirectory } from "../../data/site";
 import {
   getHorses,
   statutLabel,
@@ -33,6 +33,27 @@ const backLabel =
       ? "Les chevaux à la vente"
       : "Les chevaux à l’adoption";
 
+// Contact policy:
+// - adoption directe: Passerelle remains the sole contact;
+// - adoption and sale: enquiries go to the structure presenting the horse.
+const isDirectAdoption = d.statut === "adoption-directe";
+const structureContact = !isDirectAdoption && d.structure
+  ? networkDirectory.find(
+      (structure) =>
+        structure.name.toLocaleLowerCase("fr") ===
+        d.structure?.toLocaleLowerCase("fr"),
+    )
+  : undefined;
+const contactEmail = isDirectAdoption
+  ? site.email
+  : (d.contactEmail ?? structureContact?.email);
+const contactPhone = isDirectAdoption
+  ? site.phone
+  : (d.contactPhone ?? structureContact?.phones[0]);
+const contactPhoneLabel = isDirectAdoption
+  ? site.phoneDisplay
+  : (d.contactPhoneDisplay ?? structureContact?.phones[0]);
+
 const specs = [
   age !== null && { k: "Âge", v: `${age} ans (${d.annee})` },
   d.sexe && { k: "Sexe", v: d.sexe.charAt(0).toUpperCase() + d.sexe.slice(1) },
@@ -42,14 +63,14 @@ const specs = [
   d.structure && { k: "Structure d’accueil", v: d.structure },
   d.departement && { k: "Localisation", v: d.departement },
   d.contactAddress && { k: "Adresse", v: d.contactAddress },
-  d.contactEmail && { k: "E-mail", v: d.contactEmail },
+  contactEmail && { k: "E-mail", v: contactEmail },
   d.participation && { k: "Participation", v: d.participation },
 ].filter(Boolean) as { k: string; v: string }[];
 
 const subject = encodeURIComponent(d.nom);
-const contactHref = `mailto:${d.contactEmail ?? site.email}?subject=${subject}`;
-const phoneHref = d.contactPhone ?? site.phone;
-const phoneLabel = d.contactPhoneDisplay ?? site.phoneDisplay;
+const contactHref = contactEmail
+  ? `mailto:${contactEmail}?subject=${subject}`
+  : undefined;
 ---
 
 <Base
@@ -143,14 +164,18 @@ const phoneLabel = d.contactPhoneDisplay ?? site.phoneDisplay;
           {
             !d.placed && (
               <div class="actions">
-                <a class="btn btn--primary" href={contactHref}>
-                  Se renseigner
-                  <span class="btn__ico"><Icon name="arrow" /></span>
-                </a>
-                <a class="btn btn--ghost" href={`tel:${phoneHref}`}>
-                  {phoneLabel}
-                  <span class="btn__ico"><Icon name="arrow" /></span>
-                </a>
+                {contactHref && (
+                  <a class="btn btn--primary" href={contactHref}>
+                    Se renseigner
+                    <span class="btn__ico"><Icon name="arrow" /></span>
+                  </a>
+                )}
+                {contactPhone && contactPhoneLabel && (
+                  <a class="btn btn--ghost" href={`tel:${contactPhone}`}>
+                    {contactPhoneLabel}
+                    <span class="btn__ico"><Icon name="arrow" /></span>
+                  </a>
+                )}
               </div>
             )
           }
