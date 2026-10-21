@@ -6,6 +6,7 @@ import PageHeader from "../../components/PageHeader.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import Icon from "../../components/Icon.astro";
 import { links } from "../../data/site";
+import { agendaEvents } from "../../data/agenda";
 
 const all = (await getCollection("actualites")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -14,6 +15,13 @@ const all = (await getCollection("actualites")).sort(
 const [featured, ...rest] = all;
 const latest = rest.slice(0, 3);
 const archiveArticles = rest.slice(3);
+const today = new Intl.DateTimeFormat("sv-SE", {
+  timeZone: "Europe/Paris",
+}).format(new Date());
+const upcomingEvents = agendaEvents
+  .filter((event) => (event.endDate ?? event.date) >= today)
+  .sort((a, b) => a.date.localeCompare(b.date))
+  .slice(0, 3);
 
 const byYear = new Map<number, typeof archiveArticles>();
 for (const a of archiveArticles) {
@@ -25,20 +33,20 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
 ---
 
 <Base
-  title="Actualités — Association Passerelle"
-  description="Les actions, événements et partenariats de l’Association Passerelle en faveur de la reconversion des Trotteurs Français."
+  title="Actualités & agenda — Association Passerelle"
+  description="Les actualités et les prochains événements de l’Association Passerelle en faveur de la reconversion des Trotteurs Français."
 >
   <PageHeader
-    eyebrow="Journal"
+    eyebrow="Actualités & agenda"
     title="Sur le terrain,"
     accent="depuis 2021."
-    lead={`${all.length} articles : hippodromes, salons, communiqués et rencontres qui font avancer la reconversion des Trotteurs Français.`}
+    lead={`${all.length} articles, ainsi que les prochains rendez-vous qui font avancer la reconversion des Trotteurs Français.`}
   />
 
-  {
-    featured && (
-      <section class="section feat-sec">
-        <div class="wrap">
+  <section class="section lead-sec">
+    <div class="wrap lead-grid">
+      {
+        featured && (
           <a class:list={["feat", !featured.data.image && "feat--no-image"]} href={`/actualites/${featured.id}`}>
             {featured.data.image && (
               <div class="feat__media">
@@ -60,10 +68,60 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
               </span>
             </div>
           </a>
+        )
+      }
+
+      <aside class="agenda" aria-labelledby="agenda-title">
+        <div class="agenda__head">
+          <span class="agenda__icon" aria-hidden="true"><Icon name="calendar" /></span>
+          <div>
+            <p class="eyebrow">À vos agendas</p>
+            <h2 id="agenda-title">Les prochaines dates.</h2>
+          </div>
         </div>
-      </section>
-    )
-  }
+
+        {
+          upcomingEvents.length > 0 ? (
+            <ol class="agenda__list">
+              {upcomingEvents.map((event) => (
+                <li class="agenda-event">
+                  {event.image && (
+                    <img
+                      class="agenda-event__image"
+                      src={event.image}
+                      alt={event.imageAlt ?? event.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                  <div class="agenda-event__copy">
+                    <time datetime={event.date}>{event.dateLabel}</time>
+                    <h3>{event.title}</h3>
+                    {event.location && <p>{event.location}</p>}
+                    {event.href && (
+                      <a class="tlink" href={event.href} target="_blank" rel="noreferrer">
+                        {event.linkLabel ?? "En savoir plus"}
+                        <Icon name="arrowUpRight" />
+                      </a>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <div class="agenda__empty">
+              <p><strong>Aucun rendez-vous annoncé pour le moment.</strong></p>
+              <p>Les prochaines dates seront publiées ici.</p>
+              <a class="tlink" href={links.facebook} target="_blank" rel="noreferrer">
+                Suivre nos annonces
+                <Icon name="arrowUpRight" />
+              </a>
+            </div>
+          )
+        }
+      </aside>
+    </div>
+  </section>
 
   {
     latest.length > 0 && (
@@ -143,8 +201,14 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
 </Base>
 
 <style>
-  .feat-sec {
+  .lead-sec {
     padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+  .lead-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.7fr);
+    align-items: start;
+    gap: clamp(1.25rem, 3vw, 2rem);
   }
   .feat {
     display: grid;
@@ -181,6 +245,93 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
     margin: 0.9rem 0 1.4rem;
     color: var(--ink-faint);
     font-size: 0.82rem;
+  }
+
+  .agenda {
+    overflow: hidden;
+    background: var(--forest-deep);
+    border-radius: var(--radius-lg);
+    color: rgba(255, 255, 255, 0.76);
+  }
+  .agenda__head {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: clamp(1.3rem, 2.5vw, 1.75rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  }
+  .agenda__icon {
+    display: grid;
+    flex: 0 0 2.75rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--sage);
+    color: var(--forest-deep);
+  }
+  .agenda__icon :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .agenda .eyebrow {
+    margin-bottom: 0.45rem;
+    color: var(--sage);
+  }
+  .agenda h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+  }
+  .agenda__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .agenda-event + .agenda-event {
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+  }
+  .agenda-event__image {
+    width: 100%;
+    aspect-ratio: 16 / 8;
+    object-fit: cover;
+  }
+  .agenda-event__copy {
+    padding: 1.3rem clamp(1.3rem, 2.5vw, 1.75rem);
+  }
+  .agenda-event time {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: var(--sage);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .agenda-event h3 {
+    margin: 0 0 0.45rem;
+    color: #fff;
+    font-size: 1.22rem;
+  }
+  .agenda-event p {
+    margin: 0 0 0.8rem;
+    font-size: 0.88rem;
+  }
+  .agenda .tlink {
+    color: var(--sage);
+  }
+  .agenda__empty {
+    padding: clamp(1.4rem, 3vw, 2rem);
+  }
+  .agenda__empty p {
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+  }
+  .agenda__empty strong {
+    color: #fff;
+  }
+  .agenda__empty .tlink {
+    margin-top: 1.15rem;
   }
 
   .latest-sec {
@@ -301,6 +452,9 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
   }
 
   @media (max-width: 900px) {
+    .lead-grid {
+      grid-template-columns: 1fr;
+    }
     .latest-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
