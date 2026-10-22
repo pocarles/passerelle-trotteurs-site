@@ -95,9 +95,14 @@ const contactHref = contactEmail
             d.photos.length > 0 ? (
               <>
                 <div class="gallery__viewport" data-gallery-viewport>
-                  {d.photos.map((p: { src: string; alt: string }, i: number) => (
+                  {d.photos.map((p: { src: string; alt: string; rotation?: number }, i: number) => (
                     <figure class="gallery__slide" data-gallery-slide>
-                      <img src={p.src} alt={p.alt} loading={i === 0 ? "eager" : "lazy"} />
+                      <img
+                        src={p.src}
+                        alt={p.alt}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        style={p.rotation ? `transform: rotate(${p.rotation}deg) scale(1.34);` : undefined}
+                      />
                     </figure>
                   ))}
                 </div>
@@ -124,7 +129,7 @@ const contactHref = contactEmail
                       <span data-gallery-current>1</span> / {d.photos.length}
                     </p>
                     <div class="gallery__dots" aria-label="Choisir une photo">
-                      {d.photos.map((_: { src: string; alt: string }, i: number) => (
+                      {d.photos.map((_: { src: string; alt: string; rotation?: number }, i: number) => (
                         <button
                           type="button"
                           data-gallery-dot

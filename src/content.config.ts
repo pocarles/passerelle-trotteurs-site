@@ -66,7 +66,16 @@ const chevaux = defineCollection({
     /** Free text ("1 500 €", "frais d'adoption") — never a bare number. */
     participation: z.string().optional(),
     resume: z.string(),
-    photos: z.array(z.object({ src: z.string(), alt: z.string() })).default([]),
+    photos: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+          /** Correct source files whose embedded orientation is not honoured by browsers. */
+          rotation: z.number().optional(),
+        }),
+      )
+      .default([]),
     videos: z
       .array(
         z.object({
