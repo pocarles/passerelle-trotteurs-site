@@ -36,10 +36,11 @@ saillie. Elle a été débourrée aussi bien à l’attelage que montée.
 
 ## Le projet recherché
 
-Bali peut rejoindre une famille pour une vie de compagnie. Un éventuel projet
-monté devra être évalué et repris progressivement avec l’accompagnement d’un
-professionnel du monde équestre, en tenant compte de son âge, de son parcours
-de poulinière et de son état au moment de l’adoption.
+Bali peut rejoindre une famille pour une vie de compagnie.
+
+**Un éventuel projet monté devra être évalué et repris progressivement avec
+l’accompagnement d’un professionnel du monde équestre, en tenant compte de son
+parcours de poulinière et de son état au moment de l’adoption.**
 
 ## Les conditions de placement
 

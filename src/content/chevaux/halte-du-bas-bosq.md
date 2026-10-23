@@ -12,10 +12,8 @@ resume: "Jument bai foncé de 9 ans, ancienne poulinière, proposée en adoption
 photos:
   - src: "/media/chevaux/halte-du-bas-bosq-1.jpg"
     alt: "Halte du Bas Bosq au pré"
-    rotation: 90
   - src: "/media/chevaux/halte-du-bas-bosq-2.jpg"
     alt: "Halte du Bas Bosq vue de profil au pré"
-    rotation: 90
 updated: 2026-10-22
 ---
 
@@ -34,10 +32,11 @@ pas saillie.
 
 ## Le projet recherché
 
-Halte peut rejoindre une famille pour une vie de compagnie. Un éventuel projet
-monté devra être évalué et repris progressivement avec l’accompagnement d’un
-professionnel du monde équestre, en tenant compte de son parcours de poulinière
-et de son état au moment de l’adoption.
+Halte peut rejoindre une famille pour une vie de compagnie.
+
+**Un éventuel projet monté devra être évalué et repris progressivement avec
+l’accompagnement d’un professionnel du monde équestre, en tenant compte de son
+parcours de poulinière et de son état au moment de l’adoption.**
 
 ## Les conditions de placement
 

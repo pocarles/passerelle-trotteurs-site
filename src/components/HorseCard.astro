@@ -8,9 +8,6 @@ interface Props {
 const { entry } = Astro.props;
 const d = entry.data;
 const photo = d.photos[0];
-const photoStyle = photo?.rotation
-  ? `transform: rotate(${photo.rotation}deg) scale(1.34);`
-  : undefined;
 const age = horseAge(d.annee);
 const facts = [
   age && `${age} ans`,
@@ -25,7 +22,7 @@ const facts = [
     <div class="hc__media">
       {
         photo ? (
-          <img src={photo.src} alt={photo.alt} loading="lazy" style={photoStyle} />
+          <img src={photo.src} alt={photo.alt} loading="lazy" />
         ) : (
           <div class="hc__noimg" aria-hidden="true">
             <Icon name="horse" />

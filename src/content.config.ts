@@ -71,8 +71,6 @@ const chevaux = defineCollection({
         z.object({
           src: z.string(),
           alt: z.string(),
-          /** Correct source files whose embedded orientation is not honoured by browsers. */
-          rotation: z.number().optional(),
         }),
       )
       .default([]),
