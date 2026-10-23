@@ -79,21 +79,6 @@ export const legal = {
   jurisdiction: "Tribunaux de l’Oise",
 };
 
-/**
- * Every figure below is sourced from the association's own published material.
- * Update them here, not in the markup.
- *  - founded: December 2020 (site: "Présentation de l'association")
- *  - structures: count of the accredited network directory (22 entries)
- *  - intake: "Passerelle prend en charge entre 10 et 15 chevaux par semaine"
- *  - protections: the six lifetime guarantees in the Passerelle contract
- */
-export const stats = [
-  { value: "2020", label: "Année de création", icon: "calendar" },
-  { value: "22", label: "Structures accréditées", icon: "map" },
-  { value: "150–200", label: "Chevaux confiés par an", icon: "horse" },
-  { value: "6", label: "Protections à vie", icon: "shield" },
-];
-
 export const missionPillars = [
   {
     icon: "house",
@@ -450,6 +435,22 @@ export const networkDirectory = [
     ],
   },
 ] as const;
+
+/**
+ * Every figure below is sourced from the association's own published material.
+ * The accredited-structure count is derived from the public directory so it
+ * stays synchronized whenever a structure is added or removed.
+ */
+export const stats = [
+  { value: "2020", label: "Année de création", icon: "calendar" },
+  {
+    value: String(networkDirectory.length),
+    label: "Structures accréditées",
+    icon: "map",
+  },
+  { value: "150–200", label: "Chevaux confiés par an", icon: "horse" },
+  { value: "6", label: "Protections à vie", icon: "shield" },
+];
 
 /** Département used to position each accredited structure on the network map. */
 export const networkMapDepartments = [

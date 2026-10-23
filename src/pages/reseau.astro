@@ -6,6 +6,7 @@ import Icon from "../components/Icon.astro";
 import {
   networkCommitments,
   networkConditions,
+  networkDirectory,
   site,
 } from "../data/site";
 
@@ -14,7 +15,7 @@ const commitmentIcons = ["heart", "shield", "hands"] as const;
 
 <Base
   title="Le réseau accrédité — Association Passerelle"
-  description="Consultez l’annuaire des 22 structures accréditées Passerelle et découvrez les engagements requis pour rejoindre le réseau."
+  description={`Consultez l’annuaire des ${networkDirectory.length} structures accréditées Passerelle et découvrez les engagements requis pour rejoindre le réseau.`}
 >
   <PageHeader
     eyebrow="Notre réseau"
