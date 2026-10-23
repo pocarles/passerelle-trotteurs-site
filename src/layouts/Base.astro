@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import AlertBanner from "../components/AlertBanner.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { site } from "../data/site";
@@ -98,6 +99,7 @@ const socialImage = new URL(image, Astro.site ?? site.url).href;
   </head>
   <body class={hasHero ? "has-hero" : ""}>
     <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <AlertBanner />
     <Header />
     <main id="contenu">
       <slot />

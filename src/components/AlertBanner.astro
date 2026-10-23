@@ -1,0 +1,102 @@
+---
+const message =
+  "Information importante — Les prises en charge sont temporairement suspendues : nos structures d’accueil et notre liste d’attente ont atteint leur capacité maximale. Nous vous informerons dès leur reprise. Merci de votre compréhension.";
+---
+
+<aside class="notice" aria-label="Information importante">
+  <div class="notice__track">
+    <p class="notice__item">
+      <strong>Information importante</strong>
+      <span aria-hidden="true">—</span>
+      <span>{message.replace("Information importante — ", "")}</span>
+      <span class="notice__separator" aria-hidden="true">◆</span>
+    </p>
+    <p class="notice__item" aria-hidden="true">
+      <strong>Information importante</strong>
+      <span>—</span>
+      <span>{message.replace("Information importante — ", "")}</span>
+      <span class="notice__separator">◆</span>
+    </p>
+  </div>
+</aside>
+
+<style>
+  :global(:root) {
+    --notice-height: 38px;
+  }
+
+  .notice {
+    position: relative;
+    z-index: 1200;
+    display: flex;
+    height: var(--notice-height);
+    overflow: hidden;
+    align-items: center;
+    background: var(--forest-deep);
+    color: var(--cream);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .notice__track {
+    display: flex;
+    width: max-content;
+    min-width: 200%;
+    animation: notice-scroll 32s linear infinite;
+    will-change: transform;
+  }
+
+  .notice:hover .notice__track {
+    animation-play-state: paused;
+  }
+
+  .notice__item {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 50%;
+    margin: 0;
+    padding-inline: clamp(1.25rem, 3vw, 3rem);
+    white-space: nowrap;
+    font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+    line-height: 1;
+    letter-spacing: 0.015em;
+  }
+
+  .notice__item strong {
+    color: var(--sage);
+    font-size: 0.7rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .notice__separator {
+    margin-inline: clamp(1rem, 2.5vw, 2.5rem);
+    color: var(--sage);
+    font-size: 0.45rem;
+  }
+
+  @keyframes notice-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .notice {
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .notice::-webkit-scrollbar {
+      display: none;
+    }
+    .notice__track {
+      min-width: max-content;
+      animation: none;
+      will-change: auto;
+    }
+    .notice__item[aria-hidden="true"] {
+      display: none;
+    }
+  }
+</style>
