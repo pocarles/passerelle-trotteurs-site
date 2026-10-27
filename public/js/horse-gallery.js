@@ -8,9 +8,30 @@
     var previous = gallery.querySelector("[data-gallery-prev]");
     var next = gallery.querySelector("[data-gallery-next]");
 
-    if (slides.length < 2 || !previous || !next) return;
+    if (!slides.length) return;
 
     var activeIndex = 0;
+
+    function adaptFrame(slide, slideIndex) {
+      var image = slide.querySelector("img");
+      if (!image) return;
+
+      function applyImageRatio() {
+        if (slideIndex !== activeIndex || !image.naturalWidth || !image.naturalHeight) return;
+
+        gallery.style.setProperty(
+          "--gallery-ratio",
+          image.naturalWidth + " / " + image.naturalHeight
+        );
+        gallery.setAttribute(
+          "data-gallery-orientation",
+          image.naturalHeight > image.naturalWidth ? "portrait" : "landscape"
+        );
+      }
+
+      if (image.complete) applyImageRatio();
+      else image.addEventListener("load", applyImageRatio, { once: true });
+    }
 
     function show(index) {
       activeIndex = (index + slides.length) % slides.length;
@@ -26,14 +47,17 @@
       });
 
       if (current) current.textContent = String(activeIndex + 1);
+      adaptFrame(slides[activeIndex], activeIndex);
     }
 
-    previous.addEventListener("click", function () {
-      show(activeIndex - 1);
-    });
-    next.addEventListener("click", function () {
-      show(activeIndex + 1);
-    });
+    if (previous && next) {
+      previous.addEventListener("click", function () {
+        show(activeIndex - 1);
+      });
+      next.addEventListener("click", function () {
+        show(activeIndex + 1);
+      });
+    }
     dots.forEach(function (dot, index) {
       dot.addEventListener("click", function () {
         show(index);
