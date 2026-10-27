@@ -62,8 +62,6 @@ const specs = [
   { k: "Monté", v: d.montabilite ?? (d.montable ? "Oui" : "Non monté") },
   d.structure && { k: "Structure d’accueil", v: d.structure },
   d.departement && { k: "Localisation", v: d.departement },
-  d.contactAddress && { k: "Adresse", v: d.contactAddress },
-  contactEmail && { k: "E-mail", v: contactEmail },
   d.participation && { k: "Participation", v: d.participation },
 ].filter(Boolean) as { k: string; v: string }[];
 
