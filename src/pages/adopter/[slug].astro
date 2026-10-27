@@ -295,6 +295,24 @@ const contactHref = contactEmail
   .gallery[data-gallery-orientation="portrait"] .gallery__viewport {
     width: min(100%, 36rem, 40vh);
     margin-inline: auto;
+    overflow: visible;
+  }
+  .gallery[data-gallery-orientation="portrait"] .gallery__arrow {
+    width: 42px;
+    height: 42px;
+    border-color: rgba(31, 42, 31, 0.1);
+    background: rgba(249, 247, 241, 0.68);
+    box-shadow: 0 4px 14px rgba(31, 42, 31, 0.08);
+    backdrop-filter: blur(4px);
+  }
+  .gallery[data-gallery-orientation="portrait"] .gallery__arrow:hover {
+    background: rgba(190, 219, 132, 0.9);
+  }
+  .gallery[data-gallery-orientation="portrait"] .gallery__arrow--prev {
+    left: -1.4rem;
+  }
+  .gallery[data-gallery-orientation="portrait"] .gallery__arrow--next {
+    right: -1.4rem;
   }
   .gallery__slide {
     margin: 0;
