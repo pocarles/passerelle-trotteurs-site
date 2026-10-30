@@ -14,4 +14,7 @@ export default defineConfig({
   // nothing. "file" format would avoid the hop but emits /association.html
   // into the canonical, which is worse.
   build: { inlineStylesheets: "never" },
+  // Astro inlines small <script> blocks below Vite's asset limit, which the
+  // CSP (script-src 'self') then blocks. 0 keeps every script external.
+  vite: { build: { assetsInlineLimit: 0 } },
 });

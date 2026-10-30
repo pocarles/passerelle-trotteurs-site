@@ -12,7 +12,7 @@ const routes = [
     href: "/adopter",
     image: "/media/participer-adopter.jpg",
     alt: "Une membre de l’équipe Passerelle aux côtés d’un trotteur",
-    imagePosition: "center 57%",
+    imageClass: "card__img--adopter",
     icon: "heart",
   },
   {
@@ -21,7 +21,7 @@ const routes = [
     href: "/participer/adherer",
     image: "/media/participer-adherer.jpg",
     alt: "Des bénévoles Passerelle autour d’un trotteur",
-    imagePosition: "center 52%",
+    imageClass: "card__img--adherer",
     icon: "users",
   },
   {
@@ -30,7 +30,7 @@ const routes = [
     href: "/participer/parrainer",
     image: "/media/participer-parrainer.jpg",
     alt: "Portrait d’un trotteur dans son pré",
-    imagePosition: "center 56%",
+    imageClass: "card__img--parrainer",
     icon: "sprout",
   },
 ];
@@ -107,7 +107,7 @@ const routes = [
           routes.map((route) => (
             <article class="card">
               <div class="card__media">
-                <img src={route.image} alt={route.alt} loading="lazy" style={`object-position: ${route.imagePosition};`} />
+                <img class={route.imageClass} src={route.image} alt={route.alt} loading="lazy" />
               </div>
               <span class="badge card__badge"><Icon name={route.icon} /></span>
               <div class="card__body">
@@ -176,6 +176,15 @@ const routes = [
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
+  }
+  .card__img--adopter {
+    object-position: center 57%;
+  }
+  .card__img--adherer {
+    object-position: center 52%;
+  }
+  .card__img--parrainer {
+    object-position: center 56%;
   }
   .card__badge {
     position: relative;

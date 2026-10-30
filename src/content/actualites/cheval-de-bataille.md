@@ -36,19 +36,14 @@ legacyUrl: "https://www.passerelle-trotteurs.fr/fr/actualites/cheval-de-bataille
 
 <p><b> </b></p>
 
-	
-		
-			
-			<p><a></a></p>
+<h2><b>L&rsquo;HIPPODROME ENGAGÉ TOUS AZIMUTS</b></h2>
 
-			<h2><b>L&rsquo;HIPPODROME ENGAGÉ TOUS AZIMUTS</b></h2>
+<p>À l&#39;hippodrome d&rsquo;Amiens, la saison reprend le 24 février, à 16h. Premier grand événement : la première étape du Grand National du trot, le tour de France des trotteurs, le 6 mars, à 13h. L&rsquo;occasion pour l&rsquo;École des courses hippiques d&rsquo;y proposer son Racing job mobile, opération d&rsquo;information sur les formations et les opportunités professionnelles du milieu. Et pour l&rsquo;hippodrome d&#39;arborer le label national EquuRES reçu début février pour saluer son engagement environnemental et celui lié au bien-être animal. <i>&laquo; Cela prouve notre travail vertueux,</i> apprécie sa directrice Carole Savreux. <i>La présence de Passerelle a sans doute joué, tout comme les potagers que nous avons créés en mai dernier et autour desquels nous avons rassemblé 500 aînés. Et d&rsquo;ici quelques semaines, en partenariat avec la Ville, une consigne à vélo sera installée sur le parking. &raquo;</i></p>
 
-			<p>À l&#39;hippodrome d&rsquo;Amiens, la saison reprend le 24 février, à 16h. Premier grand événement : la première étape du Grand National du trot, le tour de France des trotteurs, le 6 mars, à 13h. L&rsquo;occasion pour l&rsquo;École des courses hippiques d&rsquo;y proposer son Racing job mobile, opération d&rsquo;information sur les formations et les opportunités professionnelles du milieu. Et pour l&rsquo;hippodrome d&#39;arborer le label national EquuRES reçu début février pour saluer son engagement environnemental et celui lié au bien-être animal. <i>&laquo; Cela prouve notre travail vertueux,</i> apprécie sa directrice Carole Savreux. <i>La présence de Passerelle a sans doute joué, tout comme les potagers que nous avons créés en mai dernier et autour desquels nous avons rassemblé 500 aînés. Et d&rsquo;ici quelques semaines, en partenariat avec la Ville, une consigne à vélo sera installée sur le parking. &raquo;</i></p>
+<p><b>Animations et calendrier des courses : <a href="https://www.hippodrome-amiens.fr/" target="_blank" rel="noreferrer">hippodrome-amiens.fr</a></b></p>
 
-			<p><b>Animations et calendrier des courses : <a href="https://www.hippodrome-amiens.fr/" target="_blank" rel="noreferrer">hippodrome-amiens.fr</a></b></p>
-			
-		
-	
+
+
 
 <h3><a href="https://www.amiens.fr/Actualites/Cheval-de-bataille" target="_blank" rel="noreferrer">Pour lire l&#39;article sur le site du JDA, cliquez ici </a></h3>
 

@@ -74,7 +74,8 @@ import { intakeProfiles, protections } from "../data/site";
         {
           intakeProfiles.map((profile) => (
             <li>
-              <figure class="profiles__image" style={`--profile-image: url(${profile.image});`}>
+              <figure class="profiles__image">
+                <img class="profiles__backdrop" src={profile.image} alt="" aria-hidden="true" loading="lazy" />
                 <img src={profile.image} alt={profile.alt} loading="lazy" />
               </figure>
               <span class="badge"><Icon name="horse" /></span>
@@ -240,24 +241,27 @@ import { intakeProfiles, protections } from "../data/site";
     border-radius: var(--radius-lg);
     background: var(--cream-warm);
   }
-  .profiles__image::before,
   .profiles__image::after {
     position: absolute;
+    z-index: -1;
+    inset: 0;
     content: "";
     pointer-events: none;
+    background: rgb(248 245 238 / 0.16);
   }
-  .profiles__image::before {
+  /* Blurred copy of the photo filling the frame. A real <img> rather than a
+     background set through a style attribute, which the CSP would block. */
+  .profiles__image .profiles__backdrop {
+    position: absolute;
     z-index: -2;
     inset: -1.5rem;
-    background: center / cover no-repeat var(--profile-image);
+    width: calc(100% + 3rem);
+    height: calc(100% + 3rem);
+    object-fit: cover;
     filter: blur(1rem);
     opacity: 0.38;
     transform: scale(1.08);
-  }
-  .profiles__image::after {
-    z-index: -1;
-    inset: 0;
-    background: rgb(248 245 238 / 0.16);
+    pointer-events: none;
   }
   .profiles__image img {
     width: 100%;
