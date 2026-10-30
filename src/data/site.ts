@@ -448,7 +448,7 @@ export const stats = [
     label: "Structures accréditées",
     icon: "map",
   },
-  { value: "150–200", label: "Chevaux confiés par an", icon: "horse" },
+  { value: "100", label: "Chevaux confiés par an en moyenne", icon: "horse" },
   { value: "6", label: "Protections à vie", icon: "shield" },
 ];
 
