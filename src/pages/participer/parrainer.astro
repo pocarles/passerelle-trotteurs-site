@@ -4,6 +4,7 @@ import PageHeader from "../../components/PageHeader.astro";
 import Prose from "../../components/Prose.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import { links } from "../../data/site";
+import { sponsored } from "../../data/parrainages";
 ---
 
 <Base
@@ -93,10 +94,50 @@ import { links } from "../../data/site";
     </div>
   </section>
 
-  <section class="section stories">
+  <section class="section stories" aria-labelledby="stories-title">
     <div class="wrap">
       <p class="eyebrow">Leurs histoires</p>
-      <h2>À venir<span class="accent">…</span></h2>
+      <h2 id="stories-title">Ils attendent <span class="accent">un parrain.</span></h2>
+      <p class="stories__lead">
+        Kaporal et Regalada sont revenus ensemble à Passerelle. Votre parrainage
+        finance leur pension et leurs soins, le temps qu’ils retrouvent la forme.
+      </p>
+
+      <div class="stories__grid">
+        {
+          sponsored.map((horse) => (
+            <article class="horse-story">
+              <div class="horse-story__media">
+                {horse.photo ? (
+                  <img src={horse.photo} alt={horse.photoAlt ?? horse.name} loading="lazy" decoding="async" />
+                ) : (
+                  <span class="horse-story__placeholder" aria-hidden="true">{horse.name}</span>
+                )}
+                <span class="horse-story__status">{horse.status}</span>
+              </div>
+              <div class="horse-story__body">
+                <h3>{horse.name}</h3>
+                <p class="horse-story__meta">
+                  {horse.identity}
+                  <br />
+                  {horse.origins}
+                </p>
+                {horse.story.map((paragraph) => <p>{paragraph}</p>)}
+                <p class="horse-story__follower">{horse.follower}</p>
+                <div class="horse-story__actions">
+                  <a class="btn btn--primary" href={links.sponsor} target="_blank" rel="noreferrer">
+                    Parrainer {horse.name.split(" ")[0]}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <a class="horse-story__letrot" href={horse.letrot} target="_blank" rel="noreferrer">
+                    Sa fiche LeTrot ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
 
@@ -120,6 +161,98 @@ import { links } from "../../data/site";
   }
   .stories {
     padding-top: clamp(2rem, 4vw, 3.5rem);
+  }
+  .stories__lead {
+    max-width: 52ch;
+    margin: 1rem 0 0;
+    color: var(--muted);
+  }
+  .stories__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3vw, 2rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .horse-story {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--cream-warm);
+  }
+  .horse-story__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    background: var(--sage);
+  }
+  .horse-story__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .horse-story__placeholder {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    opacity: 0.5;
+  }
+  .horse-story__status {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: var(--forest);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .horse-story__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+  .horse-story h3 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 400;
+  }
+  .horse-story__meta {
+    margin: 0.4rem 0 1.2rem;
+    color: var(--moss);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .horse-story__body > p:not(.horse-story__meta) {
+    margin: 0 0 0.9rem;
+  }
+  .horse-story__follower {
+    padding: 0.9rem 1rem;
+    border-left: 3px solid var(--moss-mid);
+    border-radius: 0 0.7rem 0.7rem 0;
+    background: var(--cream);
+    font-style: italic;
+  }
+  .horse-story__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
+  }
+  .horse-story__letrot {
+    color: var(--moss);
+    font-size: 0.85rem;
+    font-weight: 600;
   }
   .tax-diagram {
     display: grid;
@@ -327,6 +460,7 @@ import { links } from "../../data/site";
     .tax-diagram__start { justify-self: start; }
     .tax-diagram__connector { justify-self: start; }
     .tax-diagram__cases { grid-template-columns: 1fr; }
+    .stories__grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
     .tax-diagram {
