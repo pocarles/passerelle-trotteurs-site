@@ -34,6 +34,8 @@ export const sponsored: Sponsored[] = [
     identity: "Jument baie · 21 ans",
     origins: "Par Hermes de Pericard et Candie du Lys",
     status: "À remuscler",
+    photo: "/media/parrainages/regalada.jpg",
+    photoAlt: "Regalada, jument baie, passe la tête par la porte d’un van",
     story: [
       "Regalada a couru vingt-six fois et remporté deux victoires, avant de devenir poulinière. Aujourd’hui retraitée de la reproduction, elle s’est trouvé un autre rôle : tenir compagnie à Kaporal. C’est avec lui qu’elle est revenue à Passerelle.",
       "Elle n’a pas de souci de santé particulier, mais elle a besoin d’être remusclée et verra prochainement l’ostéopathe pour des douleurs au postérieur. À 21 ans, elle mérite des soins attentifs et une vie douce.",
