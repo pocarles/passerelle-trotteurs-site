@@ -173,7 +173,6 @@ export const network = [
   ["Domaine des Dakotines", "Calvados"],
   ["Écurie du Saule", "Nord"],
   ["Écurie HADAH", "Loiret"],
-  ["Écurie L’Eau de Fosse", "Loiret"],
   ["Écurie TDS", "Seine-et-Marne"],
   ["Écuries de la Brèche", "Oise"],
   ["Écuries de Chigny", "Aisne"],
@@ -251,17 +250,6 @@ export const networkDirectory = [
     socials: [
       { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61574908630592" },
       { label: "Instagram", href: "https://www.instagram.com/ecurie_hadah/" },
-    ],
-  },
-  {
-    name: "Écurie L’Eau de Fosse",
-    department: "Loiret",
-    address: ["L’Eau de Fosse", "45600 Viglain"],
-    phones: ["07 86 75 43 61"],
-    links: [],
-    socials: [
-      { label: "Facebook", href: "https://www.facebook.com/ecurieeaudefosse/" },
-      { label: "Instagram", href: "https://www.instagram.com/ecurieleaudefosse/" },
     ],
   },
   {
@@ -472,11 +460,7 @@ export const networkMapDepartments = [
   },
   { code: "25", label: "Doubs", structures: ["L’Élevage de tous temps"] },
   { code: "42", label: "Loire", structures: ["Rehab Ranch"] },
-  {
-    code: "45",
-    label: "Loiret",
-    structures: ["Écurie HADAH", "Écurie L’Eau de Fosse"],
-  },
+  { code: "45", label: "Loiret", structures: ["Écurie HADAH"] },
   { code: "56", label: "Morbihan", structures: ["AnimOsmose"] },
   { code: "59", label: "Nord", structures: ["Écurie du Saule"] },
   {
