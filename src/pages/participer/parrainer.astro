@@ -97,44 +97,30 @@ import { sponsored } from "../../data/parrainages";
   <section class="section stories" aria-labelledby="stories-title">
     <div class="wrap">
       <p class="eyebrow">Leurs histoires</p>
-      <h2 id="stories-title">Ils attendent <span class="accent">un parrain.</span></h2>
+      <h2 id="stories-title">Ils attendent <span class="accent">des parrains.</span></h2>
       <p class="stories__lead">
-        Kaporal et Regalada sont revenus ensemble à Passerelle. Votre parrainage
-        finance leur pension et leurs soins, le temps qu’ils retrouvent la forme.
+        Les chevaux suivants recherchent des parrains pour leur convalescence.
+        Ces dons nous permettent de prendre en charge leurs frais de pension, de
+        convalescence et de traitement, avant de pouvoir les proposer à
+        l’adoption ou jusqu’à ce qu’ils soient adoptés. Le parrainage vous permet
+        de recevoir chaque mois des nouvelles des chevaux.
       </p>
 
       <div class="stories__grid">
         {
           sponsored.map((horse) => (
-            <article class="horse-story">
-              <div class="horse-story__media">
-                {horse.photo ? (
-                  <img src={horse.photo} alt={horse.photoAlt ?? horse.name} loading="lazy" decoding="async" />
-                ) : (
-                  <span class="horse-story__placeholder" aria-hidden="true">{horse.name}</span>
-                )}
-                <span class="horse-story__status">{horse.status}</span>
+            <a class="horse-card" href={`/participer/parrainer/${horse.slug}/`}>
+              <div class="horse-card__media">
+                <img src={horse.photo} alt={horse.photoAlt} loading="lazy" decoding="async" />
+                <span class="horse-card__status">{horse.status}</span>
               </div>
-              <div class="horse-story__body">
+              <div class="horse-card__body">
                 <h3>{horse.name}</h3>
-                <p class="horse-story__meta">
-                  {horse.identity}
-                  <br />
-                  {horse.origins}
-                </p>
-                {horse.story.map((paragraph) => <p>{paragraph}</p>)}
-                <p class="horse-story__follower">{horse.follower}</p>
-                <div class="horse-story__actions">
-                  <a class="btn btn--primary" href={links.sponsor} target="_blank" rel="noreferrer">
-                    Parrainer {horse.name.split(" ")[0]}
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                  <a class="horse-story__letrot" href={horse.letrot} target="_blank" rel="noreferrer">
-                    Sa fiche LeTrot ↗
-                  </a>
-                </div>
+                <span class="horse-card__more">
+                  Découvrir son histoire <span aria-hidden="true">→</span>
+                </span>
               </div>
-            </article>
+            </a>
           ))
         }
       </div>
@@ -163,7 +149,7 @@ import { sponsored } from "../../data/parrainages";
     padding-top: clamp(2rem, 4vw, 3.5rem);
   }
   .stories__lead {
-    max-width: 52ch;
+    max-width: none;
     margin: 1rem 0 0;
     color: var(--muted);
   }
@@ -173,35 +159,34 @@ import { sponsored } from "../../data/parrainages";
     gap: clamp(1.25rem, 3vw, 2rem);
     margin-top: clamp(2rem, 4vw, 3rem);
   }
-  .horse-story {
+  .horse-card {
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     background: var(--cream-warm);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .horse-story__media {
+  .horse-card:hover,
+  .horse-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -24px rgba(35, 35, 31, 0.45);
+  }
+  .horse-card__media {
     position: relative;
     aspect-ratio: 5 / 4;
     background: var(--sage);
   }
-  .horse-story__media img {
+  .horse-card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 25% 50%;
   }
-  .horse-story__placeholder {
-    display: grid;
-    height: 100%;
-    place-items: center;
-    color: var(--forest);
-    font-family: var(--serif);
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    opacity: 0.5;
-  }
-  .horse-story__status {
+  .horse-card__status {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -214,43 +199,21 @@ import { sponsored } from "../../data/parrainages";
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .horse-story__body {
+  .horse-card__body {
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: clamp(1.25rem, 3vw, 2rem);
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: clamp(1.1rem, 2.5vw, 1.6rem);
   }
-  .horse-story h3 {
+  .horse-card h3 {
     margin: 0;
     font-family: var(--serif);
     font-size: clamp(1.6rem, 3vw, 2.1rem);
     font-weight: 400;
   }
-  .horse-story__meta {
-    margin: 0.4rem 0 1.2rem;
-    color: var(--moss);
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-  .horse-story__body > p:not(.horse-story__meta) {
-    margin: 0 0 0.9rem;
-  }
-  .horse-story__follower {
-    padding: 0.9rem 1rem;
-    border-left: 3px solid var(--moss-mid);
-    border-radius: 0 0.7rem 0.7rem 0;
-    background: var(--cream);
-    font-style: italic;
-  }
-  .horse-story__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem 1.25rem;
-    margin-top: auto;
-    padding-top: 0.6rem;
-  }
-  .horse-story__letrot {
+  .horse-card__more {
     color: var(--moss);
     font-size: 0.85rem;
     font-weight: 600;

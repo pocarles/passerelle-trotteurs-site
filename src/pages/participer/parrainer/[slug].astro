@@ -1,0 +1,223 @@
+---
+import Base from "../../../layouts/Base.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import CtaBand from "../../../components/CtaBand.astro";
+import Icon from "../../../components/Icon.astro";
+import { links } from "../../../data/site";
+import { sponsored, type Sponsored } from "../../../data/parrainages";
+
+export function getStaticPaths() {
+  return sponsored.map((horse) => ({ params: { slug: horse.slug }, props: { horse } }));
+}
+
+const { horse } = Astro.props as { horse: Sponsored };
+const others = sponsored.filter((h) => h.slug !== horse.slug);
+---
+
+<Base
+  title={`Parrainer ${horse.name} — Association Passerelle`}
+  description={horse.lead}
+  image={horse.photo}
+  imageAlt={horse.photoAlt}
+>
+  <PageHeader
+    eyebrow={`À parrainer · ${horse.status}`}
+    title={horse.name}
+    lead={horse.lead}
+    image={horse.photo}
+    imageAlt={horse.photoAlt}
+  >
+    <Fragment slot="actions">
+      <a class="btn btn--primary" href={links.sponsor} target="_blank" rel="noreferrer">
+        Parrainer {horse.shortName}
+        <span aria-hidden="true">↗</span>
+      </a>
+    </Fragment>
+  </PageHeader>
+
+  <section class="section">
+    <div class="wrap">
+      <a class="tlink back" href="/participer/parrainer/">
+        <Icon name="arrow" class="back__ico" />
+        Tous les chevaux à parrainer
+      </a>
+
+      <div class="story">
+        <aside class="story__card">
+          <p class="story__identity">{horse.identity}</p>
+          <p class="story__origins">{horse.origins}</p>
+          <dl class="story__facts">
+            {
+              horse.careerFacts.map((fact) => (
+                <div>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <a class="story__letrot" href={horse.letrot} target="_blank" rel="noreferrer">
+            Sa fiche LeTrot ↗
+          </a>
+        </aside>
+
+        <div class="story__text">
+          <h2>Sa carrière <span class="accent">de course.</span></h2>
+          {horse.career.map((p) => <p>{p}</p>)}
+
+          <h2>Pourquoi {horse.shortName} <span class="accent">est chez nous.</span></h2>
+          {horse.arrival.map((p) => <p>{p}</p>)}
+
+          <h2>Pourquoi {horse.shortName} <span class="accent">a besoin de vous.</span></h2>
+          {horse.need.map((p) => <p>{p}</p>)}
+
+          <p class="story__follower">{horse.follower}</p>
+          <p class="story__news">
+            En devenant parrain, vous recevez chaque mois des nouvelles de {horse.shortName}.
+          </p>
+        </div>
+      </div>
+
+      {
+        others.length > 0 && (
+          <div class="others">
+            <p class="eyebrow">Ils attendent aussi un parrain</p>
+            <ul>
+              {others.map((h) => (
+                <li>
+                  <a href={`/participer/parrainer/${h.slug}/`}>
+                    {h.name} <span aria-hidden="true">→</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    text={`Offrez à ${horse.shortName}`}
+    accent="le temps de se reconstruire."
+    label={`Parrainer ${horse.shortName}`}
+    href={links.sponsor}
+    external
+    icon="sprout"
+  />
+</Base>
+
+<style>
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back :global(.back__ico) {
+    width: 14px;
+    height: 14px;
+    transform: rotate(180deg);
+  }
+  .story {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.6fr) minmax(0, 1.4fr);
+    align-items: start;
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+  .story__card {
+    position: sticky;
+    top: 7rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--cream-warm);
+  }
+  .story__identity {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    text-align: left;
+  }
+  .story__origins {
+    margin: 0.3rem 0 1.25rem;
+    color: var(--moss);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: left;
+  }
+  .story__facts {
+    margin: 0 0 1.25rem;
+  }
+  .story__facts div {
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .story__facts dt {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .story__facts dd {
+    margin: 0.15rem 0 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+  }
+  .story__letrot {
+    color: var(--moss);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .story__text h2 {
+    margin: 2.5rem 0 1rem;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+  .story__text h2:first-child {
+    margin-top: 0;
+  }
+  .story__text p {
+    margin: 0 0 1rem;
+  }
+  .story__follower {
+    margin-top: 2rem !important;
+    padding: 1rem 1.2rem;
+    border-left: 3px solid var(--moss-mid);
+    border-radius: 0 0.7rem 0.7rem 0;
+    background: var(--cream-warm);
+    font-style: italic;
+  }
+  .story__news {
+    font-weight: 600;
+    color: var(--forest);
+  }
+  .others {
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .others ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .others a {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+  }
+  @media (max-width: 800px) {
+    .story {
+      grid-template-columns: 1fr;
+    }
+    .story__card {
+      position: static;
+    }
+  }
+</style>
