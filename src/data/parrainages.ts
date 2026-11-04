@@ -20,6 +20,8 @@ export const sponsored: Sponsored[] = [
     identity: "Hongre bai · 6 ans",
     origins: "Par Lilium Madrik et Carte Gold",
     status: "En convalescence",
+    photo: "/media/parrainages/kaporal-gold.jpg",
+    photoAlt: "Kaporal Gold, hongre bai avec une liste blanche, regarde l’objectif par-dessus une clôture",
     story: [
       "Kaporal n’a pas eu un départ facile. Encore poulain, au pied de sa mère, il a reçu un coup au grasset. Son entourage l’a fait soigner et a fait retirer les fragments qui le gênaient. Il a couru un peu, puis a été reconverti à la selle.",
       "La vie l’a ensuite ramené vers nous : son adoptant l’a rendu à Passerelle, avec Regalada, sa compagne de pré. Kaporal a perdu énormément d’état. Le diagnostic est tombé cet été : maladie de Lyme et une forme de piroplasmose. Après ce premier traitement, on lui a découvert des ulcères gastriques de grade 2 à 3 sur 4.",
