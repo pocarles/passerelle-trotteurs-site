@@ -21,7 +21,7 @@ const others = sponsored.filter((h) => h.slug !== horse.slug);
   imageAlt={horse.photoAlt}
 >
   <PageHeader
-    eyebrow={`À parrainer · ${horse.status}`}
+    eyebrow="À parrainer"
     title={horse.name}
     lead={horse.lead}
     image={horse.photo}
@@ -77,6 +77,26 @@ const others = sponsored.filter((h) => h.slug !== horse.slug);
           </p>
         </div>
       </div>
+
+      {
+        horse.gallery.length > 0 && (
+          <section class="photos" aria-labelledby="photos-title">
+            <h2 id="photos-title">{horse.shortName} <span class="accent">en images.</span></h2>
+            <ul class="photos__grid">
+              {horse.gallery.map((photo) => (
+                <li>
+                  <figure>
+                    <a href={photo.src} target="_blank" rel="noreferrer">
+                      <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+                    </a>
+                    <figcaption>{photo.caption}</figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
 
       {
         others.length > 0 && (
@@ -195,6 +215,45 @@ const others = sponsored.filter((h) => h.slug !== horse.slug);
     font-weight: 600;
     color: var(--forest);
   }
+  .photos {
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+  }
+  .photos h2 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+  .photos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .photos figure {
+    margin: 0;
+  }
+  .photos a {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius);
+    aspect-ratio: 3 / 4;
+    background: var(--sage);
+  }
+  .photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .photos a:hover img {
+    transform: scale(1.03);
+  }
+  .photos figcaption {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
   .others {
     margin-top: clamp(3rem, 6vw, 4.5rem);
     padding-top: 1.5rem;
@@ -218,6 +277,9 @@ const others = sponsored.filter((h) => h.slug !== horse.slug);
     }
     .story__card {
       position: static;
+    }
+    .photos__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
