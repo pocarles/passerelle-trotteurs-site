@@ -23,7 +23,7 @@ export const links = {
     "https://www.helloasso.com/associations/passerelle-trotteurs/formulaires/4",
   join: "https://www.helloasso.com/beta/associations/passerelle-trotteurs/adhesions/adhesion-2026-a-l-association-passerelle",
   sponsor:
-    "https://www.helloasso.com/associations/passerelle-trotteurs/formulaires/9",
+    "https://www.helloasso.com/associations/passerelle-trotteurs/formulaires/12",
   intake: "https://intranet.passerelle-trotteurs.fr/user/login?destination=/accueil",
   shop: "https://blagapro.com/categorie-produit/boutiques-des-clubs/hauts-de-france/oise-60/association-passerelle-60120/",
   accreditation:
