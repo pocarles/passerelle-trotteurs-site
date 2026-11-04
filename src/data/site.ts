@@ -56,12 +56,23 @@ export const nav = [
   },
   { label: "Confier & protéger", href: "/confier-et-proteger" },
   {
-    label: "Participer",
-    href: "/participer",
+    label: "Acheter / Adopter",
+    href: "/adopter",
     children: [
-      { label: "Adopter un trotteur", href: "/adopter" },
+      { label: "Tous les chevaux", href: "/adopter" },
+      { label: "Chevaux à la vente", href: "/adopter/chevaux-a-la-vente" },
+      { label: "Chevaux à l’adoption", href: "/adopter/chevaux-a-l-adoption" },
+      { label: "Adoption directe", href: "/adopter/adoption-directe" },
+    ],
+  },
+  {
+    label: "Nous soutenir",
+    href: "/participer/#calculateur-don",
+    children: [
+      { label: "Faire un don", href: "/participer/#calculateur-don" },
       { label: "Devenir membre", href: "/participer/adherer" },
       { label: "Parrainer un trotteur", href: "/participer/parrainer" },
+      { label: "Boutique", href: links.shop, external: true },
     ],
   },
   { label: "Contact", href: "/contact" },

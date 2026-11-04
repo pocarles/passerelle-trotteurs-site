@@ -36,11 +36,19 @@ const year = new Date().getFullYear();
     </div>
 
     <div>
-      <h2>Participer</h2>
-      <a href="/adopter">Adopter un trotteur</a>
-      <a href={links.donate} target="_blank" rel="noreferrer">Faire un don</a>
-      <a href={links.join} target="_blank" rel="noreferrer">Devenir membre</a>
-      <a href={links.sponsor} target="_blank" rel="noreferrer">Parrainer un trotteur</a>
+      <h2>Acheter / Adopter</h2>
+      <a href="/adopter">Tous les chevaux</a>
+      <a href="/adopter/chevaux-a-la-vente">Chevaux à la vente</a>
+      <a href="/adopter/chevaux-a-l-adoption">Chevaux à l’adoption</a>
+      <a href="/adopter/adoption-directe">Adoption directe</a>
+    </div>
+
+    <div>
+      <h2>Nous soutenir</h2>
+      <a href="/participer/#calculateur-don">Faire un don</a>
+      <a href="/participer/adherer">Devenir membre</a>
+      <a href="/participer/parrainer">Parrainer un trotteur</a>
+      <a href={links.shop} target="_blank" rel="noreferrer">Boutique</a>
     </div>
 
     <div>
@@ -124,7 +132,7 @@ const year = new Date().getFullYear();
   }
   .ftr__in {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1.1fr;
     gap: clamp(2rem, 4vw, 3.5rem);
     max-width: var(--maxw);
     margin-inline: auto;

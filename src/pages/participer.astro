@@ -7,12 +7,12 @@ import { links } from "../data/site";
 
 const routes = [
   {
-    title: "Adopter un trotteur",
-    body: "Des chevaux à la vente ou à l’adoption, placés sous un contrat Passerelle qui les protège à vie.",
-    href: "/adopter",
+    title: "Faire un don",
+    body: "Ponctuel ou mensuel, votre don soutient l’action de Passerelle et ouvre droit à une réduction d’impôt.",
+    href: "#calculateur-don",
     image: "/media/participer-adopter.jpg",
     alt: "Une membre de l’équipe Passerelle aux côtés d’un trotteur",
-    imageClass: "card__img--adopter",
+    imageClass: "card__img--don",
     icon: "heart",
   },
   {
@@ -37,11 +37,11 @@ const routes = [
 ---
 
 <Base
-  title="Participer — Agir avec l’Association Passerelle"
-  description="Adopter un Trotteur Français, devenir membre, parrainer, faire un don ou soutenir Passerelle via sa boutique."
+  title="Nous soutenir — Agir avec l’Association Passerelle"
+  description="Faire un don, devenir membre, parrainer un Trotteur Français ou soutenir Passerelle via sa boutique."
 >
   <PageHeader
-    eyebrow="Agir"
+    eyebrow="Nous soutenir"
     title="Une place pour chacun,"
     accent="une seconde vie pour eux."
     lead="Professionnels de la filière, cavaliers ou passionnés : choisissez la façon d’agir qui vous correspond."
@@ -49,7 +49,7 @@ const routes = [
     background
   />
 
-  <section class="section participation-simulator-section">
+  <section class="section participation-simulator-section" id="calculateur-don">
     <div class="wrap tax-diagram" data-tax-simulator aria-labelledby="participation-tax-diagram-title">
       <div class="tax-diagram__heading">
         <p class="eyebrow">En pratique</p>
@@ -177,7 +177,7 @@ const routes = [
     object-fit: cover;
     border-radius: inherit;
   }
-  .card__img--adopter {
+  .card__img--don {
     object-position: center 57%;
   }
   .card__img--adherer {
@@ -217,6 +217,8 @@ const routes = [
   .participation-simulator-section {
     padding-top: clamp(3rem, 6vw, 5rem);
     padding-bottom: clamp(2.25rem, 4.5vw, 4rem);
+    /* Target of the "Nous soutenir" menu link: clear the sticky header. */
+    scroll-margin-top: 4rem;
   }
   .participation-simulator-section + .section {
     padding-top: clamp(2.25rem, 4.5vw, 4rem);
