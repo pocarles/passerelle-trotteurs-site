@@ -504,7 +504,7 @@ export const networkConditions = [
     summary:
       "Une expérience concrète de la reconversion, des soins adaptés et une bonne connaissance de la filière courses.",
     items: [
-      "Avoir déjà reconverti des trotteurs et pouvoir présenter des recommandations d'anciens acquéreurs.",
+      "Avoir déjà reconverti des trotteurs et pouvoir présenter des recommandations d'anciens acquéreurs. Si vous n'avez encore jamais reconverti de trotteur, vous devez montrer des connaissances suffisantes du monde des courses et du travail des chevaux.",
       "Connaître les pathologies courantes, les soins, l'alimentation et les protocoles adaptés aux trotteurs ; une recommandation vétérinaire peut être demandée.",
       "Comprendre le monde des courses et respecter son image dans ses actions et communications.",
     ],
