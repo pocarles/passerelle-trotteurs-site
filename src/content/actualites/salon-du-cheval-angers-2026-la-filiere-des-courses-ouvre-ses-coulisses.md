@@ -1,9 +1,9 @@
 ---
-title: "Salon du Cheval d’Angers : la filière des courses hippiques ouvre ses coulisses au grand public"
+title: "Les courses hippiques au Salon du Cheval d’Angers"
 date: 2026-11-05
 dateLabel: "5 novembre 2026"
 source: "Communiqué de presse de la Fédération Nationale des Courses Hippiques"
-image: "/media/actualites/salon-cheval-angers-2026/cover.jpg"
+image: "/media/actualites/salon-cheval-angers-2026/fnch.jpg"
 cta:
   text: "Retrouvez Passerelle"
   accent: "au Salon du Cheval d’Angers."
