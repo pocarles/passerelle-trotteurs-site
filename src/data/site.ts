@@ -504,7 +504,7 @@ export const networkConditions = [
     summary:
       "Une expérience concrète de la reconversion, des soins adaptés et une bonne connaissance de la filière courses.",
     items: [
-      "Avoir déjà reconverti des trotteurs et pouvoir présenter des recommandations d'anciens acquéreurs. Si vous n'avez encore jamais reconverti de trotteur, vous devez justifier d'une bonne connaissance du monde des courses et démontrer vos compétences dans le travail et la réhabilitation des chevaux.",
+      "Avoir déjà reconverti des trotteurs et pouvoir présenter des recommandations d'anciens acquéreurs. Si vous n'avez encore jamais reconverti de trotteur, vous devez justifier d'une bonne connaissance du monde des courses et démontrer vos compétences dans le travail et la réhabilitation des chevaux. L'accréditation débute alors avec un premier cheval confié en test, dont l'accompagnement et le placement permettront de valider votre pratique.",
       "Connaître les pathologies courantes, les soins, l'alimentation et les protocoles adaptés aux trotteurs ; une recommandation vétérinaire peut être demandée.",
       "Comprendre le monde des courses et respecter son image dans ses actions et communications.",
     ],
@@ -515,7 +515,7 @@ export const networkConditions = [
     summary:
       "Des installations propres à accueillir, travailler et assurer les soins et le bien-être des trotteurs accueillis.",
     items: [
-      "Disposer d’au moins un box ou d’une stabulation entretenue, disponible en cas de besoin pour assurer les soins.",
+      "Disposer de boxes ou d’abris sécurisés et entretenus quotidiennement pour l’accueil des chevaux réformés.",
       "Veiller à ce que les infrastructures et le mode de vie des équidés soient conformes à la Charte du bien-être équin.",
       "Disposer de sols adaptés pour le travail : carrière ou manège, rond de longe et chemins de balade.",
       "Offrir des paddocks sécurisés, en sable ou en herbe, pour la détente et la liberté.",
@@ -538,12 +538,15 @@ export const networkCommitments = [
     summary:
       "Chaque Trotteur bénéficie d’une reconversion progressive, adaptée à son état physique, mental et à son profil.",
     items: [
-      "Mettre en place une reconversion adaptée, avec une activité, une ration et des soins ajustés aux besoins de chaque cheval.",
-      "Conserver le cheval au minimum un mois afin de consolider les bases de l’équitation classique, à pied comme monté, et de lui faire découvrir le travail en carrière aux trois allures.",
-      "Veiller à un placement responsable auprès d’un cavalier au niveau adapté, capable d’assumer le cheval financièrement et de lui offrir des conditions de vie appropriées.",
+      "Offrir à chaque cheval un cadre de vie sain et sécurisé, une activité adaptée à son état physique et mental, une ration quotidienne adaptée, de l’eau à volonté et les soins nécessaires : vaccins, vermifuge, parage ou ferrure, dentisterie et traitement de la douleur.",
+      "Conserver chaque trotteur au minimum un mois avant de le proposer à la vente, le temps de lui faire perdre les réflexes liés à sa carrière de course et d’entamer sa transition.",
+      "Trois exceptions à ce délai : les chevaux de moins de trois ans bien manipulés et pré-débourrés, les chevaux porteurs d’une pathologie chronique stabilisée et les chevaux trop âgés pour être montés.",
+      "Pour un cheval en convalescence, le délai suit sa remise en forme. Les soins sont assurés par la structure ; s’ils dépassent ses moyens, elle oriente le cheval vers une structure adaptée ou prévient Passerelle au plus tôt.",
+      "Avant toute mise en vente, le cheval a acquis les bases de l’équitation classique, suivi un travail de désensibilisation propre aux trotteurs (montoir, soins, travail à pied et monté, embarquement, sorties seul) et est monté aux trois allures en toute sécurité, en carrière comme en extérieur.",
+      "Choisir le meilleur acquéreur pour chaque cheval : un cavalier au niveau adapté, capable d’assumer le cheval financièrement et de lui offrir un environnement, de l’exercice et des soins appropriés.",
     ],
     note:
-      "Centres équestres : une vigilance particulière est portée à la gestion responsable et éthique de la cavalerie, à la charge de travail quotidienne, à la vie sociale des chevaux et à l’anticipation de leur retraite.",
+      "Centres équestres : les trotteurs placés peuvent faire de l’enseignement, dans la limite de trois heures de cours par jour, avec des sorties quotidiennes au paddock entre congénères. Le cheval est proposé à la vente à des particuliers entre sa treizième et sa quatorzième année, avec les mêmes obligations de placement qu’une structure de reconversion.",
   },
   {
     title: "Réactivité et rigueur administrative",
@@ -552,7 +555,9 @@ export const networkCommitments = [
     items: [
       "Respecter la réglementation applicable à la détention d’équidés : registre d’élevage, déclaration des lieux de détention, vétérinaire sanitaire et vérification du certificat d’engagement et de connaissance de l’acheteur avant l’acquisition.",
       "Transmettre à Passerelle les sept premières pages du livret signalétique, l’attestation de propriété au nom de la structure de reconversion et l’attestation d’exploitation limitée fournie par l’association.",
-      "Placer chaque Trotteur sous le contrat de protection Passerelle, informer l’association des entrées et sorties de chevaux et adhérer à l’association.",
+      "Déclarer à Passerelle chaque Trotteur Français accueilli, quelle que soit sa provenance (placé par l’association, acheté en direct, confié ou donné), et le soumettre à la restriction d’exploitation auprès de la SETF, qui interdit tout retour aux courses, et au contrat de protection Passerelle (ou, pour les refuges, à un contrat équivalent validé par l’association).",
+      "Transmettre chaque mois la liste des trotteurs accueillis et indiquer leur destination après leur revente.",
+      "Adhérer à l’association (cotisation annuelle de 20 €) et signer une convention de partenariat, renouvelable tous les deux ans.",
     ],
   },
   {
@@ -560,8 +565,9 @@ export const networkCommitments = [
     summary:
       "Un lien régulier avec Passerelle permet d’accompagner au mieux les structures et chaque cheval pris en charge.",
     items: [
-      "Prendre contact avec Passerelle en cas de difficulté afin d’étudier ensemble les solutions possibles, y compris un accompagnement financier lorsque la situation le justifie.",
-      "Donner régulièrement des nouvelles des chevaux pris en charge, de leur arrivée jusqu’à leur reconversion ou leur placement, avec des photos ou vidéos lorsque cela est possible.",
+      "Informer Passerelle dès que l’entourage d’un cheval vous contacte pour des soins importants, afin de définir ensemble le protocole et la répartition de leur prise en charge.",
+      "Donner des nouvelles de chaque cheval placé par Passerelle, de son arrivée à la fin de sa reconversion ou de sa convalescence, avec des photos ou vidéos à partager avec son ancien entourage et sur nos réseaux.",
+      "Accueillir une visite annuelle de la structure, à une date convenue ensemble, pour voir les chevaux, les installations et échanger sur les difficultés rencontrées.",
     ],
   },
 ] as const;
