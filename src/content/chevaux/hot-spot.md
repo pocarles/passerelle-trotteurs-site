@@ -1,6 +1,7 @@
 ---
 nom: "Hot Spot"
 statut: "vente"
+draft: true
 annee: 2017
 sexe: "hongre"
 robe: "Noir"
