@@ -63,6 +63,7 @@ export const nav = [
       { label: "Chevaux à la vente", href: "/adopter/chevaux-a-la-vente" },
       { label: "Chevaux à l’adoption", href: "/adopter/chevaux-a-l-adoption" },
       { label: "Adoption directe", href: "/adopter/adoption-directe" },
+      { label: "Parrainer un trotteur", href: "/participer/parrainer" },
     ],
   },
   {
