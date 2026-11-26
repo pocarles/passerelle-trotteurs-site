@@ -110,6 +110,31 @@ export const meceneGroupes: { titre: string; membres: Mecene[] }[] = [
     ],
   },
   {
+    titre: "Marques partenaires",
+    membres: [
+      {
+        nom: "Mila Moka",
+        logo: "/media/mecenes/mila-moka.png",
+        url: "https://milamoka.com/",
+      },
+      {
+        nom: "Forestier Sellier",
+        logo: "/media/mecenes/forestier.png",
+        url: "https://forestier.com/",
+      },
+      {
+        nom: "Padd Saint-Ouen-l’Aumône",
+        logo: "/media/mecenes/padd.png",
+        url: "https://www.padd.fr/nos-magasins/13-saint-ouen-l-aumone",
+      },
+      {
+        nom: "WhakaOra",
+        logo: "/media/mecenes/whakaora.png",
+        url: "https://whakaora.fr/",
+      },
+    ],
+  },
+  {
     titre: "Médias",
     membres: [
       { nom: "24H au Trot", logo: "/media/mecenes/24h-au-trot.png" },
