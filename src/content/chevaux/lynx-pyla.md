@@ -41,7 +41,9 @@ Lynx est un fils de **Sancho du Glay** et d’**Orkana du Guesclin**. Son pedigr
 réunit notamment **First de Retz** et **Madame Benoît** du côté paternel, ainsi
 que **Podosis** et **Ballerine de Retz** du côté maternel.
 
-Sa fiche officielle LeTROT ne mentionne **aucun gain et aucun record**.
+Lynx n’a **pas été qualifié** : débourré à l’attelage, il n’a pas passé les
+qualifications et n’a donc jamais couru. Sa fiche officielle LeTROT ne
+mentionne ainsi aucun gain ni aucun record.
 
 [Consulter sa fiche officielle sur LeTROT](https://www.letrot.com/stats/chevaux/lynx-pyla/ZmN8ZQMJBgoZ/elevage)
 

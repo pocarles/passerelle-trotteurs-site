@@ -23,9 +23,9 @@ activité. Elle se trouve dans le Maine-et-Loire (49).
 
 ## Son parcours
 
-Fille d’**Univers de Pan** et de **Suprême Paulca**, Halte du Bas Bosq n’a pas
-de carrière de course enregistrée sur LeTROT. Elle a été débourrée à l’attelage
-et montée avant d’être consacrée à la reproduction. Elle n’est actuellement
+Fille d’**Univers de Pan** et de **Suprême Paulca**, Halte du Bas Bosq n’a
+**pas été qualifiée** : débourrée à l’attelage, elle n’a pas passé les
+qualifications et n’a donc jamais couru. Elle a aussi été montée avant d’être consacrée à la reproduction. Elle n’est actuellement
 pas saillie.
 
 [Consulter sa fiche officielle sur LeTROT](https://www.letrot.com/stats/chevaux/HALTE-DU-BAS-BOSQ/ZWV7bAMFBwQT/elevage)

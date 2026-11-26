@@ -40,8 +40,9 @@ Miss est une fille de **Fabriz du Gîte** et de **Cléone du Gîte**. Son pedigr
 réunit notamment **Tabriz du Gîte** et **Salamandre du Gîte** du côté paternel,
 ainsi que **Ganymède** et **Kabrizia du Gîte** du côté maternel.
 
-Sa fiche officielle LeTROT ne mentionne **aucune course disputée, aucun gain et
-aucun record**. Son parcours sportif s’est arrêté avant la compétition en raison
+Miss n’a **pas été qualifiée** : elle n’a pas passé les qualifications et n’a
+donc jamais couru. Sa fiche officielle LeTROT ne mentionne ainsi aucun gain ni
+aucun record. Son parcours sportif s’est arrêté avant la compétition en raison
 d’une **déformation du jarret droit**, initialement présentée comme un capelet.
 Malgré une croissance aujourd’hui terminée et le repos dont elle a bénéficié,
 son état ne permet pas de la mettre au travail.

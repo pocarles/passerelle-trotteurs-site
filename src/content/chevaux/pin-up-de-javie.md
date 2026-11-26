@@ -19,8 +19,8 @@ directe pour une vie de compagnie et se trouve actuellement dans l’Orne (61).
 
 ## Son parcours
 
-Fille de **Hello Jo** et de **Belle d’Artilly**, Pin Up de Javie n’a jamais
-couru et ne totalise donc aucun gain. Elle n’a été débourrée ni à l’attelage ni
+Fille de **Hello Jo** et de **Belle d’Artilly**, Pin Up de Javie n’a **pas
+été qualifiée** : elle n’a jamais couru et ne totalise donc aucun gain. Elle n’a été débourrée ni à l’attelage ni
 à la selle.
 
 Pin Up de Javie a ensuite été consacrée à la reproduction. Elle compte **10

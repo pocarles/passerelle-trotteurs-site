@@ -32,8 +32,8 @@ sa formation dans un cadre accompagné.
 
 ## Son parcours
 
-Néo n’a jamais vu un hippodrome : il ne présentait pas le profil recherché pour
-une carrière de courses et a été orienté directement vers une nouvelle vie de
+Néo n’a jamais vu un hippodrome et n’a **pas été qualifié** : il ne présentait
+pas le profil recherché pour une carrière de courses et a été orienté directement vers une nouvelle vie de
 cheval de loisirs.
 
 Son débourrage s’est déroulé très facilement. À pied, il connaît le travail en
