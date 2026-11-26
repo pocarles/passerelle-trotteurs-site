@@ -101,7 +101,7 @@ image: "/media/actualites/retour-salon-cheval-angers-2026/cover.jpg"
 
 <h2>Une équipe mobilisée</h2>
 
-<p>Pour vous accueillir et parler de reconversion, l’équipe Passerelle était au complet : Aurélie, directrice et fondatrice de l’association, Méline, coordinatrice, nos bénévoles, dont Kylian et Gabriel, et Jade, <a href="/mecenes/nos-ambassadeurs">ambassadrice Passerelle</a>.</p>
+<p>Pour vous accueillir et parler de reconversion, l’équipe Passerelle était au complet : Aurélie, directrice et fondatrice de l’association, Méline, coordinatrice, nos bénévoles, dont Killian et Gabriel, et Jade, <a href="/mecenes/nos-ambassadeurs">ambassadrice Passerelle</a>.</p>
 
 <h2>150 € récoltés pour les trotteurs</h2>
 
