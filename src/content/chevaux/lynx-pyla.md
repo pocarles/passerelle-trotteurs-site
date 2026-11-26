@@ -2,6 +2,7 @@
 nom: "Lynx Pyla"
 statut: "adoption"
 annee: 2021
+sexe: "hongre"
 robe: "Alezan"
 montable: true
 montabilite: "Déjà monté — reprise progressive du travail monté"
@@ -12,18 +13,20 @@ contactPhoneDisplay: "06 02 44 80 76"
 contactEmail: "leschevauxdelo@gmail.com"
 contactAddress: "La Merlucherie, 89150 Saint-Valérien"
 participation: "Frais d’adoption"
-resume: "Jeune trotteur alezan de 5 ans, sensible, doux et volontaire, qui cherche une personne patiente pour l’accompagner dans sa nouvelle vie de cheval de loisir."
+resume: "Jeune hongre alezan de 5 ans, sensible, doux et volontaire, qui cherche une personne patiente pour l’accompagner dans sa nouvelle vie de cheval de loisir."
 photos:
   - src: "/media/chevaux/lynx-pyla-1.jpg"
-    alt: "Portrait de Lynx Pyla devant une balle de foin"
+    alt: "Lynx Pyla de face, attaché sous un abri"
   - src: "/media/chevaux/lynx-pyla-2.jpg"
-    alt: "Lynx Pyla passant entre des obstacles de travail à pied"
+    alt: "Portrait de profil de Lynx Pyla avec un licol en cuir"
   - src: "/media/chevaux/lynx-pyla-3.jpg"
+    alt: "Lynx Pyla passant entre des obstacles de travail à pied"
+  - src: "/media/chevaux/lynx-pyla-4.jpg"
     alt: "Lynx Pyla marchant sur une bâche lors d’une séance de travail à pied"
 updated: 2026-11-26
 ---
 
-Lynx Pyla est un jeune Trotteur Français alezan né en **2021**. À **5 ans**, il
+Lynx Pyla est un jeune Trotteur Français, hongre alezan né en **2021**. À **5 ans**, il
 a quitté le monde des courses depuis un moment déjà pour commencer une nouvelle
 vie de cheval de loisir. Il se trouve aujourd’hui chez **Les Chevaux d’Elo**,
 dans le nord de l’Yonne (89), à la limite de la Seine-et-Marne.
